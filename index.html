@@ -20,10 +20,19 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/sections.css?v=27">
-    <link rel="stylesheet" href="css/responsive.css?v=27">
+    <link rel="stylesheet" href="css/sections.css?v=28">
+    <link rel="stylesheet" href="css/responsive.css?v=28">
 </head>
 <body>
+
+<!-- Metro Sidebar — full-page progress line -->
+<div class="metro-sidebar" id="metro-sidebar" aria-hidden="true">
+    <div class="metro-sidebar__line">
+        <div class="metro-sidebar__progress" id="metro-progress">
+            <span class="metro-sidebar__dot"></span>
+        </div>
+    </div>
+</div>
 
 <!-- Nav -->
 <nav class="nav" id="nav">
@@ -70,19 +79,6 @@
 
 </section>
 
-<!-- Agency Identity -->
-<div class="agency-id">
-    <div class="container agency-id__inner">
-        <span class="agency-id__word agency-id__word--clip">Clipping</span>
-        <span class="agency-id__dot"></span>
-        <span class="agency-id__word agency-id__word--dist">Distribution</span>
-        <span class="agency-id__dot"></span>
-        <span class="agency-id__word agency-id__word--creative">Creative</span>
-        <span class="agency-id__dot"></span>
-        <span class="agency-id__word agency-id__word--agency">Agency</span>
-    </div>
-</div>
-
 <!-- Clients -->
 <section class="clients" id="clients">
     <div class="clients__track">
@@ -110,7 +106,7 @@
     <div class="showcase__sticky">
         <div class="container">
             <p class="showcase__eyebrow"><span class="live-indicator"><span class="live-indicator__dot"></span>LIVE</span></p>
-            <h2 class="showcase__headline"><span class="heart-word">Virality</span> isn't luck.<br><span class="text-accent">It's infrastructure.</span></h2>
+            <h2 class="showcase__headline"><span class="heart-word">Virality</span> isn't luck.<br><span class="text-accent text-accent--green">It's infrastructure.</span></h2>
             <div class="showcase__phones">
                 <!-- Phone 1 -->
                 <div class="showcase__phone showcase__phone--left">
@@ -172,7 +168,7 @@
 <!-- Stats -->
 <section class="stats" id="stats">
     <div class="container stats__grid">
-        <div class="stats__item"><span class="stats__dot stats__dot--red"></span><span class="stats__number" data-target="3000" data-suffix="+">0</span><span class="stats__label">Clips Deployed Monthly</span></div>
+        <div class="stats__item"><span class="stats__dot stats__dot--red"></span><span class="stats__number" data-target="10" data-suffix="M+">0</span><span class="stats__label">Impressions Generated</span></div>
         <div class="stats__item"><span class="stats__dot stats__dot--blue"></span><span class="stats__number" data-target="100" data-suffix="+">0</span><span class="stats__label">Seeding Accounts Active</span></div>
         <div class="stats__item"><span class="stats__dot stats__dot--green"></span><span class="stats__number" data-target="6" data-suffix="">0</span><span class="stats__label">Platforms Saturated Daily</span></div>
     </div>
@@ -191,6 +187,19 @@
         </div>
     </div>
 </section>
+
+<!-- Agency Identity -->
+<div class="agency-id">
+    <div class="container agency-id__inner">
+        <span class="agency-id__word agency-id__word--clip">Clipping</span>
+        <span class="agency-id__dot"></span>
+        <span class="agency-id__word agency-id__word--dist">Distribution</span>
+        <span class="agency-id__dot"></span>
+        <span class="agency-id__word agency-id__word--creative">Creative</span>
+        <span class="agency-id__dot"></span>
+        <span class="agency-id__word agency-id__word--agency">Agency</span>
+    </div>
+</div>
 
 <!-- Creative — Horizontal Metro Route -->
 <section class="creative" id="services">
@@ -268,6 +277,6 @@
 
 
 <script src="js/counter.js"></script>
-<script src="js/main.js?v=27"></script>
+<script src="js/main.js?v=28"></script>
 </body>
 </html>
