@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     height: var(--nav-height);
-    background: rgba(0, 26, 77, 0.9);
+    background: rgba(0, 40, 115, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 100;
@@ -173,8 +173,8 @@
     font-family: var(--font-headline);
     font-size: clamp(30rem, 50vw, 55rem);
     font-weight: 700;
-    color: #001A4D;
-    opacity: 0.3;
+    color: #002D80;
+    opacity: 0.25;
     line-height: 0.85;
     letter-spacing: -0.05em;
     pointer-events: none;
@@ -1544,7 +1544,7 @@
 .about-banner {
     text-align: center;
     padding: var(--space-xl) 0;
-    background: #001A4D;
+    background: #002266;
     border-top: none;
 }
 
@@ -1607,7 +1607,7 @@
 
 /* ── Contact ─────────────────────────────── */
 .contact {
-    background: #001A4D;
+    background: #002266;
     color: #fff;
     padding: var(--space-lg) 0 var(--space-2xl);
 }
@@ -1922,7 +1922,7 @@
         var(--mta-purple) 85%,
         transparent 100%
     );
-    opacity: 0.15;
+    opacity: 0.2;
     border-radius: 2px;
     position: relative;
 }
