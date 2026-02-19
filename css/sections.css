@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     height: var(--nav-height);
-    background: rgba(14, 14, 16, 0.85);
+    background: rgba(0, 26, 77, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 100;
@@ -173,8 +173,8 @@
     font-family: var(--font-headline);
     font-size: clamp(30rem, 50vw, 55rem);
     font-weight: 700;
-    color: var(--accent);
-    opacity: 0.04;
+    color: #001A4D;
+    opacity: 0.3;
     line-height: 0.85;
     letter-spacing: -0.05em;
     pointer-events: none;
@@ -560,7 +560,7 @@
 
 .csg__word {
     font-family: var(--font-headline);
-    font-size: clamp(4rem, 14vw, 8rem);
+    font-size: clamp(5rem, 18vw, 12rem);
     font-weight: 700;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -571,7 +571,7 @@
 }
 
 .csg__word--clip {
-    color: var(--mta-blue);
+    color: #7CB3F0;
 }
 
 .csg__word--seed {
@@ -1164,11 +1164,11 @@
 }
 
 .stats__dot--red { background: var(--mta-red); box-shadow: 0 0 10px rgba(238, 53, 46, 0.5), 0 0 20px rgba(238, 53, 46, 0.2); }
-.stats__dot--blue { background: var(--mta-blue); box-shadow: 0 0 10px rgba(0, 57, 166, 0.5), 0 0 20px rgba(0, 57, 166, 0.2); }
+.stats__dot--blue { background: #4A90D9; box-shadow: 0 0 10px rgba(74, 144, 217, 0.5), 0 0 20px rgba(74, 144, 217, 0.2); }
 .stats__dot--green { background: var(--mta-green); box-shadow: 0 0 10px rgba(0, 147, 60, 0.5), 0 0 20px rgba(0, 147, 60, 0.2); }
 
 .stats__item:nth-child(1) { border-left-color: var(--mta-red); }
-.stats__item:nth-child(2) { border-left-color: var(--mta-blue); }
+.stats__item:nth-child(2) { border-left-color: #4A90D9; }
 .stats__item:nth-child(3) { border-left-color: var(--mta-green); }
 
 .stats__number {
@@ -1221,7 +1221,7 @@
 }
 
 .agency-id__word--clip { color: var(--mta-red); }
-.agency-id__word--dist { color: var(--mta-blue); }
+.agency-id__word--dist { color: #7CB3F0; }
 .agency-id__word--creative { color: var(--mta-orange); }
 .agency-id__word--agency { color: #fff; }
 
@@ -1376,7 +1376,7 @@
 /* Each item gets a different MTA line color */
 .creative__item:nth-child(1) { border-left-color: var(--mta-red); }
 .creative__item:nth-child(2) { border-left-color: var(--mta-orange); }
-.creative__item:nth-child(3) { border-left-color: var(--mta-blue); }
+.creative__item:nth-child(3) { border-left-color: #7CB3F0; }
 .creative__item:nth-child(4) { border-left-color: var(--mta-green); }
 .creative__item:nth-child(5) { border-left-color: var(--mta-purple); }
 .creative__item:nth-child(6) { border-left-color: #FCCC0A; }
@@ -1405,7 +1405,7 @@
 /* Each icon gets a matching MTA-colored circle background */
 .creative__item:nth-child(1) .creative__icon { background: var(--mta-red); color: #fff; }
 .creative__item:nth-child(2) .creative__icon { background: var(--mta-orange); color: #fff; }
-.creative__item:nth-child(3) .creative__icon { background: var(--mta-blue); color: #fff; }
+.creative__item:nth-child(3) .creative__icon { background: #4A90D9; color: #fff; }
 .creative__item:nth-child(4) .creative__icon { background: var(--mta-green); color: #fff; }
 .creative__item:nth-child(5) .creative__icon { background: var(--mta-purple); color: #fff; }
 .creative__item:nth-child(6) .creative__icon { background: #FCCC0A; color: #000; }
@@ -1502,7 +1502,7 @@
 
 .process__dot--red { background: var(--mta-red); box-shadow: 0 0 12px rgba(238, 53, 46, 0.5), 0 0 24px rgba(238, 53, 46, 0.2); }
 .process__dot--orange { background: var(--mta-orange); box-shadow: 0 0 12px rgba(255, 99, 25, 0.5), 0 0 24px rgba(255, 99, 25, 0.2); }
-.process__dot--yellow { background: var(--mta-blue); box-shadow: 0 0 12px rgba(0, 57, 166, 0.5), 0 0 24px rgba(0, 57, 166, 0.2); }
+.process__dot--yellow { background: #4A90D9; box-shadow: 0 0 12px rgba(74, 144, 217, 0.5), 0 0 24px rgba(74, 144, 217, 0.2); }
 .process__dot--green { background: var(--mta-green); box-shadow: 0 0 12px rgba(0, 147, 60, 0.5), 0 0 24px rgba(0, 147, 60, 0.2); }
 .process__dot--purple { background: var(--mta-purple); box-shadow: 0 0 12px rgba(185, 51, 173, 0.5), 0 0 24px rgba(185, 51, 173, 0.2); }
 
@@ -1544,7 +1544,7 @@
 .about-banner {
     text-align: center;
     padding: var(--space-xl) 0;
-    background: var(--accent);
+    background: #001A4D;
     border-top: none;
 }
 
@@ -1607,7 +1607,7 @@
 
 /* ── Contact ─────────────────────────────── */
 .contact {
-    background: var(--accent);
+    background: #001A4D;
     color: #fff;
     padding: var(--space-lg) 0 var(--space-2xl);
 }
