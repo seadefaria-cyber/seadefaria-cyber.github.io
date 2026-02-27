@@ -131,6 +131,23 @@ html, body {
         border-radius: 0 !important;
     }
 
+    /* Acronym */
+    .acronym__inner {
+        gap: 0.3rem;
+    }
+
+    .acronym__item {
+        font-size: 0.6rem;
+    }
+
+    .acronym__letter {
+        font-size: 0.75rem;
+    }
+
+    .acronym__sep {
+        font-size: 0.5rem;
+    }
+
     /* Hero */
     .hero {
         min-height: 100svh;
@@ -260,6 +277,10 @@ html, body {
     .phone__platform {
         font-size: 0.4rem;
         padding: 0.1rem 0.3rem;
+    }
+
+    .phone__views {
+        font-size: 0.35rem;
     }
 
     .phone__desc {

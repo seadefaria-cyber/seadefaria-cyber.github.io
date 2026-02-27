@@ -405,6 +405,182 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     observer.observe(banner);
 })();
 
+/* ── Counter Animation — numbers count up on scroll ── */
+(function() {
+    var statNums = document.querySelectorAll('.hero__stat-num');
+    if (statNums.length === 0) return;
+
+    var animated = false;
+
+    function parseNum(str) {
+        return parseFloat(str.replace(/[^0-9.]/g, ''));
+    }
+
+    function formatNum(n, template) {
+        if (template.indexOf('M') > -1) return n.toFixed(0) + 'M+';
+        if (n >= 1000) {
+            return Math.floor(n).toLocaleString();
+        }
+        return Math.floor(n).toString();
+    }
+
+    function animateCounters() {
+        if (animated) return;
+        animated = true;
+
+        statNums.forEach(function(el) {
+            var text = el.textContent;
+            var target = parseNum(text);
+            var suffix = text.replace(/[0-9,. ]/g, '');
+            var start = 0;
+            var duration = 1200;
+            var startTime = null;
+
+            function tick(ts) {
+                if (!startTime) startTime = ts;
+                var progress = Math.min((ts - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                var current = start + (target - start) * eased;
+                if (target >= 1000) {
+                    el.textContent = Math.floor(current).toLocaleString() + suffix;
+                } else {
+                    el.textContent = Math.floor(current) + suffix;
+                }
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+
+            requestAnimationFrame(tick);
+        });
+    }
+
+    var hero = document.querySelector('.hero');
+    if (hero) {
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    setTimeout(animateCounters, 1500);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        counterObserver.observe(hero);
+    }
+})();
+
+/* ── Typewriter Effect — section tags type out on scroll ── */
+(function() {
+    var tags = document.querySelectorAll('.section-tag');
+    if (tags.length === 0) return;
+
+    tags.forEach(function(tag) {
+        var fullText = tag.textContent;
+        tag.textContent = '';
+        tag.dataset.fullText = fullText;
+        tag.dataset.typed = 'false';
+    });
+
+    var typeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting && entry.target.dataset.typed === 'false') {
+                entry.target.dataset.typed = 'true';
+                var text = entry.target.dataset.fullText;
+                var i = 0;
+                function typeChar() {
+                    if (i <= text.length) {
+                        entry.target.textContent = text.substring(0, i) + (i < text.length ? '_' : '');
+                        i++;
+                        setTimeout(typeChar, 40 + Math.random() * 30);
+                    }
+                }
+                typeChar();
+                typeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    tags.forEach(function(tag) { typeObserver.observe(tag); });
+})();
+
+/* ── Floating Code Particles — subtle data stream on scroll ── */
+(function() {
+    var particleSections = document.querySelectorAll('.process, .creative');
+    if (particleSections.length === 0) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var codeSnippets = ['0x1F', '>>>', 'fn()', '0101', '{}', '[];', '===', ':::', '&&', '|>', '/*', '*/', '#!', 'EOF', '0xFF', '$_'];
+
+    particleSections.forEach(function(section) {
+        var spawned = false;
+
+        var particleObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !spawned) {
+                    spawned = true;
+                    spawnParticles(section);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        particleObserver.observe(section);
+    });
+
+    function spawnParticles(section) {
+        section.style.position = section.style.position || 'relative';
+        section.style.overflow = 'hidden';
+
+        for (var i = 0; i < 6; i++) {
+            (function(idx) {
+                setTimeout(function() {
+                    var el = document.createElement('span');
+                    el.className = 'code-particle';
+                    el.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+                    el.style.left = (5 + Math.random() * 90) + '%';
+                    el.style.animationDuration = (3 + Math.random() * 4) + 's';
+                    el.style.animationDelay = (idx * 0.5) + 's';
+                    section.appendChild(el);
+                    setTimeout(function() {
+                        if (el.parentNode) el.parentNode.removeChild(el);
+                    }, 8000);
+                }, idx * 600);
+            })(i);
+        }
+    }
+})();
+
+/* ── Step Tag Typing — process step tags type on scroll ── */
+(function() {
+    var stepTags = document.querySelectorAll('.process__step-tag');
+    if (stepTags.length === 0) return;
+
+    stepTags.forEach(function(tag) {
+        var fullText = tag.textContent;
+        tag.textContent = '';
+        tag.dataset.fullText = fullText;
+        tag.dataset.typed = 'false';
+    });
+
+    var stepObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting && entry.target.dataset.typed === 'false') {
+                entry.target.dataset.typed = 'true';
+                var text = entry.target.dataset.fullText;
+                var i = 0;
+                function typeChar() {
+                    if (i <= text.length) {
+                        entry.target.textContent = text.substring(0, i) + (i < text.length ? '_' : '');
+                        i++;
+                        setTimeout(typeChar, 60);
+                    }
+                }
+                setTimeout(typeChar, 200);
+                stepObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    stepTags.forEach(function(tag) { stepObserver.observe(tag); });
+})();
+
 /* ── Virality — Recording light pulse when visible ── */
 (function() {
     var showcase = document.querySelector('.showcase');
