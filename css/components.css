@@ -1,14 +1,14 @@
-/* Buttons — NYC Subway wayfinding feel */
+/* Buttons — rounded, neon green */
 .btn {
     display: inline-block;
     padding: 1rem 2.5rem;
-    font-family: var(--font-headline);
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     border: none;
-    border-radius: 0;
+    border-radius: 8px;
     cursor: pointer;
     transition: transform var(--duration) var(--ease),
                 box-shadow var(--duration) var(--ease);
@@ -21,16 +21,20 @@
 
 .btn--primary {
     background: var(--accent);
-    color: #fff;
+    color: #000;
+}
+
+.btn--primary:hover {
+    box-shadow: 0 0 30px var(--accent-glow), 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .btn--dark {
-    background: #0E0E10;
-    color: var(--accent);
+    background: var(--accent);
+    color: #000;
 }
 
 .btn--dark:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px var(--accent-glow), 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .btn:focus-visible {
@@ -50,16 +54,16 @@
     box-shadow: 0 8px 24px var(--accent-glow);
 }
 
-/* Inputs — sharp, industrial */
+/* Inputs — rounded */
 .input {
     width: 100%;
     padding: 1rem 1.25rem;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 0;
+    border-radius: 8px;
     color: var(--text);
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: border-color var(--duration) var(--ease),
                 box-shadow var(--duration) var(--ease);
 }
@@ -77,11 +81,11 @@
     min-height: 120px;
 }
 
-/* Cards — subway information panel style */
+/* Cards — rounded */
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 0;
+    border-radius: 12px;
     padding: var(--space-md);
     transition: border-color var(--duration) var(--ease),
                 transform var(--duration) var(--ease),
@@ -112,10 +116,9 @@
 
 .card__title {
     font-family: var(--font-headline);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     margin-bottom: var(--space-xs);
 }
 

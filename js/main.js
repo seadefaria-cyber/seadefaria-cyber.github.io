@@ -22,7 +22,6 @@
             feed.style.transform = 'translateY(-' + translate + '%)';
         });
 
-        /* Phone dissolution — dissolve at 55% so phones never go blank */
         if (phonesContainer && totalContainer) {
             if (scrollProgress > 0.55 && !dissolved) {
                 dissolved = true;
@@ -34,7 +33,6 @@
                 totalContainer.classList.remove('takeover');
             }
 
-            /* Fade out the total counter as user scrolls past showcase */
             if (scrollProgress > 0.92) {
                 var fadeProgress = (scrollProgress - 0.92) / 0.08;
                 totalContainer.style.opacity = Math.max(0.15, 1 - fadeProgress);
@@ -56,161 +54,6 @@
     updateFeeds();
 })();
 
-/* ── Twitch Chat Simulation ─────────────── */
-(function() {
-    var chat = document.getElementById('twitch-chat');
-    if (!chat) return;
-
-    var colors = ['#4A90D9', '#7CB3F0', '#fff', '#A0C4FF', '#6B9FD4', '#89B8E8', '#3D7AC7', '#B0D0F0'];
-    var users = [
-        'clipmaster99', 'viralking', 'seedbot3000', 'growthguru',
-        'algohacker', 'trendchaser', 'reelsniper', 'cloutfarmer',
-        'viewbot_real', 'fyp_wizard', 'shortsking', 'engagementpro',
-        'contentfiend', 'platformjumper', 'niche_lord'
-    ];
-    var messages = [
-        'this clip is insane',
-        'how do they always find the best moments',
-        'going viral rn',
-        'the algorithm loves this',
-        'every clip hits different',
-        'seeding is an art fr',
-        'content machine',
-        'numbers dont lie',
-        'another W',
-        'the reach on this is crazy',
-        'how is this organic lol',
-        'fan pages going crazy',
-        'this is how you grow',
-        'multi platform distribution hits',
-        'clipping game strong',
-        'the captions make it',
-        'watch time through the roof'
-    ];
-
-    function addMessage() {
-        var msg = document.createElement('div');
-        msg.className = 'twitch-chat__msg';
-        var user = users[Math.floor(Math.random() * users.length)];
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        var text = messages[Math.floor(Math.random() * messages.length)];
-        msg.innerHTML = '<span class="twitch-chat__user" style="color:' + color + '">' + user + ':</span> ' + text;
-        chat.appendChild(msg);
-
-        if (chat.children.length > 20) {
-            chat.removeChild(chat.firstChild);
-        }
-        chat.scrollTop = chat.scrollHeight;
-    }
-
-    setInterval(addMessage, 2200);
-    addMessage();
-})();
-
-/* ── Floating Hearts (social media engagement) ── */
-(function() {
-    var container = document.getElementById('engagement-likes');
-    if (!container) return;
-
-    var icons = [
-        '<svg width="SIZE" height="SIZE" viewBox="0 0 24 24" fill="COLOR"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-        '<svg width="SIZE" height="SIZE" viewBox="0 0 24 24" fill="none" stroke="COLOR" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
-    ];
-    var colors = ['rgba(0,57,166,0.8)', 'rgba(74,144,217,0.7)', 'rgba(26,94,199,0.7)', 'rgba(124,179,240,0.6)', 'rgba(160,196,255,0.6)'];
-
-    function addHeart() {
-        var el = document.createElement('span');
-        el.className = 'engagement-likes__heart';
-        var size = 14 + Math.floor(Math.random() * 10);
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        var icon = icons[Math.floor(Math.random() * icons.length)];
-        el.innerHTML = icon.replace(/SIZE/g, size).replace(/COLOR/g, color);
-        el.style.left = (Math.random() * 80 + 10) + '%';
-        el.style.animationDuration = (3 + Math.random() * 1.5) + 's';
-        container.appendChild(el);
-
-        setTimeout(function() {
-            if (el.parentNode) el.parentNode.removeChild(el);
-        }, 5000);
-    }
-
-    setInterval(addHeart, 800);
-    addHeart();
-})();
-
-/* ── Scroll Fade — Hero Overlays ── */
-(function() {
-    var chat = document.getElementById('twitch-chat');
-    var likes = document.getElementById('engagement-likes');
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
-
-    var ticking = false;
-
-    function updateFade() {
-        var rect = hero.getBoundingClientRect();
-        var heroBottom = rect.bottom;
-        var fadeStart = window.innerHeight * 0.6;
-        var opacity = Math.max(0, Math.min(1, heroBottom / fadeStart));
-
-        if (chat) chat.style.opacity = opacity * 0.35;
-        if (likes) likes.style.opacity = opacity;
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(updateFade);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    updateFade();
-})();
-
-/* ── Phone Status Bar — Live Time ────────── */
-(function() {
-    var timeEl = document.getElementById('status-time');
-    if (!timeEl) return;
-
-    function updateTime() {
-        var now = new Date();
-        var h = now.getHours();
-        var m = now.getMinutes();
-        var ampm = h >= 12 ? 'PM' : 'AM';
-        h = h % 12 || 12;
-        m = m < 10 ? '0' + m : m;
-        timeEl.textContent = h + ':' + m + ' ' + ampm;
-    }
-
-    updateTime();
-    setInterval(updateTime, 30000);
-})();
-
-
-/* ── Live Stats Ticker — numbers keep climbing ── */
-(function() {
-    var statsNumbers = document.querySelectorAll('.stats__number');
-    if (statsNumbers.length === 0) return;
-
-    /* Wait for the initial count-up animation to finish (about 3s), then start ticking */
-    setTimeout(function() {
-        setInterval(function() {
-            statsNumbers.forEach(function(el) {
-                var text = el.textContent.replace(/,/g, '');
-                var current = parseInt(text.replace(/[^0-9]/g, ''), 10);
-                var suffix = el.dataset.suffix || '';
-                if (current > 100) {
-                    current += Math.floor(Math.random() * 3) + 1;
-                    el.textContent = current.toLocaleString() + suffix;
-                }
-            });
-        }, 2500);
-    }, 5000);
-})();
-
-
-
 /* ── CLIP / SEED / GROW Word Animations ──── */
 (function() {
     var clipWord = document.querySelector('.csg__word--clip');
@@ -219,7 +62,6 @@
     if (!clipWord || !seedWord || !growWord) return;
 
     /* ── CLIP — slash cuts through, letters split apart ── */
-    /* Wrap CLIP. into individual letter spans on first load */
     var clipLetters = 'CLIP.'.split('');
     clipWord.textContent = '';
     clipLetters.forEach(function(ch, i) {
@@ -236,7 +78,6 @@
 
         var letters = clipWord.querySelectorAll('.csg__clip-letter');
 
-        /* Slash element sweeps across */
         var slash = document.createElement('span');
         slash.className = 'csg__clip-slash';
         clipWord.appendChild(slash);
@@ -250,29 +91,23 @@
             line.classList.add('animate');
         });
 
-        /* At impact: CL stays, I and P crack away — visible split */
         setTimeout(function() {
-            /* C — barely moves */
             letters[0].style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
             letters[0].style.transform = 'translate(-2px, -3px) rotate(-0.5deg)';
-            /* L — slight shift */
             letters[1].style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
             letters[1].style.transform = 'translate(-1px, -2px) rotate(-0.3deg)';
-            /* I — cracks apart the most, drops down and right */
             letters[2].style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
             letters[2].style.transform = 'translate(6px, 12px) rotate(3deg)';
             letters[2].style.opacity = '0.85';
-            /* P — splits away too */
             letters[3].style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
             letters[3].style.transform = 'translate(10px, 16px) rotate(2.5deg)';
             letters[3].style.opacity = '0.85';
-            /* . — follows P */
             letters[4].style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
             letters[4].style.transform = 'translate(12px, 20px) rotate(2deg)';
             letters[4].style.opacity = '0.7';
         }, 250);
 
-        /* Sparks between L and I — the cut point */
+        /* Green sparks */
         setTimeout(function() {
             for (var i = 0; i < 12; i++) {
                 var spark = document.createElement('span');
@@ -290,7 +125,6 @@
             }
         }, 220);
 
-        /* Snap back together */
         setTimeout(function() {
             letters.forEach(function(l) {
                 l.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease';
@@ -299,7 +133,6 @@
             });
         }, 750);
 
-        /* Clean up */
         setTimeout(function() {
             [slash, line].forEach(function(el) {
                 if (el.parentNode) el.parentNode.removeChild(el);
@@ -319,7 +152,6 @@
         seedWord.classList.add('animating');
         seedWord.classList.add('active');
 
-        /* Dirt particles falling */
         for (var i = 0; i < 14; i++) {
             (function(idx) {
                 var dot = document.createElement('span');
@@ -334,7 +166,6 @@
             })(i);
         }
 
-        /* Un-bury */
         setTimeout(function() {
             seedWord.classList.remove('active');
         }, 900);
@@ -344,7 +175,7 @@
         }, 1500);
     }
 
-    /* ── GROW — hearts + scale up ── */
+    /* ── GROW — green hearts + scale up ── */
     function animateGrow() {
         if (growWord.classList.contains('animating')) return;
         growWord.classList.add('animating');
@@ -356,7 +187,7 @@
                     var heart = document.createElement('span');
                     heart.className = 'csg__grow-heart';
                     var size = 14 + Math.floor(Math.random() * 16);
-                    var colors = ['rgba(0,147,60,0.8)', 'rgba(238,53,46,0.7)', 'rgba(0,57,166,0.7)', 'rgba(255,99,25,0.7)'];
+                    var colors = ['rgba(15,255,82,0.8)', 'rgba(61,255,117,0.7)', 'rgba(15,255,82,0.6)', 'rgba(200,255,200,0.5)'];
                     var color = colors[Math.floor(Math.random() * colors.length)];
                     heart.innerHTML = '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="' + color + '"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
                     heart.style.left = (5 + Math.random() * 90) + '%';
@@ -369,7 +200,6 @@
             })(i);
         }
 
-        /* Scale back down */
         setTimeout(function() {
             growWord.classList.remove('active');
         }, 2200);
@@ -379,12 +209,10 @@
         }, 3500);
     }
 
-    /* Hover triggers */
     clipWord.addEventListener('mouseenter', animateClip);
     seedWord.addEventListener('mouseenter', animateSeed);
     growWord.addEventListener('mouseenter', animateGrow);
 
-    /* Auto-play sequence when CSG section scrolls into view */
     var csgSection = document.querySelector('.csg');
     if (csgSection) {
         var csgObserver = new IntersectionObserver(function(entries) {
@@ -411,12 +239,8 @@ var revealSelectors = [
     { sel: '.showcase__headline', delay: 1 },
     { sel: '.showcase__phone', stagger: true },
     { sel: '.showcase__total', delay: 0 },
-    { sel: '.stats__item', stagger: true },
-    { sel: '.services__headline', delay: 0 },
-    { sel: '.services__station', stagger: true },
     { sel: '.creative__headline', delay: 0 },
     { sel: '.creative__item', stagger: true },
-    { sel: '.section-number', stagger: true },
     { sel: '.process__headline', delay: 0 },
     { sel: '.process__sub', delay: 1 },
     { sel: '.process__stop', stagger: true },
@@ -478,8 +302,6 @@ if (hamburger && navLinks) {
     });
 }
 
-/* Heart-word hover handled by CSS glow — no JS needed */
-
 /* ── Nav Auto-Hide on Scroll Down ─────────── */
 (function() {
     var nav = document.getElementById('nav');
@@ -490,10 +312,8 @@ if (hamburger && navLinks) {
 
     function updateNav() {
         var currentScrollY = window.scrollY;
-        /* Hide nav when scrolling down past 80px, show when scrolling up */
         if (currentScrollY > lastScrollY && currentScrollY > 80) {
             nav.classList.add('nav--hidden');
-            /* Close mobile menu if open when hiding */
             var navLinks = document.getElementById('nav-links');
             var hamburger = document.getElementById('hamburger');
             if (navLinks) navLinks.classList.remove('open');
@@ -567,7 +387,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     updateActiveStop();
 })();
 
-/* ── About Banner — System + Railroad glow on scroll ── */
+/* ── About Banner — glow on scroll ── */
 (function() {
     var banner = document.querySelector('.about-banner');
     if (!banner) return;
@@ -625,24 +445,4 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     }, { threshold: 0.2 });
 
     observer.observe(showcase);
-})();
-
-/* ── Metro Sidebar — Scroll Progress ────── */
-(function() {
-    var progress = document.getElementById('metro-progress');
-    if (!progress) return;
-
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(function() {
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                var pct = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
-                progress.style.height = pct + '%';
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
 })();

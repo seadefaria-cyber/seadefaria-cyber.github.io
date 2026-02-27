@@ -10,15 +10,11 @@ html, body {
 }
 
 .nav--hidden {
-    transform: translateY(-100%);
+    transform: translateX(-50%) translateY(-120%);
 }
 
 /* ── Tablet (<1199px) ────────────────────── */
 @media (max-width: 1199px) {
-    .services__route {
-        gap: 0;
-    }
-
     .creative__grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -47,62 +43,28 @@ html, body {
         display: none;
     }
 
-    .metro-sidebar {
-        display: none;
+    /* Nav — full-width on mobile */
+    .nav {
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        max-width: 100%;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 20px;
     }
 
-    /* Twitch chat — scaled down */
-    .twitch-chat {
-        width: 180px;
-        max-height: 140px;
-        bottom: 16px;
-        left: 12px;
-        opacity: 0.25;
+    .nav--hidden {
+        transform: translateY(-100%);
     }
 
-    .twitch-chat__msg {
-        font-size: 0.6rem;
-    }
-
-    /* Engagement likes — scaled down */
-    .engagement-likes {
-        width: 80px;
-        height: 200px;
-        bottom: 16px;
-        right: 12px;
-    }
-
-    /* Phone status — show on mobile, smaller and repositioned */
-    .phone-status {
-        top: calc(var(--nav-height) + 0.8rem);
-        left: var(--space-sm);
-        opacity: 0.3;
-        gap: 0.6rem;
-    }
-
-    .phone-status__time {
-        font-size: 0.65rem;
-    }
-
-    .phone-status__battery {
-        width: 22px;
-        height: 10px;
-    }
-
-    .phone-status__signal {
-        width: 13px;
-        height: 10px;
-    }
-
-    .nav__tagline {
-        display: none;
-    }
-
-    /* ── Nav — Metro slide-down dropdown ── */
     .nav__hamburger {
         display: flex;
     }
 
+    /* Nav dropdown — green accent */
     .nav__links {
         position: fixed;
         top: var(--nav-height);
@@ -115,11 +77,12 @@ html, body {
         justify-content: flex-start;
         gap: 0;
         padding: 0;
-        background: rgba(14, 14, 16, 0.98);
+        background: rgba(0, 0, 0, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-left: 3px solid var(--mta-blue);
+        border-left: 2px solid var(--accent);
         border-bottom: 1px solid var(--border);
+        border-radius: 0;
         transform: translateY(-10px);
         opacity: 0;
         pointer-events: none;
@@ -141,7 +104,7 @@ html, body {
         display: block;
         padding: 1rem 1.2rem;
         font-size: 0.9rem;
-        font-weight: 600;
+        font-weight: 500;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--text-muted);
@@ -149,23 +112,26 @@ html, body {
     }
 
     .nav__links a:hover {
-        color: #fff;
+        color: var(--accent);
         padding-left: 1.5rem;
     }
 
-    /* Metro colored accent dots next to each link */
-    .nav__links li:nth-child(1) a { border-left: 3px solid var(--mta-red); }
-    .nav__links li:nth-child(2) a { border-left: 3px solid var(--mta-orange); }
-    .nav__links li:nth-child(3) a { border-left: 3px solid var(--mta-green); }
-    .nav__links li:nth-child(4) a { border-left: 3px solid var(--mta-purple); }
+    /* Green accent border on all links */
+    .nav__links li:nth-child(1) a,
+    .nav__links li:nth-child(2) a,
+    .nav__links li:nth-child(3) a,
+    .nav__links li:nth-child(4) a {
+        border-left: 3px solid var(--accent);
+    }
 
     .nav__cta {
         font-size: 0.9rem !important;
         padding: 0.8rem 1.2rem;
         text-align: left;
+        border-radius: 0 !important;
     }
 
-    /* Hero — fill viewport, center content */
+    /* Hero */
     .hero {
         min-height: 100svh;
     }
@@ -175,7 +141,7 @@ html, body {
     }
 
     .hero__headline {
-        font-size: clamp(4rem, 16vw, 8rem);
+        font-size: clamp(3rem, 14vw, 6rem);
         padding: 0 var(--space-xs);
     }
 
@@ -196,7 +162,7 @@ html, body {
         padding: 0.7rem 2rem;
     }
 
-    /* CSG — centered, no overflow */
+    /* CSG */
     .csg__inner {
         flex-direction: column;
         align-items: center;
@@ -208,7 +174,7 @@ html, body {
         font-size: clamp(3rem, 14vw, 6rem);
     }
 
-    /* Showcase — no sticky on mobile, flows normally */
+    /* Showcase */
     .showcase {
         min-height: auto;
         border-bottom: 1px solid var(--border);
@@ -296,7 +262,6 @@ html, body {
         height: 12px;
     }
 
-    /* Showcase clients — stack on mobile */
     .showcase__clients-names {
         gap: var(--space-xs) var(--space-sm);
     }
@@ -305,7 +270,7 @@ html, body {
         font-size: clamp(1rem, 4vw, 1.4rem);
     }
 
-    /* Founded — tighter on mobile */
+    /* Founded */
     .founded__headline {
         font-size: clamp(1.6rem, 6vw, 2.5rem);
     }
@@ -315,34 +280,7 @@ html, body {
         padding: 0 var(--space-sm);
     }
 
-    /* Services — stack vertically on mobile */
-    .services__route {
-        flex-direction: column;
-        gap: var(--space-md);
-    }
-
-    .services__track {
-        display: none;
-    }
-
-    .services__station {
-        text-align: left;
-        padding: 0;
-        display: flex;
-        gap: var(--space-sm);
-        align-items: flex-start;
-    }
-
-    .services__dot {
-        flex-shrink: 0;
-        margin: 0;
-    }
-
-    .services__desc {
-        font-size: 0.8rem;
-    }
-
-    /* Creative — 2-column on mobile */
+    /* Creative — 2 columns */
     .creative__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-sm);
@@ -366,24 +304,21 @@ html, body {
         padding: 0 var(--space-xs);
     }
 
-    /* Process — divider after section on mobile */
+    /* Process */
     .process {
         border-bottom: 1px solid var(--border);
     }
 
-    /* Process — subway line stays vertical */
     .process__line {
         padding-left: 30px;
     }
 
-    /* Process dots glow stronger on mobile */
-    .process__dot--red { box-shadow: 0 0 14px rgba(238, 53, 46, 0.6), 0 0 28px rgba(238, 53, 46, 0.25); }
-    .process__dot--orange { box-shadow: 0 0 14px rgba(255, 99, 25, 0.6), 0 0 28px rgba(255, 99, 25, 0.25); }
-    .process__dot--yellow { box-shadow: 0 0 14px rgba(0, 57, 166, 0.6), 0 0 28px rgba(0, 57, 166, 0.25); }
-    .process__dot--green { box-shadow: 0 0 14px rgba(0, 147, 60, 0.6), 0 0 28px rgba(0, 147, 60, 0.25); }
-    .process__dot--purple { box-shadow: 0 0 14px rgba(185, 51, 173, 0.6), 0 0 28px rgba(185, 51, 173, 0.25); }
+    /* Process dots — all green glow */
+    .process__dot {
+        box-shadow: 0 0 14px rgba(15, 255, 82, 0.4), 0 0 28px rgba(15, 255, 82, 0.15);
+    }
 
-    /* About Banner — tighter on mobile */
+    /* About Banner */
     .about-banner__text {
         font-size: clamp(1.4rem, 5vw, 2.2rem);
         padding: 0 var(--space-sm);
@@ -393,7 +328,7 @@ html, body {
         height: 140px;
     }
 
-    /* Contact — centered */
+    /* Contact */
     .contact {
         text-align: center;
     }
@@ -443,20 +378,8 @@ html, body {
         justify-content: center;
     }
 
-    /* Subway bullets — slightly smaller on mobile */
-    .subway-bullet {
-        width: 24px;
-        height: 24px;
-        font-size: 0.6rem;
-    }
-
     /* All sections centered */
-    .section-number {
-        justify-content: center;
-    }
-
     .process__headline,
-    .services__headline,
     .creative__headline {
         text-align: center;
     }
@@ -474,22 +397,6 @@ html, body {
 
     .hero::before {
         font-size: 10rem;
-    }
-
-    /* Keep chat/likes visible but smaller */
-    .twitch-chat {
-        width: 140px;
-        max-height: 100px;
-        opacity: 0.2;
-    }
-
-    .twitch-chat__msg {
-        font-size: 0.5rem;
-    }
-
-    .engagement-likes {
-        width: 60px;
-        height: 150px;
     }
 
     .phone {
@@ -527,17 +434,14 @@ html, body {
         font-size: clamp(2.5rem, 14vw, 4rem);
     }
 
-
     .creative__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* About Banner — smaller text */
     .about-banner__text {
         font-size: clamp(1.2rem, 5vw, 1.8rem);
     }
 
-    /* Contact socials — 3 per row */
     .contact__socials {
         gap: 1rem;
     }
