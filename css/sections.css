@@ -225,7 +225,7 @@
 
 .hero__headline {
     font-family: var(--font-headline);
-    font-size: clamp(4rem, 12vw, 10rem);
+    font-size: clamp(3.5rem, 10vw, 8rem);
     font-weight: 800;
     line-height: 1.0;
     letter-spacing: -0.03em;
@@ -580,47 +580,6 @@
     100% { transform: translateY(-200px); opacity: 0; }
 }
 
-/* ── DEFARIA Acronym Strip ──────────────── */
-.acronym {
-    padding: var(--space-md) 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-}
-
-.acronym__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-}
-
-.acronym__item {
-    display: inline-flex;
-    align-items: baseline;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-.acronym__letter {
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.95rem;
-}
-
-.acronym__word {
-    color: var(--text-muted);
-}
-
-.acronym__sep {
-    color: var(--border);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    opacity: 0.5;
-    user-select: none;
-}
 
 /* ── Showcase ───────────────────────────── */
 .showcase {

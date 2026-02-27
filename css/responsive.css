@@ -132,22 +132,6 @@ html, body {
     }
 
     /* Acronym */
-    .acronym__inner {
-        gap: 0.3rem;
-    }
-
-    .acronym__item {
-        font-size: 0.6rem;
-    }
-
-    .acronym__letter {
-        font-size: 0.75rem;
-    }
-
-    .acronym__sep {
-        font-size: 0.5rem;
-    }
-
     /* Hero */
     .hero {
         min-height: 100svh;
