@@ -625,18 +625,15 @@
 /* ── Showcase ───────────────────────────── */
 .showcase {
     position: relative;
-    min-height: 250vh;
+    min-height: auto;
+    padding: var(--space-xl) 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
 }
 
 .showcase__sticky {
-    position: sticky;
-    top: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+    position: static;
+    min-height: auto;
 }
 
 .showcase__eyebrow {
@@ -689,11 +686,12 @@
     transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
 }
 
+/* Dissolve disabled — phones are static now */
 .showcase__phones.dissolve {
-    opacity: 0;
-    transform: scale(0.95);
-    filter: blur(4px);
-    pointer-events: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    pointer-events: auto;
 }
 
 .showcase__phone--left {
@@ -829,18 +827,13 @@
     overflow: hidden;
 }
 
-/* Showcase total counter */
+/* Showcase total counter — hidden, phones are static */
 .showcase__total {
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.6s ease;
+    display: none;
 }
 
 .showcase__total.takeover {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: none;
 }
 
 .showcase__total-number {
@@ -936,7 +929,7 @@
 
 .process__stop {
     position: relative;
-    padding-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
     transition: opacity 0.3s ease;
 }
 
@@ -1004,6 +997,53 @@
     color: var(--text-muted);
     line-height: 1.7;
     max-width: 500px;
+}
+
+/* ── Deliverables — What You Get ────────── */
+.deliverables {
+    padding: var(--space-xl) 0;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.deliverables__headline {
+    font-family: var(--font-headline);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-lg);
+}
+
+.deliverables__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.deliverables__item {
+    text-align: center;
+    padding: var(--space-md) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.deliverables__number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.deliverables__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
 }
 
 /* ── Creative — Green card borders ──────── */
@@ -1129,30 +1169,7 @@
     text-shadow: 0 0 40px var(--accent-glow);
 }
 
-.about-banner__track {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: var(--space-lg);
-    height: 180px;
-    position: relative;
-}
-
-.about-banner__rail {
-    width: 2px;
-    flex: 1;
-    background: linear-gradient(to bottom, var(--accent), transparent);
-    opacity: 0.3;
-}
-
-.about-banner__station {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 3px solid var(--bg);
-    transition: box-shadow 0.3s ease;
-}
+/* Track line removed */
 
 /* ── Founded By — green name ──────────── */
 .founded {

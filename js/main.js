@@ -1,57 +1,9 @@
-/* ── Scroll-Linked Phone Feed + Dissolution ─ */
+/* ── Phone Feeds — static, show first video only ─ */
 (function() {
-    var showcase = document.querySelector('.showcase');
     var feeds = document.querySelectorAll('.phone__feed');
-    var phonesContainer = document.querySelector('.showcase__phones');
-    var totalContainer = document.querySelector('.showcase__total');
-    if (!showcase || feeds.length === 0) return;
-
-    var ticking = false;
-    var dissolved = false;
-
-    function updateFeeds() {
-        var rect = showcase.getBoundingClientRect();
-        var sectionHeight = rect.height - window.innerHeight;
-        var scrollProgress = Math.max(0, Math.min(1, -rect.top / sectionHeight));
-
-        feeds.forEach(function(feed) {
-            var speed = parseFloat(feed.dataset.speed) || 1;
-            var videoCount = feed.children.length;
-            var maxScroll = (videoCount - 1) * 100;
-            var translate = Math.min(scrollProgress * maxScroll * speed, maxScroll);
-            feed.style.transform = 'translateY(-' + translate + '%)';
-        });
-
-        if (phonesContainer && totalContainer) {
-            if (scrollProgress > 0.55 && !dissolved) {
-                dissolved = true;
-                phonesContainer.classList.add('dissolve');
-                totalContainer.classList.add('takeover');
-            } else if (scrollProgress <= 0.55 && dissolved) {
-                dissolved = false;
-                phonesContainer.classList.remove('dissolve');
-                totalContainer.classList.remove('takeover');
-            }
-
-            if (scrollProgress > 0.92) {
-                var fadeProgress = (scrollProgress - 0.92) / 0.08;
-                totalContainer.style.opacity = Math.max(0.15, 1 - fadeProgress);
-            } else {
-                totalContainer.style.opacity = '';
-            }
-        }
-
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(updateFeeds);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    updateFeeds();
+    feeds.forEach(function(feed) {
+        feed.style.transform = 'translateY(0)';
+    });
 })();
 
 /* ── CLIP / SEED / AMPLIFY Word Animations ── */
@@ -244,6 +196,8 @@ var revealSelectors = [
     { sel: '.process__headline', delay: 0 },
     { sel: '.process__sub', delay: 1 },
     { sel: '.process__stop', stagger: true },
+    { sel: '.deliverables__headline', delay: 0 },
+    { sel: '.deliverables__item', stagger: true },
     { sel: '.about-banner__text', delay: 0 },
     { sel: '.contact__headline', delay: 0 },
     { sel: '.contact__form', delay: 1 },

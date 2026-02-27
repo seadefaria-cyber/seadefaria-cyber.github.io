@@ -301,6 +301,16 @@ html, body {
         font-size: clamp(1rem, 4vw, 1.4rem);
     }
 
+    /* Deliverables */
+    .deliverables__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+
+    .deliverables__number {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+    }
+
     /* Founded */
     .founded__headline {
         font-size: clamp(1.6rem, 6vw, 2.5rem);
