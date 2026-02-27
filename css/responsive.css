@@ -296,23 +296,23 @@ html, body {
         height: 12px;
     }
 
-    /* Stats — 2-column (matches desktop) */
-    .stats {
-        text-align: center;
+    /* Showcase clients — stack on mobile */
+    .showcase__clients-names {
+        gap: var(--space-xs) var(--space-sm);
     }
 
-    .stats__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-sm);
-        max-width: 100%;
+    .showcase__client {
+        font-size: clamp(1rem, 4vw, 1.4rem);
     }
 
-    .stats__number {
-        font-size: clamp(2rem, 8vw, 4rem);
+    /* Founded — tighter on mobile */
+    .founded__headline {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
     }
 
-    .stats__label {
-        font-size: 0.6rem;
+    .founded__bio {
+        font-size: 0.85rem;
+        padding: 0 var(--space-sm);
     }
 
     /* Services — stack vertically on mobile */
@@ -527,19 +527,6 @@ html, body {
         font-size: clamp(2.5rem, 14vw, 4rem);
     }
 
-    /* Stats — single column on small phones */
-    .stats__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stats__number {
-        font-size: clamp(1.8rem, 7vw, 3rem);
-    }
-
-    .stats__label {
-        font-size: 0.5rem;
-        letter-spacing: 0.05em;
-    }
 
     .creative__grid {
         grid-template-columns: repeat(2, 1fr);
