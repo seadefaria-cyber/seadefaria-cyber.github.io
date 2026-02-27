@@ -26,7 +26,13 @@
 .nav__logo {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 0.6rem;
+}
+
+.nav__logo-icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .nav__logo-text {
@@ -158,16 +164,20 @@
     overflow: hidden;
 }
 
-/* Grid overlay — subtle tech matrix */
+/* Grid overlay — subtle organic dot field */
 .hero__grid-overlay {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(rgba(15, 255, 82, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 255, 82, 0.015) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-image: radial-gradient(circle, rgba(15, 255, 82, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
+    animation: gridDrift 20s linear infinite;
+}
+
+@keyframes gridDrift {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
 }
 
 /* Green watermark */
@@ -559,25 +569,23 @@
     100% { transform: translateY(-100px) scale(0.2); opacity: 0; }
 }
 
-/* ── Floating Code Particles ───────────── */
-.code-particle {
+/* ── Floating Seed Particles — organic dots ── */
+.seed-particle {
     position: absolute;
-    bottom: -20px;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: var(--accent);
+    bottom: -10px;
+    border-radius: 50%;
+    background: var(--accent);
     opacity: 0;
     pointer-events: none;
     z-index: 0;
-    animation: codeParticleFloat 5s ease-out forwards;
+    animation: seedFloat var(--duration, 6s) ease-out forwards;
 }
 
-@keyframes codeParticleFloat {
-    0% { transform: translateY(0); opacity: 0; }
-    10% { opacity: 0.15; }
-    80% { opacity: 0.08; }
-    100% { transform: translateY(-200px); opacity: 0; }
+@keyframes seedFloat {
+    0% { transform: translateY(0) translateX(0) scale(0.3); opacity: 0; }
+    10% { opacity: 0.2; transform: translateY(-20px) translateX(calc(var(--drift, 0px) * 0.2)) scale(0.8); }
+    50% { opacity: 0.12; }
+    100% { transform: translateY(-300px) translateX(var(--drift, 0px)) scale(0.1); opacity: 0; }
 }
 
 

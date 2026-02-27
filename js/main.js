@@ -455,13 +455,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     tags.forEach(function(tag) { typeObserver.observe(tag); });
 })();
 
-/* ── Floating Code Particles — subtle data stream on scroll ── */
+/* ── Floating Seed Particles — organic dots drifting upward ── */
 (function() {
-    var particleSections = document.querySelectorAll('.process, .creative');
+    var particleSections = document.querySelectorAll('.process, .creative, .hero');
     if (particleSections.length === 0) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var codeSnippets = ['0x1F', '>>>', 'fn()', '0101', '{}', '[];', '===', ':::', '&&', '|>', '/*', '*/', '#!', 'EOF', '0xFF', '$_'];
 
     particleSections.forEach(function(section) {
         var spawned = false;
@@ -470,7 +468,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting && !spawned) {
                     spawned = true;
-                    spawnParticles(section);
+                    spawnSeeds(section);
                 }
             });
         }, { threshold: 0.1 });
@@ -478,24 +476,27 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         particleObserver.observe(section);
     });
 
-    function spawnParticles(section) {
+    function spawnSeeds(section) {
         section.style.position = section.style.position || 'relative';
         section.style.overflow = 'hidden';
 
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 8; i++) {
             (function(idx) {
                 setTimeout(function() {
                     var el = document.createElement('span');
-                    el.className = 'code-particle';
-                    el.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+                    el.className = 'seed-particle';
+                    var size = 3 + Math.random() * 5;
+                    el.style.width = size + 'px';
+                    el.style.height = size + 'px';
                     el.style.left = (5 + Math.random() * 90) + '%';
-                    el.style.animationDuration = (3 + Math.random() * 4) + 's';
-                    el.style.animationDelay = (idx * 0.5) + 's';
+                    el.style.animationDuration = (4 + Math.random() * 6) + 's';
+                    el.style.animationDelay = (idx * 0.8) + 's';
+                    el.style.setProperty('--drift', ((Math.random() - 0.5) * 60) + 'px');
                     section.appendChild(el);
                     setTimeout(function() {
                         if (el.parentNode) el.parentNode.removeChild(el);
-                    }, 8000);
-                }, idx * 600);
+                    }, 12000);
+                }, idx * 700);
             })(i);
         }
     }
