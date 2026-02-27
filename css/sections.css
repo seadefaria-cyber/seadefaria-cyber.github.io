@@ -755,6 +755,7 @@
     border-radius: 22px;
     overflow: hidden;
     position: relative;
+    aspect-ratio: 9 / 16;
 }
 
 .phone__feed {
