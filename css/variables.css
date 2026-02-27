@@ -12,7 +12,7 @@
     --border-light: rgba(255, 255, 255, 0.04);
 
     /* Fonts — Syne headlines (bold, youthful), Inter body, mono for code */
-    --font-headline: 'Syne', -apple-system, sans-serif;
+    --font-headline: 'Inter', -apple-system, sans-serif;
     --font-body: 'Inter', -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
 
