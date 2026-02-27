@@ -11,8 +11,8 @@
     --border: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.04);
 
-    /* Fonts — Inter for everything, JetBrains Mono for code accents */
-    --font-headline: 'Inter', -apple-system, sans-serif;
+    /* Fonts — JetBrains Mono headlines (digital), Inter body, mono for code */
+    --font-headline: 'JetBrains Mono', 'SF Mono', monospace;
     --font-body: 'Inter', -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
 

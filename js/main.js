@@ -13,8 +13,8 @@
     var growWord = document.querySelector('.csg__word--grow');
     if (!clipWord || !seedWord || !growWord) return;
 
-    /* ── CLIP — slash cuts through, letters split apart ── */
-    var clipLetters = 'CLIP.'.split('');
+    /* ── SEED — slash cuts through, letters split apart ── */
+    var clipLetters = 'SEED.'.split('');
     clipWord.textContent = '';
     clipLetters.forEach(function(ch, i) {
         var span = document.createElement('span');
