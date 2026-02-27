@@ -53,10 +53,10 @@
 }
 
 .nav__links a {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.02em;
     color: var(--text-muted);
     transition: color var(--duration) var(--ease);
     display: inline-flex;
@@ -114,6 +114,37 @@
     transform: translateY(-6.5px) rotate(-45deg);
 }
 
+/* ── Shared code-style elements ──────────── */
+.section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    opacity: 0.5;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+}
+
+.code-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--accent);
+    opacity: 0.4;
+    margin-left: 0.5rem;
+}
+
+/* Blinking cursor */
+.cursor {
+    animation: cursorBlink 1s step-end infinite;
+    font-weight: 400;
+}
+
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 /* ── Hero ────────────────────────────────── */
 .hero {
     min-height: 100vh;
@@ -126,7 +157,19 @@
     overflow: hidden;
 }
 
-/* Green watermark instead of blue */
+/* Grid overlay — subtle tech matrix */
+.hero__grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(15, 255, 82, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 255, 82, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Green watermark */
 .hero::before {
     content: 'dF';
     position: absolute;
@@ -227,42 +270,58 @@
     92% { text-shadow: 0 0 5px rgba(15, 255, 82, 0.2); }
 }
 
-.hero__sub {
-    position: absolute;
-    top: calc(var(--nav-height) + 2rem);
-    right: var(--space-lg);
-    font-family: var(--font-body);
-    font-size: 0.75rem;
+/* Terminal prompt above headline */
+.hero__terminal {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-md);
+    opacity: 0;
+    animation: heroWordIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+}
+
+.hero__sub {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 400;
     color: var(--text-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-align: right;
+    letter-spacing: 0.02em;
+    margin-top: var(--space-sm);
+    position: relative;
     z-index: 3;
 }
 
-.hero__sub-link {
+/* Stats bar — dashboard metrics */
+.hero__stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     color: var(--text-muted);
-    text-decoration: none;
-    transition: color var(--duration) var(--ease);
+    opacity: 0;
+    animation: heroWordIn 0.5s ease 1.4s forwards;
 }
 
-.hero__sub-link:hover {
+.hero__stat-num {
     color: var(--accent);
+    font-weight: 700;
 }
 
-.hero__desc {
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: var(--space-lg);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+.hero__stat-sep {
+    color: var(--border);
+    opacity: 0.4;
 }
 
 .hero .btn {
-    margin-top: var(--space-md);
+    margin-top: var(--space-lg);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .hero .btn:hover {
@@ -660,13 +719,15 @@
 
 .phone__platform {
     display: inline-block;
-    font-size: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.45rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
     padding: 0.15rem 0.4rem;
-    border: 1px solid rgba(15, 255, 82, 0.3);
+    background: rgba(15, 255, 82, 0.08);
+    border: 1px solid rgba(15, 255, 82, 0.2);
     border-radius: 4px;
     margin-bottom: 0.3rem;
 }
@@ -826,6 +887,17 @@
 .process__dot--red,
 .process__dot--purple {
     background: var(--accent);
+}
+
+.process__step-tag {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--accent);
+    opacity: 0.5;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
 }
 
 .process__content {

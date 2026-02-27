@@ -17,7 +17,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230fff52'/><text x='50%25' y='23' text-anchor='middle' font-family='sans-serif' font-size='16' fill='black' font-weight='bold'>dF</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css?v=66">
     <link rel="stylesheet" href="css/layout.css?v=66">
@@ -51,11 +51,20 @@
 <section class="hero" id="hero">
     <div class="hero__orb hero__orb--1"></div>
     <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__grid-overlay"></div>
 
     <div class="container hero__inner">
+        <p class="hero__terminal">$ defaria --mode=amplify<span class="cursor">_</span></p>
         <h1 class="hero__headline"><span class="hero__word">We</span> <span class="hero__word">Know</span><br><span class="hero__word">How</span> <span class="hero__word">It</span><br><span class="hero__word">Works.</span></h1>
-        <p class="hero__sub">Viral infrastructure built for <a href="#services" class="hero__sub-link">artists and labels</a>.</p>
-        <a href="#contact" class="btn btn--primary">Start A Project</a>
+        <p class="hero__sub">// digital amplification infrastructure for artists and labels</p>
+        <div class="hero__stats">
+            <span class="hero__stat"><span class="hero__stat-num">1,860</span> clips/mo</span>
+            <span class="hero__stat-sep">|</span>
+            <span class="hero__stat"><span class="hero__stat-num">30</span> accounts</span>
+            <span class="hero__stat-sep">|</span>
+            <span class="hero__stat"><span class="hero__stat-num">500M+</span> views seeded</span>
+        </div>
+        <a href="#contact" class="btn btn--primary">$ init project<span class="cursor">_</span></a>
     </div>
 </section>
 
@@ -63,7 +72,7 @@
 <section class="showcase" id="work">
     <div class="showcase__sticky">
         <div class="container">
-            <p class="showcase__eyebrow"><span class="live-indicator"><span class="live-indicator__dot"></span>LIVE</span></p>
+            <p class="showcase__eyebrow"><span class="live-indicator"><span class="live-indicator__dot"></span>LIVE</span> <span class="code-tag">// real-time feed</span></p>
             <h2 class="showcase__headline"><span class="heart-word">Virality</span> isn't luck.<br><span class="text-accent text-accent--green infra-word">It's infrastructure.</span></h2>
             <div class="showcase__phones">
                 <!-- Phone 1 -->
@@ -125,12 +134,13 @@
 <!-- Process -->
 <section class="process" id="process">
     <div class="container">
+        <p class="section-tag">// process</p>
         <h2 class="process__headline">How It Works</h2>
         <div class="process__line">
-            <div class="process__stop"><span class="process__dot"></span><div class="process__content"><h3 class="process__title">Consult</h3><p class="process__desc">We build your monthly schedule. Platforms, volume, content strategy &mdash; the full plan before anything goes live.</p></div></div>
-            <div class="process__stop"><span class="process__dot"></span><div class="process__content"><h3 class="process__title">Clip</h3><p class="process__desc">Our editors pull from the internet and the footage you send. Every clip is cut to stop the scroll.</p></div></div>
-            <div class="process__stop"><span class="process__dot"></span><div class="process__content"><h3 class="process__title">Distribute</h3><p class="process__desc">Every clip gets micro-seeded across platforms. Hundreds of placements, all coordinated.</p></div></div>
-            <div class="process__stop process__stop--last"><span class="process__dot"></span><div class="process__content"><h3 class="process__title">Repeat</h3><p class="process__desc">This is a monthly cycle. We rinse and repeat the entire system &mdash; every month, optimized.</p></div></div>
+            <div class="process__stop"><span class="process__dot"></span><div class="process__content"><span class="process__step-tag">step_01</span><h3 class="process__title">Consult</h3><p class="process__desc">We build your monthly schedule. Platforms, volume, content strategy &mdash; the full plan before anything goes live.</p></div></div>
+            <div class="process__stop"><span class="process__dot"></span><div class="process__content"><span class="process__step-tag">step_02</span><h3 class="process__title">Clip</h3><p class="process__desc">Our editors pull from the internet and the footage you send. Every clip is cut to stop the scroll.</p></div></div>
+            <div class="process__stop"><span class="process__dot"></span><div class="process__content"><span class="process__step-tag">step_03</span><h3 class="process__title">Seed</h3><p class="process__desc">Every clip gets micro-seeded across platforms. Digital distribution at scale &mdash; hundreds of placements, all coordinated.</p></div></div>
+            <div class="process__stop process__stop--last"><span class="process__dot"></span><div class="process__content"><span class="process__step-tag">step_04</span><h3 class="process__title">Amplify</h3><p class="process__desc">This is a monthly cycle. We rinse and repeat the entire amplification system &mdash; every month, optimized.</p></div></div>
         </div>
     </div>
 </section>
@@ -138,6 +148,7 @@
 <!-- Creative -->
 <section class="creative" id="services">
     <div class="container">
+        <p class="section-tag">// services</p>
         <h2 class="creative__headline">What Else We Offer</h2>
         <div class="creative__route">
             <div class="creative__grid">
@@ -155,7 +166,7 @@
 <!-- About Banner -->
 <div class="about-banner">
     <div class="container">
-        <p class="about-banner__text reveal"><span class="about-banner__white">We built the <span class="about-banner__system">system.</span></span> <span class="about-banner__accent">Now we run it for you.</span></p>
+        <p class="about-banner__text reveal"><span class="about-banner__white">We built the <span class="about-banner__system">system{}</span></span> <span class="about-banner__accent">Now we run it for you.</span></p>
         <a href="#contact" class="about-banner__track" aria-label="Scroll to Start a Project">
             <span class="about-banner__rail"></span>
             <span class="about-banner__station"></span>
@@ -166,15 +177,16 @@
 <!-- Founded By -->
 <section class="founded">
     <div class="container founded__inner">
-        <p class="founded__label">WHO WE ARE</p>
+        <p class="section-tag">// about</p>
         <h2 class="founded__headline">Founded by <span class="founded__name">Sean DeFaria</span></h2>
-        <p class="founded__bio">Built in New York City. We help artists and creators turn long-form content into a viral clip machine — automated, consistent, and always running.</p>
+        <p class="founded__bio">Built in New York City. Digital amplification infrastructure for artists and creators &mdash; automated seeding, multi-platform distribution, always running.</p>
     </div>
 </section>
 
 <!-- Contact -->
 <section class="contact" id="contact">
     <div class="container contact__inner">
+        <p class="section-tag">// contact</p>
         <h2 class="contact__headline">Start A <span class="contact__project-glow">Project.</span></h2>
         <form class="contact__form" id="contact-form" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
             <input type="hidden" name="_subject" value="New inquiry from defaria.nyc">
@@ -186,7 +198,7 @@
                 <input type="email" name="email" placeholder="Email" required class="input">
                 <textarea name="message" placeholder="Tell us about your project" rows="4" class="input input--textarea"></textarea>
             </div>
-            <button type="submit" class="btn btn--dark">Get Started</button>
+            <button type="submit" class="btn btn--dark">$ deploy<span class="cursor">_</span></button>
         </form>
         <div class="contact__socials">
             <a href="https://tiktok.com/@defaria" class="contact__social-item" target="_blank"><span class="contact__social-circle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.28 0 .56.04.81.13v-3.5a6.37 6.37 0 0 0-.81-.05A6.34 6.34 0 0 0 3.15 15.4a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.72a8.27 8.27 0 0 0 4.83 1.56V6.83a4.84 4.84 0 0 1-1.07-.14z"/></svg></span><span class="contact__social-label">TikTok</span></a>
@@ -203,7 +215,7 @@
     <div class="container csg__inner">
         <span class="csg__word csg__word--clip">CLIP.</span>
         <span class="csg__word csg__word--seed">SEED.</span>
-        <span class="csg__word csg__word--grow">GROW.</span>
+        <span class="csg__word csg__word--grow">AMPLIFY.</span>
     </div>
 </section>
 

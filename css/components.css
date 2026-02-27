@@ -2,11 +2,11 @@
 .btn {
     display: inline-block;
     padding: 1rem 2.5rem;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-transform: none;
     border: none;
     border-radius: 8px;
     cursor: pointer;

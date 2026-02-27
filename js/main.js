@@ -54,7 +54,7 @@
     updateFeeds();
 })();
 
-/* ── CLIP / SEED / GROW Word Animations ──── */
+/* ── CLIP / SEED / AMPLIFY Word Animations ── */
 (function() {
     var clipWord = document.querySelector('.csg__word--clip');
     var seedWord = document.querySelector('.csg__word--seed');
@@ -175,7 +175,7 @@
         }, 1500);
     }
 
-    /* ── GROW — green hearts + scale up ── */
+    /* ── AMPLIFY — green particles + scale up ── */
     function animateGrow() {
         if (growWord.classList.contains('animating')) return;
         growWord.classList.add('animating');

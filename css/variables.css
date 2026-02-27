@@ -11,9 +11,10 @@
     --border: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.04);
 
-    /* Fonts — Unbounded for display, Poppins for body */
+    /* Fonts — Unbounded for display, Inter for body, JetBrains Mono for code */
     --font-headline: 'Unbounded', sans-serif;
-    --font-body: 'Poppins', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
 
     /* Spacing */
     --space-xs: 0.5rem;
