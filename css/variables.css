@@ -1,17 +1,17 @@
 :root {
-    /* clip.tech-inspired palette — Dark + Neon Green */
+    /* Dark + Electric Blue */
     --bg: #000000;
     --surface: #0A0A0A;
     --surface-alt: #111111;
     --text: #FFFFFF;
     --text-muted: #9CA3AF;
-    --accent: #0fff52;
-    --accent-light: #3dff75;
-    --accent-glow: rgba(15, 255, 82, 0.15);
+    --accent: #0040FF;
+    --accent-light: #3366FF;
+    --accent-glow: rgba(0, 64, 255, 0.15);
     --border: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.04);
 
-    /* Fonts — Syne headlines (bold, youthful), Inter body, mono for code */
+    /* Fonts */
     --font-headline: 'Inter', -apple-system, sans-serif;
     --font-body: 'Inter', -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;

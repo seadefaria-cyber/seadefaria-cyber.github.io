@@ -299,7 +299,7 @@ html, body {
 
     /* Process dots — all green glow */
     .process__dot {
-        box-shadow: 0 0 14px rgba(15, 255, 82, 0.4), 0 0 28px rgba(15, 255, 82, 0.15);
+        box-shadow: 0 0 14px rgba(0, 64, 255, 0.4), 0 0 28px rgba(0, 64, 255, 0.15);
     }
 
     /* About Banner */
