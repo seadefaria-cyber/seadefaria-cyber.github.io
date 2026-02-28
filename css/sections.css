@@ -615,15 +615,19 @@
 /* ── Showcase ───────────────────────────── */
 .showcase {
     position: relative;
-    min-height: auto;
-    padding: var(--space-xl) 0;
+    min-height: 250vh;
+    padding: var(--space-xl) 0 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
 }
 
 .showcase__sticky {
-    position: static;
-    min-height: auto;
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .showcase__eyebrow {
@@ -673,7 +677,7 @@
     gap: var(--space-md);
     perspective: 1200px;
     margin-bottom: var(--space-lg);
-    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+    transition: opacity 0.1s linear, transform 0.1s linear;
 }
 
 /* Dissolve disabled — phones are static now */

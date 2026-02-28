@@ -187,33 +187,8 @@ html, body {
 
     /* Showcase */
     .showcase {
-        min-height: auto;
+        min-height: 200vh;
         border-bottom: 1px solid var(--border);
-    }
-
-    .showcase__sticky {
-        position: static;
-        min-height: auto;
-    }
-
-    .showcase__phones.dissolve {
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-        pointer-events: auto !important;
-    }
-
-    .showcase__total.takeover {
-        transform: none !important;
-    }
-
-    .showcase__total {
-        opacity: 1 !important;
-        margin-top: var(--space-xs);
-    }
-
-    .showcase__total-number {
-        font-size: clamp(2rem, 8vw, 3.5rem);
     }
 
     .showcase__headline {
@@ -223,29 +198,12 @@ html, body {
     }
 
     .showcase__phones {
-        gap: var(--space-xs);
         perspective: none;
         margin-bottom: var(--space-xs);
     }
 
-    .showcase__phone--left,
-    .showcase__phone--right {
-        transform: none;
-    }
-
-    .showcase__phone--left:hover,
-    .showcase__phone--right:hover {
-        transform: none;
-    }
-
-    .phone {
-        width: 28vw;
-        max-width: 160px;
-    }
-
     .phone--hero {
-        width: 35vw;
-        max-width: 200px;
+        width: 200px;
     }
 
     .phone__handle {
@@ -425,14 +383,8 @@ html, body {
         font-size: 10rem;
     }
 
-    .phone {
-        width: 26vw;
-        border-radius: 20px;
-        padding: 4px;
-    }
-
     .phone--hero {
-        width: 33vw;
+        width: 180px;
     }
 
     .phone__screen {
@@ -454,10 +406,6 @@ html, body {
 
     .phone__platform {
         font-size: 0.35rem;
-    }
-
-    .showcase__total-number {
-        font-size: clamp(2.5rem, 14vw, 4rem);
     }
 
     .creative__grid {

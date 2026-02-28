@@ -19,11 +19,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/variables.css?v=78">
-    <link rel="stylesheet" href="css/layout.css?v=78">
-    <link rel="stylesheet" href="css/components.css?v=78">
-    <link rel="stylesheet" href="css/sections.css?v=78">
-    <link rel="stylesheet" href="css/responsive.css?v=78">
+    <link rel="stylesheet" href="css/variables.css?v=79">
+    <link rel="stylesheet" href="css/layout.css?v=79">
+    <link rel="stylesheet" href="css/components.css?v=79">
+    <link rel="stylesheet" href="css/sections.css?v=79">
+    <link rel="stylesheet" href="css/responsive.css?v=79">
 </head>
 <body>
 
@@ -74,40 +74,19 @@
             <p class="showcase__eyebrow"><span class="live-indicator"><span class="live-indicator__dot"></span>LIVE FEED</span></p>
             <h2 class="showcase__headline"><span class="heart-word">Growth</span> isn't luck.<br><span class="text-accent text-accent--green infra-word">It's distribution.</span></h2>
             <div class="showcase__phones">
-                <!-- Phone 1 -->
-                <div class="showcase__phone showcase__phone--left">
-                    <div class="phone">
-                        <div class="phone__notch"></div>
-                        <div class="phone__screen">
-                            <div class="phone__feed" data-speed="0.85">
-                                <div class="phone__video" style="background:url('img/videos/ym-reel1.jpg') center/cover"><span class="phone__handle">@yourmultimedia</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">340K views</span><p class="phone__desc">asspizza in the store</p></div></div>
-                                <div class="phone__video" style="background:url('img/videos/ym-reel2.jpg') center/cover"><span class="phone__handle">@yourmultimedia</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">520K views</span><p class="phone__desc">interview clip</p></div></div>
-                                <div class="phone__video" style="background:url('img/videos/ym-reel4.jpg') center/cover"><span class="phone__handle">@yourmultimedia</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">180K views</span><p class="phone__desc">HOTMODELS on the scene</p></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Phone 2 (center — hero size) -->
                 <div class="showcase__phone showcase__phone--center">
                     <div class="phone phone--hero phone--glow">
                         <div class="phone__notch"></div>
                         <div class="phone__screen">
-                            <div class="phone__feed" data-speed="1">
+                            <div class="phone__feed" id="scroll-feed">
                                 <div class="phone__video" style="background:url('img/videos/viral-clip.jpg') center/cover"><span class="phone__handle">@asspizza</span><div class="phone__overlay"><span class="phone__platform">TikTok</span><span class="phone__views">2.4M views</span><p class="phone__desc">this clip went viral</p></div></div>
+                                <div class="phone__video" style="background:url('img/videos/ym-reel1.jpg') center/cover"><span class="phone__handle">@yourmultimedia</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">340K views</span><p class="phone__desc">asspizza in the store</p></div></div>
                                 <div class="phone__video" style="background:url('img/videos/nett2.jpg') center/cover"><span class="phone__handle">@asspizza</span><div class="phone__overlay"><span class="phone__platform">TikTok</span><span class="phone__views">890K views</span><p class="phone__desc">Nettspend unreleased heat</p></div></div>
-                                <div class="phone__video" style="background:url('img/videos/chrisheyn1.jpg') center/cover"><span class="phone__handle">@chrisheyn</span><div class="phone__overlay"><span class="phone__platform">TikTok</span><span class="phone__views">1.1M views</span><p class="phone__desc">they got clout</p></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Phone 3 -->
-                <div class="showcase__phone showcase__phone--right">
-                    <div class="phone">
-                        <div class="phone__notch"></div>
-                        <div class="phone__screen">
-                            <div class="phone__feed" data-speed="0.7">
                                 <div class="phone__video" style="background:url('img/videos/chrisheyn2.jpg') center/cover"><span class="phone__handle">@welcome.jpeg</span><div class="phone__overlay"><span class="phone__platform">TikTok</span><span class="phone__views">670K views</span><p class="phone__desc">new collection just dropped</p></div></div>
+                                <div class="phone__video" style="background:url('img/videos/ym-reel2.jpg') center/cover"><span class="phone__handle">@yourmultimedia</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">520K views</span><p class="phone__desc">interview clip</p></div></div>
+                                <div class="phone__video" style="background:url('img/videos/chrisheyn1.jpg') center/cover"><span class="phone__handle">@chrisheyn</span><div class="phone__overlay"><span class="phone__platform">TikTok</span><span class="phone__views">1.1M views</span><p class="phone__desc">they got clout</p></div></div>
                                 <div class="phone__video" style="background:url('img/videos/ian-show.jpg') center/cover"><span class="phone__handle">@welcome.jpeg</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">450K views</span><p class="phone__desc">behind the scenes</p></div></div>
+                                <div class="phone__video" style="background:url('img/videos/ym-reel4.jpg') center/cover"><span class="phone__handle">@yourmultimedia</span><div class="phone__overlay"><span class="phone__platform">Instagram</span><span class="phone__views">180K views</span><p class="phone__desc">HOTMODELS on the scene</p></div></div>
                                 <div class="phone__video" style="background:url('img/videos/designers.jpg') center/cover"><span class="phone__handle">@welcome.jpeg</span><div class="phone__overlay"><span class="phone__platform">TikTok</span><span class="phone__views">290K views</span><p class="phone__desc">the designers went crazy</p></div></div>
                             </div>
                         </div>
@@ -219,6 +198,6 @@
 </footer>
 
 <script src="js/counter.js"></script>
-<script src="js/main.js?v=78"></script>
+<script src="js/main.js?v=79"></script>
 </body>
 </html>
