@@ -242,19 +242,6 @@
     letter-spacing: -0.03em;
     margin-bottom: var(--space-md);
     text-shadow: none;
-    opacity: 0;
-    animation: heroWordIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-    background: linear-gradient(90deg, var(--text) 0%, var(--text) 40%, var(--accent) 50%, var(--text) 60%, var(--text) 100%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: heroWordIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards, headlineShimmer 4s ease-in-out 2.5s infinite;
-}
-
-@keyframes headlineShimmer {
-    0%, 100% { background-position: 100% 0; }
-    50% { background-position: -100% 0; }
 }
 
 .hero__word {
@@ -276,26 +263,12 @@
     100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
-/* Heart-word glow — green */
+/* Heart-word — static */
 .heart-word {
-    transition: text-shadow 0.4s ease;
+    /* no animation */
 }
 
-.heart-word:hover {
-    text-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(15, 255, 82, 0.1);
-}
-
-.heart-word--recording {
-    animation: recordingPulse 3s ease-in-out infinite;
-}
-
-@keyframes recordingPulse {
-    0%, 84%, 100% { text-shadow: none; }
-    88% { text-shadow: 0 0 15px rgba(15, 255, 82, 0.6), 0 0 30px rgba(15, 255, 82, 0.2); color: var(--accent); }
-    92% { text-shadow: 0 0 5px rgba(15, 255, 82, 0.2); }
-}
-
-/* Handle above headline — types in on load */
+/* Handle above headline */
 .hero__terminal {
     font-family: var(--font-body);
     font-size: 0.9rem;
@@ -303,17 +276,9 @@
     color: var(--accent);
     letter-spacing: 0.02em;
     margin-bottom: var(--space-md);
-    opacity: 0;
-    animation: heroWordIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
 }
 
-/* Typing cursor after @defaria */
-.hero__terminal::after {
-    content: '|';
-    animation: cursorBlink 1s step-end infinite;
-    margin-left: 2px;
-    font-weight: 300;
-}
+/* No cursor */
 
 /* Platform pills */
 .hero__platforms {
@@ -322,8 +287,6 @@
     justify-content: center;
     gap: 0.6rem;
     margin-top: var(--space-sm);
-    opacity: 0;
-    animation: heroWordIn 0.5s ease 0.8s forwards;
 }
 
 .hero__platform {
@@ -353,8 +316,6 @@
     margin-top: var(--space-sm);
     position: relative;
     z-index: 3;
-    opacity: 0;
-    animation: heroWordIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 /* Stats bar — dashboard metrics */
@@ -367,8 +328,6 @@
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--text-muted);
-    opacity: 0;
-    animation: heroWordIn 0.5s ease 1.4s forwards;
 }
 
 .hero__stat-num {
@@ -397,8 +356,6 @@
     font-family: var(--font-body);
     font-weight: 600;
     letter-spacing: 0.02em;
-    opacity: 0;
-    animation: heroWordIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.6s forwards;
 }
 
 .hero .btn:hover {
@@ -445,8 +402,7 @@
 }
 
 .csg__word:hover {
-    transform: scale(1.06);
-    text-shadow: 0 0 40px var(--accent-glow);
+    /* clean, no hover effect */
 }
 
 /* CSG Word Animations */
