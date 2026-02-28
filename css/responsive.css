@@ -278,11 +278,12 @@ html, body {
     }
 
     .showcase__clients-names {
-        gap: var(--space-xs) var(--space-sm);
+        gap: var(--space-sm);
+        animation-duration: 15s;
     }
 
     .showcase__client {
-        font-size: clamp(1rem, 4vw, 1.4rem);
+        font-size: 0.75rem;
     }
 
     /* Deliverables */

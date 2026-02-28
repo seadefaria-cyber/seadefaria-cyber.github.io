@@ -298,9 +298,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     });
 });
 
-/* ── Process Dots — Glow when centered on screen ── */
+/* ── Process Dots + Scroll-Progress Line ── */
 (function() {
     var stops = document.querySelectorAll('.process__stop');
+    var lineFill = document.querySelector('.process__line-fill');
+    var processLine = document.querySelector('.process__line');
     if (stops.length === 0) return;
 
     var ticking = false;
@@ -327,6 +329,17 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 stop.classList.remove('process__stop--active');
             }
         });
+
+        /* Scroll-progress fill */
+        if (lineFill && processLine) {
+            var lineRect = processLine.getBoundingClientRect();
+            var lineTop = lineRect.top;
+            var lineHeight = lineRect.height;
+            var scrollCenter = window.innerHeight * 0.5;
+            var progress = (scrollCenter - lineTop) / lineHeight;
+            progress = Math.max(0, Math.min(1, progress));
+            lineFill.style.height = (progress * 100) + '%';
+        }
 
         ticking = false;
     }
@@ -400,7 +413,11 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 } else {
                     el.textContent = Math.floor(current) + suffix;
                 }
-                if (progress < 1) requestAnimationFrame(tick);
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    el.classList.add('counted');
+                }
             }
 
             requestAnimationFrame(tick);
@@ -576,4 +593,26 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     }, { threshold: 0.2 });
 
     observer.observe(showcase);
+})();
+
+/* ── 3D Tilt on Phone Cards ── */
+(function() {
+    var phones = document.querySelectorAll('.showcase__phone .phone');
+    if (phones.length === 0) return;
+    if (window.matchMedia('(max-width: 809px)').matches) return;
+
+    phones.forEach(function(phone) {
+        phone.addEventListener('mousemove', function(e) {
+            var rect = phone.getBoundingClientRect();
+            var x = (e.clientX - rect.left) / rect.width;
+            var y = (e.clientY - rect.top) / rect.height;
+            var rotateY = (x - 0.5) * 20;
+            var rotateX = (0.5 - y) * 15;
+            phone.style.transform = 'perspective(600px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+        });
+
+        phone.addEventListener('mouseleave', function() {
+            phone.style.transform = '';
+        });
+    });
 })();
