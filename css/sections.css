@@ -633,7 +633,7 @@
 /* ── Showcase ───────────────────────────── */
 .showcase {
     position: relative;
-    min-height: 180vh;
+    min-height: 150vh;
     padding: var(--space-xl) 0 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
