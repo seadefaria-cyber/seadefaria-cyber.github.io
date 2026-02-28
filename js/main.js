@@ -46,6 +46,33 @@
     updateFeed();
 })();
 
+/* ── SEED. GROW. SCALE. — bang on scroll ── */
+(function() {
+    var csg = document.querySelector('.csg');
+    if (!csg) return;
+
+    var seed = csg.querySelector('.csg__word--clip');
+    var grow = csg.querySelector('.csg__word--seed');
+    var scale = csg.querySelector('.csg__word--grow');
+    if (!seed || !grow || !scale) return;
+
+    var fired = false;
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting && !fired) {
+                fired = true;
+                setTimeout(function() { seed.classList.add('bang'); }, 0);
+                setTimeout(function() { grow.classList.add('bang'); }, 200);
+                setTimeout(function() { scale.classList.add('bang'); }, 400);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    observer.observe(csg);
+})();
+
 /* ── Reveal Animations ───────────────────── */
 var revealSelectors = [
     { sel: '.hero__sub', delay: 1 },
