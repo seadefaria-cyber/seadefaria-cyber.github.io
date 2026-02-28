@@ -131,6 +131,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-bottom: var(--space-sm);
+    text-align: center;
 }
 
 .code-tag {
@@ -915,6 +916,7 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: var(--space-xl);
+    text-align: center;
 }
 
 .process__sub {
@@ -922,11 +924,14 @@
     color: var(--text-muted);
     margin-top: calc(-1 * var(--space-lg));
     margin-bottom: var(--space-xl);
+    text-align: center;
 }
 
 .process__line {
     position: relative;
     padding-left: 50px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Green track line */
@@ -1249,6 +1254,7 @@
 .contact__inner {
     max-width: 700px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .contact__headline {
@@ -1258,6 +1264,7 @@
     line-height: 1.1;
     letter-spacing: -0.03em;
     margin-bottom: var(--space-md);
+    text-align: center;
 }
 
 .contact__project-glow {
@@ -1270,16 +1277,21 @@
     color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: var(--space-lg);
+    text-align: center;
 }
 
 .contact__form {
     margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact__fields {
     display: grid;
     gap: var(--space-sm);
     margin-bottom: var(--space-md);
+    width: 100%;
 }
 
 /* Socials — green hover */
