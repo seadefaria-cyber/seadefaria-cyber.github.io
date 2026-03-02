@@ -19,6 +19,19 @@ html, body {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .results__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .results__card--featured {
+        grid-row: span 1;
+        aspect-ratio: 4 / 5;
+    }
+
+    .results__card--featured .results__card-views {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+
     .phone {
         width: 180px;
     }
@@ -185,62 +198,34 @@ html, body {
         font-size: clamp(3rem, 14vw, 6rem);
     }
 
-    /* Showcase */
-    .showcase {
-        min-height: 200vh;
-        border-bottom: 1px solid var(--border);
+    /* Results */
+    .results__grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .showcase__headline {
-        font-size: clamp(1.8rem, 7vw, 3rem);
-        padding: 0 var(--space-xs);
-        text-align: center;
+    .results__card--featured {
+        grid-row: span 1;
+        aspect-ratio: 4 / 5;
     }
 
-    .showcase__phones {
-        perspective: none;
-        margin-bottom: var(--space-xs);
+    .results__card--featured .results__card-views {
+        font-size: clamp(2rem, 6vw, 3rem);
     }
 
-    .phone--hero {
-        width: 200px;
+    .results__stats {
+        gap: var(--space-md);
     }
 
-    .phone__handle {
-        font-size: 0.45rem;
-        top: 24px;
-        left: 8px;
+    .results__stat-number {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
     }
 
-    .phone__overlay {
-        padding: 0.8rem 0.5rem;
-    }
-
-    .phone__platform {
-        font-size: 0.4rem;
-        padding: 0.1rem 0.3rem;
-    }
-
-    .phone__views {
-        font-size: 0.35rem;
-    }
-
-    .phone__desc {
-        font-size: 0.4rem;
-        -webkit-line-clamp: 1;
-    }
-
-    .phone__notch {
-        width: 40px;
-        height: 12px;
-    }
-
-    .showcase__clients-names {
+    .results__clients-names {
         gap: var(--space-sm);
         animation-duration: 15s;
     }
 
-    .showcase__client {
+    .results__client {
         font-size: 0.75rem;
     }
 

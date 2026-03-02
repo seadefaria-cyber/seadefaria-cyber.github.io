@@ -1,49 +1,24 @@
-/* ── Scroll-linked Phone Feed + Fade Out ─ */
+/* ── Results Cards — reveal on scroll ── */
 (function() {
-    var showcase = document.querySelector('.showcase');
-    var phones = document.querySelector('.showcase__phones');
-    var feed = document.getElementById('scroll-feed');
-    if (!showcase || !phones || !feed) return;
+    var cards = document.querySelectorAll('.results__card');
+    if (cards.length === 0) return;
 
-    var videos = feed.querySelectorAll('.phone__video');
-    if (videos.length === 0) return;
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
 
-    var ticking = false;
-
-    function updateFeed() {
-        var rect = showcase.getBoundingClientRect();
-        var sectionHeight = showcase.offsetHeight;
-        var scrolled = -rect.top;
-        var progress = Math.max(0, Math.min(1, scrolled / (sectionHeight - window.innerHeight)));
-
-        /* Scroll the feed through all videos */
-        var totalFeedHeight = videos[0].offsetWidth * (16/9) * (videos.length - 1);
-        feed.style.transform = 'translateY(-' + (progress * totalFeedHeight) + 'px)';
-
-        /* Fade out phone as you scroll past ~70% */
-        var fadeStart = 0.65;
-        var fadeEnd = 0.95;
-        if (progress > fadeStart) {
-            var fadeProgress = (progress - fadeStart) / (fadeEnd - fadeStart);
-            fadeProgress = Math.max(0, Math.min(1, fadeProgress));
-            phones.style.opacity = 1 - fadeProgress;
-            phones.style.transform = 'scale(' + (1 - fadeProgress * 0.1) + ') translateY(' + (fadeProgress * -30) + 'px)';
-        } else {
-            phones.style.opacity = 1;
-            phones.style.transform = '';
-        }
-
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(updateFeed);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    updateFeed();
+    cards.forEach(function(card, i) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease ' + (i * 0.1) + 's, transform 0.5s ease ' + (i * 0.1) + 's';
+        observer.observe(card);
+    });
 })();
 
 /* ── SEED. GROW. SCALE. — bang on scroll ── */
