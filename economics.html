@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeFaria — Clipping Campaign Economics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; padding: 48px 40px; max-width: 720px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+  h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+  h1 span { color: #F5C518; }
+  .sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #666; letter-spacing: 0.08em; margin-bottom: 32px; }
+  .section { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #F5C518; letter-spacing: 0.12em; text-transform: uppercase; margin: 28px 0 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { font-size: 14px; color: #bbb; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  td:last-child { text-align: right; color: #fff; font-weight: 600; }
+  tr.total td { border-top: 2px solid #F5C518; border-bottom: none; color: #F5C518; font-weight: 700; font-size: 16px; padding-top: 12px; }
+  tr.profit td { color: #34D399; font-weight: 700; font-size: 16px; border-bottom: none; }
+  .stats { display: flex; gap: 16px; margin: 20px 0 0; }
+  .stat { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 700; }
+  .stat-num.green { color: #34D399; }
+  .stat-num.gold { color: #F5C518; }
+  .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #666; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .note { font-size: 12px; color: #555; margin-top: 8px; line-height: 1.5; }
+  .scale td { font-size: 13px; padding: 6px 0; }
+  .scale td.green { color: #34D399; }
+  .scale tr.hi td { background: rgba(245,197,24,0.04); }
+  .replaced { font-size: 12px; color: #34D399; }
+  .struck { color: #666; text-decoration: line-through; }
+  .footer { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #333; text-align: center; margin-top: 40px; letter-spacing: 0.1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<h1>Clipping Campaign <span>Economics</span></h1>
+<div class="sub">Nettspend case study — hypothetical $10K campaign — 3 platforms, 1 clip/day each</div>
+
+<div class="section">Monthly Costs</div>
+<table>
+  <tr><td>Editor (TikTok + IG + X, 1 clip/day each)</td><td>$1,500</td></tr>
+  <tr><td>Claude Max 20x (strategy, hooks, captions, content direction)</td><td>$200</td></tr>
+  <tr><td>Bot Commenting</td><td>$200</td></tr>
+  <tr><td>OpenAI API (image gen + slideshows)</td><td>$65</td></tr>
+  <tr><td>AWS EC2 (automation server)</td><td>$25</td></tr>
+  <tr><td>Wispr Flow (voice-to-text)</td><td>$20</td></tr>
+  <tr><td>Postiz (social scheduling)</td><td>$20</td></tr>
+  <tr><td>Google Workspace (email)</td><td>$8</td></tr>
+  <tr class="total"><td>Total Cost</td><td>$2,040</td></tr>
+  <tr class="profit"><td>Profit ($10K - $2,040)</td><td>$7,960</td></tr>
+</table>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num gold">$2,040</div><div class="stat-label">Total Cost</div></div>
+  <div class="stat"><div class="stat-num">$7,960</div><div class="stat-label">Profit</div></div>
+  <div class="stat"><div class="stat-num green">80%</div><div class="stat-label">Margin</div></div>
+</div>
+
+<div class="section">What AI Replaces</div>
+<table>
+  <tr><td>Content Strategist</td><td><span class="struck">$4,000</span> <span class="replaced">Claude</span></td></tr>
+  <tr><td>Creative Director</td><td><span class="struck">$3,000</span> <span class="replaced">Claude + Wispr</span></td></tr>
+  <tr><td>Project Manager</td><td><span class="struck">$2,000</span> <span class="replaced">Claude</span></td></tr>
+  <tr><td>Copywriter</td><td><span class="struck">$1,500</span> <span class="replaced">Claude</span></td></tr>
+  <tr class="total"><td>Traditional agency cost (before editor)</td><td><span class="struck" style="color:#E8453C;">$10,500</span></td></tr>
+  <tr class="profit"><td>Our AI stack cost</td><td>$540/mo</td></tr>
+</table>
+
+<div class="section">Scaling (AI costs stay flat)</div>
+<table class="scale">
+  <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="color:#666;">Clients</td><td style="color:#666;">Revenue</td><td style="color:#666;">Costs</td><td style="color:#666;">Profit</td><td style="color:#666; text-align:right;">Margin</td></tr>
+  <tr><td>1</td><td>$10K</td><td>$2,040</td><td>$7,960</td><td class="green" style="text-align:right;">80%</td></tr>
+  <tr><td>2</td><td>$20K</td><td>$3,540</td><td>$16,460</td><td class="green" style="text-align:right;">82%</td></tr>
+  <tr class="hi"><td><strong>3</strong></td><td><strong>$30K</strong></td><td>$5,040</td><td><strong>$24,960</strong></td><td class="green" style="text-align:right;"><strong>83%</strong></td></tr>
+  <tr><td>5</td><td>$50K</td><td>$8,090</td><td>$41,910</td><td class="green" style="text-align:right;">84%</td></tr>
+</table>
+<div class="note">Each new client adds ~$1,500 (editor). AI tools stay at $540/mo. Postiz upgrades to $49 at 5+ clients.</div>
+
+<div class="footer">Confidential &middot; DeFaria</div>
+
+</body>
+</html>
