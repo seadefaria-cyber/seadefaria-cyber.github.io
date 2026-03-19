@@ -25,7 +25,7 @@
     --deep-charcoal: #2B2B2B;
   }
 
-  body { font-family: var(--font); background: #000; color: var(--text); -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font); background: #000; color: var(--text); -webkit-font-smoothing: antialiased; min-width: 1056px; }
 
   .page {
     width: 11in; height: 8.5in; position: relative; overflow: hidden;
@@ -42,22 +42,26 @@
   }
   .page-bg::after {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.75) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.8) 100%);
   }
   .page > *:not(.page-bg) { position: relative; z-index: 1; }
 
+  .page::before {
+    content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(196,92,38,0.2); border-radius: 4px; z-index: 1; pointer-events: none;
+  }
   @media screen { .page { margin: 24px auto; border-radius: 6px; } }
   @page { size: 11in 8.5in landscape; margin: 0; }
   @media print { body { background: #000; margin: 0; } .page { margin: 0; width: 100vw; height: 100vh; border-radius: 0; } }
 
   .page-logo {
     position: absolute !important; top: 20px; left: 32px;
-    width: 52px; height: auto; z-index: 10;
+    width: 36px; height: auto; z-index: 10; opacity: 0.4;
   }
   .page-footer { position: absolute !important; bottom: 22px; left: 0; right: 0; font-family: var(--mono); font-size: 7px; font-weight: 400; letter-spacing: 0.15em; color: rgba(255,255,255,0.25); text-align: center; text-transform: uppercase; z-index: 10; }
   .page-meta { position: absolute !important; top: 36px; right: 48px; text-align: right; z-index: 10; }
-  .page-meta .line1 { font-family: var(--font); font-size: 11px; font-weight: 600; color: var(--text); letter-spacing: 0.08em; text-transform: uppercase; }
-  .page-meta .line2 { font-family: var(--mono); font-size: 9px; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+  .page-meta .line1 { font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-meta .line2 { font-family: var(--mono); font-size: 11px; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
 
   .hero-title { font-family: var(--font-display); font-size: 108px; font-weight: 700; color: var(--text); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.02em; }
   .hero-title .accent { color: var(--accent); }
@@ -65,9 +69,9 @@
   .section-title { font-family: var(--font-display); font-size: 80px; font-weight: 700; color: var(--text); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 28px; }
   .section-title .accent { color: var(--accent); }
 
-  .hero-sub { font-family: var(--font); font-size: 16px; font-weight: 500; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 24px; }
+  .hero-sub { font-family: var(--font); font-size: 19px; font-weight: 500; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 24px; }
 
-  .body-text { font-size: 17px; font-weight: 500; color: var(--text-secondary); line-height: 1.75; max-width: 540px; }
+  .body-text { font-size: 20px; font-weight: 500; color: var(--text-secondary); line-height: 1.75; max-width: 540px; }
 
   .label-mono { font-family: var(--font-display); font-size: 48px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; }
 
@@ -75,26 +79,26 @@
   .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
   .card { background: var(--card); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 24px; text-align: left; }
   .card-num { font-family: var(--font-display); font-size: 40px; color: var(--accent); line-height: 1; margin-bottom: 8px; }
-  .card h3 { font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-  .card p { font-size: 14px; font-weight: 500; line-height: 1.55; color: #f0f0f0; }
+  .card h3 { font-family: var(--font); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .card p { font-size: 16px; font-weight: 500; line-height: 1.55; color: #f0f0f0; }
   .card ul { list-style: disc; padding-left: 16px; margin-top: 6px; }
-  .card li { font-size: 13.5px; font-weight: 500; line-height: 1.55; color: #f0f0f0; margin-bottom: 3px; }
+  .card li { font-size: 15px; font-weight: 500; line-height: 1.55; color: #f0f0f0; margin-bottom: 3px; }
 
   .split { display: flex; align-items: flex-start; gap: 64px; width: 100%; }
   .split-left { flex-shrink: 0; width: 340px; }
   .split-right { flex: 1; }
 
   .budget-item { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: baseline; }
-  .budget-item .budget-phase { font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--accent); }
-  .budget-item .budget-desc { font-size: 13px; color: #e8e8e8; font-weight: 500; margin-top: 4px; }
+  .budget-item .budget-phase { font-family: var(--font); font-size: 16px; font-weight: 600; color: var(--accent); }
+  .budget-item .budget-desc { font-size: 15px; color: #e8e8e8; font-weight: 500; margin-top: 4px; }
   .budget-item .budget-amount { font-family: var(--font); font-size: 17px; font-weight: 700; color: var(--text); flex-shrink: 0; margin-left: 24px; }
   .budget-total { padding-top: 24px; margin-top: 8px; border-top: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: baseline; }
   .budget-total .label { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--accent); text-transform: uppercase; }
   .budget-total .amount { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--accent); text-transform: uppercase; }
 
   .contact-block { text-align: left; }
-  .contact-block .contact-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
-  .contact-block .contact-value { font-size: 17px; color: var(--text); font-weight: 400; margin-bottom: 18px; }
+  .contact-block .contact-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .contact-block .contact-value { font-size: 20px; color: var(--text); font-weight: 400; margin-bottom: 18px; }
   .contact-block .contact-value.accent { color: var(--accent); font-weight: 500; }
 
   /* TikTok phone mockup */
@@ -159,23 +163,23 @@
   .timeline-line { flex: 1; height: 3px; background: var(--accent); position: relative; }
   .timeline-segment { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
   .timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--accent); z-index: 2; }
-  .timeline-label-phase { font-family: var(--mono); font-size: 8px; font-weight: 400; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-top: 14px; }
-  .timeline-label-title { font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--text); margin-top: 4px; }
+  .timeline-label-phase { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-top: 14px; }
+  .timeline-label-title { font-family: var(--font); font-size: 15px; font-weight: 600; color: var(--text); margin-top: 4px; }
 
   /* Narrative tags/chips */
   .narrative-section { margin-top: 20px; }
-  .narrative-label { font-family: var(--mono); font-size: 9px; font-weight: 500; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+  .narrative-label { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
   .tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag { font-family: var(--font); font-size: 12px; font-weight: 700; color: #fff; background: rgba(196,92,38,0.18); border: 1.5px solid rgba(196,92,38,0.35); border-radius: 24px; padding: 7px 16px; white-space: nowrap; }
+  .tag { font-family: var(--font); font-size: 14px; font-weight: 700; color: #fff; background: rgba(196,92,38,0.18); border: 1.5px solid rgba(196,92,38,0.35); border-radius: 24px; padding: 7px 16px; white-space: nowrap; }
 
   /* Phase individual slides */
   .phase-slide { display: flex; align-items: center; gap: 48px; width: 100%; }
   .phase-left { flex: 0 0 55%; }
   .phase-right { flex: 1; display: flex; align-items: center; justify-content: center; }
   .phase-number { position: absolute; font-family: var(--font-display); font-size: 220px; font-weight: 700; color: var(--accent); opacity: 0.12; line-height: 1; z-index: 0; top: 50%; left: 40px; transform: translateY(-50%); }
-  .phase-label { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+  .phase-label { font-family: var(--font-display); font-size: 32px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
   .phase-title { font-family: var(--font-display); font-size: 64px; font-weight: 700; color: var(--text); text-transform: uppercase; line-height: 0.95; margin-bottom: 24px; }
-  .phase-body { font-size: 14px; font-weight: 500; color: var(--text-secondary); line-height: 1.7; max-width: 460px; }
+  .phase-body { font-size: 17px; font-weight: 500; color: var(--text-secondary); line-height: 1.7; max-width: 460px; }
 
   /* Phase 01: Building blocks animation */
   .blocks-container { position: relative; width: 200px; height: 260px; }
@@ -275,7 +279,7 @@
 
 
   <div class="label-mono">Objective</div>
-  <p class="body-text" style="max-width: 600px; text-align: center; font-size: 17px; line-height: 1.85;">Drive a sustained surge in cultural relevance and tour demand for John Mellencamp by strategically amplifying digital content, maximizing reach, engagement, and share of internet attention across platforms in the lead-up to the tour.</p>
+  <p class="body-text" style="max-width: 600px; text-align: center; font-size: 20px; line-height: 1.85;">Drive a sustained surge in cultural relevance and tour demand for John Mellencamp by strategically amplifying digital content, maximizing reach, engagement, and share of internet attention across platforms in the lead-up to the tour.</p>
 
   <div class="page-footer">Confidential &middot; WLDFR &nbsp;&nbsp;&nbsp; 2 / 11</div>
 </div>
@@ -290,14 +294,14 @@
     <!-- Left: Title + description -->
     <div style="flex: 1; min-width: 280px;">
       <div class="section-title" style="font-size: 72px; color: #ffffff;">Clipping<span class="accent">.</span></div>
-      <p class="body-text" style="max-width: 380px; font-size: 14px;">We source and repackage archival and contemporary footage, spanning performances, interviews, and behind-the-scenes moments, into high-performing short-form content optimized for TikTok, Instagram Reels, and YouTube Shorts. Our team manages a consistent daily publishing cadence across a network of strategically developed fan-facing channels to expand reach and drive sustained audience engagement.</p>
+      <p class="body-text" style="max-width: 380px; font-size: 17px;">We source and repackage archival and contemporary footage, spanning performances, interviews, and behind-the-scenes moments, into high-performing short-form content optimized for TikTok, Instagram Reels, and YouTube Shorts. Our team manages a consistent daily publishing cadence across a network of strategically developed fan-facing channels to expand reach and drive sustained audience engagement.</p>
     </div>
 
     <!-- Center: TikTok phone mockup -->
     <div class="phone" style="width: 180px; height: 360px;">
       <div class="phone-island"></div>
       <div class="phone-video-wrap">
-        <div class="phone-video" style="background-image: url('images/mellencamp-10.jpg');"></div>
+        <div class="phone-video" style="background-image: url('images/mellencamp-4.jpg');"></div>
       </div>
       <div class="phone-status">
         <div class="phone-status-time">9:41</div>
@@ -313,7 +317,7 @@
         <div class="phone-tab active">For You</div>
       </div>
       <div class="phone-bold-caption">
-        <span>MELLENCAMP SHUT DOWN FARM AID 1985 🔥</span>
+        <span>POV: It's 1985 and nothing matters yet.</span>
       </div>
       <div class="phone-sidebar" style="right: 6px; bottom: 70px; gap: 10px;">
         <div class="phone-sidebar-avatar" style="width: 22px; height: 22px;"></div>
@@ -333,7 +337,7 @@
       <div class="phone-disc" style="right: 6px; bottom: 42px; width: 20px; height: 20px;"></div>
       <div class="phone-caption-area" style="bottom: 36px;">
         <div class="phone-handle" style="font-size: 7.5px;">@mellencamp.archive</div>
-        <div class="phone-desc" style="font-size: 6.5px;">Farm Aid, 1985. Your dad knew. #mellencamp #classicrock</div>
+        <div class="phone-desc" style="font-size: 6.5px;">POV: It's 1985 and nothing matters yet. #mellencamp #classicrock</div>
         <div class="phone-sound" style="font-size: 6px;">
           <svg viewBox="0 0 16 16"><path d="M12.5 1a.5.5 0 01.5.5v2.03a4.5 4.5 0 01-3 4.24V13.5a2.5 2.5 0 11-5 0 2.5 2.5 0 012.5-2.5c.53 0 1.03.13 1.47.36V1.5a.5.5 0 01.53-.5z"/></svg>
           Small Town - John Mellencamp
@@ -395,13 +399,13 @@
         <div style="aspect-ratio: 1; background: url('images/mellencamp-3.jpg') center/cover; position: relative;">
           <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 947K</div>
         </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-6.jpg') center/cover; position: relative;">
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-5.jpg') center/cover; position: relative;">
           <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 612K</div>
         </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-9.jpg') center/cover; position: relative;">
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-7.jpg') center/cover; position: relative;">
           <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 483K</div>
         </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-2.jpg') center/cover; position: relative;">
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-1.jpg') center/cover; position: relative;">
           <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 291K</div>
         </div>
       </div>
@@ -414,7 +418,7 @@
 
 <!-- 4: TIMELINE OVERVIEW — THE ROLLOUT -->
 <div class="page centered">
-  <div class="page-bg" style="background-image: url('images/mellencamp-6.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-5.jpg');"></div>
 
 
   <div class="section-title" style="font-size: 72px; margin-bottom: 48px;">The <span class="accent">Rollout.</span></div>
@@ -462,7 +466,7 @@
 
 <!-- 5: PHASE 01 — ARCHIVE + BUILD -->
 <div class="page">
-  <div class="page-bg" style="background-image: url('images/mellencamp-8.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-scarecrow.jpg');"></div>
 
   <div class="phase-number">01</div>
 
@@ -470,7 +474,7 @@
     <div class="phase-left">
       <div class="phase-label">Phase 01</div>
       <div class="phase-title">Archive +<br>Build</div>
-      <p class="phase-body">We identify and elevate key moments across Mellencamp's catalog, iconic performances, music videos, archival interviews, and shape them into cohesive, high-impact content streams. Each is paired with narrative angles that are tested and refined, positioning JM within culturally resonant conversations and reinforcing a cycle of discovery, engagement, and renewed relevance.</p>
+      <p class="phase-body">We identify and elevate key moments across Mellencamp's catalog, iconic performances, music videos, archival interviews, and shape them into cohesive, high-impact content streams. Each is paired with narrative angles that are tested and refined, positioning Mellencamp within culturally resonant conversations and reinforcing a cycle of discovery, engagement, and renewed relevance.</p>
       <div class="narrative-section">
         <div class="narrative-label">Example Narratives</div>
         <div class="tag-grid">
@@ -501,7 +505,7 @@
 
 <!-- 6: PHASE 02 — LAUNCH + IGNITE -->
 <div class="page">
-  <div class="page-bg" style="background-image: url('images/mellencamp-6.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-american-fool.jpg');"></div>
 
   <div class="phase-number">02</div>
 
@@ -554,7 +558,7 @@
 
 <!-- 8: PHASE 04 — INSIGHTS + OPTIMIZATION -->
 <div class="page">
-  <div class="page-bg" style="background-image: url('images/mellencamp-9.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-uhhuh.jpg');"></div>
 
   <div class="phase-number">04</div>
 
@@ -582,7 +586,7 @@
 
 <!-- 9: BUDGET BREAKDOWN -->
 <div class="page">
-  <div class="page-bg" style="background-image: url('images/mellencamp-10.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-lonesome.jpg');"></div>
 
 
   <div class="split" style="align-items: flex-start;">
@@ -624,14 +628,14 @@
 
 <!-- 10: 30-DAY PILOT -->
 <div class="page centered">
-  <div class="page-bg" style="background-image: url('images/mellencamp-9.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-human-wheels.jpg');"></div>
 
 
   <div class="hero-title" style="font-size: 86px;">Launch In<br><span class="accent">30 Days.</span></div>
 
   <p class="body-text" style="margin-top: 28px; max-width: 520px; text-align: center;">We start within a week of signing. First numbers in 14 days. Full review at day 30. All content cleared with your team before going live.</p>
 
-  <p style="font-size: 13px; color: var(--text-muted); margin-top: 24px;">Tour starts July 10.</p>
+  <p style="font-size: 15px; color: var(--text-muted); margin-top: 24px;">Tour starts July 10.</p>
 
   <div class="page-footer">Confidential &middot; WLDFR &nbsp;&nbsp;&nbsp; 10 / 11</div>
 </div>
@@ -639,7 +643,7 @@
 
 <!-- 11: THANK YOU -->
 <div class="page">
-  <div class="page-bg" style="background-image: url('images/mellencamp-5.jpg');"></div>
+  <div class="page-bg" style="background-image: url('images/mellencamp-10.jpg');"></div>
   <img class="page-logo" src="images/wldfr-white.png" alt="WLDFR">
 
 
@@ -652,7 +656,7 @@
         <div class="contact-label" style="border-top: none; padding-top: 0;">Name</div>
         <div class="contact-value">Sean DeFaria</div>
         <div class="contact-label">Email</div>
-        <div class="contact-value accent">sean@wldfr.co</div>
+        <div class="contact-value accent">sean@defaria.nyc</div>
         <div class="contact-label">Phone</div>
         <div class="contact-value">310 625 4899</div>
         <div class="contact-label">Company</div>
@@ -667,5 +671,16 @@
 </div>
 
 
+<script>
+document.querySelectorAll('.page').forEach(function(page) {
+  if (!page.querySelector('.page-logo')) {
+    var img = document.createElement('img');
+    img.className = 'page-logo';
+    img.src = 'images/wldfr-white.png';
+    img.alt = 'WLDFR';
+    page.appendChild(img);
+  }
+});
+</script>
 </body>
 </html>
