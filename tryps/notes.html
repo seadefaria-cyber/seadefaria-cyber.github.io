@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryps Brand Creative Notes — Sean DeFaria</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAFAF9;
+    color: #2D2926;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 3px solid #D9071C;
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #1A1714;
+    margin-bottom: 8px;
+  }
+
+  .header .subtitle {
+    font-size: 15px;
+    color: #6B6560;
+    font-weight: 400;
+  }
+
+  .header .meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: #9B9590;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #D9071C;
+    background: #FBE6E8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A1714;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3D3530;
+    margin-bottom: 12px;
+    margin-top: 28px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14.5px;
+    color: #3D3530;
+  }
+
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background: #D9071C;
+    border-radius: 50%;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #1A1714;
+  }
+
+  /* Feature table */
+  .feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13.5px;
+  }
+
+  .feature-table th {
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #9B9590;
+    padding: 10px 16px;
+    border-bottom: 2px solid #E8E4E0;
+    background: #F5F1ED;
+  }
+
+  .feature-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #EBE7E3;
+    vertical-align: top;
+    color: #3D3530;
+  }
+
+  .feature-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .feature-table td:first-child {
+    font-weight: 600;
+    color: #1A1714;
+    white-space: nowrap;
+  }
+
+  /* Callout boxes */
+  .callout {
+    background: #FFF8F0;
+    border-left: 3px solid #D9071C;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+  }
+
+  .callout.back-pocket {
+    background: #F5F1ED;
+    border-left-color: #9B9590;
+  }
+
+  .callout .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #D9071C;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .callout.back-pocket .label {
+    color: #9B9590;
+  }
+
+  /* Platform ranking */
+  .ranking {
+    counter-reset: rank;
+    list-style: none;
+    padding: 0;
+  }
+
+  .ranking li {
+    counter-increment: rank;
+    padding-left: 36px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .ranking li::before {
+    content: counter(rank);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #D9071C;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border-radius: 0;
+  }
+
+  /* Conversation points */
+  .convo-point {
+    background: #FBE6E8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .convo-point .number {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    color: #D9071C;
+    margin-right: 8px;
+  }
+
+  /* Open items */
+  .open-items li::before {
+    background: #9B9590;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid #E8E4E0;
+    margin: 48px 0;
+  }
+
+  /* Explore list */
+  .explore li::before {
+    background: none;
+    border: 2px solid #9B9590;
+    width: 6px;
+    height: 6px;
+    top: 7px;
+  }
+
+  /* Brand essence candidates */
+  .essence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .essence-card {
+    background: white;
+    border: 1px solid #E8E4E0;
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .essence-card.top-pick {
+    border-color: #D9071C;
+    background: #FFFBFA;
+  }
+
+  .essence-card .word {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A1714;
+    margin-bottom: 4px;
+  }
+
+  .essence-card.top-pick .word {
+    color: #D9071C;
+  }
+
+  .essence-card .desc {
+    font-size: 13px;
+    color: #6B6560;
+    line-height: 1.5;
+  }
+
+  .top-pick-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #D9071C;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Tryps Brand Creative Notes</h1>
+    <p class="subtitle">Creative recommendations from brand questionnaire review (87 questions)</p>
+    <div class="meta">
+      <span>Sean DeFaria</span>
+      <span>March 19, 2026</span>
+      <span>For Jake Stein / Tryps</span>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>iMessage Agent: Kill the Chatbot, Keep the Channel</h2>
+    </div>
+    <ul>
+      <li>The iMessage travel agent concept is not it. A bot talking in your group chat feels gimmicky, which directly contradicts the brand values.</li>
+      <li>Instead: keep iMessage as the channel, but prioritize <strong>native polling only</strong>. Short, clean, declarative messages ("Pick your dates") with polls attached. No emoji, no personality, no agent "voice."</li>
+      <li>Think Uber-level communication. Uber texts you "Your driver is arriving" -- not "Hey! Your ride's almost there!" The iMessage layer is infrastructure, not a character.</li>
+      <li>The Postcard is the real product interface, not the chat.</li>
+    </ul>
+  </div>
+
+  <!-- 02 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>The Postcard</h2>
+    </div>
+    <ul>
+      <li>When you send a Tryps link, it's called a <strong>Postcard</strong>.</li>
+      <li>It should be a reveal experience -- like opening a gift or chest. The destination reveal is an event, not just information.</li>
+      <li>Ties into real travel artifacts (people actually send postcards on trips). Implies something personal, not transactional.</li>
+      <li>The opening/reveal mechanic is built into what a postcard IS -- you flip it over.</li>
+      <li>Connects to the existing "trip card" concept but elevates it.</li>
+    </ul>
+  </div>
+
+  <!-- 03 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>The Tryps Agent Character</h2>
+    </div>
+    <ul>
+      <li>The agent should have a distinct personality -- like a character, not a corporate travel bot.</li>
+      <li>Think: the most fun, well-traveled person from your college. Someone who brings raw energy without being gimmicky. Not a classic travel agent.</li>
+      <li>The character lives <strong>in the app</strong>, NOT in the group chat. In iMessage it's clean infrastructure. In the app, there's someone with a name, a vibe, a personality.</li>
+      <li>The agent should <strong>NOT</strong> be called "Tryps." The brand is bigger than the bot. It needs its own name (TBD).</li>
+      <li>Where the character appears: in-app chat, Postcard reveals, push notifications, Travel DNA results, trip suggestions.</li>
+    </ul>
+  </div>
+
+  <!-- 04 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Visual Identity &amp; Campaigns</h2>
+    </div>
+
+    <h3>Instagram = The Storefront</h3>
+    <ul>
+      <li>The film camera / disposable aesthetic is a great <strong>content generation engine</strong> (TikTok, commercials, storytelling) but it is NOT the brand identity.</li>
+      <li>Instagram should be clean, professional, Apple-level. It sells an app. Polished product shots, real usage photography, everything intentional.</li>
+      <li>The grid stays pristine -- only high-production content Tryps produces. UGC lives in story highlights.</li>
+      <li>All user/seeded content lives everywhere else on the internet -- TikTok, Twitter, Snap, creator accounts. This makes Tryps feel organically everywhere without the brand account looking messy.</li>
+      <li>Same playbook as music artist seeding: the artist page stays clean, the network makes it feel like the world is talking about them.</li>
+      <li>Film camera photos need professional art direction if used in brand materials. Think "Shot on iPhone" -- real photos, immaculate presentation.</li>
+    </ul>
+
+    <h3>Campaign Direction: "See Your Friends More"</h3>
+    <ul>
+      <li>The emotional sell isn't "plan trips easier." It's <strong>"see your friends more."</strong></li>
+      <li>Tryps removes the friction that keeps people apart. Campaigns show the outcome, not the tool.</li>
+      <li>Show the before (missing people, saying "we need to link up" for 2 years) and the after (actually there, actually together).</li>
+      <li>Jake said it himself: "I miss these boys. Tryps helps me do that." That's the campaign.</li>
+      <li>Your life is measurably better when you actually follow through. Happier at every age -- because you're connecting with friends.</li>
+    </ul>
+
+    <h3>Diversity is Non-Negotiable</h3>
+    <ul>
+      <li>Go Apple mode. Include everyone. The launch video should look like the actual diversity of a college campus.</li>
+      <li>The niche USC Indian friend group. The international students. The girls who travel every break. All different, all using Tryps.</li>
+      <li>This makes it feel like "the way everyone plans trips" instead of "for a certain type of person."</li>
+      <li>Also serves growth -- if only one demo is shown, virality is capped. If everyone sees themselves, every friend group thinks "that's us."</li>
+    </ul>
+  </div>
+
+  <!-- 05 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Travel-World Feature Naming</h2>
+    </div>
+
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Travel Concept</th>
+          <th>App Feature</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Passport</td>
+          <td>Account / Profile</td>
+          <td>Onboarding = "Create your Passport." Holds Travel DNA, countries visited, everything.</td>
+        </tr>
+        <tr>
+          <td>Postcard</td>
+          <td>Trip invite link</td>
+          <td>Reveal experience when opened. The viral hook.</td>
+        </tr>
+        <tr>
+          <td>Boarding Pass</td>
+          <td>Trip confirmation</td>
+          <td>Accepted a Postcard? Here's your Boarding Pass. Shows role (Planner, Co-Pilot, Passenger).</td>
+        </tr>
+        <tr>
+          <td>Stamps</td>
+          <td>Rewards / achievements</td>
+          <td>Collected per destination. Commissioned from real artists.</td>
+        </tr>
+        <tr>
+          <td>Stickers</td>
+          <td>Passport customization</td>
+          <td>College logos, cities, inside jokes. Screenshot-worthy.</td>
+        </tr>
+        <tr>
+          <td>"Boarding..."</td>
+          <td>Loading state</td>
+          <td>Replaces generic loading spinners. One word, builds anticipation.</td>
+        </tr>
+        <tr>
+          <td>Seatbelt chime</td>
+          <td>Notification sound</td>
+          <td>The airplane seatbelt sign tone. Universal. Means "we're going somewhere."</td>
+        </tr>
+        <tr>
+          <td>Passengers</td>
+          <td>Community identity</td>
+          <td>Inclusive, humble, implies you're going somewhere. Not "crew."</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Other Concepts to Explore (Not Confirmed)</h3>
+    <ul class="explore">
+      <li><strong>Layover</strong> -- between-trip state (explore tab, bucket list, friend activity)</li>
+      <li><strong>Terminal</strong> -- home screen / main hub</li>
+      <li><strong>Customs</strong> -- post-trip wrap-up (expenses, photos, ratings)</li>
+      <li><strong>Gate</strong> -- 48-hour pre-trip countdown with final confirmations</li>
+      <li><strong>Carry-On</strong> -- saved preferences, favorite spots that travel with you</li>
+      <li><strong>Departure Board</strong> -- calendar view of upcoming trips</li>
+    </ul>
+  </div>
+
+  <!-- 06 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2>Stamps as Art Program</h2>
+    </div>
+    <ul>
+      <li>Each destination gets a unique stamp designed by a <strong>commissioned artist</strong>.</li>
+      <li>Similar to how beverage brands hire artists to design limited edition cans.</li>
+      <li>The stamp collection becomes a collectible layer people screenshot and share.</li>
+      <li>Scales naturally as Tryps grows into more cities/countries.</li>
+      <li>Minor feature, taken seriously in craft. Will hit hard.</li>
+    </ul>
+  </div>
+
+  <!-- 07 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2>Content Ratio: 80/20 at Launch</h2>
+    </div>
+    <ul>
+      <li>Recommendation: <strong>80% lifestyle / 20% product</strong>, possibly 90/10 in the first month.</li>
+      <li>The marketing is the "why," not the "how." The app demo is the app itself. The launch video handles the experience walkthrough. Instagram sells the feeling.</li>
+      <li>You don't need to see how Uber works. You just want to travel quicker. Same for Tryps -- you just need to be reminded that you deserve to go see your friends.</li>
+      <li>As the brand matures with social proof, shift toward 70/30 or 60/40.</li>
+    </ul>
+  </div>
+
+  <!-- 08 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2>Campaign Ideas</h2>
+    </div>
+
+    <h3>"You Deserve It"</h3>
+    <ul>
+      <li>Permission-giving campaign. People already want to see their friends but feel like they can't justify it -- too busy, too expensive, too hard to plan.</li>
+      <li>"You Deserve It" cuts through all the excuses. Simple, emotional, universal.</li>
+    </ul>
+
+    <h3>GoPro Format for TikTok / Social</h3>
+    <ul>
+      <li>5 seconds of the most captivating trip moment (cliff jump, group running into the ocean, surprise airport arrival) -- then hard cut to the Tryps logo.</li>
+      <li>No explanation, no feature walkthrough, no voiceover. Just the moment and the brand.</li>
+      <li>The viewer fills in the gap: "these people are having the time of their lives, Tryps is behind it."</li>
+    </ul>
+
+    <h3>"People Who Use Tryps vs People Who Don't"</h3>
+    <ul>
+      <li>Series format. One side: the group that actually went to Tulum. Other side: the group chat that's been saying "we should do something" for 3 years.</li>
+      <li>No app screenshots needed. Just the contrast. Everyone knows which side they're on.</li>
+    </ul>
+  </div>
+
+  <!-- 09 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2>Social Platform Priority</h2>
+    </div>
+    <ol class="ranking">
+      <li><strong>Twitter</strong> -- discovery, reach, launch video lives here</li>
+      <li><strong>TikTok</strong> -- reach, raw content, creator-driven</li>
+      <li><strong>Instagram</strong> -- the storefront, not the discovery engine. People visit after they've heard of you.</li>
+      <li><strong>Pinterest</strong></li>
+      <li><strong>Snapchat</strong> -- underrated. College kids document real lives here. Sponsored Tryps with influencers like Livvy Dunne. Feels native, not like an ad.</li>
+    </ol>
+    <div class="callout">
+      <div class="label">Note</div>
+      Twitter and TikTok drive discovery/reach. Instagram is where people go to confirm the brand is legit. Different jobs.
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2>Brand Essence: One-Word Association</h2>
+    </div>
+    <ul>
+      <li>"Welcome" (Jake's current pick) feels too Marriott. Too passive, too hospitality-corporate.</li>
+      <li>The energy should be spontaneous, committal -- the moment you stop overthinking and just commit.</li>
+    </ul>
+
+    <div class="essence-grid">
+      <div class="essence-card top-pick">
+        <div class="top-pick-label">Top Candidate</div>
+        <div class="word">Reunion</div>
+        <div class="desc">Captures the real reason people plan trips -- to see their people again. Welcome says "come in." Reunion says "we're back."</div>
+      </div>
+      <div class="essence-card">
+        <div class="word">When</div>
+        <div class="desc">Not if, when. The trip is happening. Only question is when.</div>
+      </div>
+      <div class="essence-card">
+        <div class="word">Say Less</div>
+        <div class="desc">You don't need convincing. You don't need 47 texts. Say less. The trip is handled.</div>
+      </div>
+      <div class="essence-card">
+        <div class="word">Bet</div>
+        <div class="desc">Someone sends the Postcard. "Bet." You're in. Done.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">11</span>
+      <h2>Brand Partnerships: Cultural > Corporate</h2>
+    </div>
+    <ul>
+      <li>The obvious plays (Airbnb, airlines, luggage, festivals) will happen and make sense.</li>
+      <li>What hits hardest is <strong>cultural collabs</strong> -- Tryps on a smoothie at Erewhon, unexpected streetwear crossovers, showing up in physical spaces where the demo hangs out.</li>
+      <li>A corporate partnership is a business play. A cultural collab makes Tryps feel like it lives in the world, not just on your phone.</li>
+      <li>The partnerships that matter most are the ones that make people say "wait, Tryps did THAT?"</li>
+    </ul>
+  </div>
+
+  <!-- 12 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">12</span>
+      <h2>Language: "Tryp" Replaces "Trip"</h2>
+    </div>
+    <ul>
+      <li>The goal is to replace the word "trip" with "Tryp" the way Uber replaced "taxi."</li>
+      <li>"Are you coming on the Tryp?" / "Who's on this Tryp?" / "That was the best Tryp."</li>
+      <li>The app is "Tryps" (plural, holds all your Tryps). Each individual trip is a "Tryp."</li>
+    </ul>
+  </div>
+
+  <!-- 13 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">13</span>
+      <h2>Funny / Viral Use Cases</h2>
+    </div>
+    <ul>
+      <li>Tryps needs a version of the Tinder/Hinge screenshot moment -- people using the app in unintended, hilarious ways and posting them.</li>
+      <li>The Postcard system shouldn't be limited to "real trips." Send one to the bar on Saturday, to your friend's couch, to the grocery store. The absurd ones get screenshotted and shared.</li>
+      <li>Easter eggs in the links. Funny edge cases. Lean into the humor on brand Twitter.</li>
+      <li>This is organic content that writes itself. People create the jokes, Tryps just enables them.</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Back-pocket ideas -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">--</span>
+      <h2>Back-Pocket Ideas</h2>
+    </div>
+
+    <div class="callout back-pocket">
+      <div class="label">Launch Video</div>
+      Consider a narrator in the launch video, like Axe cologne commercials. A confident, slightly irreverent voice guiding the story. Could pair well with "People Who Use Tryps vs People Who Don't."
+    </div>
+
+    <div class="callout back-pocket">
+      <div class="label">Spyrt / Spirit Airlines</div>
+      "Tryps" spelled backward is "Spyrt" -- close to "Spirit." Campaign idea for a tongue-in-cheek Spirit Airlines joke or "anti-Spirit" play.
+    </div>
+
+    <div class="callout back-pocket">
+      <div class="label">FOMO Decline</div>
+      When someone can't join a trip, their name gets crossed out with "FOMO" or similar. The decline should feel like a social moment, not a silent status change. Could tip gimmicky -- test the tone.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Conversation Points -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">!!</span>
+      <h2>Conversation Points with Jake</h2>
+    </div>
+
+    <div class="convo-point">
+      <span class="number">1.</span>
+      <strong>Brand essence: "Welcome" vs Reunion/When/Say Less/Bet</strong> -- Jake has "Welcome" locked in. Needs alignment.
+    </div>
+    <div class="convo-point">
+      <span class="number">2.</span>
+      <strong>Film camera aesthetic: identity vs content engine</strong> -- Jake calls it "our visual moat." Recommendation: it's a content generation tool, not the brand identity. Instagram stays clean/Apple-level.
+    </div>
+    <div class="convo-point">
+      <span class="number">3.</span>
+      <strong>iMessage agent personality</strong> -- Current spec has an agent talking in the group chat. Recommendation: kill the chatbot voice, go native polling only.
+    </div>
+    <div class="convo-point">
+      <span class="number">4.</span>
+      <strong>New concepts in the brand book</strong> -- Postcard, Passport, Boarding, Stamps, Passengers, agent character, seatbelt chime, stickers need to feed into Brand World (W) and Glimmers (K) sections.
+    </div>
+    <div class="convo-point">
+      <span class="number">5.</span>
+      <strong>Content ratio</strong> -- Jake suggested 50/50 product/lifestyle. Recommendation: 80/20 lifestyle-first at launch.
+    </div>
+    <div class="convo-point">
+      <span class="number">6.</span>
+      <strong>Diversity in launch creative</strong> -- Recommendation: Apple-mode inclusivity. The launch video should reflect the full diversity of a college campus.
+    </div>
+  </div>
+
+  <!-- Open Items -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">TBD</span>
+      <h2>Open Items</h2>
+    </div>
+    <ul class="open-items">
+      <li>Agent character name</li>
+      <li>Moodboard from Jake (questionnaire Q44 still TODO)</li>
+      <li>Icon guide from Jake's existing Figma</li>
+      <li>Stamp artist program specifics</li>
+      <li>FOMO decline -- confirm tone</li>
+      <li>Cultural collab specifics -- instinct is clear, details TBD</li>
+      <li>Funny/viral Postcard use cases -- expand on specifics</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
