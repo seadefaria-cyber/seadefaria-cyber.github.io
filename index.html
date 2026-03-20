@@ -784,19 +784,21 @@
         #seedHeading {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease, color 1.2s ease, text-shadow 1.2s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         #seedHeading.visible {
             opacity: 1;
             transform: translateY(0);
             color: var(--accent);
-            text-shadow: 0 0 25px rgba(145, 70, 255, 0.6);
+            text-shadow: 0 0 30px rgba(145, 70, 255, 0.7), 0 0 60px rgba(145, 70, 255, 0.4);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         #seedHeading.settled {
             color: var(--text);
             text-shadow: none;
+            transition: color 1.4s ease, text-shadow 1.4s ease;
         }
 
         /* ═══ CONTACT ═══ */
@@ -1088,7 +1090,7 @@
     <section class="section services" id="services">
         <div class="services-inner">
             <div class="section-label">what_we_do</div>
-            <div class="section-heading" id="seedHeading"><span>H</span><span>o</span><span>w</span><span> </span><span>W</span><span>e</span><span> </span><span>S</span><span>e</span><span>e</span><span>d</span><span>.</span></div>
+            <div class="section-heading" id="seedHeading">How We Seed.</div>
 
             <div class="service-item" data-d="0">
                 <div class="service-header">
@@ -1354,165 +1356,15 @@
                     }, i * 50);
                 });
 
-                // 2. Flying letters (desktop) or staggered reveal (mobile)
+                // 2. Simple glow reveal for "How We Seed."
                 var heading = document.getElementById('seedHeading');
                 if (!heading) return;
-                var charSpans = heading.querySelectorAll('span');
-                var isMobile = window.innerWidth < 768;
-
-                // MOBILE: Skip flying letters entirely — use staggered character reveal instead
-                if (isMobile) {
-                    setTimeout(function() {
-                        // Set up stagger on each character span
-                        for (var si = 0; si < charSpans.length; si++) {
-                            charSpans[si].style.display = 'inline-block';
-                            charSpans[si].style.opacity = '0';
-                            charSpans[si].style.transform = 'translateY(25px) scale(0.8)';
-                            charSpans[si].style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                            charSpans[si].style.transitionDelay = (si * 40) + 'ms';
-                        }
-                        // Force heading visible container but chars still hidden
-                        heading.style.opacity = '1';
-                        heading.style.transform = 'translateY(0)';
-                        heading.style.color = 'var(--accent)';
-                        heading.style.textShadow = '0 0 25px rgba(145,70,255,0.6)';
-
-                        // Trigger reveal after a beat
-                        requestAnimationFrame(function() { requestAnimationFrame(function() {
-                            for (var si = 0; si < charSpans.length; si++) {
-                                charSpans[si].style.opacity = '1';
-                                charSpans[si].style.transform = 'translateY(0) scale(1)';
-                            }
-                        }); });
-
-                        // Settle to normal color after glow
-                        setTimeout(function() {
-                            heading.classList.add('visible');
-                            setTimeout(function() {
-                                heading.classList.add('settled');
-                                // Clean up inline styles
-                                for (var si = 0; si < charSpans.length; si++) {
-                                    charSpans[si].style.cssText = '';
-                                }
-                                setTimeout(function() { heading.style.transition = 'none'; }, 1400);
-                            }, 1500);
-                        }, 600);
-                    }, 400);
-                    return;
-                }
-
-                // DESKTOP: Create flying letter elements
-                var flyingLetters = [];
-                var letterIdx = 0;
-                for (var li = 0; li < charSpans.length; li++) {
-                    if (charSpans[li].textContent === ' ') continue;
-                    var el = document.createElement('span');
-                    el.textContent = charSpans[li].textContent;
-                    el.style.cssText = 'position:fixed;pointer-events:none;z-index:201;font-family:Inter,-apple-system,sans-serif;font-weight:800;font-size:' + (isMobile ? 'clamp(1.6rem,7vw,2.25rem)' : 'clamp(2rem,6vw,3.25rem)') + ';letter-spacing:-0.03em;line-height:1.1;color:#9146FF;text-shadow:0 0 20px rgba(145,70,255,0.6);opacity:0;white-space:pre;left:' + cx + 'px;top:' + cy + 'px;';
-                    document.body.appendChild(el);
-                    flyingLetters.push({el: el, spanIdx: li, idx: letterIdx});
-                    letterIdx++;
-                }
-
-                // Phase A: burst outward (0-500ms)
-                flyingLetters.forEach(function(fl) {
-                    var angle = (fl.idx / flyingLetters.length) * Math.PI * 2 + Math.random() * 0.5;
-                    var dist = isMobile ? (50 + Math.random() * 60) : (80 + Math.random() * 100);
-                    fl.burstX = cx + Math.cos(angle) * dist;
-                    fl.burstY = cy + Math.sin(angle) * dist;
-                    setTimeout(function() {
-                        fl.el.style.transition = 'left 0.5s cubic-bezier(0.16,1,0.3,1), top 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease';
-                        fl.el.style.left = fl.burstX + 'px';
-                        fl.el.style.top = fl.burstY + 'px';
-                        fl.el.style.opacity = '1';
-                    }, fl.idx * 25 + 80);
-                });
-
-                // Phase B (600ms+): track heading position with requestAnimationFrame
-                // Letters continuously update to match character positions as user scrolls
-                var trackingStarted = false;
-                var settled = false;
-                var startTime = Date.now();
-
                 setTimeout(function() {
-                    trackingStarted = true;
-                    // Remove CSS transitions — we'll position directly via rAF
-                    flyingLetters.forEach(function(fl) {
-                        fl.el.style.transition = 'none';
-                        fl.el.style.textShadow = '0 0 40px rgba(145,70,255,0.9), 0 0 80px rgba(145,70,255,0.5)';
-                    });
-
-                    function trackFrame() {
-                        if (settled) return;
-                        // Read LIVE positions of heading characters
-                        // heading has opacity:0 + translateY(20px), compensate with -20px
-                        var hasVisible = heading.classList.contains('visible');
-                        var yComp = hasVisible ? 0 : -20;
-
-                        flyingLetters.forEach(function(fl) {
-                            var span = charSpans[fl.spanIdx];
-                            var r = span.getBoundingClientRect();
-                            var tx = r.left + r.width / 2;
-                            var ty = r.top + r.height / 2 + yComp;
-                            // Smooth lerp toward target
-                            var curX = parseFloat(fl.el.style.left) || tx;
-                            var curY = parseFloat(fl.el.style.top) || ty;
-                            var lerpSpeed = 0.25;
-                            var nx = curX + (tx - curX) * lerpSpeed;
-                            var ny = curY + (ty - curY) * lerpSpeed;
-                            fl.el.style.left = nx + 'px';
-                            fl.el.style.top = ny + 'px';
-                        });
-
-                        // Check if heading is in viewport — if so, settle and show
-                        var hRect = heading.getBoundingClientRect();
-                        var elapsed = Date.now() - startTime;
-                        if (hRect.top >= -50 && hRect.top < window.innerHeight && elapsed > 800) {
-                            // Heading is visible and enough time has passed — settle
-                            settled = true;
-                            // Snap letters to final positions
-                            flyingLetters.forEach(function(fl) {
-                                var span = charSpans[fl.spanIdx];
-                                var r = span.getBoundingClientRect();
-                                fl.el.style.left = (r.left + r.width / 2) + 'px';
-                                fl.el.style.top = (r.top + r.height / 2 - 20) + 'px';
-                            });
-                            // Show real heading, fade letters
-                            setTimeout(function() {
-                                heading.classList.add('visible');
-                                flyingLetters.forEach(function(fl) {
-                                    fl.el.style.transition = 'opacity 0.3s ease';
-                                    fl.el.style.opacity = '0';
-                                    setTimeout(function() { fl.el.remove(); }, 400);
-                                });
-                                setTimeout(function() {
-                                    heading.classList.add('settled');
-                                    setTimeout(function() { heading.style.transition = 'none'; }, 1400);
-                                }, 1500);
-                            }, 200);
-                            return;
-                        }
-
-                        // Safety: if tracking for more than 4s without settling, force show
-                        if (elapsed > 4000) {
-                            settled = true;
-                            heading.classList.add('visible');
-                            flyingLetters.forEach(function(fl) {
-                                fl.el.style.transition = 'opacity 0.3s ease';
-                                fl.el.style.opacity = '0';
-                                setTimeout(function() { fl.el.remove(); }, 400);
-                            });
-                            setTimeout(function() {
-                                heading.classList.add('settled');
-                                setTimeout(function() { heading.style.transition = 'none'; }, 1400);
-                            }, 1500);
-                            return;
-                        }
-
-                        requestAnimationFrame(trackFrame);
-                    }
-                    requestAnimationFrame(trackFrame);
-                }, 600);
+                    heading.classList.add('visible');
+                    setTimeout(function() {
+                        heading.classList.add('settled');
+                    }, 1500);
+                }, 400);
 
             }
 
@@ -1653,24 +1505,19 @@
             tick();
         })();
 
-        /* "How We Seed." — fallback: waits for burst, only fires if burst never happens */
+        /* "How We Seed." — fallback: if burst never fires, reveal on scroll */
         (function() {
             var h = document.getElementById('seedHeading');
             if (!h) return;
             new IntersectionObserver(function(entries, obs) {
                 if (entries[0].isIntersecting) {
                     obs.disconnect();
-                    // Wait 2.5s to let burst fire and handle the heading
-                    // If burst never fires (user jumped past), this fallback takes over
                     setTimeout(function() {
                         if (!h.classList.contains('visible')) {
                             h.classList.add('visible');
-                            setTimeout(function() {
-                                h.classList.add('settled');
-                                setTimeout(function() { h.style.transition = 'none'; }, 1400);
-                            }, 1500);
+                            setTimeout(function() { h.classList.add('settled'); }, 1500);
                         }
-                    }, 2500);
+                    }, 300);
                 }
             }, { threshold: 0.1 }).observe(h);
         })();
