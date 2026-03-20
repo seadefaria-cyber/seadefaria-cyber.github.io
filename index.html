@@ -1421,6 +1421,7 @@
                 { text: 'Reach.', color: '#F0A818' },
             ];
             var idx = 0;
+            var cta = document.querySelector('.hero-cta');
             setInterval(function() {
                 el.style.transition = 'opacity 0.4s, transform 0.4s';
                 el.style.opacity = '0';
@@ -1430,6 +1431,10 @@
                     el.textContent = words[idx].text;
                     el.style.color = words[idx].color;
                     el.style.transform = 'translateY(20px)';
+                    if (cta) {
+                        cta.style.transition = 'background 0.4s, transform 0.2s, box-shadow 0.2s';
+                        cta.style.background = words[idx].color;
+                    }
                     requestAnimationFrame(function() {
                         el.style.opacity = '1';
                         el.style.transform = 'translateY(0)';
