@@ -58,8 +58,29 @@
   }
   .slide-viewport .page { margin: 0; flex-shrink: 0; transform-origin: center center; border-radius: 6px; }
   body.presenting .slide-viewport { display: contents; }
-  @page { size: 11in 8.5in landscape; margin: 0; }
-  @media print { body { background: #000; margin: 0; } .page { margin: 0; width: 100vw; height: 100vh; border-radius: 0; } }
+  @page { size: 11in 8.5in; margin: 0; }
+  @media print {
+    body { background: #000; margin: 0; padding: 0; overflow: visible; scroll-snap-type: none; }
+    .slide-viewport {
+      display: block; width: 11in; height: 8.5in;
+      overflow: hidden; background: none;
+      scroll-snap-align: none; padding: 0; margin: 0;
+      page-break-after: always; page-break-inside: avoid;
+    }
+    .slide-viewport:last-of-type { page-break-after: avoid; }
+    .page {
+      margin: 0 !important; padding: 80px 96px;
+      width: 11in !important; height: 8.5in !important;
+      border-radius: 0 !important; overflow: hidden;
+      transform: none !important;
+      position: relative; flex-shrink: 0;
+    }
+    .page::before { display: none; }
+    .present-btn, .slide-counter { display: none !important; }
+    .phone { box-shadow: none !important; }
+    .phone-bold-caption span { text-shadow: none !important; -webkit-text-stroke: 0 !important; }
+    * { text-shadow: none !important; }
+  }
 
   .page-logo {
     display: none;
@@ -179,13 +200,13 @@
   .tag { font-family: var(--font); font-size: 14px; font-weight: 700; color: #fff; background: rgba(196,92,38,0.18); border: 1.5px solid rgba(196,92,38,0.35); border-radius: 24px; padding: 7px 16px; white-space: nowrap; }
 
   /* Phase individual slides */
-  .phase-slide { display: flex; align-items: center; justify-content: center; gap: 48px; width: 100%; max-width: 860px; margin: 0 auto; }
+  .phase-slide { display: flex; align-items: center; justify-content: center; gap: 40px; width: 100%; max-width: 800px; margin: 0 auto; }
   .phase-left { flex: 0 0 50%; text-align: left; }
   .phase-right { flex: 1; display: flex; align-items: center; justify-content: center; }
   .phase-number { position: absolute; font-family: var(--font-display); font-size: 220px; font-weight: 700; color: var(--accent); opacity: 0.12; line-height: 1; z-index: 0; top: 50%; left: 50%; transform: translate(-50%, -50%); }
   .phase-label { font-family: var(--font-display); font-size: 32px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
-  .phase-title { font-family: var(--font-display); font-size: 64px; font-weight: 700; color: var(--text); text-transform: uppercase; line-height: 0.95; margin-bottom: 24px; }
-  .phase-body { font-size: 17px; font-weight: 500; color: var(--text-secondary); line-height: 1.7; max-width: 460px; }
+  .phase-title { font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--text); text-transform: uppercase; line-height: 0.95; margin-bottom: 16px; }
+  .phase-body { font-size: 15px; font-weight: 500; color: var(--text-secondary); line-height: 1.6; max-width: 420px; }
 
   /* Phase 01: Building blocks animation */
   .blocks-container { position: relative; width: 200px; height: 260px; }
@@ -292,19 +313,19 @@
 
 
 <!-- 3: CLIPPING -->
-<div class="page">
+<div class="page" style="align-items: center; text-align: left;">
   <div class="page-bg" style="background-image: url('images/mellencamp-4.jpg');"></div>
 
 
-  <div style="display: flex; align-items: flex-start; gap: 32px; width: 100%; justify-content: center;">
+  <div style="display: flex; align-items: center; gap: 24px; width: 100%;">
     <!-- Left: Title + description -->
-    <div style="flex: 1; min-width: 280px;">
-      <div class="section-title" style="font-size: 72px; color: #ffffff;">Clipping<span class="accent">.</span></div>
-      <p class="body-text" style="max-width: 380px; font-size: 17px;">We source and repackage archival and contemporary footage, spanning performances, interviews, and behind-the-scenes moments, into high-performing short-form content optimized for TikTok, Instagram Reels, and YouTube Shorts. Our team manages a consistent daily publishing cadence across a network of strategically developed fan-facing channels to expand reach and drive sustained audience engagement.</p>
+    <div style="flex: 1; min-width: 0; text-align: left;">
+      <div class="section-title" style="font-size: 64px; color: #ffffff; text-align: left;">Clipping<span class="accent">.</span></div>
+      <p class="body-text" style="max-width: 320px; font-size: 15px; line-height: 1.7; text-align: left;">We pull the full catalog, concerts, interviews, behind-the-scenes footage, and cut it into short-form clips built to perform on TikTok, Reels, and Shorts. Our editors cut and post every day across dedicated fan pages we build from scratch.</p>
     </div>
 
     <!-- Center: TikTok phone mockup -->
-    <div class="phone" style="width: 180px; height: 360px;">
+    <div class="phone" style="width: 220px; height: 420px; flex-shrink: 0;">
       <div class="phone-island"></div>
       <div class="phone-video-wrap">
         <div class="phone-video" style="background-image: url('images/mellencamp-4.jpg');"></div>
@@ -343,7 +364,7 @@
       <div class="phone-disc" style="right: 6px; bottom: 42px; width: 20px; height: 20px;"></div>
       <div class="phone-caption-area" style="bottom: 36px;">
         <div class="phone-handle" style="font-size: 7.5px;">@mellencamp.archive</div>
-        <div class="phone-desc" style="font-size: 6.5px;">POV: It's 1985 and nothing matters yet. #mellencamp #classicrock</div>
+        <div class="phone-desc" style="font-size: 6.5px;">Legend. #mellencamp #farmaid #classicrock</div>
         <div class="phone-sound" style="font-size: 6px;">
           <svg viewBox="0 0 16 16"><path d="M12.5 1a.5.5 0 01.5.5v2.03a4.5 4.5 0 01-3 4.24V13.5a2.5 2.5 0 11-5 0 2.5 2.5 0 012.5-2.5c.53 0 1.03.13 1.47.36V1.5a.5.5 0 01.53-.5z"/></svg>
           Small Town - John Mellencamp
@@ -371,51 +392,31 @@
       <div class="phone-homebar"></div>
     </div>
 
-    <!-- Right: Fan page profile mockup -->
-    <div style="flex-shrink: 0; width: 190px; background: #000; border-radius: 18px; padding: 12px; border: 2px solid #222; box-shadow: 0 12px 48px rgba(0,0,0,0.8);">
-      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #222;">
-        <div style="width: 30px; height: 30px; border-radius: 50%; background: url('images/mellencamp-1.jpg') center/cover; flex-shrink: 0;"></div>
+    <!-- Fan page profile mockup -->
+    <div style="flex-shrink: 0; width: 150px; background: #000; border-radius: 14px; padding: 10px; border: 2px solid #222;">
+      <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #222;">
+        <div style="width: 24px; height: 24px; border-radius: 50%; background: url('images/mellencamp-1.jpg') center/cover; flex-shrink: 0;"></div>
         <div>
-          <div style="font-family: var(--font); font-size: 9px; font-weight: 700; color: #fff;">mellencamp.archive</div>
-          <div style="font-family: var(--font); font-size: 7px; color: #888; margin-top: 1px;">Fan Page &middot; Est. 2026</div>
+          <div style="font-family: var(--font); font-size: 8px; font-weight: 700; color: #fff;">mellencamp.archive</div>
+          <div style="font-family: var(--font); font-size: 6px; color: #888;">Fan Page · Est. 2026</div>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-around; text-align: center; margin-bottom: 10px;">
-        <div>
-          <div style="font-family: var(--font); font-size: 11px; font-weight: 700; color: #fff;">127</div>
-          <div style="font-family: var(--font); font-size: 6px; color: #888;">Posts</div>
-        </div>
-        <div>
-          <div style="font-family: var(--font); font-size: 11px; font-weight: 700; color: #fff;">48.2K</div>
-          <div style="font-family: var(--font); font-size: 6px; color: #888;">Followers</div>
-        </div>
-        <div>
-          <div style="font-family: var(--font); font-size: 11px; font-weight: 700; color: #fff;">2.1M</div>
-          <div style="font-family: var(--font); font-size: 6px; color: #888;">Likes</div>
-        </div>
+      <div style="display: flex; justify-content: space-around; text-align: center; margin-bottom: 8px;">
+        <div><div style="font-family: var(--font); font-size: 10px; font-weight: 700; color: #fff;">127</div><div style="font-family: var(--font); font-size: 5px; color: #888;">Posts</div></div>
+        <div><div style="font-family: var(--font); font-size: 10px; font-weight: 700; color: #fff;">48.2K</div><div style="font-family: var(--font); font-size: 5px; color: #888;">Followers</div></div>
+        <div><div style="font-family: var(--font); font-size: 10px; font-weight: 700; color: #fff;">2.1M</div><div style="font-family: var(--font); font-size: 5px; color: #888;">Likes</div></div>
       </div>
-      <div style="font-family: var(--font); font-size: 7px; color: #ccc; line-height: 1.4; margin-bottom: 10px;">The archive John Mellencamp deserves.</div>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-radius: 4px; overflow: hidden;">
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-4.jpg') center/cover; position: relative;">
-          <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 2.4M</div>
-        </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-7.jpg') center/cover; position: relative;">
-          <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 1.8M</div>
-        </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-3.jpg') center/cover; position: relative;">
-          <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 947K</div>
-        </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-5.jpg') center/cover; position: relative;">
-          <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 612K</div>
-        </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-7.jpg') center/cover; position: relative;">
-          <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 483K</div>
-        </div>
-        <div style="aspect-ratio: 1; background: url('images/mellencamp-1.jpg') center/cover; position: relative;">
-          <div style="position: absolute; bottom: 2px; left: 3px; font-family: var(--font); font-size: 6px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">&#9654; 291K</div>
-        </div>
+      <div style="font-family: var(--font); font-size: 6px; color: #ccc; line-height: 1.3; margin-bottom: 8px;">The archive John Mellencamp deserves.</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-radius: 3px; overflow: hidden;">
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-4.jpg') center/cover;"></div>
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-7.jpg') center/cover;"></div>
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-3.jpg') center/cover;"></div>
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-5.jpg') center/cover;"></div>
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-7.jpg') center/cover;"></div>
+        <div style="aspect-ratio: 1; background: url('images/mellencamp-1.jpg') center/cover;"></div>
       </div>
     </div>
+
   </div>
 
   <div class="page-footer">Confidential &middot; WLDFR &nbsp;&nbsp;&nbsp; 3 / 11</div>
@@ -479,19 +480,19 @@
   <div class="phase-slide">
     <div class="phase-left">
       <div class="phase-label">Phase 01</div>
-      <div class="phase-title">Archive +<br>Build</div>
-      <p class="phase-body">We identify and elevate key moments across Mellencamp's catalog, iconic performances, music videos, archival interviews, and shape them into cohesive, high-impact content streams. Each is paired with narrative angles that are tested and refined, positioning Mellencamp within culturally resonant conversations and reinforcing a cycle of discovery, engagement, and renewed relevance.</p>
-      <div class="narrative-section">
-        <div class="narrative-label">Example Narratives</div>
-        <div class="tag-grid">
-          <div class="tag">"Just discovered and I'm obsessed"</div>
-          <div class="tag">"This needs a comeback"</div>
-          <div class="tag">"This song STILL holds up"</div>
-          <div class="tag">"80s style was PEAK and he knew it"</div>
-          <div class="tag">"Music felt different back then"</div>
-          <div class="tag">"Stage presence is a lost art"</div>
-          <div class="tag">"Vintage but still feels current"</div>
-          <div class="tag">"Pure aura maestro"</div>
+      <div class="phase-title" style="font-size: 52px; margin-bottom: 14px;">Archive +<br>Build</div>
+      <p class="phase-body" style="font-size: 14px; line-height: 1.55;">We identify and elevate key moments across Mellencamp's catalog, iconic performances, music videos, archival interviews, and shape them into cohesive, high-impact content streams. Each is paired with narrative angles that are tested and refined, positioning Mellencamp within culturally resonant conversations.</p>
+      <div class="narrative-section" style="margin-top: 12px;">
+        <div class="narrative-label" style="margin-bottom: 6px; font-size: 10px;">Example Narratives</div>
+        <div class="tag-grid" style="gap: 5px;">
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"Just discovered and I'm obsessed"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"This needs a comeback"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"This song STILL holds up"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"80s style was PEAK"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"Music felt different back then"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"Stage presence is a lost art"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"Vintage but still feels current"</div>
+          <div class="tag" style="font-size: 11px; padding: 4px 10px;">"Pure aura maestro"</div>
         </div>
       </div>
     </div>
