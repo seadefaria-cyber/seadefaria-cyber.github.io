@@ -1011,11 +1011,11 @@
                 <div class="phone-time">9:41</div>
                 <div class="phone-screen">
                     <div class="feed-strip">
-                        <div class="feed-slide"><video src="img/videos/clips/ig1.mp4" autoplay muted playsinline loop></video></div>
-                        <div class="feed-slide"><video src="img/videos/clips/ig3.mp4" muted playsinline loop></video></div>
-                        <div class="feed-slide"><video src="img/videos/clips/tk1.mp4" muted playsinline loop></video></div>
-                        <div class="feed-slide"><video src="img/videos/clips/tk3.mp4" muted playsinline loop></video></div>
-                        <div class="feed-slide"><video src="img/videos/clips/tk5.mp4" muted playsinline loop></video></div>
+                        <div class="feed-slide" data-client="THE CHRIS HEYN SHOW"><video src="img/videos/clips/ig1.mp4" autoplay muted playsinline loop></video></div>
+                        <div class="feed-slide" data-client="730 ARCHIVE"><video src="img/videos/clips/ig3.mp4" muted playsinline loop></video></div>
+                        <div class="feed-slide" data-client="730 ARCHIVE"><video src="img/videos/clips/tk1.mp4" muted playsinline loop></video></div>
+                        <div class="feed-slide" data-client="EARLY LIFE CRISIS"><video src="img/videos/clips/tk3.mp4" muted playsinline loop></video></div>
+                        <div class="feed-slide" data-client="EARLY LIFE CRISIS"><video src="img/videos/clips/tk5.mp4" muted playsinline loop></video></div>
                     </div>
                     <div class="phone-ui">
                         <div class="phone-actions">
@@ -1033,7 +1033,7 @@
                             </div>
                         </div>
                         <div class="phone-caption">
-                            <div class="phone-username">THE CHRIS HEYN SHOW</div>
+                            <div class="phone-username" id="left-client-label">THE CHRIS HEYN SHOW</div>
                             <div class="phone-desc">Slawn 🔥🔥🔥 #ian #ChrisHeynShow</div>
                         </div>
                         <div class="phone-music">
@@ -1051,7 +1051,7 @@
                 <div class="phone-screen">
                     <div class="feed-strip">
                         <div class="feed-slide" data-client="730 ARCHIVE"><video src="img/videos/clips/tk3.mp4?v=3" autoplay muted playsinline loop></video></div>
-                        <div class="feed-slide" data-client="YOUR MULTIMEDIA"><video src="img/videos/clips/tk4.mp4" muted playsinline loop></video></div>
+                        <div class="feed-slide" data-client="730 ARCHIVE"><video src="img/videos/clips/tk4.mp4" muted playsinline loop></video></div>
                         <div class="feed-slide" data-client="ASSPIZZA"><video src="img/videos/clips/ig5.mp4" muted playsinline loop></video></div>
                         <div class="feed-slide" data-client="WELCOME JPEG"><video src="img/videos/clips/tk2.mp4" muted playsinline loop></video></div>
                         <div class="feed-slide" data-client="EARLY LIFE CRISIS"><video src="img/videos/clips/tk4.mp4" muted playsinline loop></video></div>
@@ -1238,6 +1238,7 @@
 
                 // Feed scrolling
                 var label = document.getElementById('right-client-label');
+                var leftLabel = document.getElementById('left-client-label');
                 strips.forEach(function(s, si) {
                     var slides = s.children.length;
                     var h = s.firstElementChild ? s.firstElementChild.offsetHeight : 520;
@@ -1255,6 +1256,12 @@
                         }
                     }
 
+                    if (si === 0 && leftLabel) {
+                        var lslide = s.children[snapIndex];
+                        if (lslide && lslide.dataset.client) {
+                            leftLabel.textContent = lslide.dataset.client;
+                        }
+                    }
                     if (si === 1 && label) {
                         var slide = s.children[snapIndex];
                         if (slide && slide.dataset.client) {
