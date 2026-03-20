@@ -112,13 +112,13 @@
         .nav-logo {
             display: inline-flex;
             align-items: center;
-            color: var(--text);
-            font-family: 'Geist', sans-serif;
-            font-weight: 800;
-            font-size: 16px;
-            letter-spacing: 0.08em;
             text-decoration: none;
             line-height: 1;
+        }
+
+        .nav-logo-img {
+            height: 28px;
+            width: auto;
         }
 
         .nav-links {
@@ -884,6 +884,11 @@
             justify-content: space-between;
         }
 
+        .footer-stars-img {
+            height: 40px;
+            width: auto;
+        }
+
         .footer-brand {
             display: inline-flex;
             align-items: center;
@@ -965,8 +970,8 @@
                 padding: 1.5rem 1.25rem;
             }
             .footer-info { text-align: center; }
-            .footer-logo { width: 32px; height: 32px; font-size: 14px; }
-            .footer-wordmark { font-size: 1rem; }
+            .footer-stars-img { height: 30px; }
+            .nav-logo-img { height: 22px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -978,7 +983,7 @@
 <body>
 
     <nav>
-        <a href="/" class="nav-logo">APYRTUR</a>
+        <a href="/" class="nav-logo"><img src="img/apyrtur-blocks.png" alt="Apyrtur" class="nav-logo-img"></a>
         <ul class="nav-links">
             <!-- services nav removed -->
             <!-- clients nav removed -->
@@ -1099,7 +1104,7 @@
 
     <footer>
         <a href="/" class="footer-brand">
-            <span class="footer-wordmark" style="font-weight:800;letter-spacing:0.08em;">APYRTUR</span>
+            <img src="img/apyrtur-stars.png" alt="Apyrtur" class="footer-stars-img">
         </a>
         <div class="footer-info">
             &copy; 2026 Apyrtur<br>
