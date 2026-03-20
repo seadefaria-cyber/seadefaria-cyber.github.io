@@ -119,19 +119,29 @@
             align-items: center;
             text-decoration: none;
             line-height: 1;
-            overflow: hidden;
+            gap: 1px;
         }
 
-        .nav-logo-img {
-            height: 28px;
-            width: auto;
-            clip-path: inset(0 100% 0 0);
-            animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        .logo-letter {
+            font-family: 'Geist', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+            opacity: 0;
+            transform: translateY(8px);
+            animation: letterDrop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes logoReveal {
-            0% { clip-path: inset(0 100% 0 0); }
-            100% { clip-path: inset(0 0% 0 0); }
+        .logo-letter:nth-child(1) { animation-delay: 0.1s; }
+        .logo-letter:nth-child(2) { animation-delay: 0.18s; }
+        .logo-letter:nth-child(3) { animation-delay: 0.26s; }
+        .logo-letter:nth-child(4) { animation-delay: 0.34s; }
+        .logo-letter:nth-child(5) { animation-delay: 0.42s; }
+        .logo-letter:nth-child(6) { animation-delay: 0.50s; }
+        .logo-letter:nth-child(7) { animation-delay: 0.58s; }
+
+        @keyframes letterDrop {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .nav-links {
@@ -960,7 +970,7 @@
             }
             .footer-right { align-items: center; }
             .footer-stars-img { height: 14px; }
-            .nav-logo-img { height: 22px; }
+            .logo-letter { font-size: 15px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -972,7 +982,9 @@
 <body>
 
     <nav>
-        <a href="/" class="nav-logo"><img src="img/apyrtur-blocks.png" alt="Apyrtur" class="nav-logo-img"></a>
+        <a href="/" class="nav-logo">
+            <span class="logo-letter" style="color:#E8361E">A</span><span class="logo-letter" style="color:#3350B5">P</span><span class="logo-letter" style="color:#F0A818">Y</span><span class="logo-letter" style="color:#1C2340">R</span><span class="logo-letter" style="color:#0FA862">T</span><span class="logo-letter" style="color:#F07AAF">U</span><span class="logo-letter" style="color:#E8361E">R</span>
+        </a>
         <ul class="nav-links">
             <!-- services nav removed -->
             <!-- clients nav removed -->
