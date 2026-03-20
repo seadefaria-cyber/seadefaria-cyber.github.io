@@ -70,8 +70,13 @@
             --bg: #ffffff;
             --surface: #f5f5f5;
             --border: #e5e5e5;
+            --red: #E8361E;
+            --blue: #3350B5;
+            --yellow: #F0A818;
+            --navy: #1C2340;
+            --green: #0FA862;
+            --pink: #F07AAF;
             --accent: #1C2340;
-            --accent-end: #1C2340;
             --accent-light: rgba(28, 35, 64, 0.06);
             --accent-glow: rgba(28, 35, 64, 0.12);
             --text: #111111;
@@ -114,11 +119,19 @@
             align-items: center;
             text-decoration: none;
             line-height: 1;
+            overflow: hidden;
         }
 
         .nav-logo-img {
             height: 28px;
             width: auto;
+            clip-path: inset(0 100% 0 0);
+            animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        @keyframes logoReveal {
+            0% { clip-path: inset(0 100% 0 0); }
+            100% { clip-path: inset(0 0% 0 0); }
         }
 
         .nav-links {
@@ -174,7 +187,7 @@
 
         @keyframes accentGlow {
             0% { text-shadow: 0 0 0px transparent; }
-            50% { text-shadow: 0 0 40px rgba(28, 35, 64, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(51, 80, 181, 0.5); }
             100% { text-shadow: 0 0 0px transparent; }
         }
 
@@ -189,10 +202,9 @@
             animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
         }
 
-        .hero-label .at-sign-visible { color: var(--accent); }
+        .hero-label .at-sign-visible { color: var(--red); }
         .hero-accent {
-            color: var(--accent);
-            color: #1C2340;
+            color: var(--blue);
         }
 
         .hero h1 {
@@ -208,7 +220,7 @@
             font-family: var(--font);
             font-size: clamp(0.95rem, 2.2vw, 1.1rem);
             font-weight: 400;
-            color: #1C2340;
+            color: var(--navy);
             text-shadow: 0 0 30px rgba(28, 35, 64, 0.6);
             margin-top: 2rem;
             line-height: 1.7;
@@ -224,10 +236,10 @@
             font-size: 0.75rem;
             font-weight: 500;
             color: #fff;
-            background: var(--accent);
+            background: var(--red);
             border: none;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(28, 35, 64, 0.25);
+            box-shadow: 0 4px 20px rgba(232, 54, 30, 0.3);
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
             opacity: 0;
@@ -823,9 +835,8 @@
             transform: translateX(-50%);
             width: 60px;
             height: 2px;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--red), var(--blue), var(--yellow), var(--green), var(--pink));
             border-radius: 2px;
-            box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(28, 35, 64, 0.2);
         }
 
         .contact-form {
@@ -852,7 +863,7 @@
         .contact-form textarea::placeholder { color: var(--text-faint); }
 
         .contact-form input:focus,
-        .contact-form textarea:focus { border-color: var(--accent); }
+        .contact-form textarea:focus { border-color: var(--blue); }
 
         .contact-form textarea { resize: vertical; min-height: 100px; }
 
@@ -863,7 +874,7 @@
             font-size: 0.8rem;
             font-weight: 500;
             color: #fff;
-            background: var(--accent);
+            background: var(--blue);
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -884,53 +895,31 @@
             justify-content: space-between;
         }
 
-        .footer-stars-img {
-            height: 40px;
-            width: auto;
-        }
-
-        .footer-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            line-height: 1;
-        }
-
-        .footer-logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 25%;
-            background: var(--accent);
-            color: #ffffff;
-            font-family: 'Geist', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: -1px;
-            line-height: 1;
-            flex-shrink: 0;
-        }
-
-        .footer-wordmark {
-            font-family: 'Geist', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1;
-            letter-spacing: -0.5px;
-        }
-
-        .footer-wordmark-bold { font-weight: 800; color: var(--text); }
-        .footer-wordmark-light { font-weight: 300; color: var(--text-secondary); }
-
-        .footer-info {
+        .footer-left {
             font-family: var(--mono);
             font-size: 0.65rem;
             color: var(--text-muted);
-            text-align: right;
-            line-height: 1.8;
         }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .footer-right span {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .footer-stars-img {
+            height: 18px;
+            width: auto;
+            opacity: 0.6;
+        }
+
 
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 768px) {
@@ -969,8 +958,8 @@
                 text-align: center;
                 padding: 1.5rem 1.25rem;
             }
-            .footer-info { text-align: center; }
-            .footer-stars-img { height: 30px; }
+            .footer-right { align-items: center; }
+            .footer-stars-img { height: 14px; }
             .nav-logo-img { height: 22px; }
         }
 
@@ -995,7 +984,7 @@
     <section class="hero">
         <div class="hero-content">
             <p class="hero-label"><span class="at-sign-visible">@</span>defaria</p>
-            <h1 class="hero-h1"><span class="hero-word hero-accent">Engagement.</span></h1>
+            <h1 class="hero-h1"><span class="hero-word hero-accent" id="heroRotate">Engagement.</span></h1>
             <p class="hero-sub">We know how it works.</p>
             <a href="#contact" class="hero-cta">&gt; start_project</a>
         </div>
@@ -1103,12 +1092,12 @@
     </section>
 
     <footer>
-        <a href="/" class="footer-brand">
+        <div class="footer-left">
+            &copy; 2026 Apyrtur
+        </div>
+        <div class="footer-right">
+            <span>New York City</span>
             <img src="img/apyrtur-stars.png" alt="Apyrtur" class="footer-stars-img">
-        </a>
-        <div class="footer-info">
-            &copy; 2026 Apyrtur<br>
-            New York City
         </div>
     </footer>
 
@@ -1189,7 +1178,9 @@
                         var mobIcon = window.innerWidth < 768;
                         var size = mobIcon ? (16 + Math.random() * 10) : (22 + Math.random() * 14);
                         el.style.cssText = 'position:fixed;pointer-events:none;z-index:200;width:' + size + 'px;height:' + size + 'px;opacity:0;';
-                        el.querySelector('svg').style.cssText = 'width:100%;height:100%;fill:#1C2340;filter:drop-shadow(0 0 6px rgba(28,35,64,0.4));';
+                        var burstColors = ['#E8361E','#3350B5','#F0A818','#1C2340','#0FA862','#F07AAF'];
+                        var bc = burstColors[i % burstColors.length];
+                        el.querySelector('svg').style.cssText = 'width:100%;height:100%;fill:' + bc + ';filter:drop-shadow(0 0 6px rgba(0,0,0,0.2));';
                         var angle = (i / platformSVGs.length) * Math.PI * 2 + (Math.random() - 0.5) * 0.3;
                         el.style.left = (cx - size / 2) + 'px';
                         el.style.top = (cy - size / 2) + 'px';
@@ -1417,6 +1408,36 @@
                 sub.style.textShadow = 'none';
             }
         }, 1600);
+
+        /* Rotating hero word */
+        (function() {
+            var el = document.getElementById('heroRotate');
+            if (!el) return;
+            var words = [
+                { text: 'Engagement.', color: '#3350B5' },
+                { text: 'Viral.', color: '#E8361E' },
+                { text: 'Likes.', color: '#F07AAF' },
+                { text: 'Views.', color: '#0FA862' },
+                { text: 'Reach.', color: '#F0A818' },
+                { text: 'Culture.', color: '#1C2340' }
+            ];
+            var idx = 0;
+            setInterval(function() {
+                el.style.transition = 'opacity 0.4s, transform 0.4s';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(-20px)';
+                setTimeout(function() {
+                    idx = (idx + 1) % words.length;
+                    el.textContent = words[idx].text;
+                    el.style.color = words[idx].color;
+                    el.style.transform = 'translateY(20px)';
+                    requestAnimationFrame(function() {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    });
+                }, 400);
+            }, 2500);
+        })();
     </script>
 
 </body>
