@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Design Principles</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F7F5F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+.slide {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  background: #F7F5F2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.section-label {
+  position: absolute;
+  left: 80px;
+  top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.content {
+  position: absolute;
+  left: 80px;
+  top: 120px;
+  right: 80px;
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.6;
+  margin-bottom: 56px;
+  max-width: 700px;
+}
+
+.principles-grid {
+  display: flex;
+  gap: 28px;
+}
+
+.principle-card {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0eeeb;
+  border-top: 4px solid #D9071C;
+  padding: 44px 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 520px;
+}
+
+.principle-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 56px;
+  font-weight: 700;
+  color: #D9071C;
+  line-height: 1;
+}
+
+.principle-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #3D3530;
+  line-height: 1.2;
+}
+
+.principle-divider {
+  width: 40px;
+  height: 3px;
+  background: #E8E4DF;
+  border-radius: 2px;
+}
+
+.principle-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.7;
+}
+
+.principle-icon {
+  margin-top: auto;
+  width: 56px;
+  height: 56px;
+  background: rgba(217,7,28,0.06);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">19 App Design</div>
+  <img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="title">Design Principles</div>
+    <div class="subtitle">Four rules that guide every pixel, interaction, and product decision inside Tryps.</div>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-number">01</div>
+        <div class="principle-title">Martin from Tryps is the hero</div>
+        <div class="principle-divider"></div>
+        <div class="principle-desc">The iMessage travel agent is the product. Every screen exists to support the conversation, not replace it. Martin does the heavy lifting so your group chat stays fun.</div>
+        <div class="principle-icon">&#x1F4AC;</div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-number">02</div>
+        <div class="principle-title">Trip card is the viral hook</div>
+        <div class="principle-divider"></div>
+        <div class="principle-desc">The most shareable element in the entire product. It has to look good enough to screenshot, forward, and post. If people don't want to share it, it's not done.</div>
+        <div class="principle-icon">&#x1F5FA;&#xFE0F;</div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-number">03</div>
+        <div class="principle-title">Zero-friction engagement</div>
+        <div class="principle-divider"></div>
+        <div class="principle-desc">Every interaction should feel instant. One tap to vote, one swipe to browse, one link to join. Remove every unnecessary step between curiosity and action.</div>
+        <div class="principle-icon">&#x26A1;</div>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-number">04</div>
+        <div class="principle-title">Value before commitment</div>
+        <div class="principle-divider"></div>
+        <div class="principle-desc">See the trip before you sign up. Browse destinations, check prices, read the itinerary. The product earns trust by showing you everything upfront.</div>
+        <div class="principle-icon">&#x2728;</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

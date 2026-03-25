@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps Brand Book — Social Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
+
+  .section-label {
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    letter-spacing: -0.5px;
+  }
+
+  .title-area {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 1200px;
+  }
+  .title-area h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #3D3530;
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+
+  /* Two-column layout */
+  .columns {
+    position: absolute;
+    top: 200px;
+    left: 60px;
+    right: 60px;
+    height: 840px;
+    display: flex;
+    gap: 40px;
+  }
+
+  /* Left column: channels */
+  .col-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .col-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .channel-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .channel-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: #3D3530;
+  }
+
+  .channel-desc {
+    font-size: 15px;
+    font-weight: 400;
+    color: #8C8279;
+    line-height: 1.5;
+  }
+
+  /* Right column: rules */
+  .col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .rule-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .rule-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: #D9071C;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 44px;
+  }
+
+  .rule-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .rule-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #3D3530;
+  }
+
+  .rule-desc {
+    font-size: 15px;
+    font-weight: 400;
+    color: #8C8279;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="section-label">14 SOCIAL MEDIA</div>
+<img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>Social Playbook</h1>
+</div>
+
+<div class="columns">
+  <!-- Left: Channels -->
+  <div class="col-left">
+    <div class="col-label">Channels</div>
+
+    <div class="channel-card">
+      <div class="channel-name">Twitter / X</div>
+      <div class="channel-desc">Real-time commentary and personality. Where Tryps has a voice, not just a feed. Witty, conversational, the friend who always has the best travel take.</div>
+    </div>
+
+    <div class="channel-card">
+      <div class="channel-name">Instagram</div>
+      <div class="channel-desc">The grid is our storefront. Every post earns its spot. Stories are behind the scenes, raw, unfiltered. The grid stays curated.</div>
+    </div>
+
+    <div class="channel-card">
+      <div class="channel-name">TikTok</div>
+      <div class="channel-desc">Authentic, never polished. If it looks like it had a production meeting, it doesn't belong here. Real trips, real chaos, real people.</div>
+    </div>
+
+    <div class="channel-card">
+      <div class="channel-name">Pinterest</div>
+      <div class="channel-desc">Trip inspo boards that actually convert. Destination mood boards, packing guides, group trip aesthetics. Long-tail discovery engine.</div>
+    </div>
+  </div>
+
+  <!-- Right: Rules -->
+  <div class="col-right">
+    <div class="col-label">Rules</div>
+
+    <div class="rule-card">
+      <div class="rule-number">01</div>
+      <div class="rule-content">
+        <div class="rule-title">Grid stays pristine</div>
+        <div class="rule-desc">Every Instagram grid post is reviewed for visual cohesion. No one-offs, no random reposts. The grid is the brand's first impression.</div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">02</div>
+      <div class="rule-content">
+        <div class="rule-title">Trip-first content</div>
+        <div class="rule-desc">Every piece of content should make someone want to plan a trip. If it doesn't spark that feeling, it doesn't post.</div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">03</div>
+      <div class="rule-content">
+        <div class="rule-title">50/50 lifestyle and product</div>
+        <div class="rule-desc">Half the feed is aspirational travel content. Half shows the product in action. Never let one dominate the other.</div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-number">04</div>
+      <div class="rule-content">
+        <div class="rule-title">No emojis in system copy</div>
+        <div class="rule-desc">Emojis are for user-generated content and casual replies. Official Tryps copy, captions, and marketing materials stay clean.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

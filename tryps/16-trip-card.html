@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps Brand Book - The Trip Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
+
+  .section-label {
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    letter-spacing: -0.5px;
+  }
+
+  .title-area {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 1200px;
+  }
+  .title-area h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #3D3530;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .title-area p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8C8279;
+    line-height: 1.5;
+  }
+
+  .card-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%);
+    margin-top: 40px;
+  }
+
+  .trip-card {
+    width: 400px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-hero {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #D9071C 0%, #8B0415 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px 28px;
+  }
+  .card-hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+  .card-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .card-hero-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.1;
+  }
+  .card-hero-dates {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+
+  .card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .members-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .members-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .avatars {
+    display: flex;
+    flex-direction: row;
+  }
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-left: -10px;
+  }
+  .avatar:first-child { margin-left: 0; }
+  .av-1 { background: #D9071C; }
+  .av-2 { background: #3D3530; }
+  .av-3 { background: #E8913A; }
+  .av-4 { background: #2E7DD6; }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: #f0eeeb;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: #ECFDF5;
+    font-size: 14px;
+    font-weight: 600;
+    color: #059669;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #059669;
+  }
+
+  .expense-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .expense-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .expense-amount {
+    font-size: 28px;
+    font-weight: 800;
+    color: #3D3530;
+    letter-spacing: -0.5px;
+  }
+  .expense-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8C8279;
+  }
+
+  .itinerary-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .itinerary-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .itinerary-day {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #F7F5F2;
+    border-radius: 10px;
+  }
+  .day-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #D9071C;
+    width: 44px;
+    flex-shrink: 0;
+  }
+  .day-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3D3530;
+  }
+</style>
+</head>
+<body>
+
+<div class="section-label">16 APPLICATIONS</div>
+<img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>The Trip Card</h1>
+  <p>The single most polished design element in the app.</p>
+</div>
+
+<div class="card-container">
+  <div class="trip-card">
+    <div class="card-hero">
+      <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=300&fit=crop" alt="Bali">
+      <div class="card-hero-content">
+        <div class="card-hero-title">Bali 2026</div>
+        <div class="card-hero-dates">Jul 12 - 19</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="members-section">
+        <div class="members-label">Travelers</div>
+        <div class="avatars">
+          <div class="avatar av-1">S</div>
+          <div class="avatar av-2">M</div>
+          <div class="avatar av-3">J</div>
+          <div class="avatar av-4">A</div>
+        </div>
+      </div>
+
+      <div class="status-row">
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          All booked
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="expense-section">
+        <div class="expense-label">Total Expenses</div>
+        <div class="expense-amount">$2,840</div>
+        <div class="expense-sub">$710 per person</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="itinerary-section">
+        <div class="itinerary-label">Itinerary Preview</div>
+        <div class="itinerary-day">
+          <div class="day-num">Day 1</div>
+          <div class="day-text">Arrive, check in, sunset dinner</div>
+        </div>
+        <div class="itinerary-day">
+          <div class="day-num">Day 2</div>
+          <div class="day-text">Rice terraces, spa afternoon</div>
+        </div>
+        <div class="itinerary-day">
+          <div class="day-num">Day 3</div>
+          <div class="day-text">Snorkeling, beach club</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

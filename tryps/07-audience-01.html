@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps - The Group Chat CEO</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #F7F5F2;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .section-label {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    z-index: 2;
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 40px;
+    padding: 110px 60px 50px;
+  }
+  .left {
+    flex: 0 0 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .right {
+    flex: 0 0 42%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #D9071C;
+    margin-bottom: 2px;
+  }
+  .subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #8C8279;
+    margin-bottom: 8px;
+  }
+  .demo-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    padding: 28px 32px;
+  }
+  .demo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .demo-list li {
+    font-size: 17px;
+    color: #3D3530;
+    line-height: 1.5;
+    padding-left: 20px;
+    position: relative;
+  }
+  .demo-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #D9071C;
+  }
+  .quote-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    padding: 24px 28px;
+  }
+  .quote-card p {
+    font-size: 16px;
+    color: #3D3530;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .pain-card {
+    background: #D9071C;
+    border-radius: 16px;
+    padding: 24px 28px;
+  }
+  .pain-card p {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .right-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #D9071C;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .pill {
+    background: #fff;
+    border: 1px solid #f0eeeb;
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: #3D3530;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .stat-card {
+    background: #D9071C;
+    border-radius: 16px;
+    padding: 28px 32px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 56px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="section-label">05 Our Audience</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="left">
+      <div class="title">The Group Chat CEO</div>
+      <div class="subtitle">The person who always ends up planning everything</div>
+
+      <div class="demo-card">
+        <ul class="demo-list">
+          <li>24-30 years old, post-grad</li>
+          <li>Has some money, not wealthy</li>
+          <li>Travels 2-4x a year</li>
+          <li>Friends in different cities</li>
+        </ul>
+      </div>
+
+      <div class="quote-card">
+        <p>"Already the planner. Creates the shared album, sends the 'ok here's the plan' text, picks the Airbnb nobody asked them to find."</p>
+      </div>
+
+      <div class="pain-card">
+        <p>"I spent 3 hours last week just trying to get 6 people to agree on a restaurant in Tokyo. By the time we decided, the reservation was gone."</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div>
+        <div class="right-label">Their Phone</div>
+        <div class="pills">
+          <span class="pill">Instagram</span>
+          <span class="pill">TikTok</span>
+          <span class="pill">Pinterest</span>
+          <span class="pill">Snapchat</span>
+          <span class="pill">Partiful</span>
+          <span class="pill">Canva</span>
+          <span class="pill">Kayak</span>
+          <span class="pill">Venmo</span>
+          <span class="pill">Strava</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="right-label">Their Brands</div>
+        <div class="pills">
+          <span class="pill">Aritzia</span>
+          <span class="pill">ALD</span>
+          <span class="pill">Patagonia</span>
+          <span class="pill">Arc'teryx</span>
+          <span class="pill">New Balance</span>
+          <span class="pill">Sweetgreen</span>
+          <span class="pill">Whole Foods</span>
+          <span class="pill">A24</span>
+          <span class="pill">Blue Bottle</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number">73%</div>
+        <div class="stat-desc">of friend groups say planning is the #1 reason trips don't happen</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

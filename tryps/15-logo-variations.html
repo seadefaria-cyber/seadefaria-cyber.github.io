@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps Brand Book — Logo Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
+
+  .section-label {
+    position: absolute;
+    top: 48px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .title-area {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 1200px;
+  }
+  .title-area h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #3D3530;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .title-area p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8C8279;
+  }
+
+  .grid {
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 820px 820px;
+    grid-template-rows: 370px 370px;
+    gap: 28px;
+  }
+
+  .logo-card {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .logo-card img.card-logo {
+    height: 60px;
+    width: auto;
+  }
+
+  .logo-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 32px;
+  }
+
+  .card-light {
+    background: #FFFFFF;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+  }
+  .card-light .logo-label { color: #8C8279; }
+
+  .card-dark {
+    background: #3D3530;
+  }
+  .card-dark .logo-label { color: rgba(255,255,255,0.5); }
+
+  .card-brand {
+    background: #D9071C;
+  }
+  .card-brand .logo-label { color: rgba(255,255,255,0.6); }
+
+  .card-darkmode {
+    background: #1E1B19;
+  }
+  .card-darkmode .logo-label { color: rgba(255,255,255,0.45); }
+</style>
+</head>
+<body>
+
+<div class="section-label">15 - LOGO</div>
+<img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>Logo Variations</h1>
+  <p>Approved usage across light, dark, and brand backgrounds.</p>
+</div>
+
+<div class="grid">
+  <!-- Top-left: Full Color on Light -->
+  <div class="logo-card card-light">
+    <img class="card-logo" src="img/tryps-logo-red.png" style="height:60px;width:auto;">
+    <div class="logo-label">Full Color on Light</div>
+  </div>
+
+  <!-- Top-right: White on Dark -->
+  <div class="logo-card card-dark">
+    <img class="card-logo" src="img/logo-white.png" style="height:60px;width:auto;">
+    <div class="logo-label">White on Dark</div>
+  </div>
+
+  <!-- Bottom-left: White on Brand -->
+  <div class="logo-card card-brand">
+    <img class="card-logo" src="img/logo-white.png" style="height:60px;width:auto;">
+    <div class="logo-label">White on Brand</div>
+  </div>
+
+  <!-- Bottom-right: Dark Mode -->
+  <div class="logo-card card-darkmode">
+    <img class="card-logo" src="img/logo-white.png" style="height:60px;width:auto;">
+    <div class="logo-label">Dark Mode</div>
+  </div>
+</div>
+
+</body>
+</html>

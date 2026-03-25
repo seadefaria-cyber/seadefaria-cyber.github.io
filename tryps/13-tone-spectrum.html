@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tone Spectrum</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F7F5F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #F7F5F2; font-family: 'Plus Jakarta Sans', sans-serif; }
+.logo { position: absolute; top: 40px; right: 40px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; color: #D9071C; }
+.section-label { position: absolute; top: 40px; left: 80px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 500; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
+.title { position: absolute; top: 88px; left: 80px; font-size: 56px; font-weight: 800; color: #3D3530; }
+.subtitle { position: absolute; top: 160px; left: 80px; font-size: 17px; font-weight: 400; color: #8C8279; max-width: 1400px; line-height: 1.5; }
+.spectrum-container { position: absolute; top: 220px; left: 80px; width: 1760px; }
+.spectrum-bar { width: 1760px; height: 48px; border-radius: 24px; background: linear-gradient(to right, #FFB347, #E8812A, #D9071C, #7A2030, #3D1A1A); position: relative; }
+.spectrum-labels { display: flex; justify-content: space-between; margin-top: 10px; }
+.spectrum-labels span { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #8C8279; letter-spacing: 2px; text-transform: uppercase; }
+.dot { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 22px; height: 22px; border-radius: 50%; border: 3px solid #FFFFFF; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.dot-social { left: 8%; background: #FFB347; }
+.dot-push { left: 28%; background: #E8812A; }
+.dot-inapp { left: 50%; background: #D9071C; }
+.dot-email { left: 72%; background: #7A2030; }
+.dot-press { left: 92%; background: #3D1A1A; }
+.example-cards { position: absolute; top: 340px; left: 80px; display: flex; flex-direction: row; gap: 20px; }
+.example-card { width: 336px; height: 680px; background: #F5F2EF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; }
+.tag { display: inline-block; padding: 6px 16px; border-radius: 20px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: #FFFFFF; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; align-self: flex-start; }
+.tag-casual { background: #FFB347; }
+.tag-friendly { background: #E8812A; }
+.tag-balanced { background: #D9071C; }
+.tag-professional { background: #7A2030; }
+.tag-formal { background: #3D1A1A; }
+.channel-name { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: #3D3530; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; }
+.channel-label { font-size: 13px; color: #8C8279; margin-bottom: 20px; }
+.divider { width: 100%; height: 1px; background: #E5E1DB; margin-bottom: 20px; }
+.example-text { font-size: 16px; color: #3D3530; font-style: italic; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">13 Voice & Tone</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+  <div class="title">Tone Spectrum</div>
+  <div class="subtitle">Our tone shifts across channels, but the voice always stays tryps.</div>
+  <div class="spectrum-container">
+    <div class="spectrum-bar">
+      <div class="dot dot-social"></div>
+      <div class="dot dot-push"></div>
+      <div class="dot dot-inapp"></div>
+      <div class="dot dot-email"></div>
+      <div class="dot dot-press"></div>
+    </div>
+    <div class="spectrum-labels">
+      <span>Casual</span>
+      <span>Formal</span>
+    </div>
+  </div>
+  <div class="example-cards">
+    <div class="example-card">
+      <div class="tag tag-casual">Casual</div>
+      <div class="channel-name">Social</div>
+      <div class="channel-label">Instagram / TikTok</div>
+      <div class="divider"></div>
+      <div class="example-text">"omg this hidden beach in Bali though. your next trip starts here"</div>
+    </div>
+    <div class="example-card">
+      <div class="tag tag-friendly">Friendly</div>
+      <div class="channel-name">Push Notifications</div>
+      <div class="channel-label">Mobile alerts</div>
+      <div class="divider"></div>
+      <div class="example-text">"Heads up, your flight to Tokyo leaves in 3 hours. Don't forget your passport!"</div>
+    </div>
+    <div class="example-card">
+      <div class="tag tag-balanced">Balanced</div>
+      <div class="channel-name">In-App</div>
+      <div class="channel-label">In-app messaging</div>
+      <div class="divider"></div>
+      <div class="example-text">"Your itinerary for Rome is ready. We've added a few local favorites we think you'll love."</div>
+    </div>
+    <div class="example-card">
+      <div class="tag tag-professional">Professional</div>
+      <div class="channel-name">Email</div>
+      <div class="channel-label">Email communications</div>
+      <div class="divider"></div>
+      <div class="example-text">"We're pleased to share your upcoming trip details. Please review your booking confirmation below."</div>
+    </div>
+    <div class="example-card">
+      <div class="tag tag-formal">Formal</div>
+      <div class="channel-name">Press</div>
+      <div class="channel-label">Press releases</div>
+      <div class="divider"></div>
+      <div class="example-text">"Tryps Inc. today announced the expansion of its platform to 12 new markets across Southeast Asia."</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

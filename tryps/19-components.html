@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Components</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F7F5F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+.slide {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  background: #F7F5F2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.section-label {
+  position: absolute;
+  left: 80px;
+  top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.content {
+  position: absolute;
+  left: 80px;
+  top: 120px;
+  right: 80px;
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.5;
+  margin-bottom: 48px;
+}
+
+.grid {
+  display: flex;
+  gap: 28px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0eeeb;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.card-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #B8B0A8;
+  letter-spacing: 1px;
+}
+
+/* Buttons */
+.btn-showcase {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.btn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-primary {
+  background: #D9071C;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 40px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #3D3530;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #3D3530;
+  border-radius: 12px;
+  padding: 14px 40px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-ghost {
+  background: rgba(217,7,28,0.06);
+  color: #D9071C;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 40px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #B8B0A8;
+  letter-spacing: 1px;
+}
+
+/* Inputs */
+.input-showcase {
+  display: flex;
+  gap: 28px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.input-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #3D3530;
+}
+
+.input-field {
+  background: #F7F5F2;
+  border: 2px solid #E8E4DF;
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: #8C8279;
+  width: 100%;
+}
+
+.input-field-focus {
+  background: #FFFFFF;
+  border: 2px solid #D9071C;
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: #3D3530;
+  width: 100%;
+}
+
+.select-field {
+  background: #F7F5F2;
+  border: 2px solid #E8E4DF;
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: #3D3530;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select-arrow {
+  font-size: 12px;
+  color: #8C8279;
+}
+
+.input-hint {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #B8B0A8;
+}
+
+/* Vote chips */
+.chip-showcase {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.chip-active {
+  background: rgba(217,7,28,0.08);
+  border: 2px solid #D9071C;
+  color: #D9071C;
+}
+
+.chip-inactive {
+  background: #FFFFFF;
+  border: 2px solid #E8E4DF;
+  color: #3D3530;
+}
+
+.chip-selected {
+  background: #D9071C;
+  border: 2px solid #D9071C;
+  color: #FFFFFF;
+}
+
+/* Badge */
+.badge-showcase {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.badge-red {
+  background: #D9071C;
+  color: #FFFFFF;
+}
+
+.badge-warm {
+  background: rgba(217,7,28,0.08);
+  color: #D9071C;
+}
+
+.badge-neutral {
+  background: #F0EEEB;
+  color: #8C8279;
+}
+
+/* Toggle */
+.toggle-showcase {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.toggle-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toggle-track {
+  width: 52px;
+  height: 30px;
+  border-radius: 999px;
+  position: relative;
+}
+
+.toggle-track-on {
+  background: #D9071C;
+}
+
+.toggle-track-off {
+  background: #E8E4DF;
+}
+
+.toggle-thumb {
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.toggle-thumb-on {
+  right: 3px;
+}
+
+.toggle-thumb-off {
+  left: 3px;
+}
+
+.toggle-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #3D3530;
+}
+
+.toggle-state {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #B8B0A8;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">19 App Design</div>
+  <img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="title">Components</div>
+    <div class="subtitle">The building blocks of the Tryps interface. Every component follows the same radius, color, and spacing rules.</div>
+
+    <div class="grid">
+      <!-- Column 1: Buttons + Inputs -->
+      <div class="col" style="flex: 1.2;">
+        <!-- Buttons -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-label">Buttons</div>
+            <div class="card-count">3 variants</div>
+          </div>
+          <div class="btn-showcase">
+            <div class="btn-item">
+              <div class="btn-primary">Join Trip</div>
+              <div class="btn-name">Primary</div>
+            </div>
+            <div class="btn-item">
+              <div class="btn-secondary">Maybe Later</div>
+              <div class="btn-name">Secondary</div>
+            </div>
+            <div class="btn-item">
+              <div class="btn-ghost">View Details</div>
+              <div class="btn-name">Ghost</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-label">Inputs</div>
+            <div class="card-count">3 states</div>
+          </div>
+          <div class="input-showcase">
+            <div class="input-group">
+              <div class="input-label">Destination</div>
+              <div class="input-field">Where are you going?</div>
+              <div class="input-hint">Default state</div>
+            </div>
+            <div class="input-group">
+              <div class="input-label">Destination</div>
+              <div class="input-field-focus">Barcelona, Spain</div>
+              <div class="input-hint">Focused / filled</div>
+            </div>
+            <div class="input-group">
+              <div class="input-label">Trip Type</div>
+              <div class="select-field">
+                <span>Beach Getaway</span>
+                <span class="select-arrow">&#9662;</span>
+              </div>
+              <div class="input-hint">Select dropdown</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Interactive -->
+      <div class="col" style="flex: 0.8;">
+        <!-- Vote Chips -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-label">Vote Chips</div>
+            <div class="card-count">3 states</div>
+          </div>
+          <div class="chip-showcase">
+            <div class="chip chip-selected">Tulum &#10003;</div>
+            <div class="chip chip-active">Cabo</div>
+            <div class="chip chip-inactive">Bali</div>
+            <div class="chip chip-inactive">Lisbon</div>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-label">Badges</div>
+            <div class="card-count">3 variants</div>
+          </div>
+          <div class="badge-showcase">
+            <div class="badge badge-red">NEW</div>
+            <div class="badge badge-warm">TRENDING</div>
+            <div class="badge badge-neutral">4 SPOTS LEFT</div>
+          </div>
+        </div>
+
+        <!-- Toggle -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-label">Toggle</div>
+            <div class="card-count">2 states</div>
+          </div>
+          <div class="toggle-showcase">
+            <div class="toggle-item">
+              <div class="toggle-track toggle-track-on">
+                <div class="toggle-thumb toggle-thumb-on"></div>
+              </div>
+              <div>
+                <div class="toggle-label">Push Notifications</div>
+                <div class="toggle-state">ON</div>
+              </div>
+            </div>
+            <div class="toggle-item">
+              <div class="toggle-track toggle-track-off">
+                <div class="toggle-thumb toggle-thumb-off"></div>
+              </div>
+              <div>
+                <div class="toggle-label">Email Digest</div>
+                <div class="toggle-state">OFF</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

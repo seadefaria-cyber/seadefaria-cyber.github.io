@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps Brand Book - Extended Palette</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
+
+  .section-label {
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    letter-spacing: -0.5px;
+  }
+
+  .title-area {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 1200px;
+  }
+  .title-area h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #3D3530;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .title-area p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8C8279;
+    line-height: 1.5;
+    max-width: 900px;
+  }
+
+  .palette {
+    position: absolute;
+    top: 230px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .row-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .row-cards {
+    display: flex;
+    gap: 24px;
+  }
+
+  .color-card {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+  }
+
+  .color-swatch {
+    width: 100%;
+    height: 180px;
+  }
+
+  .color-info {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .color-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #3D3530;
+  }
+
+  .color-hex {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    color: #8C8279;
+  }
+
+  .color-usage {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8C8279;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="section-label">11 COLOR SYSTEM</div>
+<img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>Extended Palette</h1>
+  <p>Full spectrum of brand and UI colors for consistent application.</p>
+</div>
+
+<div class="palette">
+  <!-- Row 1: Semantic -->
+  <div>
+    <div class="row-label">SEMANTIC COLORS</div>
+    <div class="row-cards">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #2D8F2D;"></div>
+        <div class="color-info">
+          <div class="color-name">Success Green</div>
+          <div class="color-hex">#2D8F2D</div>
+          <div class="color-usage">Confirmations, completed states</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #E6A817;"></div>
+        <div class="color-info">
+          <div class="color-name">Warning Amber</div>
+          <div class="color-hex">#E6A817</div>
+          <div class="color-usage">Pending actions, alerts</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #D9071C;"></div>
+        <div class="color-info">
+          <div class="color-name">Error Red</div>
+          <div class="color-hex">#D9071C</div>
+          <div class="color-usage">Errors, destructive actions</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #2E7DD6;"></div>
+        <div class="color-info">
+          <div class="color-name">Info Blue</div>
+          <div class="color-hex">#2E7DD6</div>
+          <div class="color-usage">Links, informational elements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Neutrals -->
+  <div>
+    <div class="row-label">NEUTRALS</div>
+    <div class="row-cards">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #F5F5F5;"></div>
+        <div class="color-info">
+          <div class="color-name">Light Gray</div>
+          <div class="color-hex">#F5F5F5</div>
+          <div class="color-usage">Backgrounds, empty states</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #DDD8D0;"></div>
+        <div class="color-info">
+          <div class="color-name">Medium Gray</div>
+          <div class="color-hex">#DDD8D0</div>
+          <div class="color-usage">Borders, dividers</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #3D3530;"></div>
+        <div class="color-info">
+          <div class="color-name">Charcoal</div>
+          <div class="color-hex">#3D3530</div>
+          <div class="color-usage">Primary text, headings</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #F7F5F2;"></div>
+        <div class="color-info">
+          <div class="color-name">Warm Cream</div>
+          <div class="color-hex">#F7F5F2</div>
+          <div class="color-usage">Page backgrounds, cards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

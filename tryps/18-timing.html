@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Timing</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.slide {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  background: #F7F5F2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.logo {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #D9071C;
+  letter-spacing: -0.5px;
+}
+
+.section-label {
+  position: absolute;
+  left: 60px;
+  top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.content {
+  position: absolute;
+  left: 60px;
+  top: 120px;
+  right: 60px;
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #8C8279;
+  margin-bottom: 72px;
+}
+
+.timing-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 1200px;
+}
+
+.timing-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.timing-ms {
+  font-family: 'Space Mono', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  color: #D9071C;
+  min-width: 140px;
+  text-align: right;
+}
+
+.timing-bar {
+  height: 48px;
+  background: #D9071C;
+  border-radius: 12px;
+}
+
+.timing-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #3D3530;
+  min-width: 120px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">18 Motion and Icons</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="title">Timing</div>
+    <div class="subtitle">Consistent timing creates rhythm.</div>
+
+    <div class="timing-rows">
+      <div class="timing-row">
+        <div class="timing-ms">100ms</div>
+        <div class="timing-bar" style="width: 160px;"></div>
+        <div class="timing-label">Instant</div>
+      </div>
+
+      <div class="timing-row">
+        <div class="timing-ms">150ms</div>
+        <div class="timing-bar" style="width: 280px;"></div>
+        <div class="timing-label">Fast</div>
+      </div>
+
+      <div class="timing-row">
+        <div class="timing-ms">200ms</div>
+        <div class="timing-bar" style="width: 440px;"></div>
+        <div class="timing-label">Normal</div>
+      </div>
+
+      <div class="timing-row">
+        <div class="timing-ms">300ms</div>
+        <div class="timing-bar" style="width: 680px;"></div>
+        <div class="timing-label">Slow</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

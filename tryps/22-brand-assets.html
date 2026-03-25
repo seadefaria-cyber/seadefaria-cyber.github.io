@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>22 Brand Assets</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F7F5F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+.slide {
+  width: 1920px; height: 1080px; overflow: hidden;
+  position: relative; background: #F7F5F2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.section-label {
+  position: absolute; left: 80px; top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400; font-size: 12px; color: #8C8279;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+.content {
+  position: absolute;
+  left: 80px;
+  top: 120px;
+  right: 80px;
+}
+
+.title {
+  font-weight: 800; font-size: 52px; color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-weight: 400; font-size: 18px; color: #8C8279;
+  line-height: 1.55;
+  margin-bottom: 48px;
+  max-width: 700px;
+}
+
+.layout {
+  display: flex;
+  gap: 60px;
+}
+
+/* Left: Asset list */
+.asset-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.asset-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #E8E5E1;
+}
+
+.asset-item:first-child {
+  border-top: 1px solid #E8E5E1;
+}
+
+.asset-dot {
+  width: 10px; height: 10px;
+  background: #D9071C;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.asset-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.asset-name {
+  font-weight: 700; font-size: 19px; color: #3D3530;
+}
+
+.asset-desc {
+  font-size: 13px; font-weight: 400; color: #B8B0A8;
+}
+
+.asset-detail {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400; font-size: 13px; color: #8C8279;
+  margin-left: auto;
+  background: #F0EEEB;
+  padding: 5px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* Right: Summary card */
+.summary-card {
+  width: 560px;
+  min-width: 560px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #f0eeeb;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.summary-header {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Logo preview */
+.logo-preview {
+  background: #F7F5F2;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.logo-light {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f0eeeb;
+}
+
+.logo-dark {
+  background: #3D3530;
+  border-radius: 12px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text-red {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: #D9071C;
+  letter-spacing: -0.5px;
+}
+
+.logo-text-white {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+}
+
+/* Color swatch */
+.color-row {
+  display: flex;
+  gap: 12px;
+}
+
+.color-swatch {
+  flex: 1;
+  border-radius: 12px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Font sample */
+.font-sample {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.font-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.font-display {
+  font-size: 22px;
+  font-weight: 800;
+  color: #3D3530;
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: #3D3530;
+}
+
+.font-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #8C8279;
+  letter-spacing: 1px;
+}
+
+/* Tagline */
+.tagline-row {
+  background: rgba(217,7,28,0.05);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tagline-quote {
+  font-size: 18px;
+  font-weight: 600;
+  color: #D9071C;
+  font-style: italic;
+}
+
+.tagline-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #8C8279;
+  letter-spacing: 1px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">22 Brand Assets</div>
+  <img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="title">Brand Assets</div>
+    <div class="subtitle">Everything you need to represent Tryps correctly across all touchpoints.</div>
+
+    <div class="layout">
+      <!-- Left: Asset list -->
+      <div class="asset-list">
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Logo Files</div>
+            <div class="asset-desc">Primary, white, and monochrome versions</div>
+          </div>
+          <div class="asset-detail">SVG, PNG, PDF</div>
+        </div>
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Color Tokens</div>
+            <div class="asset-desc">All brand and UI colors with semantic names</div>
+          </div>
+          <div class="asset-detail">theme.ts</div>
+        </div>
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Font Files</div>
+            <div class="asset-desc">Display and monospace typefaces</div>
+          </div>
+          <div class="asset-detail">WOFF2, OTF</div>
+        </div>
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Icon Set</div>
+            <div class="asset-desc">Consistent line icons for all UI elements</div>
+          </div>
+          <div class="asset-detail">Lucide</div>
+        </div>
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Photography Guidelines</div>
+            <div class="asset-desc">Warm, natural, golden hour direction</div>
+          </div>
+          <div class="asset-detail">PDF</div>
+        </div>
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Social Templates</div>
+            <div class="asset-desc">Sized for all major platforms</div>
+          </div>
+          <div class="asset-detail">IG, TikTok, X</div>
+        </div>
+        <div class="asset-item">
+          <div class="asset-dot"></div>
+          <div class="asset-info">
+            <div class="asset-name">Email Templates</div>
+            <div class="asset-desc">Transactional and marketing layouts</div>
+          </div>
+          <div class="asset-detail">HTML</div>
+        </div>
+      </div>
+
+      <!-- Right: Summary card -->
+      <div class="summary-card">
+        <div class="summary-header">Brand at a Glance</div>
+
+        <div class="logo-preview">
+          <div class="logo-light">
+            <div class="logo-text-red">tryps</div>
+          </div>
+          <div class="logo-dark">
+            <div class="logo-text-white">tryps</div>
+          </div>
+        </div>
+
+        <div class="color-row">
+          <div class="color-swatch" style="background:#D9071C;color:#FFFFFF;">#D9071C</div>
+          <div class="color-swatch" style="background:#3D3530;color:#FFFFFF;">#3D3530</div>
+          <div class="color-swatch" style="background:#F7F5F2;color:#8C8279;border:1px solid #E8E4DF;">#F7F5F2</div>
+          <div class="color-swatch" style="background:#8C8279;color:#FFFFFF;">#8C8279</div>
+        </div>
+
+        <div class="font-sample">
+          <div class="font-row">
+            <div class="font-display">Plus Jakarta Sans</div>
+            <div class="font-label">DISPLAY</div>
+          </div>
+          <div class="font-row">
+            <div class="font-mono">Space Mono</div>
+            <div class="font-label">MONOSPACE</div>
+          </div>
+        </div>
+
+        <div class="tagline-row">
+          <div class="tagline-quote">"A Travel Agent for Your Group Chat."</div>
+          <div class="tagline-label">TAGLINE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

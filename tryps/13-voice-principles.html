@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Voice Principles</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F7F5F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #F7F5F2; font-family: 'Plus Jakarta Sans', sans-serif; }
+.logo { position: absolute; top: 40px; right: 40px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; color: #D9071C; }
+.section-label { position: absolute; top: 40px; left: 80px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 500; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
+.title { position: absolute; top: 88px; left: 80px; font-size: 56px; font-weight: 800; color: #3D3530; }
+.subtitle { position: absolute; top: 160px; left: 80px; font-size: 17px; font-weight: 400; color: #8C8279; max-width: 1200px; line-height: 1.5; }
+.cards { position: absolute; top: 210px; left: 80px; display: flex; flex-direction: row; gap: 20px; }
+.card { width: 425px; height: 840px; background: #F5F2EF; border-radius: 16px; padding: 36px; display: flex; flex-direction: column; }
+.card-number { font-family: 'Space Mono', monospace; font-size: 48px; font-weight: 700; color: #D9071C; margin-bottom: 12px; }
+.card-title { font-size: 28px; font-weight: 800; color: #3D3530; margin-bottom: 12px; }
+.card-desc { font-size: 15px; color: #8C8279; line-height: 1.6; margin-bottom: 24px; flex-shrink: 0; }
+.example-box { padding: 18px 20px; border-radius: 12px; margin-bottom: 14px; }
+.example-box-do { background: #ECFDF3; }
+.example-box-dont { background: #FEF2F2; }
+.example-label { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.label-do { color: #16A34A; }
+.label-dont { color: #D9071C; }
+.example-text { font-size: 14px; color: #3D3530; line-height: 1.6; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">13 Voice & Tone</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+  <div class="title">Voice Principles</div>
+  <div class="subtitle">The four guiding principles that shape how tryps communicates.</div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-number">01</div>
+      <div class="card-title">Warm</div>
+      <div class="card-desc">We speak like a trusted friend who happens to know the best spots.</div>
+      <div class="example-box example-box-do">
+        <div class="example-label label-do">Do</div>
+        <div class="example-text">"We found a gem you'll love -- a cozy bistro with the best sunset views."</div>
+      </div>
+      <div class="example-box example-box-dont">
+        <div class="example-label label-dont">Don't</div>
+        <div class="example-text">"Per your itinerary preferences, the following dining establishment has been curated."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">02</div>
+      <div class="card-title">Witty</div>
+      <div class="card-desc">A light sense of humor makes travel feel fun.</div>
+      <div class="example-box example-box-do">
+        <div class="example-label label-do">Do</div>
+        <div class="example-text">"Rain tomorrow? Perfect excuse to explore that museum you bookmarked."</div>
+      </div>
+      <div class="example-box example-box-dont">
+        <div class="example-label label-dont">Don't</div>
+        <div class="example-text">"Wow, you really picked the rainiest week. Good luck with that outdoor plan!"</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">03</div>
+      <div class="card-title">Personal</div>
+      <div class="card-desc">Every recommendation feels handpicked.</div>
+      <div class="example-box example-box-do">
+        <div class="example-label label-do">Do</div>
+        <div class="example-text">"Since you loved that rooftop bar in Lisbon, here's one in Barcelona you'll obsess over."</div>
+      </div>
+      <div class="example-box example-box-dont">
+        <div class="example-label label-dont">Don't</div>
+        <div class="example-text">"Here are the top 10 restaurants in your area. Click to see more."</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-number">04</div>
+      <div class="card-title">Confident</div>
+      <div class="card-desc">We know our stuff and it shows.</div>
+      <div class="example-box example-box-do">
+        <div class="example-label label-do">Do</div>
+        <div class="example-text">"This route saves you 20 minutes and passes through the prettiest part of town."</div>
+      </div>
+      <div class="example-box example-box-dont">
+        <div class="example-label label-dont">Don't</div>
+        <div class="example-text">"We're the #1 travel app with the BEST recommendations. You won't find this anywhere else!"</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

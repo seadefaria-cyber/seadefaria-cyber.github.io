@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps - Values Deep Dive 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #F7F5F2;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+  }
+  .section-label {
+    position: absolute;
+    top: 40px;
+    left: 48px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 12px;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 48px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+  }
+  .columns {
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    right: 120px;
+    bottom: 80px;
+    display: flex;
+    gap: 0;
+  }
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 64px;
+    position: relative;
+  }
+  .divider {
+    width: 1px;
+    background: #e8e5e1;
+    align-self: stretch;
+  }
+  .value-number {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 48px;
+    color: #D9071C;
+    margin-bottom: 16px;
+  }
+  .value-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #3D3530;
+    margin-bottom: 32px;
+  }
+  .value-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #8C8279;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+  .accent-bar {
+    position: absolute;
+    bottom: 0;
+    left: 64px;
+    width: 60px;
+    height: 4px;
+    background: #D9071C;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="section-label">03 Brand Values</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+  <div class="columns">
+    <div class="column">
+      <div class="value-number">01</div>
+      <div class="value-title">Obvious</div>
+      <div class="value-desc">Every screen should explain itself. Zero friction, zero tutorials, zero "getting started" guides. If someone opens Tryps for the first time and has to think about what to tap, we failed. The best UX is the one nobody notices. It just works, and you're already planning.</div>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="column">
+      <div class="value-number">02</div>
+      <div class="value-title">Shareworthy</div>
+      <div class="value-desc">Trip cards are the product and the marketing. When someone drops a Tryps link in the group chat, it should feel like a gift, not a chore. The link preview alone should make people excited. Every share is a viral hook. Every trip card is a billboard for the brand.</div>
+      <div class="accent-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

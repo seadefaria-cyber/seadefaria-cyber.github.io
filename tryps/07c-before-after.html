@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>07c — Before &amp; After Tryps</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    display: flex;
+  }
+
+  /* --- Section label --- */
+  .section-label {
+    position: absolute; top: 40px; left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 500; color: #8C8279; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+    z-index: 10;
+  }
+  /* --- Logo --- */
+  .logo {
+    position: absolute; top: 40px; right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 28px; color: #D9071C;
+    z-index: 10;
+  }
+
+  /* --- Divider line --- */
+  .divider {
+    position: absolute; top: 0; left: 960px;
+    width: 1px; height: 1080px;
+    background: #e5e0db;
+    z-index: 5;
+  }
+
+  /* --- Split layout --- */
+  .left-half {
+    width: 960px; height: 1080px;
+    background: #F0EDEA;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+    position: relative;
+  }
+  .right-half {
+    width: 960px; height: 1080px;
+    background: #FFF8F7;
+    display: flex; flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* --- Left: Before --- */
+  .before-title {
+    font-size: 56px; font-weight: 800; color: #8C8279;
+    margin-bottom: 12px;
+  }
+  .before-subtitle {
+    font-size: 20px; color: #8C8279; margin-bottom: 44px;
+    line-height: 1.4; max-width: 600px;
+    font-weight: 500;
+  }
+  .before-list { list-style: none; }
+  .before-list li {
+    font-size: 24px; font-weight: 600; color: #8C8279;
+    padding: 12px 0;
+    display: flex; align-items: flex-start; gap: 16px;
+    line-height: 1.35;
+  }
+  .before-list li::before {
+    content: '';
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #c5c0ba; flex-shrink: 0;
+    margin-top: 9px;
+  }
+  .before-summary {
+    font-size: 22px; font-style: italic; color: #a8a19a;
+    margin-top: 44px; line-height: 1.5;
+    border-top: 1px solid #ddd8d2;
+    padding-top: 28px;
+  }
+
+  /* --- Right: After --- */
+  .after-title {
+    font-size: 56px; font-weight: 800; color: #D9071C;
+    margin-bottom: 10px;
+  }
+  .after-subtitle {
+    font-size: 20px; color: #3D3530; font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  /* --- iPhone mockup --- */
+  .iphone {
+    width: 320px; height: 580px;
+    background: #fff;
+    border-radius: 44px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e0ddd9;
+  }
+  .dynamic-island {
+    width: 110px; height: 32px; background: #000;
+    border-radius: 18px; position: absolute;
+    top: 10px; left: 50%; transform: translateX(-50%);
+    z-index: 2;
+  }
+  .status-bar {
+    height: 50px; padding: 14px 22px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    font-size: 14px; font-weight: 600; color: #000;
+    position: relative; z-index: 1;
+  }
+  .status-icons { display: flex; gap: 5px; align-items: center; }
+  .status-icons svg { width: 16px; height: 16px; }
+
+  /* --- iMessage screen --- */
+  .imessage-screen { display: flex; flex-direction: column; height: calc(100% - 50px); }
+
+  .imessage-header {
+    padding: 4px 14px 10px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 0.5px solid #e5e5e5;
+  }
+  .imessage-back {
+    color: #007AFF; font-size: 20px; font-weight: 300;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  .imessage-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(180deg, #D9071C, #a00515);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 14px; font-weight: 600;
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  }
+  .imessage-header-text { display: flex; flex-direction: column; }
+  .imessage-header-title {
+    font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    font-size: 15px; font-weight: 600; color: #000;
+  }
+  .imessage-header-sub {
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+    font-size: 11px; color: #8e8e93;
+  }
+
+  .imessage-body {
+    flex: 1; padding: 12px 12px; overflow: hidden;
+    display: flex; flex-direction: column; gap: 4px;
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  }
+
+  .msg-row { display: flex; align-items: flex-end; gap: 6px; }
+  .msg-row.sent { justify-content: flex-end; }
+  .msg-row.received { justify-content: flex-start; }
+
+  .msg-avatar-sm {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: #fff;
+    flex-shrink: 0;
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  }
+
+  .msg-bubble {
+    max-width: 220px; padding: 9px 12px;
+    border-radius: 18px; font-size: 14px; line-height: 1.35;
+    word-wrap: break-word;
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  }
+  .msg-row.sent .msg-bubble {
+    background: #007AFF; color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .msg-row.received .msg-bubble {
+    background: #E5E5EA; color: #000;
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg-sender {
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+    font-size: 10px; color: #8e8e93; font-weight: 500;
+    margin-left: 32px; margin-bottom: -1px; margin-top: 5px;
+  }
+  .msg-read {
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+    font-size: 9px; color: #8e8e93; text-align: right;
+    margin-top: -1px; padding-right: 4px;
+  }
+  .msg-time {
+    text-align: center;
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+    font-size: 10px; color: #8e8e93;
+    margin: 4px 0;
+  }
+
+  .imessage-input-bar {
+    height: 44px; padding: 5px 10px;
+    display: flex; align-items: center; gap: 6px;
+    border-top: 0.5px solid #e5e5e5;
+  }
+  .imessage-input-plus {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #e5e5ea; display: flex; align-items: center; justify-content: center;
+    color: #8e8e93; font-size: 18px; font-weight: 300;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  .imessage-input-field {
+    flex: 1; height: 30px; border: 1px solid #e5e5ea; border-radius: 16px;
+    padding: 0 12px; font-size: 13px; color: #c7c7cc;
+    display: flex; align-items: center;
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  }
+
+  .home-indicator {
+    position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 5px; background: #000; border-radius: 3px;
+    opacity: 0.2;
+  }
+
+  /* --- Bottom tagline --- */
+  .after-tagline {
+    font-size: 32px; font-weight: 800; color: #D9071C;
+    margin-top: 36px; text-align: center;
+    line-height: 1.3;
+  }
+</style>
+</head>
+<body>
+  <div class="section-label">07  - HOW IT WORKS</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+  <div class="divider"></div>
+
+  <!-- ===== LEFT: Before ===== -->
+  <div class="left-half">
+    <div class="before-title">Before</div>
+    <div class="before-subtitle">5 apps. 3 weeks. One person doing all the work.</div>
+    <ul class="before-list">
+      <li>Google Docs for the itinerary</li>
+      <li>Splitwise for expenses</li>
+      <li>Group chat for votes (that get buried)</li>
+      <li>Kayak for flights (alone)</li>
+      <li>Airbnb DMs (one person does all the work)</li>
+    </ul>
+    <div class="before-summary">Sound familiar?</div>
+  </div>
+
+  <!-- ===== RIGHT: After ===== -->
+  <div class="right-half">
+    <div class="after-title">After</div>
+    <div class="after-subtitle">One text to Martin. That's it.</div>
+    <div class="iphone">
+      <div class="dynamic-island"></div>
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 18 18"><path d="M1 11h2v5H1zM5 8h2v8H5zM9 5h2v11H9zM13 2h2v14h-2z" fill="#000"/></svg>
+          <svg viewBox="0 0 18 18"><path d="M9 3C5.7 3 2.7 4.3.5 6.5l1.4 1.4C3.6 6.2 6.2 5 9 5s5.4 1.2 7.1 2.9l1.4-1.4C15.3 4.3 12.3 3 9 3zm0 4c-2.2 0-4.2.9-5.7 2.3l1.4 1.4C5.8 9.6 7.3 9 9 9s3.2.6 4.3 1.7l1.4-1.4C13.2 7.9 11.2 7 9 7zm0 4c-1.1 0-2.1.4-2.8 1.2l2.8 3 2.8-3C11.1 11.4 10.1 11 9 11z" fill="#000"/></svg>
+          <svg viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2" ry="2" fill="none" stroke="#000" stroke-width="1.2"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#000"/><rect x="1.5" y="2.5" width="18" height="7" rx="1" fill="#000"/></svg>
+        </div>
+      </div>
+      <div class="imessage-screen">
+        <div class="imessage-header">
+          <span class="imessage-back">&#x276E;</span>
+          <div class="imessage-avatar">M</div>
+          <div class="imessage-header-text">
+            <span class="imessage-header-title">Martin from Tryps</span>
+            <span class="imessage-header-sub">iMessage</span>
+          </div>
+        </div>
+        <div class="imessage-body">
+          <div class="msg-time">Today 3:08 PM</div>
+
+          <div class="msg-row sent">
+            <div class="msg-bubble">tulum, spring break, 6 of us, under 2k each</div>
+          </div>
+          <div class="msg-read">Read 3:08 PM</div>
+
+          <div style="height:6px"></div>
+          <div class="msg-sender">Martin from Tryps</div>
+          <div class="msg-row received">
+            <div class="msg-avatar-sm" style="background: linear-gradient(180deg, #D9071C, #a00515);">M</div>
+            <div class="msg-bubble">got it. flights, villa for 6, sunset boat tour. $1,850/person. want me to book?</div>
+          </div>
+
+          <div style="height:6px"></div>
+          <div class="msg-row sent">
+            <div class="msg-bubble">done.</div>
+          </div>
+          <div class="msg-read">Read 3:12 PM</div>
+        </div>
+        <div class="imessage-input-bar">
+          <div class="imessage-input-plus">+</div>
+          <div class="imessage-input-field">iMessage</div>
+        </div>
+      </div>
+      <div class="home-indicator"></div>
+    </div>
+    <div class="after-tagline">One text. Five minutes. Trip booked.</div>
+  </div>
+</body>
+</html>

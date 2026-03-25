@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Type in Context</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.slide {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+  background: #F7F5F2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.logo {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #D9071C;
+  letter-spacing: -0.5px;
+}
+
+.section-label {
+  position: absolute;
+  left: 60px;
+  top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.content {
+  position: absolute;
+  left: 60px;
+  top: 120px;
+  right: 60px;
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #8C8279;
+  margin-bottom: 48px;
+}
+
+.cards-row {
+  display: flex;
+  gap: 32px;
+}
+
+.context-card {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0eeeb;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+}
+
+.card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Card 1: Trip Card */
+.trip-photo {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, #E8B4A0 0%, #D4A088 30%, #C7856E 60%, #B5704F 100%);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.trip-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.08));
+}
+
+.trip-content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.trip-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #3D3530;
+  margin-top: 4px;
+}
+
+.trip-meta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.6;
+}
+
+/* Card 2: Notification */
+.notif-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.notif-dot-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.notif-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #D9071C;
+  flex-shrink: 0;
+}
+
+.notif-dot-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.notif-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #3D3530;
+}
+
+.notif-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.6;
+}
+
+.notif-time {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #B5ADA5;
+}
+
+.notif-button {
+  margin-top: auto;
+  width: 100%;
+  height: 52px;
+  background: #D9071C;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* Card 3: Settings */
+.settings-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.settings-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #3D3530;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0eeeb;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #3D3530;
+}
+
+.settings-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8C8279;
+}
+
+.settings-value-on {
+  color: #D9071C;
+  font-weight: 700;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="section-label">12 Typography</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="title">Type in Context</div>
+    <div class="subtitle">How our type scale works across real product surfaces.</div>
+
+    <div class="cards-row">
+      <!-- Card 1: Trip Card -->
+      <div class="context-card">
+        <div class="trip-photo"></div>
+        <div class="trip-content">
+          <div class="card-label">Trip Card</div>
+          <div class="trip-title">Weekend in Lisbon</div>
+          <div class="trip-meta">3 nights, 4 crew members, Mar 14-17 2026</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Notification -->
+      <div class="context-card">
+        <div class="notif-content">
+          <div class="card-label">Notification</div>
+          <div class="notif-dot-row">
+            <div class="notif-dot"></div>
+            <div class="notif-dot-label">New</div>
+          </div>
+          <div class="notif-title">Sara joined your trip!</div>
+          <div class="notif-body">Your crew for Lisbon is growing. Sara just accepted the invite.</div>
+          <div class="notif-time">2 minutes ago</div>
+          <div class="notif-button">View Trip</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Settings -->
+      <div class="context-card">
+        <div class="settings-content">
+          <div class="card-label">Settings</div>
+          <div class="settings-heading">Preferences</div>
+          <div class="settings-list">
+            <div class="settings-row">
+              <div class="settings-label">Notifications</div>
+              <div class="settings-value settings-value-on">On</div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-label">Currency</div>
+              <div class="settings-value">USD</div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-label">Language</div>
+              <div class="settings-value">English</div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-label">Dark Mode</div>
+              <div class="settings-value">Off</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

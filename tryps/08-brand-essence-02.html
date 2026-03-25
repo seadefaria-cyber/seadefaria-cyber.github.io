@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>08 Brand Essence - iMessage + App</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
+
+  .section-label {
+    position: absolute; top: 40px; left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400; color: #8C8279; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .logo {
+    position: absolute; top: 40px; right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 28px; color: #D9071C;
+  }
+
+  .columns {
+    display: flex;
+    width: 100%; height: 100%;
+  }
+
+  .col {
+    width: 960px; height: 1080px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+  }
+
+  .col-left {
+    border-right: 1px solid #E8E5E1;
+  }
+
+  .channel-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 48px; font-weight: 800;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .channel-label.red { color: #D9071C; }
+  .channel-label.gray { color: #8C8279; }
+
+  .col-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px; font-weight: 700; color: #3D3530;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+
+  .col-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px; font-weight: 400; color: #8C8279;
+    line-height: 1.75;
+    max-width: 640px;
+  }
+</style>
+</head>
+<body>
+  <div class="section-label">08 BRAND ESSENCE</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="columns">
+    <div class="col col-left">
+      <div class="channel-label red">iMessage</div>
+      <div class="col-subtitle">Martin from Tryps Lives in Your Group Chat</div>
+      <div class="col-body">You add Martin from Tryps to your group chat like a friend. Text him where you want to go, when, and your budget. He handles everything. No app to download. No dashboard to learn. Just text.</div>
+    </div>
+
+    <div class="col">
+      <div class="channel-label gray">App</div>
+      <div class="col-subtitle">Trip Cards Power the Details</div>
+      <div class="col-body">The Tryps app is where the trip comes to life. Vote on activities, track expenses, see your itinerary. Everything Martin from Tryps books shows up in one place. Simple, visual, no friction.</div>
+    </div>
+  </div>
+</body>
+</html>
