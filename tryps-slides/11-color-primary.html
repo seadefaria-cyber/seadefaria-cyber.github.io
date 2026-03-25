@@ -21,16 +21,17 @@
 .logo {
   position: absolute;
   right: 40px;
-  top: 36px;
+  top: 40px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   color: #D9071C;
+  letter-spacing: -0.5px;
 }
 
 .section-label {
   position: absolute;
-  left: 80px;
+  left: 60px;
   top: 48px;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
@@ -40,57 +41,59 @@
   text-transform: uppercase;
 }
 
-.title {
+.content {
   position: absolute;
-  left: 80px;
-  top: 100px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 56px;
-  font-weight: 700;
-  color: #3D3530;
+  left: 60px;
+  top: 120px;
+  right: 100px;
 }
 
-.subtitle {
-  position: absolute;
-  left: 80px;
-  top: 175px;
+.title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 52px;
+  font-weight: 800;
+  color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
   font-weight: 400;
   color: #8C8279;
+  line-height: 1.6;
+  max-width: 680px;
+  margin-bottom: 64px;
 }
 
 .swatches {
-  position: absolute;
-  left: 80px;
-  top: 240px;
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  gap: 36px;
 }
 
 .swatch-card {
-  width: 400px;
-  height: 760px;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #FFFFFF;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
 .swatch-color {
-  width: 400px;
-  height: 600px;
-  flex-shrink: 0;
+  width: 300px;
+  height: 360px;
+  border-radius: 20px;
+  transition: transform 0.2s ease;
+}
+
+.swatch-color.white-swatch {
+  border: 1.5px solid #E8E4DF;
 }
 
 .swatch-info {
-  padding: 24px 28px;
+  padding: 24px 4px 0 4px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .swatch-name {
@@ -105,60 +108,86 @@
   font-size: 14px;
   font-weight: 400;
   color: #8C8279;
+  margin-bottom: 4px;
 }
 
 .swatch-usage {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #8C8279;
-  margin-top: 4px;
+  color: #B5ADA5;
+  line-height: 1.5;
+}
+
+/* Subtle dot accent */
+.dot-accent {
+  position: absolute;
+  bottom: 60px;
+  right: 100px;
+  display: flex;
+  gap: 8px;
+}
+.dot-accent span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.6;
 }
 </style>
 </head>
 <body>
 <div class="slide">
-  <div class="section-label">09 COLOR SYSTEM</div>
-  <div class="logo">tryps</div>
-  <div class="title">Primary Palette</div>
-  <div class="subtitle">The core colors that define the tryps brand across every touchpoint.</div>
+  <div class="section-label">11 - COLOR SYSTEM</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
 
-  <div class="swatches">
-    <div class="swatch-card">
-      <div class="swatch-color" style="background: #D9071C;"></div>
-      <div class="swatch-info">
-        <div class="swatch-name">Tryps Red</div>
-        <div class="swatch-hex">#D9071C</div>
-        <div class="swatch-usage">Primary brand, CTAs, accents</div>
+  <div class="content">
+    <div class="title">Primary Palette</div>
+    <div class="description">Four colors carry the entire brand. Tryps Red leads with energy, white provides breathing room, Deep Slate grounds everything in warmth, and Medium Gray handles the quiet work of captions and labels.</div>
+
+    <div class="swatches">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #D9071C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tryps Red</div>
+          <div class="swatch-hex">#D9071C</div>
+          <div class="swatch-usage">Primary brand color, CTAs,<br>interactive accents</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-color white-swatch" style="background: #FFFFFF;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-usage">Backgrounds, open space,<br>text on dark surfaces</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #3D3530;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Slate</div>
+          <div class="swatch-hex">#3D3530</div>
+          <div class="swatch-usage">Headlines, primary text,<br>dark surfaces</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #8C8279;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Medium Gray</div>
+          <div class="swatch-hex">#8C8279</div>
+          <div class="swatch-usage">Secondary text, captions,<br>labels, metadata</div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="swatch-card" style="border: 1px solid #E5E5E5;">
-      <div class="swatch-color" style="background: #FFFFFF; border-bottom: 1px solid #E5E5E5;"></div>
-      <div class="swatch-info">
-        <div class="swatch-name">White</div>
-        <div class="swatch-hex">#FFFFFF</div>
-        <div class="swatch-usage">Backgrounds, text on dark</div>
-      </div>
-    </div>
-
-    <div class="swatch-card">
-      <div class="swatch-color" style="background: #3D3530;"></div>
-      <div class="swatch-info">
-        <div class="swatch-name" style="color: #3D3530;">Deep Slate</div>
-        <div class="swatch-hex">#3D3530</div>
-        <div class="swatch-usage">Primary text, dark surfaces</div>
-      </div>
-    </div>
-
-    <div class="swatch-card">
-      <div class="swatch-color" style="background: #8C8279;"></div>
-      <div class="swatch-info">
-        <div class="swatch-name">Medium Gray</div>
-        <div class="swatch-hex">#8C8279</div>
-        <div class="swatch-usage">Secondary text, labels</div>
-      </div>
-    </div>
+  <div class="dot-accent">
+    <span style="background: #D9071C;"></span>
+    <span style="background: #3D3530;"></span>
+    <span style="background: #8C8279;"></span>
+    <span style="background: #E8E4DF;"></span>
   </div>
 </div>
 </body>

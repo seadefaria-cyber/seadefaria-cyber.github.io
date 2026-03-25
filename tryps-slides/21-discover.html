@@ -3,105 +3,424 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
-<title>Discover</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>21 Product Vision - Discover</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #FFFFFF; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #FFFFFF; }
-.logo { position: absolute; right: 40px; top: 36px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 16px; color: #D9071C; }
-.section-label { position: absolute; left: 80px; top: 48px; font-family: 'Space Mono', monospace; font-weight: 500; font-size: 12px; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
-.title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; color: #3D3530; position: absolute; left: 80px; top: 90px; }
-.subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 20px; color: #8C8279; position: absolute; left: 80px; top: 160px; max-width: 1000px; line-height: 1.5; }
-.phone { position: absolute; left: 80px; top: 230px; width: 360px; height: 780px; background: #F5F5F5; border-radius: 32px; padding: 40px 24px; display: flex; flex-direction: column; }
-.phone-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 28px; color: #3D3530; margin-bottom: 4px; }
-.phone-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 14px; color: #8C8279; margin-bottom: 24px; }
-.dest-card { border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; height: 200px; }
-.dest-gradient-1 { background: linear-gradient(135deg, #D9071C 0%, #FF8A65 50%, #FFD54F 100%); }
-.dest-gradient-2 { background: linear-gradient(135deg, #1A1A1A 0%, #3D3530 50%, #D9071C 100%); }
-.dest-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 20px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); }
-.dest-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 20px; color: #FFFFFF; }
-.dest-price { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 14px; color: #FFFFFF; background: rgba(217,7,28,0.9); padding: 4px 10px; border-radius: 8px; position: absolute; top: 16px; right: 16px; }
-.dest-meta { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
-.right-area { position: absolute; left: 520px; top: 240px; width: 1320px; padding: 0 40px; }
-.right-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 40px; color: #3D3530; margin-bottom: 36px; }
-.feature-cards { display: flex; flex-direction: column; gap: 20px; margin-bottom: 48px; }
-.feature-card { background: #F7F5F2; border-radius: 16px; padding: 28px 32px; display: flex; align-items: flex-start; gap: 20px; }
-.feature-icon { font-size: 28px; flex-shrink: 0; width: 48px; height: 48px; background: rgba(217,7,28,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-.feature-info { display: flex; flex-direction: column; gap: 4px; }
-.feature-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px; color: #3D3530; }
-.feature-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 16px; color: #8C8279; line-height: 1.5; }
-.stats-row { display: flex; gap: 40px; padding: 32px 0; border-top: 1px solid #E5E7EB; }
-.stat { display: flex; flex-direction: column; gap: 4px; }
-.stat-value { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 32px; color: #D9071C; }
-.stat-label { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500; font-size: 14px; color: #8C8279; }
-.stat-divider { width: 1px; background: #E5E7EB; }
+body { background: #F7F5F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+.slide {
+  width: 1920px; height: 1080px; overflow: hidden;
+  position: relative; background: #F7F5F2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.section-label {
+  position: absolute; left: 80px; top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400; font-size: 12px; color: #8C8279;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+.title {
+  font-weight: 800; font-size: 52px; color: #3D3530;
+  position: absolute; left: 80px; top: 100px;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-weight: 400; font-size: 18px; color: #8C8279;
+  position: absolute; left: 80px; top: 168px;
+  max-width: 700px; line-height: 1.55;
+}
+
+/* iPhone - premium dark frame */
+.phone {
+  position: absolute; left: 80px; top: 240px;
+  width: 400px; height: 800px;
+  background: #1A1A1A;
+  border-radius: 48px;
+  padding: 16px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.phone-screen {
+  background: #F7F5F2;
+  border-radius: 36px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-notch {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dynamic-island {
+  width: 120px; height: 32px;
+  background: #1A1A1A;
+  border-radius: 20px;
+}
+
+.phone-time {
+  position: absolute;
+  left: 24px;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3D3530;
+}
+
+.phone-inner {
+  padding: 12px 20px 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.phone-header {
+  font-weight: 800; font-size: 26px; color: #3D3530;
+  margin-bottom: 4px;
+}
+
+.phone-sub {
+  font-weight: 400; font-size: 13px; color: #8C8279;
+  margin-bottom: 6px;
+}
+
+/* Search bar */
+.search-bar {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #B8B0A8;
+  border: 1px solid #f0eeeb;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-icon {
+  font-size: 14px;
+  color: #B8B0A8;
+}
+
+/* Destination cards */
+.dest-card {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  position: relative;
+  height: 190px;
+}
+
+.dest-gradient-1 {
+  background: linear-gradient(145deg, #FF6B35 0%, #D9071C 40%, #FFB347 100%);
+}
+
+.dest-gradient-2 {
+  background: linear-gradient(145deg, #3D3530 0%, #D9071C 60%, #FF8C42 100%);
+}
+
+.dest-gradient-3 {
+  background: linear-gradient(145deg, #2E7DD6 0%, #1A5276 60%, #3D3530 100%);
+}
+
+.dest-price {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 12px; color: #FFFFFF;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px; border-radius: 999px;
+  position: absolute; top: 14px; right: 14px;
+}
+
+.dest-friends {
+  position: absolute; top: 14px; left: 14px;
+  display: flex;
+}
+
+.dest-friend {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.8);
+  margin-left: -6px;
+}
+
+.dest-friend:first-child { margin-left: 0; }
+
+.dest-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 18px 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+.dest-name {
+  font-weight: 800; font-size: 20px; color: #FFFFFF;
+}
+
+.dest-meta {
+  font-weight: 400; font-size: 12px; color: rgba(255,255,255,0.75);
+  margin-top: 3px;
+}
+
+/* Bottom nav */
+.phone-nav {
+  height: 72px;
+  background: #FFFFFF;
+  border-top: 1px solid #f0eeeb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+
+.nav-dot {
+  width: 22px; height: 22px; border-radius: 7px;
+}
+
+.nav-dot.active { background: #D9071C; }
+.nav-dot.inactive { background: #E8E5E1; }
+
+.nav-label {
+  font-size: 10px; font-weight: 600;
+}
+
+.nav-label.active { color: #D9071C; }
+.nav-label.inactive { color: #8C8279; }
+
+/* Right content */
+.right-area {
+  position: absolute; left: 560px; top: 240px;
+  right: 80px;
+}
+
+.right-title {
+  font-weight: 800; font-size: 28px; color: #3D3530;
+  margin-bottom: 24px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.feature-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #f0eeeb;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-icon {
+  width: 48px; height: 48px;
+  background: rgba(217,7,28,0.06);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+
+.feature-name {
+  font-weight: 700; font-size: 18px; color: #3D3530;
+}
+
+.feature-desc {
+  font-weight: 400; font-size: 14px; color: #8C8279;
+  line-height: 1.6;
+}
+
+/* Stats */
+.stats-row {
+  display: flex; gap: 48px; padding-top: 28px;
+  border-top: 1px solid #E8E5E1;
+}
+
+.stat {
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.stat-value {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 36px; color: #D9071C;
+}
+
+.stat-label {
+  font-weight: 500; font-size: 13px; color: #8C8279;
+  text-transform: lowercase;
+}
+
+/* CTA strip */
+.cta-strip {
+  margin-top: 32px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #f0eeeb;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cta-text {
+  font-size: 17px;
+  font-weight: 600;
+  color: #3D3530;
+}
+
+.cta-sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8C8279;
+  margin-top: 4px;
+}
+
+.cta-btn {
+  background: #D9071C;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
 </style>
 </head>
 <body>
 <div class="slide">
   <div class="section-label">21 Product Vision</div>
-  <div class="logo">tryps</div>
+  <img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
   <div class="title">Discover</div>
   <div class="subtitle">A curated feed of destination inspiration, powered by your crew's travel history and shared wishlists.</div>
+
+  <!-- iPhone mockup -->
   <div class="phone">
-    <div class="phone-title">Discover</div>
-    <div class="phone-sub">Trending with your crew</div>
-    <div class="dest-card dest-gradient-1">
-      <div class="dest-price">$1,200</div>
-      <div class="dest-overlay">
-        <div class="dest-name">Tokyo, Japan</div>
-        <div class="dest-meta">3 friends interested  ·  Jul-Aug</div>
+    <div class="phone-screen">
+      <div class="phone-notch">
+        <div class="phone-time">9:41</div>
+        <div class="dynamic-island"></div>
       </div>
-    </div>
-    <div class="dest-card dest-gradient-2">
-      <div class="dest-price">$890</div>
-      <div class="dest-overlay">
-        <div class="dest-name">Barcelona, Spain</div>
-        <div class="dest-meta">5 friends interested  ·  Sep</div>
+      <div class="phone-inner">
+        <div class="phone-header">Discover</div>
+        <div class="phone-sub">Trending with your crew</div>
+        <div class="search-bar">
+          <span class="search-icon">&#x1F50D;</span>
+          Search destinations...
+        </div>
+        <div class="dest-card dest-gradient-1">
+          <div class="dest-friends">
+            <div class="dest-friend" style="background:#D9071C;"></div>
+            <div class="dest-friend" style="background:#FFB347;"></div>
+            <div class="dest-friend" style="background:#3D3530;"></div>
+          </div>
+          <div class="dest-price">From $1,200</div>
+          <div class="dest-overlay">
+            <div class="dest-name">Tokyo, Japan</div>
+            <div class="dest-meta">3 friends interested | Jul - Aug</div>
+          </div>
+        </div>
+        <div class="dest-card dest-gradient-2">
+          <div class="dest-friends">
+            <div class="dest-friend" style="background:#2E7DD6;"></div>
+            <div class="dest-friend" style="background:#D9071C;"></div>
+            <div class="dest-friend" style="background:#8C8279;"></div>
+            <div class="dest-friend" style="background:#FFB347;"></div>
+            <div class="dest-friend" style="background:#3D3530;"></div>
+          </div>
+          <div class="dest-price">From $898</div>
+          <div class="dest-overlay">
+            <div class="dest-name">Barcelona, Spain</div>
+            <div class="dest-meta">5 friends interested | Sep</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item">
+          <div class="nav-dot active"></div>
+          <div class="nav-label active">Discover</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-dot inactive"></div>
+          <div class="nav-label inactive">Trips</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-dot inactive"></div>
+          <div class="nav-label inactive">Chat</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-dot inactive"></div>
+          <div class="nav-label inactive">Profile</div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Right content -->
   <div class="right-area">
     <div class="right-title">Powered by Your Crew</div>
-    <div class="feature-cards">
+    <div class="feature-grid">
       <div class="feature-card">
-        <div class="feature-icon">🧬</div>
-        <div class="feature-info">
-          <div class="feature-name">Travel DNA</div>
-          <div class="feature-desc">Learns from past trips to surface destinations your group will love. Adventure crew? Beach people? We know.</div>
-        </div>
+        <div class="feature-icon">&#x1F9EC;</div>
+        <div class="feature-name">Travel DNA</div>
+        <div class="feature-desc">Learns from past trips to surface destinations your group will love. Adventure crew? Beach people? It knows.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">👥</div>
-        <div class="feature-info">
-          <div class="feature-name">Friend Activity</div>
-          <div class="feature-desc">See where friends are going and get inspired. Social proof drives discovery and sparks FOMO.</div>
-        </div>
+        <div class="feature-icon">&#x1F465;</div>
+        <div class="feature-name">Friend Activity</div>
+        <div class="feature-desc">See where friends are going and get inspired. Social proof drives discovery and sparks real FOMO.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⏰</div>
-        <div class="feature-info">
-          <div class="feature-name">Smart Timing</div>
-          <div class="feature-desc">Suggests when flights are cheapest, when weather is best, and when your group is most likely free.</div>
-        </div>
+        <div class="feature-icon">&#x23F0;</div>
+        <div class="feature-name">Smart Timing</div>
+        <div class="feature-desc">Suggests when flights are cheapest, weather is best, and your group is most likely free.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F4B0;</div>
+        <div class="feature-name">Budget Match</div>
+        <div class="feature-desc">Filters by what your group can actually afford. No awkward conversations about money.</div>
       </div>
     </div>
+
     <div class="stats-row">
       <div class="stat">
         <div class="stat-value">87%</div>
         <div class="stat-label">trip completion rate</div>
       </div>
-      <div class="stat-divider"></div>
       <div class="stat">
         <div class="stat-value">4.2</div>
         <div class="stat-label">avg group size</div>
       </div>
-      <div class="stat-divider"></div>
       <div class="stat">
         <div class="stat-value">12</div>
         <div class="stat-label">destinations trending</div>
       </div>
+    </div>
+
+    <div class="cta-strip">
+      <div>
+        <div class="cta-text">The feed that turns "we should go somewhere" into a booked trip.</div>
+        <div class="cta-sub">Personalized for every group, updated in real time.</div>
+      </div>
+      <div class="cta-btn">Try Discover</div>
     </div>
   </div>
 </div>

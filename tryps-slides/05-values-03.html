@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps - Values Deep Dive 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #F7F5F2;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+  }
+  .section-label {
+    position: absolute;
+    top: 40px;
+    left: 48px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 12px;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 48px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+  }
+  .columns {
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    right: 120px;
+    bottom: 80px;
+    display: flex;
+    gap: 0;
+  }
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 64px;
+    position: relative;
+  }
+  .divider {
+    width: 1px;
+    background: #e8e5e1;
+    align-self: stretch;
+  }
+  .value-number {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 48px;
+    color: #D9071C;
+    margin-bottom: 16px;
+  }
+  .value-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #3D3530;
+    margin-bottom: 32px;
+  }
+  .value-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #8C8279;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+  .accent-bar {
+    position: absolute;
+    bottom: 0;
+    left: 64px;
+    width: 60px;
+    height: 4px;
+    background: #D9071C;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="section-label">03 Brand Values</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+  <div class="columns">
+    <div class="column">
+      <div class="value-number">03</div>
+      <div class="value-title">Come Correct</div>
+      <div class="value-desc">If Apple wouldn't ship it, we don't ship it. Every pixel, every interaction, every loading state. The bar is not "good enough." The bar is "would this make someone stop and say damn, this is nice?" We hold ourselves to the standard of the best products on the planet, not the best travel apps.</div>
+      <div class="accent-bar"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="column">
+      <div class="value-number">04</div>
+      <div class="value-title">Clean</div>
+      <div class="value-desc">If it's not worth screenshotting, it's not done. Every screen, every card, every notification should look intentional. No clutter, no visual noise, no "we'll fix it later." Clean is not minimal for the sake of it. Clean means every element earned its place. Nothing extra, nothing missing.</div>
+      <div class="accent-bar"></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=1920">
 <title>Type Scale</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,78 +18,82 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.logo {
-  position: absolute;
-  right: 40px;
-  top: 36px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  color: #D9071C;
-}
-
 .section-label {
   position: absolute;
-  left: 80px;
+  left: 60px;
   top: 48px;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   color: #8C8279;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-.title {
+.content {
   position: absolute;
-  left: 80px;
-  top: 100px;
+  left: 60px;
+  top: 120px;
+  right: 60px;
+}
+
+.title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 800;
   color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
 }
 
 .subtitle {
-  position: absolute;
-  left: 80px;
-  top: 185px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: #8C8279;
+  margin-bottom: 36px;
 }
 
-.type-stack {
-  position: absolute;
-  left: 80px;
-  top: 260px;
-  width: 1760px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.type-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0eeeb;
+  padding: 0;
+  overflow: hidden;
 }
 
 .type-row {
-  width: 1760px;
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 0 32px;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  height: 88px;
+  padding: 0 48px;
+  min-height: 80px;
+  border-bottom: 1px solid #F0ECE8;
+  position: relative;
 }
 
-.type-row.tall { height: 96px; }
+.type-row:last-child {
+  border-bottom: none;
+}
 
-.type-label {
-  width: 130px;
+.type-row.display-row {
+  min-height: 108px;
+  border-left: 4px solid #D9071C;
+}
+
+.type-role {
+  width: 160px;
   flex-shrink: 0;
   font-family: 'Space Mono', monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   color: #8C8279;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.type-row.display-row .type-role {
+  color: #D9071C;
 }
 
 .type-sample {
@@ -97,81 +101,86 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding-right: 40px;
 }
 
 .type-meta {
-  width: 360px;
+  width: 320px;
   flex-shrink: 0;
   text-align: right;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
   font-weight: 400;
-  color: #B5ADA5;
+  color: #8C8279;
+  letter-spacing: 0.5px;
 }
 </style>
 </head>
 <body>
 <div class="slide">
-  <div class="section-label">TYPOGRAPHY</div>
-  <div class="logo">tryps</div>
-  <div class="title">Type Scale</div>
-  <div class="subtitle">A clear hierarchy guides the eye and creates rhythm across every screen.</div>
+  <div class="section-label">12 - TYPOGRAPHY</div>
+  <img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
 
-  <div class="type-stack">
-    <!-- Display -->
-    <div class="type-row tall">
-      <div class="type-label">Display</div>
-      <div class="type-sample" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 56px; font-weight: 800; color: #3D3530;">Explore Together</div>
-      <div class="type-meta">Plus Jakarta Sans · 56px · 800</div>
-    </div>
+  <div class="content">
+    <div class="title">Type Scale</div>
+    <div class="subtitle">A disciplined scale that creates rhythm and hierarchy across every screen.</div>
 
-    <!-- Heading 1 -->
-    <div class="type-row">
-      <div class="type-label">Heading 1</div>
-      <div class="type-sample" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 40px; font-weight: 700; color: #3D3530;">Plan Your Next Trip</div>
-      <div class="type-meta">Plus Jakarta Sans · 40px · 700</div>
-    </div>
+    <div class="type-card">
+      <!-- Display -->
+      <div class="type-row display-row">
+        <div class="type-role">Display</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:56px;font-weight:800;color:#3D3530;letter-spacing:-1.5px;">Explore Together</div>
+        <div class="type-meta">Plus Jakarta Sans / 56 / 800</div>
+      </div>
 
-    <!-- Heading 2 -->
-    <div class="type-row">
-      <div class="type-label">Heading 2</div>
-      <div class="type-sample" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 700; color: #3D3530;">Trip Details</div>
-      <div class="type-meta">Plus Jakarta Sans · 32px · 700</div>
-    </div>
+      <!-- Heading 1 -->
+      <div class="type-row">
+        <div class="type-role">Heading 1</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:700;color:#3D3530;letter-spacing:-0.5px;">Plan Your Next Trip</div>
+        <div class="type-meta">Plus Jakarta Sans / 40 / 700</div>
+      </div>
 
-    <!-- Heading 3 -->
-    <div class="type-row">
-      <div class="type-label">Heading 3</div>
-      <div class="type-sample" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; color: #3D3530;">Invite Your Crew</div>
-      <div class="type-meta">Plus Jakarta Sans · 24px · 700</div>
-    </div>
+      <!-- Heading 2 -->
+      <div class="type-row">
+        <div class="type-role">Heading 2</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:700;color:#3D3530;">Trip Details</div>
+        <div class="type-meta">Plus Jakarta Sans / 32 / 700</div>
+      </div>
 
-    <!-- Body Large -->
-    <div class="type-row">
-      <div class="type-label">Body Large</div>
-      <div class="type-sample" style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 400; color: #3D3530;">Share your travel plans with friends and explore the world together.</div>
-      <div class="type-meta">Inter · 18px · 400</div>
-    </div>
+      <!-- Heading 3 -->
+      <div class="type-row">
+        <div class="type-role">Heading 3</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;color:#3D3530;">Invite Your Crew</div>
+        <div class="type-meta">Plus Jakarta Sans / 24 / 700</div>
+      </div>
 
-    <!-- Body -->
-    <div class="type-row">
-      <div class="type-label">Body</div>
-      <div class="type-sample" style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400; color: #3D3530;">Your crew is ready to go. Start planning your next adventure.</div>
-      <div class="type-meta">Inter · 16px · 400</div>
-    </div>
+      <!-- Body Large -->
+      <div class="type-row">
+        <div class="type-role">Body Large</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:400;color:#3D3530;line-height:1.6;">Share your travel plans with friends and explore the world together.</div>
+        <div class="type-meta">Plus Jakarta Sans / 18 / 400</div>
+      </div>
 
-    <!-- Caption -->
-    <div class="type-row">
-      <div class="type-label">Caption</div>
-      <div class="type-sample" style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: #8C8279;">Last updated 2 hours ago · 4 members</div>
-      <div class="type-meta">Inter · 14px · 400</div>
-    </div>
+      <!-- Body -->
+      <div class="type-row">
+        <div class="type-role">Body</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:400;color:#3D3530;line-height:1.6;">Your crew is ready to go. Start planning your next adventure.</div>
+        <div class="type-meta">Plus Jakarta Sans / 16 / 400</div>
+      </div>
 
-    <!-- Label -->
-    <div class="type-row">
-      <div class="type-label">Label</div>
-      <div class="type-sample" style="font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: #3D3530;">DEPARTURE DATE</div>
-      <div class="type-meta">Space Mono · 12px · 500 · uppercase</div>
+      <!-- Caption -->
+      <div class="type-row">
+        <div class="type-role">Caption</div>
+        <div class="type-sample" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:400;color:#8C8279;">Last updated 2 hours ago  &#183;  4 members</div>
+        <div class="type-meta">Plus Jakarta Sans / 14 / 400</div>
+      </div>
+
+      <!-- Label -->
+      <div class="type-row">
+        <div class="type-role">Label</div>
+        <div class="type-sample" style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:2.5px;color:#3D3530;">DEPARTURE DATE</div>
+        <div class="type-meta">Space Mono / 12 / 500 / caps</div>
+      </div>
     </div>
   </div>
 </div>

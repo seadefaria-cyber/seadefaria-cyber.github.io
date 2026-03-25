@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Tryps - Everyone in the Group Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #F7F5F2;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .section-label {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    z-index: 2;
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 110px 80px 60px;
+  }
+  .title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #D9071C;
+    margin-bottom: 40px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    flex: 1;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: #3D3530;
+    margin-bottom: 12px;
+  }
+  .card-desc {
+    font-size: 17px;
+    color: #8C8279;
+    line-height: 1.6;
+    margin-bottom: auto;
+  }
+  .card-need-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #D9071C;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+  .card-need {
+    font-size: 16px;
+    color: #3D3530;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="section-label">05 Our Audience</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="content">
+    <div class="title">Everyone in the group chat</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">The Planner</div>
+        <div class="card-desc">Does all the work. Picks the dates, books the spot, sends 19 texts nobody replies to.</div>
+        <div class="card-need-label">What They Need</div>
+        <div class="card-need">Help. Literally just help.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">The "I'm down for whatever"</div>
+        <div class="card-desc">Shows up, has a great time, contributed nothing to make it happen.</div>
+        <div class="card-need-label">What They Need</div>
+        <div class="card-need">A way to contribute without doing actual work.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">The Silent Co-Planner</div>
+        <div class="card-desc">Didn't start the trip but has opinions about everything. Secretly wants to help.</div>
+        <div class="card-need-label">What They Need</div>
+        <div class="card-need">A way in without stepping on toes.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">The Last Minute Add</div>
+        <div class="card-desc">Wasn't in the original chat. Heard about it Thursday. Flying in Saturday.</div>
+        <div class="card-need-label">What They Need</div>
+        <div class="card-need">Instant access to the plan the core group created.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

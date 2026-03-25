@@ -16,95 +16,113 @@
     position: relative;
   }
 
-  /* Logo top-right */
-  .logo {
-    position: absolute;
-    top: 40px;
-    right: 56px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 28px;
-    color: #D9071C;
-    letter-spacing: -0.5px;
-  }
-
   /* Section label top-left */
   .section-label {
     position: absolute;
     top: 44px;
-    left: 56px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     color: #8C8279;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
   }
 
-  /* Title area */
-  .title-area {
+  /* Title */
+  .title {
     position: absolute;
     top: 90px;
-    left: 56px;
-    width: 1200px;
-  }
-  .title-area h1 {
-    font-size: 64px;
+    left: 60px;
+    font-size: 44px;
     font-weight: 800;
     color: #3D3530;
     line-height: 1.1;
-    margin-bottom: 12px;
   }
-  .title-area p {
+
+  /* Subtitle */
+  .subtitle {
+    position: absolute;
+    top: 140px;
+    left: 60px;
     font-size: 18px;
     font-weight: 400;
     color: #8C8279;
     line-height: 1.5;
-    max-width: 900px;
+    max-width: 600px;
   }
 
-  /* iMessage mockup — left 65% */
-  .imessage-mockup {
+  /* ========== LEFT COLUMN: iPhone mockup ========== */
+  .phone-mockup {
     position: absolute;
-    top: 240px;
-    left: 56px;
-    width: 1100px;
-    height: 780px;
+    top: 180px;
+    left: 60px;
+    width: 360px;
+    height: 880px;
     background: #FFFFFF;
-    border-radius: 40px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.04);
+    border-radius: 44px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    border: 3px solid #E0DDD9;
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
 
-  /* iMessage header */
+  .dynamic-island {
+    width: 120px;
+    height: 32px;
+    background: #1C1C1E;
+    border-radius: 20px;
+    margin: 12px auto 0;
+    flex-shrink: 0;
+  }
+
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 28px 0;
+    flex-shrink: 0;
+  }
+  .status-time {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C1C1E;
+  }
+  .status-icons {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1C1C1E;
+  }
+
   .imessage-header {
     background: #F9F9F9;
     border-bottom: 1px solid #E5E5E5;
-    padding: 20px 28px 16px;
+    padding: 12px 20px 10px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
+    flex-shrink: 0;
   }
   .header-back {
-    font-size: 20px;
+    font-size: 22px;
     color: #007AFF;
-    font-weight: 500;
+    font-weight: 400;
   }
   .header-avatars {
     display: flex;
-    margin-left: 8px;
+    margin-left: 4px;
   }
   .header-avatars .avatar-small {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     border: 2px solid #F9F9F9;
-    margin-left: -8px;
+    margin-left: -6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     color: #FFF;
   }
@@ -118,30 +136,29 @@
     flex-direction: column;
   }
   .header-info .chat-name {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
     color: #1C1C1E;
   }
   .header-info .chat-members {
-    font-size: 12px;
+    font-size: 11px;
     color: #8E8E93;
     margin-top: 1px;
   }
 
-  /* Messages area */
   .messages {
     flex: 1;
-    padding: 24px 28px;
+    padding: 16px 16px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     overflow: hidden;
   }
 
   .msg-row {
     display: flex;
     flex-direction: column;
-    max-width: 65%;
+    max-width: 75%;
   }
   .msg-row.sent {
     align-self: flex-end;
@@ -153,11 +170,11 @@
   }
 
   .msg-sender {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: #8E8E93;
-    margin-bottom: 3px;
-    margin-left: 14px;
+    margin-bottom: 2px;
+    margin-left: 12px;
   }
   .msg-sender.martin-name {
     color: #D9071C;
@@ -166,26 +183,26 @@
   .msg-row-group {
     display: flex;
     align-items: flex-end;
-    gap: 8px;
+    gap: 6px;
   }
   .msg-avatar {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     color: #FFF;
     flex-shrink: 0;
   }
 
   .bubble {
-    padding: 12px 18px;
-    border-radius: 20px;
-    font-size: 17px;
-    line-height: 1.4;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.35;
     max-width: 100%;
   }
   .bubble.blue {
@@ -199,29 +216,69 @@
     border-bottom-left-radius: 6px;
   }
 
-  .msg-gap { height: 10px; }
+  .msg-gap { height: 8px; }
 
-  /* Right side cards */
-  .right-panel {
+  .imessage-input {
+    border-top: 1px solid #E5E5E5;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .input-plus {
+    width: 30px;
+    height: 30px;
+    background: #E5E5EA;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #8E8E93;
+  }
+  .input-field {
+    flex: 1;
+    height: 34px;
+    background: #F2F2F7;
+    border-radius: 18px;
+    border: 1px solid #E5E5EA;
+    padding: 0 14px;
+    font-size: 14px;
+    color: #C7C7CC;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ========== RIGHT COLUMN ========== */
+  .right-column {
     position: absolute;
-    top: 240px;
-    left: 1200px;
-    width: 664px;
-    height: 780px;
+    top: 180px;
+    left: 500px;
+    width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 24px;
-    padding: 0 56px 0 40px;
+  }
+
+  .right-quote {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #D9071C;
+    line-height: 1.4;
+    padding: 0 0 4px 0;
   }
 
   .right-card {
-    background: #F5EADB;
-    border-radius: 20px;
-    padding: 32px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    padding: 24px;
   }
   .right-card h3 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: #3D3530;
     margin-bottom: 10px;
@@ -232,28 +289,30 @@
     color: #8C8279;
     line-height: 1.6;
   }
-
-  .right-tagline {
-    font-size: 20px;
-    font-weight: 700;
-    color: #D9071C;
-    line-height: 1.4;
-    padding: 0 4px;
-  }
 </style>
 </head>
 <body>
 
-<div class="section-label">09 &mdash; VISUAL TERRITORY</div>
-<div class="logo">tryps</div>
+<!-- Section label -->
+<div class="section-label">09 VISUAL TERRITORY</div>
 
-<div class="title-area">
-  <h1>iMessage Is Our Visual Language</h1>
-  <p>The conversation IS the product. Martin lives in your group chat. Every interaction happens in iMessage first.</p>
-</div>
+<!-- Logo top-right -->
+<img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
 
-<!-- iMessage Mockup -->
-<div class="imessage-mockup">
+<!-- Title -->
+<h1 class="title">iMessage Is Our Visual Language</h1>
+
+<!-- Subtitle -->
+<p class="subtitle">Martin from Tryps lives in your group chat, turning "we should go somewhere" into a booked trip.</p>
+
+<!-- LEFT COLUMN: iPhone Mockup (left:60px, width:360px, ends at 420px) -->
+<div class="phone-mockup">
+  <div class="dynamic-island"></div>
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <span class="status-icons">5G</span>
+  </div>
+
   <div class="imessage-header">
     <span class="header-back">&#8249;</span>
     <div class="header-avatars">
@@ -263,7 +322,7 @@
       <div class="avatar-small av-martin">M</div>
     </div>
     <div class="header-info">
-      <span class="chat-name">Tulum 2026 &#127796;</span>
+      <span class="chat-name">Tulum 2026</span>
       <span class="chat-members">Jake, Alex, Sarah, Martin from Tryps</span>
     </div>
   </div>
@@ -271,10 +330,10 @@
   <div class="messages">
     <!-- Jake (sent/blue) -->
     <div class="msg-row sent">
-      <div class="bubble blue">yo who's down for tulum spring break &#127754;</div>
+      <div class="bubble blue">yo who's down for tulum spring break</div>
     </div>
 
-    <div class="msg-row sent" style="margin-top: 4px;">
+    <div class="msg-row sent" style="margin-top: 3px;">
       <div class="bubble blue">6 of us, under 2k each</div>
     </div>
 
@@ -285,8 +344,26 @@
       <div class="msg-sender">Alex</div>
       <div class="msg-row-group">
         <div class="msg-avatar" style="background: #34C759;">A</div>
-        <div class="bubble gray">im in. add Martin &#128293;</div>
+        <div class="bubble gray">im in. add Martin</div>
       </div>
+    </div>
+
+    <div class="msg-gap"></div>
+
+    <!-- Sarah (received/gray) -->
+    <div class="msg-row received">
+      <div class="msg-sender">Sarah</div>
+      <div class="msg-row-group">
+        <div class="msg-avatar" style="background: #FF9500;">S</div>
+        <div class="bubble gray">wait who is Martin</div>
+      </div>
+    </div>
+
+    <div class="msg-gap"></div>
+
+    <!-- Jake (sent/blue) -->
+    <div class="msg-row sent">
+      <div class="bubble blue">our trip planner. trust</div>
     </div>
 
     <div class="msg-gap"></div>
@@ -296,14 +373,14 @@
       <div class="msg-sender martin-name">Martin from Tryps</div>
       <div class="msg-row-group">
         <div class="msg-avatar" style="background: #D9071C;">M</div>
-        <div class="bubble gray">on it. give me 5 minutes.</div>
+        <div class="bubble gray">hey everyone, on it. give me 5 minutes.</div>
       </div>
     </div>
 
-    <div class="msg-row received" style="margin-top: 4px;">
+    <div class="msg-row received" style="margin-top: 3px;">
       <div class="msg-row-group">
-        <div style="width: 28px; flex-shrink: 0;"></div>
-        <div class="bubble gray">got everything. flights from JFK, villa for 6 in La Veleta, sunset boat tour included. $1,850 per person. want me to book?</div>
+        <div style="width: 24px; flex-shrink: 0;"></div>
+        <div class="bubble gray">flights from JFK, villa for 6 in La Veleta, sunset boat tour included. $1,850 per person. want me to book?</div>
       </div>
     </div>
 
@@ -311,22 +388,29 @@
 
     <!-- Jake (sent/blue) -->
     <div class="msg-row sent">
-      <div class="bubble blue">done. &#129309;</div>
+      <div class="bubble blue">done. book it.</div>
     </div>
+  </div>
+
+  <div class="imessage-input">
+    <div class="input-plus">+</div>
+    <div class="input-field">iMessage</div>
   </div>
 </div>
 
-<!-- Right panel -->
-<div class="right-panel">
+<!-- RIGHT COLUMN (left:500px, width:800px, ends at 1300px) -->
+<div class="right-column">
+  <div class="right-quote">"The conversation is the product.<br>iMessage is our canvas."</div>
+
   <div class="right-card">
     <h3>Grain</h3>
-    <p>Film grain texture applied to all campaign photography. Warm, nostalgic, real.</p>
+    <p>Film grain texture applied to all campaign photography. Every image gets a warm, analog treatment. Nothing should look like it came out of a stock library. The grain says: this was real, this happened, these people were actually there.</p>
   </div>
+
   <div class="right-card">
     <h3>Disposable Camera Program</h3>
-    <p>Every trip gets a shared disposable camera. Real photos from real trips.</p>
+    <p>Every Tryps trip gets a shared disposable camera link. Real photos from real people on real trips. No posed shots, no ring lights. The content that performs best is the content that wasn't trying to perform. These photos become our marketing.</p>
   </div>
-  <div class="right-tagline">The conversation is the product.<br>iMessage is our canvas.</div>
 </div>
 
 </body>

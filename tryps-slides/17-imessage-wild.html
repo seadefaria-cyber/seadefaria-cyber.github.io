@@ -3,155 +3,399 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
-<title>iMessage in the Wild</title>
+<title>17 — iMessage in the Wild</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #FFFFFF; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; }
-.logo { position: absolute; top: 48px; right: 80px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; color: #D9071C; }
-.section-label { position: absolute; top: 48px; left: 80px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 500; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
-.title { position: absolute; top: 90px; left: 80px; font-size: 64px; font-weight: 800; color: #3D3530; }
-.subtitle { position: absolute; top: 170px; left: 80px; font-size: 18px; font-weight: 400; color: #8C8279; max-width: 1400px; line-height: 1.5; }
-.phones-row { position: absolute; top: 230px; left: 0; width: 1920px; display: flex; justify-content: center; gap: 60px; }
-.phone-wrapper { display: flex; flex-direction: column; align-items: center; }
-.phone { width: 400px; height: 740px; background: #FFFFFF; border-radius: 44px; border: 1px solid #E5E7EB; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
-.phone-label { font-family: 'Space Mono', monospace; font-size: 14px; color: #8C8279; text-align: center; margin-top: 16px; }
-.statusbar { height: 48px; display: flex; align-items: center; justify-content: center; background: #F9F9F9; border-bottom: 1px solid #E5E7EB; }
-.statusbar span { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: #3D3530; }
-.chat-header { padding: 12px 20px; display: flex; align-items: center; gap: 12px; background: #F9F9F9; border-bottom: 1px solid #E5E7EB; }
-.chat-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #FFFFFF; }
-.chat-name { font-size: 17px; font-weight: 700; color: #3D3530; }
-.chat-members { font-size: 12px; color: #8C8279; }
-.chat-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 6px; background: #FFFFFF; overflow: hidden; }
-.bubble { max-width: 78%; padding: 10px 16px; border-radius: 20px; font-size: 14px; line-height: 1.45; }
-.recv { background: #E5E5EA; color: #3D3530; align-self: flex-start; }
-.send { background: #007AFF; color: #FFFFFF; align-self: flex-end; }
-.tryps-msg { background: #D9071C; color: #FFFFFF; align-self: flex-start; }
-.sender-name { font-size: 11px; font-weight: 600; color: #8C8279; margin-bottom: 2px; margin-top: 6px; padding-left: 4px; }
-.reaction { font-size: 11px; color: #8C8279; margin-top: 2px; padding-left: 8px; }
-.input-bar { height: 52px; background: #F9F9F9; border-top: 1px solid #E5E7EB; display: flex; align-items: center; padding: 0 16px; gap: 10px; }
-.input-field { flex: 1; height: 34px; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 17px; padding: 0 14px; font-size: 14px; color: #8C8279; display: flex; align-items: center; }
-.send-btn { width: 30px; height: 30px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-.send-arrow { color: #FFFFFF; font-size: 16px; font-weight: 700; }
-.link-preview { background: #F5F5F5; border-radius: 14px; padding: 12px; margin: 4px 0; align-self: flex-start; max-width: 78%; border: 1px solid #E8E5E0; }
-.link-title { font-size: 13px; font-weight: 700; color: #3D3530; }
-.link-desc { font-size: 11px; color: #8C8279; margin-top: 2px; }
-.link-url { font-size: 10px; color: #D9071C; margin-top: 4px; font-family: 'Space Mono', monospace; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px; height: 1080px; overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F5EADB;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  /* --- Section label --- */
+  .section-label {
+    position: absolute; top: 40px; left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 500; color: #8C8279; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  /* --- Logo --- */
+  .logo {
+    position: absolute; top: 40px; right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 28px; color: #D9071C;
+    letter-spacing: -0.5px;
+  }
+
+  /* --- Layout --- */
+  .slide-content {
+    display: flex; align-items: center; gap: 100px;
+    margin-top: 20px;
+  }
+
+  /* --- Left text block --- */
+  .text-block {
+    max-width: 520px;
+  }
+  .slide-title {
+    font-size: 56px; font-weight: 800; color: #3D3530;
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .slide-title span { color: #D9071C; }
+  .slide-subtitle {
+    font-size: 20px; color: #8C8279; line-height: 1.5;
+    margin-bottom: 40px; font-weight: 500;
+  }
+  .slide-bottom-text {
+    font-size: 36px; font-weight: 800; color: #D9071C;
+    line-height: 1.3;
+  }
+
+  /* --- iPhone shell --- */
+  .iphone {
+    width: 400px; height: 860px;
+    background: #fff;
+    border-radius: 52px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.16), 0 6px 20px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e0ddd9;
+    flex-shrink: 0;
+  }
+  .dynamic-island {
+    width: 126px; height: 36px; background: #000;
+    border-radius: 20px; position: absolute;
+    top: 11px; left: 50%; transform: translateX(-50%);
+    z-index: 10;
+  }
+  .status-bar {
+    height: 56px; padding: 16px 28px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    font-size: 16px; font-weight: 600; color: #000;
+    position: relative; z-index: 1;
+  }
+  .status-icons { display: flex; gap: 5px; align-items: center; }
+  .status-icons svg { width: 18px; height: 18px; }
+
+  .home-indicator {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    width: 140px; height: 5px; background: #000; border-radius: 3px;
+    opacity: 0.2; z-index: 10;
+  }
+
+  /* --- iOS font --- */
+  .ios { font-family: -apple-system, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif; }
+
+  /* --- iMessage screen --- */
+  .imessage-screen { display: flex; flex-direction: column; height: calc(100% - 56px); }
+
+  .imessage-nav {
+    padding: 4px 18px 0;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .back-chevron { font-size: 22px; color: #007AFF; font-weight: 300; }
+  .back-label { font-size: 17px; color: #007AFF; }
+
+  .imessage-group-center {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 4px 0 8px;
+  }
+  .group-avatar-stack {
+    position: relative; width: 56px; height: 56px; margin-bottom: 4px;
+  }
+  .group-avatar-stack .ga {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600; color: #fff;
+    position: absolute; border: 2.5px solid #fff;
+  }
+  .group-avatar-stack .ga:nth-child(1) { top: 0; left: 0; z-index: 3; }
+  .group-avatar-stack .ga:nth-child(2) { top: 0; right: 0; z-index: 2; }
+  .group-avatar-stack .ga:nth-child(3) { bottom: 0; left: 11px; z-index: 1; }
+  .group-name { font-size: 16px; font-weight: 600; color: #000; }
+  .group-sub { font-size: 12px; color: #8e8e93; }
+
+  .imessage-body {
+    flex: 1; padding: 6px 14px; overflow: hidden;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+
+  .msg-row { display: flex; align-items: flex-end; gap: 6px; }
+  .msg-row.sent { justify-content: flex-end; }
+  .msg-row.received { justify-content: flex-start; }
+
+  .msg-avatar {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; color: #fff;
+    flex-shrink: 0;
+  }
+
+  .msg-bubble {
+    max-width: 260px; padding: 9px 13px;
+    border-radius: 18px; font-size: 15px; line-height: 1.35;
+    word-wrap: break-word;
+  }
+  .msg-row.sent .msg-bubble {
+    background: #007AFF; color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .msg-row.received .msg-bubble {
+    background: #E5E5EA; color: #000;
+    border-bottom-left-radius: 4px;
+  }
+
+  .msg-sender {
+    font-size: 11px; color: #8e8e93; font-weight: 500;
+    margin-left: 34px; margin-bottom: -1px; margin-top: 5px;
+  }
+
+  .msg-time {
+    text-align: center; font-size: 11px; color: #8e8e93;
+    margin: 4px 0;
+  }
+
+  .msg-read {
+    font-size: 10px; color: #8e8e93; text-align: right;
+    margin-top: -1px; padding-right: 4px;
+  }
+
+  /* --- System message (someone added to chat) --- */
+  .msg-system {
+    text-align: center; font-size: 12px; color: #8e8e93;
+    margin: 6px 0; font-style: italic;
+  }
+
+  /* --- Tryps link preview card (rich iMessage preview) --- */
+  .link-preview-wrapper {
+    max-width: 270px; margin-left: 34px;
+  }
+  .link-preview {
+    background: #fff; border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5e5ea;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .link-preview-image {
+    width: 100%; height: 100px;
+    background: linear-gradient(135deg, #D9071C 0%, #ff4d4d 50%, #ffd6d6 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .link-preview-image .lp-dest {
+    font-size: 28px; font-weight: 800; color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .link-preview-image .lp-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: #fff; color: #D9071C; font-size: 9px; font-weight: 700;
+    padding: 3px 8px; border-radius: 10px; letter-spacing: 0.5px;
+  }
+  .link-preview-body { padding: 10px 12px; }
+  .link-preview-title { font-size: 14px; font-weight: 700; color: #000; }
+  .link-preview-desc { font-size: 12px; color: #8e8e93; margin-top: 2px; line-height: 1.3; }
+  .link-preview-footer {
+    display: flex; align-items: center; gap: 4px;
+    margin-top: 6px;
+  }
+  .link-preview-icon {
+    width: 14px; height: 14px; border-radius: 3px;
+    background: #D9071C; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 8px; font-weight: 800;
+  }
+  .link-preview-url { font-size: 11px; color: #8e8e93; }
+
+  /* --- Trip card inside preview --- */
+  .lp-route {
+    display: flex; align-items: center; gap: 6px; margin-top: 6px;
+  }
+  .lp-route-dot { width: 6px; height: 6px; border-radius: 50%; background: #D9071C; }
+  .lp-route-line { width: 30px; height: 1.5px; background: linear-gradient(90deg, #D9071C, #ff6b6b); }
+  .lp-route-code { font-size: 11px; color: #8C8279; font-weight: 600; }
+  .lp-route-plane { font-size: 10px; color: #D9071C; }
+  .lp-travelers {
+    display: flex; margin-top: 6px;
+  }
+  .lp-travelers .lt {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; font-weight: 700; color: #fff;
+    border: 1.5px solid #fff; margin-left: -5px;
+  }
+  .lp-travelers .lt:first-child { margin-left: 0; }
+  .lp-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; font-weight: 700; color: #D9071C;
+    margin-top: 4px;
+  }
+
+  .imessage-input-bar {
+    height: 48px; padding: 6px 14px;
+    display: flex; align-items: center; gap: 8px;
+    border-top: 0.5px solid #e5e5e5;
+  }
+  .imessage-input-plus {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #e5e5ea; display: flex; align-items: center; justify-content: center;
+    color: #8e8e93; font-size: 20px; font-weight: 300;
+  }
+  .imessage-input-field {
+    flex: 1; height: 34px; border: 1px solid #e5e5ea; border-radius: 18px;
+    padding: 0 14px; font-size: 14px; color: #c7c7cc;
+    display: flex; align-items: center;
+  }
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="section-label">17 Brand Applications</div>
-  <div class="logo">tryps</div>
-  <div class="title">iMessage in the Wild</div>
-  <div class="subtitle">How tryps lives inside everyday conversations between friends planning trips together.</div>
-  <div class="phones-row">
-    <!-- Phone 1: Trip Creation -->
-    <div class="phone-wrapper">
-      <div class="phone">
-        <div class="statusbar"><span>9:41</span></div>
-        <div class="chat-header">
-          <div class="chat-avatar" style="background: #007AFF;">B</div>
-          <div>
-            <div class="chat-name">Bali Crew</div>
-            <div class="chat-members">5 people</div>
-          </div>
-        </div>
-        <div class="chat-body">
-          <div class="sender-name">Sarah</div>
-          <div class="bubble recv">ok so bali in march. who's in?</div>
-          <div class="sender-name">Jake</div>
-          <div class="bubble recv">I'M IN</div>
-          <div class="sender-name">Emma</div>
-          <div class="bubble recv">yesss finally</div>
-          <div class="bubble send">let me add martin. he'll handle everything</div>
-          <div class="sender-name">Martin (tryps)</div>
-          <div class="bubble tryps-msg">Hey Bali Crew! I'm Martin, your trip planner. Let's make this happen. First up: what dates work for everyone?</div>
-          <div class="sender-name">Jake</div>
-          <div class="bubble recv">wait who is this lol</div>
-          <div class="bubble send">trust me bro. just answer his questions</div>
-        </div>
-        <div class="input-bar">
-          <div class="input-field">iMessage</div>
-          <div class="send-btn"><span class="send-arrow">^</span></div>
-        </div>
-      </div>
-      <div class="phone-label">Trip Creation</div>
+  <div class="section-label">17  - BRAND APPLICATIONS</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+  <div class="slide-content">
+    <!-- Left text -->
+    <div class="text-block">
+      <div class="slide-title">iMessage<br>in the <span>Wild</span></div>
+      <div class="slide-subtitle">A friend drops Martin into the group chat. Within minutes, everyone has a trip booked. No app downloads. No sign-ups. Just a text.</div>
+      <div class="slide-bottom-text">This moment is how<br>Tryps grows.</div>
     </div>
-    <!-- Phone 2: Group Voting -->
-    <div class="phone-wrapper">
-      <div class="phone">
-        <div class="statusbar"><span>9:41</span></div>
-        <div class="chat-header">
-          <div class="chat-avatar" style="background: #007AFF;">B</div>
-          <div>
-            <div class="chat-name">Bali Crew</div>
-            <div class="chat-members">5 people</div>
-          </div>
-        </div>
-        <div class="chat-body">
-          <div class="sender-name">Martin (tryps)</div>
-          <div class="bubble tryps-msg">I found 3 villas that fit your group. Vote for your favorite!</div>
-          <div class="link-preview">
-            <div class="link-title">Villa Sunset - 5BR, Private Pool</div>
-            <div class="link-desc">$320/night | Seminyak | 4.8 stars</div>
-            <div class="link-url">tryps.co/vote/bali-crew</div>
-          </div>
-          <div class="sender-name">Sarah</div>
-          <div class="bubble recv">omg option 1 is gorgeous</div>
-          <div class="reaction">Sarah, Emma, Jake liked "Villa Sunset"</div>
-          <div class="sender-name">Jake</div>
-          <div class="bubble recv">option 1 for sure. that pool though</div>
-          <div class="sender-name">Martin (tryps)</div>
-          <div class="bubble tryps-msg">Villa Sunset wins! 3 votes. I'll lock it in. Flights are next.</div>
-          <div class="sender-name">Emma</div>
-          <div class="bubble recv">this is so easy wtf</div>
-        </div>
-        <div class="input-bar">
-          <div class="input-field">iMessage</div>
-          <div class="send-btn"><span class="send-arrow">^</span></div>
+
+    <!-- iPhone -->
+    <div class="iphone">
+      <div class="dynamic-island"></div>
+      <div class="status-bar">
+        <span class="ios">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 18 18"><path d="M1 11h2v5H1zM5 8h2v8H5zM9 5h2v11H9zM13 2h2v14h-2z" fill="#000"/></svg>
+          <svg viewBox="0 0 18 18"><path d="M9 3C5.7 3 2.7 4.3.5 6.5l1.4 1.4C3.6 6.2 6.2 5 9 5s5.4 1.2 7.1 2.9l1.4-1.4C15.3 4.3 12.3 3 9 3zm0 4c-2.2 0-4.2.9-5.7 2.3l1.4 1.4C5.8 9.6 7.3 9 9 9s3.2.6 4.3 1.7l1.4-1.4C13.2 7.9 11.2 7 9 7zm0 4c-1.1 0-2.1.4-2.8 1.2l2.8 3 2.8-3C11.1 11.4 10.1 11 9 11z" fill="#000"/></svg>
+          <svg viewBox="0 0 25 12"><rect x="0" y="1" width="21" height="10" rx="2" ry="2" fill="none" stroke="#000" stroke-width="1.2"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="#000"/><rect x="1.5" y="2.5" width="18" height="7" rx="1" fill="#000"/></svg>
         </div>
       </div>
-      <div class="phone-label">Group Voting</div>
-    </div>
-    <!-- Phone 3: Post-Trip Nostalgia -->
-    <div class="phone-wrapper">
-      <div class="phone">
-        <div class="statusbar"><span>9:41</span></div>
-        <div class="chat-header">
-          <div class="chat-avatar" style="background: #007AFF;">B</div>
-          <div>
-            <div class="chat-name">Bali Crew</div>
-            <div class="chat-members">5 people</div>
-          </div>
+      <div class="imessage-screen">
+        <!-- Nav -->
+        <div class="imessage-nav ios">
+          <span class="back-chevron">&#x276E;</span>
+          <span class="back-label" style="font-size:14px;">12</span>
         </div>
-        <div class="chat-body">
-          <div class="sender-name">Martin (tryps)</div>
-          <div class="bubble tryps-msg">Welcome home, Bali Crew! Here's your trip recap and shared photo album.</div>
-          <div class="link-preview">
-            <div class="link-title">Bali 2026 - Trip Recap</div>
-            <div class="link-desc">7 days | 47 photos | $1,850/person</div>
-            <div class="link-url">tryps.co/trips/bali-crew</div>
+        <!-- Group center -->
+        <div class="imessage-group-center ios">
+          <div class="group-avatar-stack">
+            <div class="ga" style="background:#5856D6;">J</div>
+            <div class="ga" style="background:#FF9500;">M</div>
+            <div class="ga" style="background:#34C759;">C</div>
           </div>
-          <div class="sender-name">Sarah</div>
-          <div class="bubble recv">i'm already sad it's over</div>
-          <div class="sender-name">Emma</div>
-          <div class="bubble recv">that sunset dinner though</div>
-          <div class="sender-name">Jake</div>
-          <div class="bubble recv">when are we going back?</div>
-          <div class="bubble send">martin... start planning the next one?</div>
-          <div class="sender-name">Martin (tryps)</div>
-          <div class="bubble tryps-msg">Already on it. Where to next?</div>
+          <span class="group-name">college boys &#x1F3C8;</span>
+          <span class="group-sub">8 people &#x203A;</span>
         </div>
-        <div class="input-bar">
-          <div class="input-field">iMessage</div>
-          <div class="send-btn"><span class="send-arrow">^</span></div>
+        <!-- Messages -->
+        <div class="imessage-body ios">
+          <div class="msg-time">Today 11:42 AM</div>
+
+          <div class="msg-sender">Jake</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background:#5856D6;">J</div>
+            <div class="msg-bubble">yo who's down for spring break?</div>
+          </div>
+
+          <div class="msg-sender">Marcus</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background:#FF9500;">M</div>
+            <div class="msg-bubble">BRO yes</div>
+          </div>
+
+          <div class="msg-sender">Chris</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background:#34C759;">C</div>
+            <div class="msg-bubble">i'm so in. where we going</div>
+          </div>
+
+          <div class="msg-row sent">
+            <div class="msg-bubble">tulum or cabo?</div>
+          </div>
+
+          <div class="msg-sender">Danny</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background:#FF2D55;">D</div>
+            <div class="msg-bubble">tulum goes crazy</div>
+          </div>
+
+          <div class="msg-sender">Jake</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background:#5856D6;">J</div>
+            <div class="msg-bubble">ok bet. just added martin from tryps to the chat</div>
+          </div>
+
+          <div class="msg-system">Jake added Martin from Tryps</div>
+
+          <div class="msg-sender">Martin from Tryps</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background: linear-gradient(180deg, #D9071C, #a00515);">M</div>
+            <div class="msg-bubble">hey! tulum for spring break? how many people and what's the budget? i'll put something together</div>
+          </div>
+
+          <div class="msg-row sent">
+            <div class="msg-bubble">8 of us, trying to stay under 2k each</div>
+          </div>
+
+          <div class="msg-sender">Martin from Tryps</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background: linear-gradient(180deg, #D9071C, #a00515);">M</div>
+            <div class="msg-bubble">got you. here's what i found:</div>
+          </div>
+
+          <!-- Rich link preview card -->
+          <div class="link-preview-wrapper">
+            <div class="link-preview">
+              <div class="link-preview-image">
+                <span class="lp-dest">Tulum 2026</span>
+                <span class="lp-badge">READY TO BOOK</span>
+              </div>
+              <div class="link-preview-body">
+                <div class="link-preview-title">Spring Break Trip</div>
+                <div class="lp-route">
+                  <div class="lp-route-dot"></div>
+                  <span class="lp-route-code">JFK</span>
+                  <div class="lp-route-line"></div>
+                  <span class="lp-route-plane">&#9992;</span>
+                  <div class="lp-route-line"></div>
+                  <span class="lp-route-code">CUN</span>
+                  <div class="lp-route-dot"></div>
+                </div>
+                <div class="link-preview-desc">Mar 8-15 &middot; Beachfront villa &middot; Cenote tour</div>
+                <div class="lp-travelers">
+                  <div class="lt" style="background:#5856D6;">J</div>
+                  <div class="lt" style="background:#FF9500;">M</div>
+                  <div class="lt" style="background:#34C759;">C</div>
+                  <div class="lt" style="background:#FF2D55;">D</div>
+                  <div class="lt" style="background:#AF52DE;">+4</div>
+                </div>
+                <div class="lp-price">$1,780/person</div>
+                <div class="link-preview-footer">
+                  <div class="link-preview-icon">t</div>
+                  <span class="link-preview-url">tryps.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:2px"></div>
+          <div class="msg-sender">Chris</div>
+          <div class="msg-row received">
+            <div class="msg-avatar" style="background:#34C759;">C</div>
+            <div class="msg-bubble">bro what. that was like 5 minutes</div>
+          </div>
+
+        </div>
+        <!-- Input bar -->
+        <div class="imessage-input-bar ios">
+          <div class="imessage-input-plus">+</div>
+          <div class="imessage-input-field">iMessage</div>
         </div>
       </div>
-      <div class="phone-label">Post-Trip Nostalgia</div>
+      <div class="home-indicator"></div>
     </div>
   </div>
-</div>
 </body>
 </html>

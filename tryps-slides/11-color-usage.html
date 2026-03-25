@@ -21,16 +21,17 @@
 .logo {
   position: absolute;
   right: 40px;
-  top: 36px;
+  top: 40px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   color: #D9071C;
+  letter-spacing: -0.5px;
 }
 
 .section-label {
   position: absolute;
-  left: 80px;
+  left: 60px;
   top: 48px;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
@@ -40,290 +41,358 @@
   text-transform: uppercase;
 }
 
-.title {
+.content {
   position: absolute;
-  left: 80px;
-  top: 100px;
+  left: 60px;
+  top: 120px;
+  right: 100px;
+}
+
+.title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 64px;
+  font-size: 52px;
   font-weight: 800;
   color: #3D3530;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
 }
 
 .subtitle {
-  position: absolute;
-  left: 80px;
-  top: 185px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: #8C8279;
+  margin-bottom: 56px;
 }
 
+/* --- Card Grid --- */
 .cards-row {
-  position: absolute;
-  left: 80px;
-  top: 230px;
   display: flex;
   flex-direction: row;
   gap: 32px;
+  margin-bottom: 56px;
 }
 
 .card {
-  width: 560px;
-  height: 780px;
-  background: #F5F5F5;
-  border-radius: 16px;
-  padding: 40px;
+  width: 540px;
+  height: 480px;
+  background: #F7F5F2;
+  border-radius: 24px;
+  padding: 44px 40px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.card-title {
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: #8C8279;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.card-heading {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  color: #3D3530;
-  margin-bottom: 32px;
-}
-
-/* Card 1 - Usage Ratios */
-.ratio-bar-container {
-  display: flex;
-  flex-direction: row;
-  width: 480px;
-  height: 48px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 32px;
-}
-
-.ratio-segment-white { width: 60%; background: #FFFFFF; border: 1px solid #E5E5E5; }
-.ratio-segment-slate { width: 25%; background: #3D3530; }
-.ratio-segment-red { width: 10%; background: #D9071C; }
-.ratio-segment-accent { width: 5%; background: #8C8279; }
-
-.ratio-legend {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.ratio-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-}
-
-.ratio-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-
-.ratio-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #3D3530;
-  width: 80px;
-}
-
-.ratio-desc {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #8C8279;
-}
-
-/* Card 2 - Hierarchy */
-.hierarchy-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.hierarchy-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid #E5E5E5;
-}
-
-.hierarchy-item:last-child { border-bottom: none; }
-
-.hierarchy-role {
+.card-label {
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   font-weight: 500;
   color: #8C8279;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+/* --- Card 1: Buttons --- */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+  align-items: flex-start;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 40px;
+  background: #D9071C;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 14px;
+  border: none;
+  letter-spacing: -0.2px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 40px;
+  background: transparent;
+  color: #3D3530;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 14px;
+  border: 2px solid #3D3530;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 32px;
+  background: transparent;
+  color: #D9071C;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  letter-spacing: -0.2px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.btn-note {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #B5ADA5;
+  margin-top: 8px;
+}
+
+/* --- Card 2: Trip Card --- */
+.trip-card-preview {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(61,53,48,0.06);
+  margin-top: 8px;
+}
+
+.trip-card-image {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, #D9071C 0%, #F5EADB 100%);
+  position: relative;
+}
+
+.trip-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.95);
+  color: #D9071C;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.trip-card-body {
+  padding: 24px 28px;
+}
+
+.trip-card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #3D3530;
+  margin-bottom: 6px;
+}
+
+.trip-card-meta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8C8279;
+  margin-bottom: 16px;
+}
+
+.trip-card-avatars {
+  display: flex;
+  gap: 0;
+}
+
+.trip-card-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2.5px solid #FFFFFF;
+  margin-left: -8px;
+}
+.trip-card-avatar:first-child { margin-left: 0; }
+
+/* --- Card 3: Typography Hierarchy --- */
+.type-hierarchy {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.type-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 0;
+  border-bottom: 1px solid #E8E4DF;
+}
+.type-tier:last-child { border-bottom: none; }
+
+.type-tier-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #B5ADA5;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-/* Card 3 - Contrast */
-.contrast-pairs {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+/* --- Bottom Bar --- */
+.ratio-section {
+  position: absolute;
+  left: 60px;
+  bottom: 72px;
+  right: 100px;
 }
 
-.contrast-pair {
+.ratio-label-row {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
-.contrast-label {
+.ratio-label-item {
   font-family: 'Space Mono', monospace;
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  color: #8C8279;
+  letter-spacing: 1px;
 }
 
-.contrast-label.do { color: #2D6B4F; }
-.contrast-label.dont { color: #D14343; }
-
-.contrast-box {
-  width: 480px;
-  height: 80px;
-  border-radius: 12px;
+.ratio-bar {
   display: flex;
-  align-items: center;
-  padding: 0 28px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.contrast-check {
-  margin-left: auto;
-  font-size: 20px;
-  font-weight: 700;
+.ratio-bar .seg-white {
+  width: 60%;
+  background: #F7F5F2;
+  border: 1px solid #E8E4DF;
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+}
+.ratio-bar .seg-slate {
+  width: 25%;
+  background: #3D3530;
+}
+.ratio-bar .seg-red {
+  width: 10%;
+  background: #D9071C;
+}
+.ratio-bar .seg-accent {
+  width: 5%;
+  background: #8C8279;
+  border-radius: 0 6px 6px 0;
 }
 </style>
 </head>
 <body>
 <div class="slide">
-  <div class="section-label">COLOR SYSTEM</div>
-  <div class="logo">tryps</div>
-  <div class="title">Color Usage</div>
-  <div class="subtitle">Practical examples of how brand and UI colors are applied.</div>
+  <div class="section-label">11 - COLOR SYSTEM</div>
+  <img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
 
-  <div class="cards-row">
-    <!-- Card 1: Do (Ratios) -->
-    <div class="card">
-      <div class="card-title">Proportions</div>
-      <div class="card-heading">Do</div>
-      <div class="ratio-bar-container">
-        <div class="ratio-segment-white"></div>
-        <div class="ratio-segment-slate"></div>
-        <div class="ratio-segment-red"></div>
-        <div class="ratio-segment-accent"></div>
+  <div class="content">
+    <div class="title">Color Usage</div>
+    <div class="subtitle">How the palette comes to life across buttons, cards, and type.</div>
+
+    <div class="cards-row">
+      <!-- Card 1: Buttons -->
+      <div class="card">
+        <div class="card-label">BUTTONS</div>
+        <div class="btn-group">
+          <div class="btn-row">
+            <div class="btn-primary">Book Trip</div>
+          </div>
+          <div class="btn-note">Primary -- Tryps Red on white text</div>
+
+          <div class="btn-row">
+            <div class="btn-secondary">Learn More</div>
+          </div>
+          <div class="btn-note">Secondary -- Slate outline, no fill</div>
+
+          <div class="btn-row">
+            <div class="btn-ghost">View Details &#8594;</div>
+          </div>
+          <div class="btn-note">Ghost -- Red text, no border</div>
+        </div>
       </div>
-      <div class="ratio-legend">
-        <div class="ratio-item">
-          <div class="ratio-dot" style="background: #FFFFFF; border: 1px solid #E5E5E5;"></div>
-          <div class="ratio-label">60%</div>
-          <div class="ratio-desc">White for backgrounds and open space</div>
+
+      <!-- Card 2: Trip Card -->
+      <div class="card">
+        <div class="card-label">CARDS</div>
+        <div class="trip-card-preview">
+          <div class="trip-card-image">
+            <div class="trip-card-badge">Trending</div>
+          </div>
+          <div class="trip-card-body">
+            <div class="trip-card-title">Trip to Bali</div>
+            <div class="trip-card-meta">4 travelers  &#183;  Jun 2026</div>
+            <div class="trip-card-avatars">
+              <div class="trip-card-avatar" style="background: #D9071C;"></div>
+              <div class="trip-card-avatar" style="background: #3D3530;"></div>
+              <div class="trip-card-avatar" style="background: #8C8279;"></div>
+              <div class="trip-card-avatar" style="background: #F5EADB;"></div>
+            </div>
+          </div>
         </div>
-        <div class="ratio-item">
-          <div class="ratio-dot" style="background: #3D3530;"></div>
-          <div class="ratio-label">25%</div>
-          <div class="ratio-desc">Deep Slate for text and structure</div>
-        </div>
-        <div class="ratio-item">
-          <div class="ratio-dot" style="background: #D9071C;"></div>
-          <div class="ratio-label">10%</div>
-          <div class="ratio-desc">Tryps Red for CTAs and key accents</div>
-        </div>
-        <div class="ratio-item">
-          <div class="ratio-dot" style="background: #8C8279;"></div>
-          <div class="ratio-label">5%</div>
-          <div class="ratio-desc">Accent for secondary elements</div>
+      </div>
+
+      <!-- Card 3: Typography Hierarchy -->
+      <div class="card">
+        <div class="card-label">TYPOGRAPHY</div>
+        <div class="type-hierarchy">
+          <div class="type-tier">
+            <div class="type-tier-label">HEADING</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; font-weight: 800; color: #3D3530; letter-spacing: -0.5px;">Plan Your Next Trip</div>
+          </div>
+          <div class="type-tier">
+            <div class="type-tier-label">BODY</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 400; color: #8C8279; line-height: 1.55;">Share your travel plans with friends and explore the world together in real time.</div>
+          </div>
+          <div class="type-tier">
+            <div class="type-tier-label">ACCENT LINK</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #D9071C;">View all destinations &#8594;</div>
+          </div>
+          <div class="type-tier">
+            <div class="type-tier-label">CAPTION</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 400; color: #B5ADA5;">Last updated 2 hours ago</div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Card 2: Hierarchy -->
-    <div class="card">
-      <div class="card-title">Text</div>
-      <div class="card-heading">Hierarchy</div>
-      <div class="hierarchy-list">
-        <div class="hierarchy-item">
-          <div class="hierarchy-role">Heading</div>
-          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: #3D3530;">Plan Your Next Trip</div>
-        </div>
-        <div class="hierarchy-item">
-          <div class="hierarchy-role">Body</div>
-          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 400; color: #8C8279;">Share your travel plans with friends and explore together in real time.</div>
-        </div>
-        <div class="hierarchy-item">
-          <div class="hierarchy-role">Link</div>
-          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 600; color: #D9071C; text-decoration: underline;">View all destinations</div>
-        </div>
-        <div class="hierarchy-item">
-          <div class="hierarchy-role">Caption</div>
-          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 400; color: #B5ADA5;">Last updated 2 hours ago</div>
-        </div>
-      </div>
+  <!-- Bottom Ratio Bar -->
+  <div class="ratio-section">
+    <div class="ratio-label-row">
+      <div class="ratio-label-item">60% White</div>
+      <div class="ratio-label-item">25% Slate</div>
+      <div class="ratio-label-item">10% Red</div>
+      <div class="ratio-label-item">5% Accents</div>
     </div>
-
-    <!-- Card 3: Contrast -->
-    <div class="card">
-      <div class="card-title">Accessibility</div>
-      <div class="card-heading">Contrast</div>
-      <div class="contrast-pairs">
-        <div class="contrast-pair">
-          <div class="contrast-label do">DO</div>
-          <div class="contrast-box" style="background: #F7F5F2; color: #3D3530;">
-            Dark text on light background
-            <span class="contrast-check" style="color: #2D6B4F;">&#10003;</span>
-          </div>
-        </div>
-        <div class="contrast-pair">
-          <div class="contrast-label do">DO</div>
-          <div class="contrast-box" style="background: #3D3530; color: #F7F5F2;">
-            Light text on dark background
-            <span class="contrast-check" style="color: #2D6B4F;">&#10003;</span>
-          </div>
-        </div>
-        <div class="contrast-pair">
-          <div class="contrast-label do">DO</div>
-          <div class="contrast-box" style="background: #D9071C; color: #FFFFFF;">
-            White text on Tryps Red
-            <span class="contrast-check" style="color: #FFFFFF;">&#10003;</span>
-          </div>
-        </div>
-        <div class="contrast-pair">
-          <div class="contrast-label dont">DON'T</div>
-          <div class="contrast-box" style="background: #F7F5F2; color: #E8E5E0;">
-            Light text on light background
-            <span class="contrast-check" style="color: #D14343;">&#10005;</span>
-          </div>
-        </div>
-        <div class="contrast-pair">
-          <div class="contrast-label dont">DON'T</div>
-          <div class="contrast-box" style="background: #8C8279; color: #3D3530;">
-            Dark text on medium gray
-            <span class="contrast-check" style="color: #D14343;">&#10005;</span>
-          </div>
-        </div>
-      </div>
+    <div class="ratio-bar">
+      <div class="seg-white"></div>
+      <div class="seg-slate"></div>
+      <div class="seg-red"></div>
+      <div class="seg-accent"></div>
     </div>
   </div>
 </div>

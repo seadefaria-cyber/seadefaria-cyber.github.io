@@ -3,175 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
-<title>App Store Presence</title>
+<title>Tryps Brand Book - App Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #FFFFFF; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; }
-.logo { position: absolute; top: 48px; right: 80px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; color: #D9071C; }
-.section-label { position: absolute; top: 48px; left: 80px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 500; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
-.title { position: absolute; top: 90px; left: 80px; font-size: 64px; font-weight: 800; color: #3D3530; }
-.subtitle { position: absolute; top: 170px; left: 80px; font-size: 18px; font-weight: 400; color: #8C8279; max-width: 1200px; line-height: 1.5; }
-.phones { position: absolute; top: 220px; left: 0; width: 1920px; display: flex; align-items: flex-end; justify-content: center; gap: 40px; }
-.phone { background: #F5F5F5; border-radius: 36px; border: 1px solid #E5E7EB; overflow: hidden; display: flex; flex-direction: column; position: relative; }
-.phone-side { width: 300px; height: 600px; }
-.phone-center { width: 380px; height: 760px; }
-.phone-statusbar { width: 100%; height: 44px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; }
-.phone-statusbar span { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #3D3530; }
-.phone-content { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
 
-/* Trip card feed - left phone */
-.mini-trip { background: #FFFFFF; border-radius: 12px; padding: 16px; border: 1px solid #E8E5E0; }
-.mini-trip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.mini-trip-dot { width: 8px; height: 8px; border-radius: 50%; }
-.mini-trip-title { font-size: 15px; font-weight: 700; color: #3D3530; }
-.mini-trip-date { font-family: 'Space Mono', monospace; font-size: 11px; color: #8C8279; }
-.mini-trip-bar { width: 100%; height: 4px; border-radius: 2px; background: #E8E5E0; margin-top: 8px; }
-.mini-trip-bar-fill { height: 100%; border-radius: 2px; }
+  .section-label {
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
 
-/* iMessage - center phone */
-.imsg-header { background: #FFFFFF; padding: 12px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #E8E5E0; }
-.imsg-avatar { width: 36px; height: 36px; border-radius: 50%; background: #D9071C; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 14px; font-weight: 700; }
-.imsg-name { font-size: 16px; font-weight: 700; color: #3D3530; }
-.imsg-sub { font-size: 11px; color: #8C8279; }
-.imsg-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 8px; background: #FFFFFF; }
-.bubble { max-width: 75%; padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; }
-.bubble-recv { background: #E5E5EA; color: #3D3530; align-self: flex-start; }
-.bubble-send { background: #007AFF; color: #FFFFFF; align-self: flex-end; }
-.bubble-tryps { background: #D9071C; color: #FFFFFF; align-self: flex-start; border-radius: 18px; }
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    letter-spacing: -0.5px;
+  }
 
-/* Trip detail - right phone */
-.detail-hero { width: 100%; height: 160px; background: linear-gradient(135deg, #FFB347, #D9071C); border-radius: 12px; display: flex; align-items: flex-end; padding: 16px; }
-.detail-hero-text { font-size: 20px; font-weight: 800; color: #FFFFFF; }
-.detail-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #E8E5E0; }
-.detail-label { font-family: 'Space Mono', monospace; font-size: 11px; color: #8C8279; flex: 1; }
-.detail-value { font-size: 13px; font-weight: 600; color: #3D3530; }
+  .title-area {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 1200px;
+  }
+  .title-area h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #3D3530;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .title-area p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8C8279;
+    line-height: 1.5;
+  }
 
-/* App Store meta bar */
-.appstore-bar { position: absolute; bottom: 60px; left: 0; width: 1920px; display: flex; align-items: center; justify-content: center; gap: 20px; }
-.appstore-icon { width: 64px; height: 64px; background: #D9071C; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
-.appstore-icon span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: #FFFFFF; }
-.appstore-info { display: flex; flex-direction: column; }
-.appstore-name { font-size: 20px; font-weight: 800; color: #3D3530; }
-.appstore-tagline { font-size: 14px; color: #8C8279; }
-.appstore-stars { font-size: 16px; color: #FFB347; letter-spacing: 2px; display: flex; align-items: center; gap: 6px; }
-.appstore-stars span { font-family: 'Space Mono', monospace; font-size: 14px; color: #3D3530; font-weight: 700; }
-.appstore-get { background: #D9071C; color: #FFFFFF; padding: 10px 28px; border-radius: 20px; font-size: 16px; font-weight: 800; border: none; letter-spacing: 1px; }
+  .store-mockup {
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1400px;
+  }
+
+  /* App Store Header */
+  .store-header {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 36px 40px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0eeeb;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+
+  .app-icon {
+    width: 120px;
+    height: 120px;
+    background: #D9071C;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .app-icon span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .app-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .app-name {
+    font-size: 32px;
+    font-weight: 800;
+    color: #3D3530;
+  }
+  .app-tagline {
+    font-size: 17px;
+    font-weight: 400;
+    color: #8C8279;
+  }
+  .app-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .stars {
+    font-size: 18px;
+    color: #FFB347;
+    letter-spacing: 2px;
+  }
+  .rating-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: #3D3530;
+  }
+  .rating-count {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8C8279;
+  }
+
+  .get-btn {
+    background: #007AFF;
+    color: #FFFFFF;
+    padding: 14px 44px;
+    border-radius: 24px;
+    font-size: 18px;
+    font-weight: 800;
+    border: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  /* Screenshots */
+  .screenshots {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .screenshot {
+    width: 280px;
+    height: 560px;
+    background: #FFFFFF;
+    border-radius: 32px;
+    border: 1px solid #f0eeeb;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .screen-status {
+    height: 44px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  .screen-status span {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #3D3530;
+  }
+
+  .screen-content {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  /* Screen 1: Trip Feed */
+  .feed-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #3D3530;
+    margin-bottom: 4px;
+  }
+  .mini-card {
+    background: #F7F5F2;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mini-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mini-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .mini-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #3D3530;
+  }
+  .mini-card-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: #8C8279;
+  }
+  .mini-bar {
+    width: 100%;
+    height: 4px;
+    background: #E8E5E0;
+    border-radius: 2px;
+  }
+  .mini-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  /* Screen 2: Chat with Martin */
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0eeeb;
+    margin-bottom: 4px;
+  }
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #D9071C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .chat-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3D3530;
+  }
+  .chat-sub {
+    font-size: 11px;
+    color: #8C8279;
+  }
+  .bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .bubble-in {
+    background: #E5E5EA;
+    color: #3D3530;
+    align-self: flex-start;
+  }
+  .bubble-out {
+    background: #D9071C;
+    color: #FFFFFF;
+    align-self: flex-end;
+  }
+
+  /* Screen 3: Vote */
+  .vote-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #3D3530;
+    margin-bottom: 2px;
+  }
+  .vote-sub {
+    font-size: 12px;
+    color: #8C8279;
+    margin-bottom: 8px;
+  }
+  .vote-option {
+    background: #F7F5F2;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .vote-option-active {
+    border: 2px solid #D9071C;
+  }
+  .vote-option-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3D3530;
+  }
+  .vote-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: #E8E5E0;
+    border-radius: 3px;
+  }
+  .vote-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: #D9071C;
+  }
+  .vote-pct {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #D9071C;
+  }
+  .vote-btn {
+    background: #D9071C;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: auto;
+  }
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="section-label">17 Brand Applications</div>
-  <div class="logo">tryps</div>
-  <div class="title">App Store Presence</div>
-  <div class="subtitle">A polished storefront that converts browsers into travelers.</div>
-  <div class="phones">
-    <!-- Left phone: Trip card feed -->
-    <div class="phone phone-side">
-      <div class="phone-statusbar"><span>9:41</span></div>
-      <div class="phone-content" style="background: #FFFFFF;">
-        <div style="font-size: 20px; font-weight: 800; color: #3D3530; margin-bottom: 4px;">Your Trips</div>
-        <div class="mini-trip">
-          <div class="mini-trip-header">
-            <div class="mini-trip-dot" style="background: #059669;"></div>
-            <div class="mini-trip-title">Bali 2026</div>
-          </div>
-          <div class="mini-trip-date">Mar 15 - 22 | 5 friends</div>
-          <div class="mini-trip-bar"><div class="mini-trip-bar-fill" style="width: 100%; background: #059669;"></div></div>
-        </div>
-        <div class="mini-trip">
-          <div class="mini-trip-header">
-            <div class="mini-trip-dot" style="background: #EA580C;"></div>
-            <div class="mini-trip-title">Vegas Weekend</div>
-          </div>
-          <div class="mini-trip-date">Apr 4 - 7 | 3 friends</div>
-          <div class="mini-trip-bar"><div class="mini-trip-bar-fill" style="width: 60%; background: #EA580C;"></div></div>
-        </div>
-        <div class="mini-trip">
-          <div class="mini-trip-header">
-            <div class="mini-trip-dot" style="background: #2563EB;"></div>
-            <div class="mini-trip-title">Tokyo Spring</div>
-          </div>
-          <div class="mini-trip-date">May 1 - 10 | 4 friends</div>
-          <div class="mini-trip-bar"><div class="mini-trip-bar-fill" style="width: 30%; background: #2563EB;"></div></div>
-        </div>
-        <div class="mini-trip">
-          <div class="mini-trip-header">
-            <div class="mini-trip-dot" style="background: #8C8279;"></div>
-            <div class="mini-trip-title">Tulum Crew</div>
-          </div>
-          <div class="mini-trip-date">Jan 8 - 14 | 5 friends</div>
-          <div class="mini-trip-bar"><div class="mini-trip-bar-fill" style="width: 100%; background: #8C8279;"></div></div>
-        </div>
+
+<div class="section-label">17 BRAND IN THE WILD</div>
+<img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>App Store</h1>
+  <p>How Tryps shows up where it matters most.</p>
+</div>
+
+<div class="store-mockup">
+  <div class="store-header">
+    <div class="app-icon"><span>t</span></div>
+    <div class="app-info">
+      <div class="app-name">Tryps</div>
+      <div class="app-tagline">A Travel Agent for Your Group Chat</div>
+      <div class="app-rating">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="rating-num">4.9</div>
+        <div class="rating-count">(2.4K ratings)</div>
       </div>
     </div>
-    <!-- Center phone: iMessage with Martin -->
-    <div class="phone phone-center">
-      <div class="phone-statusbar"><span>9:41</span></div>
-      <div class="imsg-header">
-        <div class="imsg-avatar">M</div>
-        <div>
-          <div class="imsg-name">Martin</div>
-          <div class="imsg-sub">tryps assistant</div>
-        </div>
-      </div>
-      <div class="imsg-body">
-        <div class="bubble bubble-tryps">Hey! I'm Martin, your trip planning assistant. Where are we going?</div>
-        <div class="bubble bubble-send">bali with the crew in march</div>
-        <div class="bubble bubble-tryps">Love it. How many friends are coming?</div>
-        <div class="bubble bubble-send">5 of us total</div>
-        <div class="bubble bubble-tryps">Perfect. I found 3 villas that fit your group. Want me to share them in the group chat?</div>
-        <div class="bubble bubble-send">yes please!</div>
-        <div class="bubble bubble-tryps">Done! I shared 3 options. Everyone can vote on their favorite. I'll book the winner.</div>
-        <div class="bubble bubble-send">you're the best martin</div>
-        <div class="bubble bubble-tryps">That's what I'm here for. Your trip is in good hands.</div>
-      </div>
-    </div>
-    <!-- Right phone: Trip detail -->
-    <div class="phone phone-side">
-      <div class="phone-statusbar"><span>9:41</span></div>
-      <div class="phone-content" style="background: #FFFFFF;">
-        <div class="detail-hero">
-          <div class="detail-hero-text">Bali 2026</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-label">DATES</div>
-          <div class="detail-value">Mar 15 - 22</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-label">FLIGHTS</div>
-          <div class="detail-value" style="color: #059669;">Booked</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-label">HOTEL</div>
-          <div class="detail-value" style="color: #059669;">Booked</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-label">ACTIVITIES</div>
-          <div class="detail-value" style="color: #EA580C;">2 pending</div>
-        </div>
-        <div class="detail-row">
-          <div class="detail-label">COST/PERSON</div>
-          <div class="detail-value">$1,850</div>
-        </div>
-        <div class="detail-row" style="border: none;">
-          <div class="detail-label">STATUS</div>
-          <div class="detail-value" style="color: #059669;">All Booked</div>
-        </div>
-      </div>
-    </div>
+    <button class="get-btn">GET</button>
   </div>
-  <!-- App Store meta bar -->
-  <div class="appstore-bar">
-    <div class="appstore-icon"><span>t</span></div>
-    <div class="appstore-info">
-      <div class="appstore-name">Tryps</div>
-      <div class="appstore-tagline">Travel agent for your group chat</div>
+
+  <div class="screenshots">
+    <!-- Screen 1: Trip Feed -->
+    <div class="screenshot">
+      <div class="screen-status"><span>9:41</span></div>
+      <div class="screen-content">
+        <div class="feed-title">Your Trips</div>
+        <div class="mini-card">
+          <div class="mini-card-top">
+            <div class="mini-dot" style="background: #059669;"></div>
+            <div class="mini-card-title">Bali 2026</div>
+          </div>
+          <div class="mini-card-sub">Jul 12 - 19 | 4 friends</div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width: 100%; background: #059669;"></div></div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-top">
+            <div class="mini-dot" style="background: #EA580C;"></div>
+            <div class="mini-card-title">Austin SXSW</div>
+          </div>
+          <div class="mini-card-sub">Mar 7 - 12 | 6 friends</div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width: 65%; background: #EA580C;"></div></div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-top">
+            <div class="mini-dot" style="background: #2E7DD6;"></div>
+            <div class="mini-card-title">Tokyo Spring</div>
+          </div>
+          <div class="mini-card-sub">May 1 - 10 | 4 friends</div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width: 30%; background: #2E7DD6;"></div></div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-top">
+            <div class="mini-dot" style="background: #8C8279;"></div>
+            <div class="mini-card-title">Tulum Crew</div>
+          </div>
+          <div class="mini-card-sub">Jan 8 - 14 | 5 friends</div>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width: 100%; background: #8C8279;"></div></div>
+        </div>
+      </div>
     </div>
-    <div class="appstore-stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>4.9</span></div>
-    <button class="appstore-get">GET</button>
+
+    <!-- Screen 2: Chat with Martin -->
+    <div class="screenshot">
+      <div class="screen-status"><span>9:41</span></div>
+      <div class="screen-content" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="chat-header">
+          <div class="chat-avatar">M</div>
+          <div>
+            <div class="chat-name">Martin from Tryps</div>
+            <div class="chat-sub">trip assistant</div>
+          </div>
+        </div>
+        <div class="bubble bubble-in">Where are we headed?</div>
+        <div class="bubble bubble-out">bali with the crew</div>
+        <div class="bubble bubble-in">Love it. How many friends?</div>
+        <div class="bubble bubble-out">4 of us</div>
+        <div class="bubble bubble-in">I found 3 villas. Want me to share them in the group chat?</div>
+        <div class="bubble bubble-out">yes!</div>
+        <div class="bubble bubble-in">Done. Everyone can vote on their favorite.</div>
+      </div>
+    </div>
+
+    <!-- Screen 3: Vote -->
+    <div class="screenshot">
+      <div class="screen-status"><span>9:41</span></div>
+      <div class="screen-content">
+        <div class="vote-title">Where to stay?</div>
+        <div class="vote-sub">Bali 2026 | 3 of 4 voted</div>
+        <div class="vote-option vote-option-active">
+          <div class="vote-option-name">Jungle Villa</div>
+          <div class="vote-bar-bg"><div class="vote-bar-fill" style="width: 75%;"></div></div>
+          <div class="vote-pct">75%</div>
+        </div>
+        <div class="vote-option" style="margin-top: 2px;">
+          <div class="vote-option-name">Beachfront Suite</div>
+          <div class="vote-bar-bg"><div class="vote-bar-fill" style="width: 25%; background: #8C8279;"></div></div>
+          <div class="vote-pct" style="color: #8C8279;">25%</div>
+        </div>
+        <div class="vote-option" style="margin-top: 2px;">
+          <div class="vote-option-name">Rice Terrace Loft</div>
+          <div class="vote-bar-bg"><div class="vote-bar-fill" style="width: 0%;"></div></div>
+          <div class="vote-pct" style="color: #8C8279;">0%</div>
+        </div>
+        <div class="vote-btn">Submit Vote</div>
+      </div>
+    </div>
   </div>
 </div>
+
 </body>
 </html>

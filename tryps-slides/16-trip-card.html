@@ -3,134 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
-<title>Trip Card</title>
+<title>Tryps Brand Book - The Trip Card</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #FFFFFF; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; }
-.logo { position: absolute; top: 48px; right: 80px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; color: #D9071C; }
-.section-label { position: absolute; top: 48px; left: 80px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 500; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
-.title { position: absolute; top: 90px; left: 80px; font-size: 56px; font-weight: 700; color: #3D3530; }
-.subtitle { position: absolute; top: 166px; left: 80px; font-size: 18px; font-weight: 400; color: #8C8279; max-width: 1400px; line-height: 1.5; }
-.cards { position: absolute; top: 240px; left: 80px; display: flex; flex-direction: row; gap: 32px; }
-.trip-card { width: 400px; height: 780px; background: #FFFFFF; border-radius: 16px; border: 1px solid #E8E5E0; display: flex; flex-direction: column; overflow: hidden; }
-.trip-image { width: 100%; height: 200px; }
-.grad-1 { background: linear-gradient(135deg, #FFB347, #D9071C); }
-.grad-2 { background: linear-gradient(135deg, #D9071C, #8B1A1A); }
-.grad-3 { background: linear-gradient(135deg, #FF6B6B, #FFB347); }
-.grad-4 { background: linear-gradient(135deg, #3D3530, #D9071C); }
-.trip-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
-.trip-dest { font-size: 24px; font-weight: 800; color: #3D3530; margin-bottom: 8px; }
-.trip-date { font-family: 'Space Mono', monospace; font-size: 14px; color: #8C8279; margin-bottom: 24px; }
-.avatars { display: flex; flex-direction: row; margin-bottom: 20px; }
-.avatar { width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #FFFFFF; margin-left: -10px; }
-.avatar:first-child { margin-left: 0; }
-.av-red { background: #D9071C; }
-.av-slate { background: #3D3530; }
-.av-orange { background: #FFB347; }
-.av-blue { background: #4A90D9; }
-.av-green { background: #4ADE80; }
-.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; align-self: flex-start; margin-bottom: 20px; }
-.status-green { background: #ECFDF5; color: #059669; }
-.status-green::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #059669; }
-.status-orange { background: #FFF7ED; color: #EA580C; }
-.status-orange::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #EA580C; }
-.status-blue { background: #EFF6FF; color: #2563EB; }
-.status-blue::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #2563EB; }
-.status-gray { background: #F5F5F5; color: #8C8279; }
-.status-gray::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #8C8279; }
-.trip-price { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: #3D3530; margin-top: auto; }
-.trip-price-label { font-family: 'Space Mono', monospace; font-size: 12px; color: #8C8279; margin-top: 4px; }
-.trip-divider { width: 100%; height: 1px; background: #E8E5E0; margin: 16px 0; }
-.trip-members-label { font-family: 'Space Mono', monospace; font-size: 11px; color: #8C8279; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F5F2;
+    position: relative;
+  }
+
+  .section-label {
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #D9071C;
+    letter-spacing: -0.5px;
+  }
+
+  .title-area {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 1200px;
+  }
+  .title-area h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #3D3530;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .title-area p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8C8279;
+    line-height: 1.5;
+  }
+
+  .card-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%);
+    margin-top: 40px;
+  }
+
+  .trip-card {
+    width: 400px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-hero {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #D9071C 0%, #8B0415 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px 28px;
+  }
+  .card-hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+  .card-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .card-hero-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.1;
+  }
+  .card-hero-dates {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+
+  .card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .members-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .members-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .avatars {
+    display: flex;
+    flex-direction: row;
+  }
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-left: -10px;
+  }
+  .avatar:first-child { margin-left: 0; }
+  .av-1 { background: #D9071C; }
+  .av-2 { background: #3D3530; }
+  .av-3 { background: #E8913A; }
+  .av-4 { background: #2E7DD6; }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: #f0eeeb;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: #ECFDF5;
+    font-size: 14px;
+    font-weight: 600;
+    color: #059669;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #059669;
+  }
+
+  .expense-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .expense-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .expense-amount {
+    font-size: 28px;
+    font-weight: 800;
+    color: #3D3530;
+    letter-spacing: -0.5px;
+  }
+  .expense-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #8C8279;
+  }
+
+  .itinerary-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .itinerary-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8C8279;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .itinerary-day {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #F7F5F2;
+    border-radius: 10px;
+  }
+  .day-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #D9071C;
+    width: 44px;
+    flex-shrink: 0;
+  }
+  .day-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3D3530;
+  }
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="section-label">16 Trip Card</div>
-  <div class="logo">tryps</div>
-  <div class="title">Trip Card</div>
-  <div class="subtitle">The core UI element — showing trip status at a glance across every state.</div>
-  <div class="cards">
-    <div class="trip-card">
-      <div class="trip-image grad-1"></div>
-      <div class="trip-body">
-        <div class="trip-dest">Bali 2026</div>
-        <div class="trip-date">Mar 15 - Mar 22</div>
-        <div class="trip-divider"></div>
-        <div class="trip-members-label">Members</div>
-        <div class="avatars">
-          <div class="avatar av-red">S</div>
-          <div class="avatar av-slate">M</div>
-          <div class="avatar av-orange">J</div>
-          <div class="avatar av-blue">A</div>
-          <div class="avatar av-green">K</div>
-        </div>
-        <div class="status-badge status-green">All Booked</div>
-        <div class="trip-divider"></div>
-        <div class="trip-price">$1,850/person</div>
-        <div class="trip-price-label">estimated total</div>
+
+<div class="section-label">16 APPLICATIONS</div>
+<img src="img/tryps-logo-red.png" class="logo" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>The Trip Card</h1>
+  <p>The single most polished design element in the app.</p>
+</div>
+
+<div class="card-container">
+  <div class="trip-card">
+    <div class="card-hero">
+      <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=300&fit=crop" alt="Bali">
+      <div class="card-hero-content">
+        <div class="card-hero-title">Bali 2026</div>
+        <div class="card-hero-dates">Jul 12 - 19</div>
       </div>
     </div>
-    <div class="trip-card">
-      <div class="trip-image grad-2"></div>
-      <div class="trip-body">
-        <div class="trip-dest">Vegas Weekend</div>
-        <div class="trip-date">Apr 4 - Apr 7</div>
-        <div class="trip-divider"></div>
-        <div class="trip-members-label">Members</div>
+
+    <div class="card-body">
+      <div class="members-section">
+        <div class="members-label">Travelers</div>
         <div class="avatars">
-          <div class="avatar av-slate">D</div>
-          <div class="avatar av-red">R</div>
-          <div class="avatar av-blue">T</div>
+          <div class="avatar av-1">S</div>
+          <div class="avatar av-2">M</div>
+          <div class="avatar av-3">J</div>
+          <div class="avatar av-4">A</div>
         </div>
-        <div class="status-badge status-orange">Voting</div>
-        <div class="trip-divider"></div>
-        <div class="trip-price">$1,200/person</div>
-        <div class="trip-price-label">estimated total</div>
       </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-image grad-3"></div>
-      <div class="trip-body">
-        <div class="trip-dest">Tokyo Spring</div>
-        <div class="trip-date">May 1 - May 10</div>
-        <div class="trip-divider"></div>
-        <div class="trip-members-label">Members</div>
-        <div class="avatars">
-          <div class="avatar av-green">L</div>
-          <div class="avatar av-orange">P</div>
-          <div class="avatar av-red">N</div>
-          <div class="avatar av-slate">E</div>
+
+      <div class="status-row">
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          All booked
         </div>
-        <div class="status-badge status-blue">Planning</div>
-        <div class="trip-divider"></div>
-        <div class="trip-price">$2,400/person</div>
-        <div class="trip-price-label">estimated total</div>
       </div>
-    </div>
-    <div class="trip-card">
-      <div class="trip-image grad-4"></div>
-      <div class="trip-body">
-        <div class="trip-dest">Tulum Crew</div>
-        <div class="trip-date">Jan 8 - Jan 14</div>
-        <div class="trip-divider"></div>
-        <div class="trip-members-label">Members</div>
-        <div class="avatars">
-          <div class="avatar av-blue">C</div>
-          <div class="avatar av-red">W</div>
-          <div class="avatar av-green">B</div>
-          <div class="avatar av-orange">F</div>
-          <div class="avatar av-slate">G</div>
+
+      <div class="divider"></div>
+
+      <div class="expense-section">
+        <div class="expense-label">Total Expenses</div>
+        <div class="expense-amount">$2,840</div>
+        <div class="expense-sub">$710 per person</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="itinerary-section">
+        <div class="itinerary-label">Itinerary Preview</div>
+        <div class="itinerary-day">
+          <div class="day-num">Day 1</div>
+          <div class="day-text">Arrive, check in, sunset dinner</div>
         </div>
-        <div class="status-badge status-gray">Completed</div>
-        <div class="trip-divider"></div>
-        <div class="trip-price">$1,650/person</div>
-        <div class="trip-price-label">estimated total</div>
+        <div class="itinerary-day">
+          <div class="day-num">Day 2</div>
+          <div class="day-text">Rice terraces, spa afternoon</div>
+        </div>
+        <div class="itinerary-day">
+          <div class="day-num">Day 3</div>
+          <div class="day-text">Snorkeling, beach club</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 </body>
 </html>

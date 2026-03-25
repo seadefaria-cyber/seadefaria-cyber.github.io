@@ -3,107 +3,440 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
-<title>Glimmer Vote</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Tryps Brand Book - The Group Vote</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #FFFFFF; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-.slide { width: 1920px; height: 1080px; overflow: hidden; position: relative; background: #FFFFFF; }
-.logo { position: absolute; right: 40px; top: 36px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 16px; color: #D9071C; }
-.section-label { position: absolute; left: 80px; top: 48px; font-family: 'Space Mono', monospace; font-weight: 500; font-size: 12px; color: #8C8279; letter-spacing: 3px; text-transform: uppercase; }
-.title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; color: #3D3530; position: absolute; left: 80px; top: 90px; }
-.subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 20px; color: #8C8279; position: absolute; left: 80px; top: 160px; max-width: 900px; line-height: 1.5; }
-.phone { position: absolute; left: 80px; top: 230px; width: 340px; height: 760px; background: #F5F5F5; border-radius: 32px; padding: 40px 24px; display: flex; flex-direction: column; }
-.phone-header { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 24px; color: #3D3530; margin-bottom: 8px; }
-.phone-caption { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 14px; color: #8C8279; margin-bottom: 32px; }
-.vote-options { display: flex; flex-direction: column; gap: 14px; flex: 1; }
-.vote-option { background: #FFFFFF; border-radius: 14px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; border: 2px solid #E5E7EB; }
-.vote-option-active { border-color: #D9071C; }
-.radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #E5E7EB; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.radio-active { border-color: #D9071C; }
-.radio-dot { width: 12px; height: 12px; border-radius: 50%; background: #D9071C; }
-.vote-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 16px; color: #3D3530; }
-.vote-sub { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 13px; color: #8C8279; }
-.phone-btn { background: #D9071C; color: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 16px; border: none; border-radius: 14px; padding: 16px; text-align: center; margin-top: auto; }
-.right-content { position: absolute; left: 520px; top: 260px; width: 1320px; }
-.right-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 40px; color: #3D3530; margin-bottom: 40px; }
-.steps { display: flex; flex-direction: column; gap: 32px; margin-bottom: 48px; }
-.step { display: flex; align-items: flex-start; gap: 20px; }
-.step-num { width: 48px; height: 48px; background: #D9071C; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 20px; color: #FFFFFF; flex-shrink: 0; }
-.step-content { display: flex; flex-direction: column; gap: 4px; }
-.step-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px; color: #3D3530; }
-.step-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 16px; color: #8C8279; line-height: 1.5; }
-.step-spec { font-family: 'Space Mono', monospace; font-weight: 400; font-size: 13px; color: #D9071C; background: rgba(217,7,28,0.06); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-top: 6px; }
-.quote-card { background: #F7F5F2; border-radius: 16px; padding: 32px 40px; border-left: 4px solid #D9071C; }
-.quote-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500; font-size: 20px; color: #3D3530; font-style: italic; line-height: 1.6; }
+body {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #F7F5F2;
+  position: relative;
+}
+
+.section-label {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.title-area {
+  position: absolute;
+  top: 100px;
+  left: 80px;
+  width: 1200px;
+}
+
+.title-area h1 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #3D3530;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.title-area p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.5;
+}
+
+.content-area {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  gap: 72px;
+  align-items: flex-start;
+}
+
+/* iPhone mockup - bigger */
+.phone {
+  width: 400px;
+  min-width: 400px;
+  background: #1A1A1A;
+  border-radius: 48px;
+  padding: 16px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.phone-screen {
+  background: #F7F5F2;
+  border-radius: 36px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.phone-notch {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F7F5F2;
+  position: relative;
+}
+
+.dynamic-island {
+  width: 120px;
+  height: 32px;
+  background: #1A1A1A;
+  border-radius: 20px;
+}
+
+.phone-time {
+  position: absolute;
+  left: 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3D3530;
+}
+
+.phone-content {
+  padding: 20px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.vote-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vote-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3D3530;
+}
+
+.vote-caption {
+  font-size: 13px;
+  font-weight: 400;
+  color: #8C8279;
+}
+
+.vote-option {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 2px solid #f0eeeb;
+  transition: all 0.2s;
+}
+
+.vote-option-winner {
+  border-color: #D9071C;
+  background: rgba(217,7,28,0.03);
+}
+
+.option-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #3D3530;
+}
+
+.option-pct {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bar-bg {
+  width: 100%;
+  height: 12px;
+  background: #E8E5E0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s;
+}
+
+.voter-row {
+  display: flex;
+  gap: 4px;
+}
+
+.voter-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  border: 2.5px solid #F7F5F2;
+}
+
+.winner-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #D9071C;
+}
+
+.winner-check {
+  width: 20px;
+  height: 20px;
+  background: #D9071C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 11px;
+}
+
+/* Right side */
+.right-text {
+  flex: 1;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Result banner */
+.result-banner {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 40px 48px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  border: 1px solid #f0eeeb;
+  border-left: 5px solid #D9071C;
+}
+
+.result-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8279;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.result-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #3D3530;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.result-highlight {
+  color: #D9071C;
+}
+
+.result-story {
+  font-size: 17px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+/* How it works */
+.how-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.how-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3D3530;
+}
+
+.step-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.step-card {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0eeeb;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-num {
+  width: 40px;
+  height: 40px;
+  background: #D9071C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.step-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #3D3530;
+}
+
+.step-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.5;
+}
+
+/* Quote */
+.quote-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 28px 36px;
+  border-left: 4px solid #D9071C;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.quote-text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #3D3530;
+  font-style: italic;
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="section-label">20 Emotional Design</div>
-  <div class="logo">tryps</div>
-  <div class="title">Glimmer Vote</div>
-  <div class="subtitle">The micro-interaction that makes group decisions feel exciting, not exhausting.</div>
+
+<div class="section-label">20 Glimmers</div>
+<img src="img/tryps-logo-red.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
+
+<div class="title-area">
+  <h1>The Group Vote</h1>
+  <p>Democracy in your group chat. No more endless back-and-forth.</p>
+</div>
+
+<div class="content-area">
+  <!-- Phone mockup -->
   <div class="phone">
-    <div class="phone-header">Where should we eat?</div>
-    <div class="phone-caption">Tokyo Trip  ·  4 votes needed</div>
-    <div class="vote-options">
-      <div class="vote-option vote-option-active">
-        <div class="radio radio-active"><div class="radio-dot"></div></div>
-        <div>
-          <div class="vote-name">Sushi Dai</div>
-          <div class="vote-sub">Tsukiji Market  ·  $$$$</div>
-        </div>
+    <div class="phone-screen">
+      <div class="phone-notch">
+        <div class="phone-time">9:41</div>
+        <div class="dynamic-island"></div>
       </div>
-      <div class="vote-option">
-        <div class="radio"></div>
-        <div>
-          <div class="vote-name">Ichiran Ramen</div>
-          <div class="vote-sub">Shibuya  ·  $$</div>
+
+      <div class="phone-content">
+        <div class="vote-header">
+          <div class="vote-title">Where to next?</div>
+          <div class="vote-caption">San Diego trip | 4 of 4 voted</div>
         </div>
-      </div>
-      <div class="vote-option">
-        <div class="radio"></div>
-        <div>
-          <div class="vote-name">Robot Restaurant</div>
-          <div class="vote-sub">Shinjuku  ·  $$$</div>
+
+        <!-- Winner -->
+        <div class="vote-option vote-option-winner">
+          <div class="option-top">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="option-name">Sunset Cliffs</div>
+              <div class="winner-badge">
+                <div class="winner-check">&#10003;</div>
+                WINNER
+              </div>
+            </div>
+            <div class="option-pct" style="color: #D9071C;">75%</div>
+          </div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: 75%; background: #D9071C;"></div>
+          </div>
+          <div class="voter-row">
+            <div class="voter-avatar" style="background: #D9071C;">S</div>
+            <div class="voter-avatar" style="background: #3D3530;">M</div>
+            <div class="voter-avatar" style="background: #2E7DD6;">A</div>
+          </div>
+        </div>
+
+        <!-- Loser -->
+        <div class="vote-option">
+          <div class="option-top">
+            <div class="option-name">La Jolla Cove</div>
+            <div class="option-pct" style="color: #B8B0A8;">25%</div>
+          </div>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: 25%; background: #D4CFC9;"></div>
+          </div>
+          <div class="voter-row">
+            <div class="voter-avatar" style="background: #E8913A;">J</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="phone-btn">Submit Vote</div>
   </div>
-  <div class="right-content">
-    <div class="right-title">How Glimmer Works</div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <div class="step-title">User taps their vote</div>
-          <div class="step-desc">Instant haptic feedback confirms the selection with a satisfying pulse.</div>
-          <div class="step-spec">haptic: impact-medium</div>
+
+  <!-- Right side -->
+  <div class="right-text">
+    <div class="result-banner">
+      <div class="result-eyebrow">Vote Result</div>
+      <div class="result-title">Your group picked <span class="result-highlight">Sunset Cliffs</span></div>
+      <div class="result-story">Someone creates a vote. Everyone in the group gets a push notification. Tap, vote, done. No back-and-forth texts, no "idc you pick" loops. The winning option gets locked in automatically, and Martin from Tryps handles the rest.</div>
+    </div>
+
+    <div class="how-section">
+      <div class="how-title">How voting works</div>
+      <div class="step-cards">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-title">Start a vote</div>
+          <div class="step-desc">Add options, set a deadline, send it to the group.</div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <div class="step-title">Vote bar animates with spring physics</div>
-          <div class="step-desc">The progress bar stretches and settles using natural spring dynamics.</div>
-          <div class="step-spec">damping: 12, stiffness: 300</div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-title">Everyone taps</div>
+          <div class="step-desc">Live results update in real time as votes roll in.</div>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <div class="step-title">Threshold reached: confetti burst + sound</div>
-          <div class="step-desc">When everyone has voted, the screen erupts in celebration.</div>
-          <div class="step-spec">confetti: 120 particles, sound: chime.wav</div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-title">Winner locks in</div>
+          <div class="step-desc">Martin books the winning pick. No extra steps needed.</div>
         </div>
       </div>
     </div>
+
     <div class="quote-card">
-      <div class="quote-text">"Voting should feel like a celebration, not a chore."</div>
+      <div class="quote-text">"No more 47-message threads just to pick a restaurant."</div>
     </div>
   </div>
 </div>
+
 </body>
 </html>

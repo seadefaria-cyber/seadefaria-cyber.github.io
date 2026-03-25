@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920">
-<title>Dark Mode Palette</title>
+<title>Dark Mode</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;500;700&display=swap');
 
@@ -18,19 +18,20 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.logo {
+.logo-dark {
   position: absolute;
   right: 40px;
-  top: 36px;
+  top: 40px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #D9071C;
+  letter-spacing: -0.5px;
 }
 
 .section-label {
   position: absolute;
-  left: 80px;
+  left: 60px;
   top: 48px;
   font-family: 'Space Mono', monospace;
   font-size: 12px;
@@ -40,147 +41,228 @@
   text-transform: uppercase;
 }
 
+.content {
+  position: absolute;
+  left: 60px;
+  top: 120px;
+  right: 100px;
+}
+
 .title {
-  position: absolute;
-  left: 80px;
-  top: 100px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 64px;
+  font-size: 52px;
   font-weight: 800;
-  color: #F7F5F2;
+  color: #FDFCFB;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
 }
 
-.subtitle {
-  position: absolute;
-  left: 80px;
-  top: 185px;
+.description {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  color: #B5ADA5;
-  max-width: 800px;
+  color: #8C8279;
+  line-height: 1.65;
+  max-width: 600px;
+  margin-bottom: 72px;
 }
 
-.row {
-  position: absolute;
-  left: 80px;
+/* --- Swatches --- */
+.swatches {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.swatch-card {
   display: flex;
   flex-direction: column;
 }
 
-.row-1 { top: 260px; }
-.row-2 { top: 660px; }
-
-.row-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: #8C8279;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+.swatch-color {
+  width: 360px;
+  height: 240px;
+  border-radius: 20px;
 }
 
-.cards {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-}
-
-.color-card {
-  width: 570px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #28241F;
-}
-
-.color-swatch {
-  width: 570px;
-  height: 200px;
-}
-
-.color-info {
-  padding: 24px 28px;
+.swatch-info {
+  padding: 24px 4px 0 4px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.color-name {
+.swatch-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  color: #F7F5F2;
+  color: #FDFCFB;
 }
 
-.color-hex {
+.swatch-hex {
   font-family: 'Space Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: #8C8279;
+}
+
+.swatch-usage {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #5C554E;
+  margin-top: 2px;
+}
+
+/* --- Demo Elements --- */
+.demo-section {
+  position: absolute;
+  left: 60px;
+  bottom: 100px;
+  right: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 80px;
+}
+
+.demo-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #5C554E;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 36px;
+  background: #D9071C;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 14px;
+  border: none;
+}
+
+.demo-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #FDFCFB;
+  letter-spacing: -0.5px;
+}
+
+.demo-accent {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #D9071C;
+  font-style: italic;
+}
+
+.demo-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8C8279;
+  line-height: 1.5;
+  max-width: 400px;
+}
+
+/* --- Bottom-right tryps in white --- */
+.logo-bottom {
+  position: absolute;
+  right: 100px;
+  bottom: 108px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  color: #FDFCFB;
+  letter-spacing: -2px;
+  opacity: 0.08;
+}
+
+/* Subtle top border accent */
+.top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #D9071C 0%, #D9071C 30%, transparent 100%);
 }
 </style>
 </head>
 <body>
 <div class="slide">
-  <div class="section-label">COLOR SYSTEM</div>
-  <div class="logo">tryps</div>
-  <div class="title">Dark Mode Palette</div>
-  <div class="subtitle">Adapted color system for dark surfaces, maintaining contrast and brand recognition.</div>
+  <div class="top-line"></div>
+  <div class="section-label">11 - COLOR SYSTEM</div>
+  <img src="img/logo-white.png" style="position:absolute;top:40px;right:40px;height:36px;width:auto;">
 
-  <div class="row row-1">
-    <div class="row-label">Surfaces</div>
-    <div class="cards">
-      <div class="color-card" style="border: 1px solid #3D3530;">
-        <div class="color-swatch" style="background: #1E1B19;"></div>
-        <div class="color-info">
-          <div class="color-name">Warm Dark</div>
-          <div class="color-hex">#1E1B19</div>
+  <div class="content">
+    <div class="title">Dark Mode</div>
+    <div class="description">From day one. Not an afterthought. Same red, same warmth, just inverted. Every color was chosen to feel as intentional in the dark as it does in the light.</div>
+
+    <div class="swatches">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #D9071C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Tryps Red</div>
+          <div class="swatch-hex">#D9071C</div>
+          <div class="swatch-usage">Same red. No adjustment needed.</div>
         </div>
       </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #28241F;"></div>
-        <div class="color-info">
-          <div class="color-name">Card Surface</div>
-          <div class="color-hex">#28241F</div>
-        </div>
-      </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #E84040;"></div>
-        <div class="color-info">
-          <div class="color-name">Primary Dark</div>
-          <div class="color-hex">#E84040</div>
+
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #FDFCFB; border-radius: 20px;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm White</div>
+          <div class="swatch-hex">#FDFCFB</div>
+          <div class="swatch-usage">Primary text on dark surfaces.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row row-2">
-    <div class="row-label">Text &amp; Borders</div>
-    <div class="cards">
-      <div class="color-card">
-        <div class="color-swatch" style="background: #F7F5F2;"></div>
-        <div class="color-info">
-          <div class="color-name">Text Primary</div>
-          <div class="color-hex">#F7F5F2</div>
-        </div>
-      </div>
-      <div class="color-card">
-        <div class="color-swatch" style="background: #B5ADA5;"></div>
-        <div class="color-info">
-          <div class="color-name">Text Secondary</div>
-          <div class="color-hex">#B5ADA5</div>
-        </div>
-      </div>
-      <div class="color-card" style="border: 1px solid #3D3530;">
-        <div class="color-swatch" style="background: #3D3530;"></div>
-        <div class="color-info">
-          <div class="color-name">Border</div>
-          <div class="color-hex">#3D3530</div>
-        </div>
-      </div>
+  <!-- Demo Elements -->
+  <div class="demo-section">
+    <div class="demo-group">
+      <div class="demo-label">Button</div>
+      <div class="demo-btn">Book Trip</div>
+    </div>
+
+    <div class="demo-group">
+      <div class="demo-label">Heading</div>
+      <div class="demo-heading">Where to next?</div>
+    </div>
+
+    <div class="demo-group">
+      <div class="demo-label">Accent</div>
+      <div class="demo-accent">Go while you can</div>
+    </div>
+
+    <div class="demo-group">
+      <div class="demo-label">Body</div>
+      <div class="demo-body">Your group chat just became your travel agent. Plan trips, split costs, and explore together.</div>
     </div>
   </div>
+
+  <!-- Large watermark logo -->
+  <img src="img/logo-white.png" style="height:60px;width:auto;">
 </div>
 </body>
 </html>
