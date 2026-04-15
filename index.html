@@ -430,7 +430,7 @@
 
 
 <nav>
-    <a href="#" class="logo">deFaria</a>
+    <a href="#services" class="logo">deFaria</a>
     <ul class="nav-links">
         <li><a href="#services">Digital Work</a></li>
         <li><a href="#contact">Let's Work</a></li>
@@ -582,8 +582,9 @@ let SPEED = 1.2;
 let isHovering = false;
 let hoverOpacity = 0; // 0 = full video, 1 = full black text
 let videoStartTime = 0;
-const FADE_DELAY = 5000;      // ms before black text fade begins
-const FADE_DURATION = 1400;   // ms to fully fade to black
+const FADE_DELAY = 5000;       // ms before center text fades to black
+const FADE_DURATION = 1400;    // ms for center fade duration
+const LOGO_FADE_DELAY = 2500;  // ms before top-left nav logo fades out
 let scrollCueShown = false;
 let navLogoFaded = false;
 
@@ -688,8 +689,8 @@ function drawHero(now) {
             if (cue) cue.classList.add('visible');
         }
 
-        // When center text finishes going black, fade out the top-left nav logo
-        if (!navLogoFaded && elapsed > FADE_DELAY) {
+        // Fade out the top-left nav logo after LOGO_FADE_DELAY
+        if (!navLogoFaded && elapsed > LOGO_FADE_DELAY) {
             navLogoFaded = true;
             document.querySelector('.logo')?.classList.add('faded');
         }
