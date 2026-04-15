@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
     <title>deFaria</title>
     <meta name="description" content="deFaria">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='50%25' y='22' text-anchor='middle' font-family='Helvetica,sans-serif' font-size='14' fill='%23fff' font-weight='bold'>dF</text></svg>">
@@ -49,6 +49,12 @@
             font-weight: 900;
             letter-spacing: -0.8px;
             color: #0a0a0a;
+            opacity: 1;
+            transition: opacity 1.4s ease;
+        }
+        .logo.faded {
+            opacity: 0;
+            pointer-events: none;
         }
         .nav-links {
             display: flex;
@@ -56,13 +62,48 @@
             list-style: none;
         }
         .nav-links a {
+            font-family: 'Inter', sans-serif;
             font-size: 11px;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
             color: #0a0a0a;
-            opacity: 0.5;
-            transition: opacity 0.3s;
+            opacity: 0.65;
+            transition: opacity 0.3s, color 0.3s;
         }
-        .nav-links a:hover { opacity: 1; }
+        .nav-links a:hover { opacity: 1; color: #1d4ed8; }
+
+        /* ======= SCROLL CUE ======= */
+        .scroll-cue {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.6s ease, color 0.3s ease;
+            z-index: 50;
+        }
+        .scroll-cue.visible { opacity: 1; }
+        .scroll-cue:hover { color: #1d4ed8; }
+        .scroll-cue .arrow {
+            display: inline-block;
+            font-size: 14px;
+            animation: bob 1.8s ease-in-out infinite;
+        }
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
 
         /* ======= HERO ======= */
         .hero {
@@ -99,85 +140,302 @@
         .scanline { display: none; }
 
 
+        /* ======= SERVICES ======= */
+        .services {
+            padding: 160px 80px 140px;
+            background: #fff;
+        }
+        .services-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .services-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            opacity: 0.5;
+            margin-bottom: 80px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 48px;
+            align-items: stretch;
+        }
+        .services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .services-list li {
+            line-height: 1;
+        }
+        .services-list h3 {
+            font-family: 'Inter', Helvetica, sans-serif;
+            font-weight: 900;
+            font-size: clamp(54px, 11vw, 170px);
+            letter-spacing: -5px;
+            line-height: 0.92;
+            color: #0a0a0a;
+        }
+        .services-list li.accent h3 {
+            color: #1d4ed8;
+        }
+        .campaigns-label {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            gap: 28px;
+            padding-left: 24px;
+        }
+        .campaigns-rule {
+            width: 2px;
+            background: #1d4ed8;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 1.2s cubic-bezier(.77,0,.18,1);
+        }
+        .campaigns-word {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-family: 'Inter', Helvetica, sans-serif;
+            font-weight: 900;
+            font-size: clamp(48px, 8vw, 120px);
+            letter-spacing: -2px;
+            line-height: 1;
+            align-self: center;
+            color: #0a0a0a;
+            opacity: 0;
+            transition: opacity 1s ease 0.4s, letter-spacing 1s ease 0.4s;
+        }
+        .services.is-in .campaigns-rule { transform: scaleY(1); }
+        .services.is-in .campaigns-word { opacity: 1; letter-spacing: 2px; }
+
+        /* ======= SERVICE HOVER (hand-drawn circle + inquire badge) ======= */
+        .services-list li { position: relative; cursor: pointer; }
+        .services-list li h3 { transition: color 0.3s ease; }
+        .services-list li:hover h3 { color: #1d4ed8; }
+        .services-list li.accent:hover h3 { color: #0a0a0a; }
+
+        .service-hover-circle {
+            position: absolute;
+            width: 340px;
+            height: 220px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+            z-index: 40;
+        }
+        .service-hover-circle.is-visible { opacity: 1; }
+        .service-hover-circle svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .service-hover-circle svg path {
+            stroke-dasharray: 1400;
+            stroke-dashoffset: 1400;
+        }
+        .service-hover-circle.is-visible svg path {
+            animation: drawCircle 0.6s cubic-bezier(.65,.05,.35,1) forwards;
+        }
+        @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+        .service-hover-text {
+            position: absolute;
+            inset: 22% 16%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Inter', Helvetica, sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.3px;
+            color: #0a0a0a;
+        }
+
+        .inquire-badge {
+            position: fixed;
+            top: 28px;
+            right: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: #1d4ed8;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+            z-index: 110;
+        }
+        .inquire-badge.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .inquire-badge:hover { color: #0a0a0a; }
+
+        @media (max-width: 768px) {
+            .service-hover-circle { width: 260px; height: 170px; }
+            .service-hover-text { font-size: 16px; inset: 20% 14%; }
+            .inquire-badge { top: 20px; right: 20px; font-size: 10px; }
+        }
+
+        @media (max-width: 768px) {
+            .services { padding: 100px 24px 80px; }
+            .services-eyebrow { margin-bottom: 48px; }
+            .services-list { gap: 28px; }
+            .services-list h3 { letter-spacing: -2.5px; }
+            .services-grid { grid-template-columns: 1fr; gap: 32px; }
+            .campaigns-label {
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 16px 0 0;
+                gap: 16px;
+            }
+            .campaigns-rule {
+                width: 40%;
+                height: 2px;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 1.1s cubic-bezier(.77,0,.18,1);
+            }
+            .services.is-in .campaigns-rule { transform: scaleX(1); }
+            .campaigns-word {
+                writing-mode: horizontal-tb;
+                transform: none;
+                font-size: clamp(28px, 9vw, 56px);
+                letter-spacing: 1px;
+            }
+            .services.is-in .campaigns-word { letter-spacing: 2px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .campaigns-rule, .campaigns-word { transition: none; }
+        }
+
         /* ======= CONTACT FORM ======= */
         .contact {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 80px 24px;
-            gap: 40px;
+            padding: 120px 80px 140px;
+            background: #fff;
+        }
+        .contact-inner {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
         }
         .contact h2 {
-            font-size: clamp(28px, 4vw, 48px);
-            font-weight: 700;
-            letter-spacing: -1.5px;
+            font-family: 'Inter', Helvetica, sans-serif;
+            font-weight: 900;
+            font-size: clamp(80px, 14vw, 240px);
+            letter-spacing: -6px;
             line-height: 0.9;
+            color: #0a0a0a;
+            margin-bottom: 72px;
         }
 
         .form {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 28px;
             width: 100%;
-            max-width: 400px;
+            max-width: 720px;
+        }
+        .form-field { display: flex; flex-direction: column; gap: 8px; }
+        .form-field label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            opacity: 0.5;
         }
         .form input,
         .form textarea {
             background: transparent;
-            border: 1px solid rgba(0,0,0,0.12);
+            border: none;
+            border-bottom: 1px solid #0a0a0a;
             color: #0a0a0a;
-            font-family: Helvetica, -apple-system, sans-serif;
-            font-size: 13px;
-            padding: 14px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            padding: 12px 0;
             outline: none;
             transition: border-color 0.3s;
             -webkit-appearance: none;
             border-radius: 0;
-        }
-        .form input::placeholder,
-        .form textarea::placeholder {
-            color: rgba(0,0,0,0.25);
+            width: 100%;
         }
         .form input:focus,
         .form textarea:focus {
-            border-color: rgba(0,0,0,0.4);
+            border-bottom-color: #1d4ed8;
+            border-bottom-width: 2px;
+            padding-bottom: 11px;
         }
         .form textarea {
             resize: none;
-            height: 100px;
+            height: 90px;
         }
         .form button {
             background: #0a0a0a;
             color: #fff;
             border: none;
-            font-family: Helvetica, -apple-system, sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            padding: 16px;
+            padding: 22px 36px;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: background 0.25s;
+            align-self: flex-start;
+            margin-top: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
         }
-        .form button:hover { opacity: 0.8; }
+        .form button .arrow { transition: transform 0.25s; display: inline-block; }
+        .form button:hover { background: #1d4ed8; }
+        .form button:hover .arrow { transform: translateX(6px); }
+
+        @media (max-width: 768px) {
+            .contact { padding: 80px 24px; }
+            .contact h2 { letter-spacing: -3px; margin-bottom: 48px; }
+        }
 
         /* ======= FOOTER ======= */
         footer {
-            padding: 28px 40px;
-            border-top: 1px solid rgba(0,0,0,0.06);
+            padding: 40px 48px;
+            border-top: 1px solid #0a0a0a;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 10px;
-            letter-spacing: 1px;
-            color: rgba(0,0,0,0.15);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            background: #fff;
         }
-        footer .links { display: flex; gap: 24px; }
-        footer a { transition: color 0.3s; }
-        footer a:hover { color: rgba(0,0,0,0.5); }
+        footer a { color: #0a0a0a; transition: color 0.3s; }
+        footer a:hover { color: #1d4ed8; }
 
         /* ======= RESPONSIVE ======= */
         @media (max-width: 768px) {
@@ -194,10 +452,28 @@
 <div class="noise"><canvas id="noise"></canvas></div>
 <div class="scanline"></div>
 
+<!-- Hand-drawn hover circle (positioned via JS) -->
+<div class="service-hover-circle" aria-hidden="true">
+    <svg viewBox="0 0 400 260" preserveAspectRatio="none">
+        <path d="M 58 138
+                 C 38 68, 142 18, 214 28
+                 C 304 36, 382 92, 370 158
+                 C 360 218, 278 250, 188 240
+                 C 108 230, 46 202, 58 138 Z"
+              fill="none" stroke="#1d4ed8" stroke-width="3.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="service-hover-text"></span>
+</div>
+
+<!-- Inquire badge (top-right, shown on service hover) -->
+<a class="inquire-badge" href="mailto:sean@defaria.nyc">Inquire → sean@defaria.nyc</a>
+
 <nav>
     <a href="#" class="logo">deFaria</a>
     <ul class="nav-links">
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#services">Digital Work</a></li>
+        <li><a href="#contact">Let's Work</a></li>
     </ul>
 </nav>
 
@@ -205,30 +481,62 @@
 <section class="hero" id="hero">
     <canvas id="heroCanvas" class="hero-canvas"></canvas>
     <h1>deFaria</h1>
+    <a href="#services" class="scroll-cue" id="scrollCue">
+        <span class="arrow">↓</span>
+        <span>Digital Work</span>
+    </a>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+    <div class="services-inner">
+        <p class="services-eyebrow">Digital Work</p>
+        <div class="services-grid">
+            <ul class="services-list">
+                <li data-desc="Paid creators, real narratives. Your song, everywhere at once."><h3>SEEDING</h3></li>
+                <li class="accent" data-desc="The stan pages were always the best marketing. We run them."><h3>FANPAGE</h3></li>
+                <li data-desc="Where the internet noise becomes a résumé."><h3>BRANDS &amp; MEDIA</h3></li>
+            </ul>
+            <aside class="campaigns-label" aria-hidden="true">
+                <span class="campaigns-rule"></span>
+                <span class="campaigns-word">CAMPAIGNS</span>
+            </aside>
+        </div>
+    </div>
 </section>
 
 <!-- Contact -->
 <section class="contact" id="contact">
-    <h2>Let's work.</h2>
-    <form class="form" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
-        <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="project" placeholder="Project">
-        <textarea name="message" placeholder="Tell us about it"></textarea>
-        <button type="submit">Send</button>
-    </form>
+    <div class="contact-inner">
+        <h2>let's work.</h2>
+        <form class="form" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
+            <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
+            <div class="form-field">
+                <label for="f-name">Name</label>
+                <input id="f-name" type="text" name="name" required>
+            </div>
+            <div class="form-field">
+                <label for="f-email">Email</label>
+                <input id="f-email" type="email" name="email" required>
+            </div>
+            <div class="form-field">
+                <label for="f-project">Project</label>
+                <input id="f-project" type="text" name="project">
+            </div>
+            <div class="form-field">
+                <label for="f-message">Tell us about it</label>
+                <textarea id="f-message" name="message"></textarea>
+            </div>
+            <button type="submit">Send <span class="arrow">→</span></button>
+        </form>
+    </div>
 </section>
 
 <footer>
-    <span>&copy; 2026 DeFaria</span>
-    <div class="links">
-        <a href="https://instagram.com/defaria" target="_blank">Instagram</a>
-        <a href="https://tiktok.com/@defaria" target="_blank">TikTok</a>
-        <a href="https://x.com/defaria" target="_blank">X</a>
-    </div>
+    <span>&copy; 2026 deFaria&trade; &nbsp;·&nbsp; All Rights Reserved</span>
+    <a href="https://instagram.com/defaria" target="_blank">Instagram ↗</a>
 </footer>
 
 <script>
@@ -300,6 +608,7 @@ videoSrcs.forEach(src => {
     vid.addEventListener('loadeddata', () => {
         mediaReady++;
         vid.play().catch(() => {});
+        if (videoStartTime === 0) videoStartTime = performance.now();
     });
     media.push({ el: vid, get w() { return vid.videoWidth || 320; }, get h() { return vid.videoHeight || 180; } });
 });
@@ -309,6 +618,11 @@ let scrollX = 0;
 let SPEED = 1.2;
 let isHovering = false;
 let hoverOpacity = 0; // 0 = full video, 1 = full black text
+let videoStartTime = 0;
+const FADE_DELAY = 5000;      // ms before black text fade begins
+const FADE_DURATION = 1400;   // ms to fully fade to black
+let scrollCueShown = false;
+let navLogoFaded = false;
 
 document.getElementById('hero').addEventListener('mouseenter', () => { isHovering = true; });
 document.getElementById('hero').addEventListener('mouseleave', () => { isHovering = false; });
@@ -399,6 +713,40 @@ function drawHero(now) {
 
     ctx.restore();
 
+    // Fade to solid black letters after 5s + sync UI transitions
+    let blackOpacity = 0;
+    if (videoStartTime > 0) {
+        const elapsed = now - videoStartTime;
+
+        // Show scroll cue shortly after videos start playing
+        if (!scrollCueShown && elapsed > 900) {
+            scrollCueShown = true;
+            const cue = document.getElementById('scrollCue');
+            if (cue) cue.classList.add('visible');
+        }
+
+        // When center text finishes going black, fade out the top-left nav logo
+        if (!navLogoFaded && elapsed > FADE_DELAY) {
+            navLogoFaded = true;
+            document.querySelector('.logo')?.classList.add('faded');
+        }
+
+        if (elapsed > FADE_DELAY) {
+            blackOpacity = Math.min(1, (elapsed - FADE_DELAY) / FADE_DURATION);
+            blackOpacity = easeOutCubic(blackOpacity);
+        }
+    }
+    if (blackOpacity > 0) {
+        ctx.save();
+        ctx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        if (ctx.letterSpacing !== undefined) ctx.letterSpacing = '-5px';
+        ctx.fillStyle = `rgba(10, 10, 10, ${blackOpacity})`;
+        ctx.fillText(TEXT, w / 2, h / 2);
+        ctx.restore();
+    }
+
     // Advance — constant speed
     scrollX += 0.6;
 
@@ -406,6 +754,68 @@ function drawHero(now) {
     requestAnimationFrame(drawHero);
 }
 requestAnimationFrame(drawHero);
+
+// ======= SERVICES SCROLL REVEAL =======
+const servicesSection = document.querySelector('.services');
+if (servicesSection && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                servicesSection.classList.add('is-in');
+                obs.unobserve(servicesSection);
+            }
+        });
+    }, { threshold: 0.35 });
+    io.observe(servicesSection);
+}
+
+// ======= SERVICE HOVER (circle + inquire badge) + CLICK TO CONTACT =======
+(function() {
+    const items = document.querySelectorAll('.services-list li');
+    const circle = document.querySelector('.service-hover-circle');
+    if (!items.length || !circle) return;
+    const text = circle.querySelector('.service-hover-text');
+    const path = circle.querySelector('path');
+    const inquire = document.querySelector('.inquire-badge');
+    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+    function position(li) {
+        const r = li.getBoundingClientRect();
+        const top = window.scrollY + r.top;
+        const left = window.scrollX + r.left;
+        if (isMobile()) {
+            circle.style.top = (top + r.height + 12) + 'px';
+            circle.style.left = Math.max(20, left) + 'px';
+        } else {
+            circle.style.top = (top + r.height / 2 - circle.offsetHeight / 2) + 'px';
+            circle.style.left = (left + r.width + 60) + 'px';
+        }
+    }
+    function show(li) {
+        text.textContent = li.dataset.desc || '';
+        position(li);
+        circle.classList.remove('is-visible');
+        void path.getBoundingClientRect();
+        circle.classList.add('is-visible');
+        inquire?.classList.add('is-visible');
+    }
+    function hide() {
+        circle.classList.remove('is-visible');
+        inquire?.classList.remove('is-visible');
+    }
+    items.forEach(li => {
+        li.addEventListener('mouseenter', () => show(li));
+        li.addEventListener('mouseleave', hide);
+        li.addEventListener('click', () => {
+            const c = document.getElementById('contact');
+            if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    window.addEventListener('resize', () => {
+        const hovered = document.querySelector('.services-list li:hover');
+        if (hovered) position(hovered);
+    });
+})();
 
 </script>
 </body>
