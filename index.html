@@ -215,50 +215,31 @@
         .services.is-in .campaigns-rule { transform: scaleY(1); }
         .services.is-in .campaigns-word { opacity: 1; letter-spacing: 2px; }
 
-        /* ======= SERVICE HOVER (hand-drawn circle + inquire badge) ======= */
+        /* ======= SERVICE HOVER (morphing subtitle + inquire badge) ======= */
         .services-list li { position: relative; cursor: pointer; }
-        .services-list li h3 { transition: color 0.3s ease; }
-        .services-list li:hover h3 { color: #1d4ed8; }
+        .services-list li h3 { transition: color 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1); transform-origin: left center; }
+        .services-list:hover h3 { color: #c9c9c9; }
+        .services-list li:hover h3 { color: #1d4ed8; transform: translateX(0.35vw); }
 
-        .service-hover-circle {
-            position: absolute;
-            width: 340px;
-            height: 220px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.18s ease;
-            z-index: 40;
-        }
-        .service-hover-circle.is-visible { opacity: 1; }
-        .service-hover-circle svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-        .service-hover-circle svg path {
-            stroke-dasharray: 1400;
-            stroke-dashoffset: 1400;
-        }
-        .service-hover-circle.is-visible svg path {
-            animation: drawCircle 0.6s cubic-bezier(.65,.05,.35,1) forwards;
-        }
-        @keyframes drawCircle { to { stroke-dashoffset: 0; } }
-        .service-hover-text {
-            position: absolute;
-            inset: 22% 16%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .services-subtitle {
+            margin: 48px 0 0;
+            max-width: 62ch;
             font-family: 'Inter', Helvetica, sans-serif;
-            font-weight: 900;
-            font-size: 20px;
-            line-height: 1.15;
-            letter-spacing: -0.3px;
-            color: #0a0a0a;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(16px, 1.5vw, 22px);
+            line-height: 1.35;
+            letter-spacing: -0.2px;
+            color: #1d4ed8;
+            min-height: 2.8em;
         }
+        .services-subtitle__text {
+            display: inline-block;
+            transition: transform 0.45s cubic-bezier(.2,.7,.2,1), opacity 0.3s ease;
+            will-change: transform, opacity;
+        }
+        .services-subtitle__text.is-out { opacity: 0; transform: translateY(8px); }
+        .services-subtitle__text.is-in  { opacity: 0; transform: translateY(-8px); }
 
         .inquire-badge {
             position: fixed;
@@ -285,9 +266,13 @@
         .inquire-badge:hover { color: #0a0a0a; }
 
         @media (max-width: 768px) {
-            .service-hover-circle { width: 260px; height: 170px; }
-            .service-hover-text { font-size: 16px; inset: 20% 14%; }
+            .services-subtitle { font-size: 15px; min-height: 3.6em; margin-top: 32px; }
+            .services-list li:hover h3 { transform: none; }
             .inquire-badge { top: 20px; right: 20px; font-size: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .services-subtitle__text { transition: opacity 0.15s ease; transform: none !important; }
+            .services-list li h3 { transition: color 0.2s ease; transform: none !important; }
         }
 
         @media (max-width: 768px) {
@@ -451,20 +436,6 @@
 <div class="noise"><canvas id="noise"></canvas></div>
 <div class="scanline"></div>
 
-<!-- Hand-drawn hover circle (positioned via JS) -->
-<div class="service-hover-circle" aria-hidden="true">
-    <svg viewBox="0 0 400 260" preserveAspectRatio="none">
-        <path d="M 58 138
-                 C 38 68, 142 18, 214 28
-                 C 304 36, 382 92, 370 158
-                 C 360 218, 278 250, 188 240
-                 C 108 230, 46 202, 58 138 Z"
-              fill="none" stroke="#1d4ed8" stroke-width="3.5"
-              stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <span class="service-hover-text"></span>
-</div>
-
 <!-- Inquire badge (top-right, shown on service hover) -->
 <a class="inquire-badge" href="mailto:sean@defaria.nyc">Inquire → sean@defaria.nyc</a>
 
@@ -501,6 +472,9 @@
                 <span class="campaigns-word">CAMPAIGNS</span>
             </aside>
         </div>
+        <p class="services-subtitle" aria-live="polite">
+            <span class="services-subtitle__text">Three disciplines. One operating system for attention.</span>
+        </p>
     </div>
 </section>
 
@@ -768,51 +742,47 @@ if (servicesSection && 'IntersectionObserver' in window) {
     io.observe(servicesSection);
 }
 
-// ======= SERVICE HOVER (circle + inquire badge) + CLICK TO CONTACT =======
+// ======= SERVICE HOVER (morphing subtitle + inquire badge) + CLICK TO CONTACT =======
 (function() {
+    const list = document.querySelector('.services-list');
     const items = document.querySelectorAll('.services-list li');
-    const circle = document.querySelector('.service-hover-circle');
-    if (!items.length || !circle) return;
-    const text = circle.querySelector('.service-hover-text');
-    const path = circle.querySelector('path');
+    const slot = document.querySelector('.services-subtitle__text');
     const inquire = document.querySelector('.inquire-badge');
-    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+    if (!list || !items.length || !slot) return;
 
-    function position(li) {
-        const r = li.getBoundingClientRect();
-        const top = window.scrollY + r.top;
-        const left = window.scrollX + r.left;
-        if (isMobile()) {
-            circle.style.top = (top + r.height + 12) + 'px';
-            circle.style.left = Math.max(20, left) + 'px';
-        } else {
-            circle.style.top = (top + r.height / 2 - circle.offsetHeight / 2) + 'px';
-            circle.style.left = (left + r.width + 60) + 'px';
-        }
+    const DEFAULT = slot.textContent;
+    let current = DEFAULT;
+    let token = 0;
+
+    function swap(next) {
+        if (next === current) return;
+        current = next;
+        const id = ++token;
+        slot.classList.add('is-out');
+        const handler = () => {
+            slot.removeEventListener('transitionend', handler);
+            if (id !== token) return;
+            slot.textContent = next;
+            slot.classList.remove('is-out');
+            slot.classList.add('is-in');
+            requestAnimationFrame(() => requestAnimationFrame(() => slot.classList.remove('is-in')));
+        };
+        slot.addEventListener('transitionend', handler, { once: true });
     }
-    function show(li) {
-        text.textContent = li.dataset.desc || '';
-        position(li);
-        circle.classList.remove('is-visible');
-        void path.getBoundingClientRect();
-        circle.classList.add('is-visible');
-        inquire?.classList.add('is-visible');
-    }
-    function hide() {
-        circle.classList.remove('is-visible');
-        inquire?.classList.remove('is-visible');
-    }
+
     items.forEach(li => {
-        li.addEventListener('mouseenter', () => show(li));
-        li.addEventListener('mouseleave', hide);
+        li.addEventListener('mouseenter', () => {
+            swap(li.dataset.desc || DEFAULT);
+            inquire?.classList.add('is-visible');
+        });
         li.addEventListener('click', () => {
             const c = document.getElementById('contact');
             if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
-    window.addEventListener('resize', () => {
-        const hovered = document.querySelector('.services-list li:hover');
-        if (hovered) position(hovered);
+    list.addEventListener('mouseleave', () => {
+        swap(DEFAULT);
+        inquire?.classList.remove('is-visible');
     });
 })();
 
