@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
     <title>deFaria</title>
     <meta name="description" content="deFaria">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='50%25' y='22' text-anchor='middle' font-family='Helvetica,sans-serif' font-size='14' fill='%23fff' font-weight='bold'>dF</text></svg>">
@@ -185,6 +185,22 @@
         .services-list li.accent h3 {
             color: #1d4ed8;
         }
+        .services-list h3.serif-moment {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: clamp(62px, 11.8vw, 185px);
+            letter-spacing: -3px;
+            line-height: 0.9;
+        }
+        .services-list h3.serif-roman {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: clamp(58px, 11vw, 170px);
+            letter-spacing: -3.5px;
+            line-height: 0.9;
+        }
         .campaigns-label {
             position: relative;
             display: flex;
@@ -194,7 +210,7 @@
         }
         .campaigns-rule {
             width: 2px;
-            background: #1d4ed8;
+            background: #c9c9c9;
             transform: scaleY(0);
             transform-origin: top;
             transition: transform 1.2s cubic-bezier(.77,0,.18,1);
@@ -202,10 +218,11 @@
         .campaigns-word {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            font-family: 'Inter', Helvetica, sans-serif;
-            font-weight: 900;
-            font-size: clamp(48px, 8vw, 120px);
-            letter-spacing: -2px;
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: clamp(52px, 9vw, 130px);
+            letter-spacing: -1.5px;
             line-height: 1;
             align-self: center;
             color: #0a0a0a;
@@ -241,34 +258,9 @@
         .services-subtitle__text.is-out { opacity: 0; transform: translateY(8px); }
         .services-subtitle__text.is-in  { opacity: 0; transform: translateY(-8px); }
 
-        .inquire-badge {
-            position: fixed;
-            top: 28px;
-            right: 40px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 11px;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-            color: #1d4ed8;
-            text-decoration: none;
-            opacity: 0;
-            transform: translateY(-4px);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-            pointer-events: none;
-            z-index: 110;
-        }
-        .inquire-badge.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .inquire-badge:hover { color: #0a0a0a; }
-
         @media (max-width: 768px) {
             .services-subtitle { font-size: 15px; min-height: 3.6em; margin-top: 32px; }
             .services-list li:hover h3 { transform: none; }
-            .inquire-badge { top: 20px; right: 20px; font-size: 10px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .services-subtitle__text { transition: opacity 0.15s ease; transform: none !important; }
@@ -436,8 +428,6 @@
 <div class="noise"><canvas id="noise"></canvas></div>
 <div class="scanline"></div>
 
-<!-- Inquire badge (top-right, shown on service hover) -->
-<a class="inquire-badge" href="mailto:sean@defaria.nyc">Inquire → sean@defaria.nyc</a>
 
 <nav>
     <a href="#" class="logo">deFaria</a>
@@ -464,8 +454,8 @@
         <div class="services-grid">
             <ul class="services-list">
                 <li data-desc="Paid creator and clipper posts featuring your song."><h3>SEEDING</h3></li>
-                <li data-desc="Managed niche music pages posting artist content."><h3>FANPAGE</h3></li>
-                <li data-desc="Brand deals, press, podcasts, and editorial placements."><h3>BRANDS &amp; MEDIA</h3></li>
+                <li data-desc="Managed niche music pages posting artist content."><h3 class="serif-moment">Fanpage</h3></li>
+                <li data-desc="Brand deals, press, podcasts, and editorial placements."><h3 class="serif-roman">BRANDS &amp; MEDIA</h3></li>
             </ul>
             <aside class="campaigns-label" aria-hidden="true">
                 <span class="campaigns-rule"></span>
@@ -747,7 +737,6 @@ if (servicesSection && 'IntersectionObserver' in window) {
     const list = document.querySelector('.services-list');
     const items = document.querySelectorAll('.services-list li');
     const slot = document.querySelector('.services-subtitle__text');
-    const inquire = document.querySelector('.inquire-badge');
     if (!list || !items.length || !slot) return;
 
     const DEFAULT = slot.textContent;
@@ -771,19 +760,13 @@ if (servicesSection && 'IntersectionObserver' in window) {
     }
 
     items.forEach(li => {
-        li.addEventListener('mouseenter', () => {
-            swap(li.dataset.desc || DEFAULT);
-            inquire?.classList.add('is-visible');
-        });
+        li.addEventListener('mouseenter', () => swap(li.dataset.desc || DEFAULT));
         li.addEventListener('click', () => {
             const c = document.getElementById('contact');
             if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
-    list.addEventListener('mouseleave', () => {
-        swap(DEFAULT);
-        inquire?.classList.remove('is-visible');
-    });
+    list.addEventListener('mouseleave', () => swap(DEFAULT));
 })();
 
 </script>
