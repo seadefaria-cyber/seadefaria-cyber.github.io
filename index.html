@@ -52,6 +52,9 @@
             opacity: 1;
             transition: opacity 0.8s ease;
         }
+        .logo .logo-accent {
+            color: #1d4ed8;
+        }
         .logo.faded {
             opacity: 0;
             pointer-events: none;
@@ -170,9 +173,21 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
+            counter-reset: svc;
         }
         .services-list li {
             line-height: 1;
+        }
+        .services-list li::before {
+            counter-increment: svc;
+            content: counter(svc, decimal-leading-zero);
+            color: #1d4ed8;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 14px;
         }
         .services-list h3 {
             font-family: 'Inter', Helvetica, sans-serif;
@@ -314,12 +329,13 @@
             margin: 0 auto;
         }
         .contact h2 {
-            font-family: 'Inter', Helvetica, sans-serif;
-            font-weight: 900;
-            font-size: clamp(80px, 14vw, 240px);
-            letter-spacing: -6px;
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: clamp(72px, 12vw, 200px);
+            letter-spacing: -3px;
             line-height: 0.9;
-            color: #0a0a0a;
+            color: #1d4ed8;
             margin-bottom: 72px;
         }
 
@@ -411,6 +427,8 @@
         }
         footer a { color: #0a0a0a; transition: color 0.3s; }
         footer a:hover { color: #1d4ed8; }
+        footer .footer-links { display: flex; gap: 28px; align-items: center; }
+        footer .footer-email { color: #1d4ed8; }
 
         /* ======= RESPONSIVE ======= */
         @media (max-width: 768px) {
@@ -429,7 +447,7 @@
 
 
 <nav>
-    <a href="#services" class="logo">deFaria</a>
+    <a href="#services" class="logo">deFaria <span class="logo-accent">digital</span></a>
     <ul class="nav-links">
         <li><a href="#services">Digital Work</a></li>
         <li><a href="#contact">Let's Work</a></li>
@@ -498,7 +516,10 @@
 
 <footer>
     <span>&copy; 2026 deFaria&trade; &nbsp;·&nbsp; All Rights Reserved</span>
-    <a href="https://instagram.com/defaria" target="_blank">Instagram ↗</a>
+    <span class="footer-links">
+        <a href="mailto:sean@defaria.nyc" class="footer-email">sean@defaria.nyc</a>
+        <a href="https://instagram.com/defaria" target="_blank">Instagram ↗</a>
+    </span>
 </footer>
 
 <script>
