@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
     <title>deFaria</title>
     <meta name="description" content="deFaria">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='50%25' y='22' text-anchor='middle' font-family='Helvetica,sans-serif' font-size='14' fill='%23fff' font-weight='bold'>dF</text></svg>">
+    <link rel="icon" type="image/png" sizes="64x64" href="img/df-favicon-64.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/df-apple-touch.png">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -54,6 +55,13 @@
         }
         .logo .logo-accent {
             color: #1d4ed8;
+        }
+        .logo .logo-mark {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            vertical-align: -4px;
+            margin-right: 7px;
         }
         .logo.faded {
             opacity: 0;
@@ -410,6 +418,36 @@
             .contact h2 { letter-spacing: -3px; margin-bottom: 48px; }
         }
 
+        /* ======= SELECTED CLIENTS ======= */
+        .clients {
+            padding: 36px 48px 40px;
+            border-top: 1px solid #0a0a0a;
+            background: #fff;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .clients-eyebrow {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 14px;
+        }
+        .clients-list {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: #0a0a0a;
+            line-height: 2.2;
+        }
+        .clients-list .dot { color: #1d4ed8; padding: 0 10px; }
+        @media (max-width: 768px) {
+            .clients { padding: 28px 20px 30px; }
+            .clients-list .dot { padding: 0 7px; }
+        }
+
         /* ======= FOOTER ======= */
         footer {
             padding: 40px 48px;
@@ -447,7 +485,7 @@
 
 
 <nav>
-    <a href="#services" class="logo">deFaria <span class="logo-accent">digital</span></a>
+    <a href="#services" class="logo"><img src="img/df-logo-512.png" alt="" class="logo-mark">deFaria <span class="logo-accent">digital</span></a>
     <ul class="nav-links">
         <li><a href="#services">Digital Work</a></li>
         <li><a href="#contact">Let's Work</a></li>
@@ -514,6 +552,14 @@
     </div>
 </section>
 
+<!-- Selected Clients -->
+<section class="clients" aria-label="Selected clients">
+    <p class="clients-eyebrow">Selected Clients</p>
+    <p class="clients-list">
+        Lyrical Lemonade TV<span class="dot">·</span>Summer Smash Festival<span class="dot">·</span>Universal Music Group<span class="dot">·</span>Interscope Records<span class="dot">·</span>Whop<span class="dot">·</span>Future FWD Gallery<span class="dot">·</span>Hamptons New York
+    </p>
+</section>
+
 <footer>
     <span>&copy; 2026 deFaria&trade; &nbsp;·&nbsp; All Rights Reserved</span>
     <span class="footer-links">
@@ -550,21 +596,27 @@ const ctx = canvas.getContext('2d');
 
 // VIDEO LOOPS — each plays as a looping clip inside the text
 const videoSrcs = [
-    // Spaced out — no two Chris Heyn clips back to back
-    'vid/loop-sd-3.mp4',       // A$AP Rocky PUMA (LEAD)
+    // Spaced out — LLTV shows interleaved with originals, no two of the same source back to back
+    'vid/loop-nyn-1.mp4',      // LLTV: New York Nights — Adamn Killa (LEAD)
+    'vid/loop-sd-3.mp4',       // A$AP Rocky PUMA
     'vid/loop-sd-1.mp4',       // Urban Wyatt at 6:57
+    'vid/loop-ciad-1.mp4',     // LLTV: Call It a Day — BabyChiefDoit
     'vid/loop-heyn-1.mp4',     // Heyn: IAN ep
     'vid/loop-ap-1.mp4',       // Asspizza: Lukas Sabbat
+    'vid/loop-chloe-1.mp4',    // LLTV: Chloe Explains
     'vid/loop-heyn-3.mp4',     // Heyn: THE HELLP ep
     'vid/loop-sd-2.mp4',       // Robin's Jean
     'vid/loop-heyn-5.mp4',     // Heyn: WISDOM KAYE ep
+    'vid/loop-lbf-1.mp4',      // LLTV: Lunch Break Freestyle — Topoppgen
     'vid/loop-new-1.mp4',      // Ian - I Ain't Coming Back
     'vid/loop-heyn-7.mp4',     // Heyn: FENG ep
     'vid/loop-ap-2.mp4',       // Asspizza: SLAWN
+    'vid/loop-nyn-2.mp4',      // LLTV: New York Nights — Adamn Killa pt2
     'vid/loop-heyn-2.mp4',     // Heyn: IAN ep pt2
     'vid/loop-new-2.mp4',      // Joy Talks
     'vid/loop-heyn-4.mp4',     // Heyn: THE HELLP pt2
     'vid/loop-ap-3.mp4',       // Asspizza: Ian highlight
+    'vid/loop-ciad-2.mp4',     // LLTV: Call It a Day — BabyChiefDoit pt2
     'vid/loop-heyn-6.mp4',     // Heyn: WISDOM KAYE pt2
     'vid/loop-new-3.mp4',      // SWEETCIAN
     'vid/loop-heyn-8.mp4',     // Heyn: FENG pt2
