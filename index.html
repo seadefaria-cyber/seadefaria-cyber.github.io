@@ -2,846 +2,1294 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <title>deFaria</title>
-    <meta name="description" content="deFaria">
+    <meta name="description" content="deFaria. Seeding, fanpages, brands and media campaigns. Clients: Interscope Records, Lyrical Lemonade TV, Summer Smash, Universal Music Group, Welcome JPEG, Whop.">
     <link rel="icon" type="image/png" sizes="64x64" href="img/df-favicon-64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/df-apple-touch.png">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+        :root {
+            --blue: #1d4ed8;
+            --ink: #0a0a0a;
+        }
+
+        html, body { height: 100%; }
+
         body {
             background: #fff;
-            color: #0a0a0a;
+            color: var(--ink);
             font-family: 'Inter', Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; border: none; background: none; cursor: pointer; color: inherit; }
 
-        /* Noise */
+        /* Film grain over the white stage only */
         .noise {
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 6000;
-            opacity: 0.03;
+            z-index: 40;
+            opacity: 0.035;
             mix-blend-mode: hard-light;
         }
         .noise canvas { width: 100%; height: 100%; display: block; }
 
-        /* ======= NAV ======= */
-        nav {
+        /* ======= BOOT (clips playing inside the wordmark) ======= */
+        .boot {
             position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 28px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            font-weight: 900;
-            letter-spacing: -0.8px;
-            color: #0a0a0a;
-            opacity: 1;
-            transition: opacity 0.8s ease;
-        }
-        .logo .logo-accent {
-            color: #1d4ed8;
-        }
-        .logo .logo-mark {
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            vertical-align: -4px;
-            margin-right: 7px;
-        }
-        .logo.faded {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .nav-links {
-            display: flex;
-            gap: 36px;
-            list-style: none;
-        }
-        .nav-links a {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-            color: #0a0a0a;
-            opacity: 0.65;
-            transition: opacity 0.3s, color 0.3s;
-        }
-        .nav-links a:hover { opacity: 1; color: #1d4ed8; }
-
-        /* ======= SCROLL CUE ======= */
-        .scroll-cue {
-            position: absolute;
-            bottom: 48px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-            color: #0a0a0a;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.6s ease, color 0.3s ease;
-            z-index: 50;
-        }
-        .scroll-cue.visible { opacity: 1; }
-        .scroll-cue:hover { color: #1d4ed8; }
-        .scroll-cue .arrow {
-            display: inline-block;
-            font-size: 14px;
-            animation: bob 1.8s ease-in-out infinite;
-        }
-        @keyframes bob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-
-        /* ======= HERO ======= */
-        .hero {
-            height: 100vh;
+            inset: 0;
+            z-index: 9000;
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             cursor: pointer;
+            transition: opacity 0.7s ease;
         }
-
-        .hero-canvas {
+        .boot.done { opacity: 0; pointer-events: none; }
+        .boot-canvas {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             opacity: 0;
-            animation: fadeIn 2s ease forwards;
-            transition: opacity 0.4s ease;
+            animation: bootFade 1.6s ease forwards;
         }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* No separate hover text — handled in canvas */
-
-        /* Hidden text for accessibility */
-        .hero h1 {
+        @keyframes bootFade { to { opacity: 1; } }
+        .boot-skip {
             position: absolute;
-            color: transparent;
-            font-size: 0;
-        }
-
-        .scanline { display: none; }
-
-
-        /* ======= SERVICES ======= */
-        .services {
-            padding: 160px 80px 140px;
-            background: #fff;
-        }
-        .services-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .services-eyebrow {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #0a0a0a;
-            opacity: 0.5;
-            margin-bottom: 80px;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 48px;
-            align-items: stretch;
-        }
-        .services-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            counter-reset: svc;
-        }
-        .services-list li {
-            line-height: 1;
-        }
-        .services-list li::before {
-            counter-increment: svc;
-            content: counter(svc, decimal-leading-zero);
-            color: #1d4ed8;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 11px;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 14px;
-        }
-        .services-list h3 {
-            font-family: 'Inter', Helvetica, sans-serif;
-            font-weight: 900;
-            font-size: clamp(54px, 11vw, 170px);
-            letter-spacing: -5px;
-            line-height: 0.92;
-            color: #0a0a0a;
-        }
-        .services-list li.accent h3 {
-            color: #1d4ed8;
-        }
-        .services-list h3.serif-moment {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-weight: 600;
-            font-size: clamp(62px, 11.8vw, 185px);
-            letter-spacing: -3px;
-            line-height: 0.9;
-        }
-        .services-list h3.serif-roman {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: normal;
-            font-weight: 700;
-            font-size: clamp(58px, 11vw, 170px);
-            letter-spacing: -3.5px;
-            line-height: 0.9;
-        }
-        .campaigns-label {
-            position: relative;
-            display: flex;
-            align-items: stretch;
-            gap: 28px;
-            padding-left: 24px;
-        }
-        .campaigns-rule {
-            width: 2px;
-            background: #c9c9c9;
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 1.2s cubic-bezier(.77,0,.18,1);
-        }
-        .campaigns-word {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-weight: 600;
-            font-size: clamp(52px, 9vw, 130px);
-            letter-spacing: -1.5px;
-            line-height: 1;
-            align-self: center;
-            color: #0a0a0a;
-            opacity: 0;
-            transition: opacity 1s ease 0.4s, letter-spacing 1s ease 0.4s;
-        }
-        .services.is-in .campaigns-rule { transform: scaleY(1); }
-        .services.is-in .campaigns-word { opacity: 1; letter-spacing: 2px; }
-
-        /* ======= SERVICE HOVER (morphing subtitle + inquire badge) ======= */
-        .services-list li { position: relative; cursor: pointer; }
-        .services-list li h3 { transition: color 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1); transform-origin: left center; }
-        .services-list li:hover h3 { color: #1d4ed8; transform: translateX(0.35vw); }
-
-        .services-subtitle {
-            margin: 48px 0 0;
-            max-width: 62ch;
-            font-family: 'Inter', Helvetica, sans-serif;
-            font-style: italic;
-            font-weight: 400;
-            font-size: clamp(16px, 1.5vw, 22px);
-            line-height: 1.35;
-            letter-spacing: -0.2px;
-            color: #1d4ed8;
-            min-height: 2.8em;
-        }
-        .services-subtitle__text {
-            display: inline-block;
-            transition: transform 0.45s cubic-bezier(.2,.7,.2,1), opacity 0.3s ease;
-            will-change: transform, opacity;
-        }
-        .services-subtitle__text.is-out { opacity: 0; transform: translateY(8px); }
-        .services-subtitle__text.is-in  { opacity: 0; transform: translateY(-8px); }
-
-        @media (max-width: 768px) {
-            .services-subtitle { font-size: 15px; min-height: 3.6em; margin-top: 32px; }
-            .services-list li:hover h3 { transform: none; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .services-subtitle__text { transition: opacity 0.15s ease; transform: none !important; }
-            .services-list li h3 { transition: color 0.2s ease; transform: none !important; }
-        }
-
-        @media (max-width: 768px) {
-            .services { padding: 100px 24px 80px; }
-            .services-eyebrow { margin-bottom: 48px; }
-            .services-list { gap: 28px; }
-            .services-list h3 { letter-spacing: -2.5px; }
-            .services-grid { grid-template-columns: 1fr; gap: 32px; }
-            .campaigns-label {
-                flex-direction: row;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 16px 0 0;
-                gap: 16px;
-            }
-            .campaigns-rule {
-                width: 40%;
-                height: 2px;
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 1.1s cubic-bezier(.77,0,.18,1);
-            }
-            .services.is-in .campaigns-rule { transform: scaleX(1); }
-            .campaigns-word {
-                writing-mode: horizontal-tb;
-                transform: none;
-                font-size: clamp(28px, 9vw, 56px);
-                letter-spacing: 1px;
-            }
-            .services.is-in .campaigns-word { letter-spacing: 2px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .campaigns-rule, .campaigns-word { transition: none; }
-        }
-
-        /* ======= CONTACT FORM ======= */
-        .contact {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 120px 80px 140px;
-            background: #fff;
-        }
-        .contact-inner {
-            max-width: 1280px;
-            width: 100%;
-            margin: 0 auto;
-        }
-        .contact h2 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-weight: 600;
-            font-size: clamp(72px, 12vw, 200px);
-            letter-spacing: -3px;
-            line-height: 0.9;
-            color: #1d4ed8;
-            margin-bottom: 72px;
-        }
-
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-            width: 100%;
-            max-width: 720px;
-        }
-        .form-field { display: flex; flex-direction: column; gap: 8px; }
-        .form-field label {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-            color: #0a0a0a;
-            opacity: 0.5;
-        }
-        .form input,
-        .form textarea {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #0a0a0a;
-            color: #0a0a0a;
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: -0.3px;
-            padding: 12px 0;
-            outline: none;
-            transition: border-color 0.3s;
-            -webkit-appearance: none;
-            border-radius: 0;
-            width: 100%;
-        }
-        .form input:focus,
-        .form textarea:focus {
-            border-bottom-color: #1d4ed8;
-            border-bottom-width: 2px;
-            padding-bottom: 11px;
-        }
-        .form textarea {
-            resize: none;
-            height: 90px;
-        }
-        .form button {
-            background: #0a0a0a;
-            color: #fff;
-            border: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 900;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            padding: 22px 36px;
-            cursor: pointer;
-            transition: background 0.25s;
-            align-self: flex-start;
-            margin-top: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .form button .arrow { transition: transform 0.25s; display: inline-block; }
-        .form button:hover { background: #1d4ed8; }
-        .form button:hover .arrow { transform: translateX(6px); }
-
-        @media (max-width: 768px) {
-            .contact { padding: 80px 24px; }
-            .contact h2 { letter-spacing: -3px; margin-bottom: 48px; }
-        }
-
-        /* ======= SELECTED CLIENTS ======= */
-        .clients {
-            padding: 36px 48px 40px;
-            border-top: 1px solid #0a0a0a;
-            background: #fff;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-        }
-        .clients-eyebrow {
+            bottom: 34px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 9px;
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 2.6px;
             text-transform: uppercase;
-            color: #999;
-            margin-bottom: 14px;
+            color: var(--ink);
+            opacity: 0;
+            animation: skipIn 0.6s ease 1.2s forwards;
         }
-        .clients-list {
-            font-size: 11px;
+        @keyframes skipIn { to { opacity: 0.35; } }
+        .boot h1 { position: absolute; color: transparent; font-size: 0; }
+
+        /* ======= STAGE (desktop pedestal) ======= */
+        .stage {
+            height: 100vh;
+            height: 100dvh;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: clamp(32px, 5vw, 90px);
+            padding: 0 clamp(24px, 4vw, 72px);
+        }
+
+        .stage-side { display: flex; flex-direction: column; }
+        .stage-left { align-items: flex-start; }
+        .stage-right { align-items: flex-start; justify-self: start; }
+
+        .wordmark {
+            font-size: clamp(34px, 3.4vw, 54px);
+            font-weight: 900;
+            letter-spacing: -0.045em;
+            line-height: 1;
+            color: var(--ink);
+        }
+        .stage-services {
+            margin-top: 18px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--ink);
+            opacity: 0.5;
+            line-height: 2;
+        }
+        .stage-services .dot { color: var(--blue); padding: 0 7px; }
+        .stage-cta {
+            margin-top: 34px;
+            background: var(--ink);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            padding: 18px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.25s;
+        }
+        .stage-cta:hover { background: var(--blue); }
+        .stage-foot {
+            margin-top: 46px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: 2.2px;
             text-transform: uppercase;
-            color: #0a0a0a;
-            line-height: 2.2;
-        }
-        .clients-list .dot { color: #1d4ed8; padding: 0 10px; }
-        @media (max-width: 768px) {
-            .clients { padding: 28px 20px 30px; }
-            .clients-list .dot { padding: 0 7px; }
+            color: var(--ink);
+            opacity: 0.35;
         }
 
-        /* ======= FOOTER ======= */
-        footer {
-            padding: 40px 48px;
-            border-top: 1px solid #0a0a0a;
+        .clients-eyebrow {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.6px;
+            text-transform: uppercase;
+            color: var(--ink);
+            opacity: 0.45;
+            margin-bottom: 22px;
+        }
+        .clients-list { list-style: none; }
+        .clients-list li {
+            font-size: clamp(15px, 1.3vw, 20px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            padding: 9px 0;
+            color: var(--ink);
+            transition: color 0.2s;
+            max-width: 320px;
+        }
+        .clients-list li .sub {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            opacity: 0.45;
+            margin-top: 2px;
+        }
+        .clients-list li a { display: block; }
+        .clients-list li:hover { color: var(--blue); }
+
+        /* ======= PHONE ======= */
+        .phone {
+            position: relative;
+            height: min(88vh, 880px);
+            aspect-ratio: 390 / 844;
+            background: #0a0a0a;
+            border-radius: 54px;
+            padding: 10px;
+            box-shadow:
+                0 0 0 2px #2a2a2a,
+                0 40px 90px rgba(10, 10, 10, 0.28);
+            justify-self: center;
+        }
+        .phone-island {
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 86px;
+            height: 25px;
+            background: #000;
+            border-radius: 14px;
+            z-index: 60;
+        }
+        .phone-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 44px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* ======= STATUS BAR + TABS ======= */
+        .statusbar {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 54px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
+            padding: 14px 28px 0;
+            z-index: 50;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            pointer-events: none;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+        .statusbar .batt { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+        .batt-shell {
+            width: 22px; height: 11px;
+            border: 1px solid rgba(255,255,255,0.85);
+            border-radius: 3px;
+            padding: 1.5px;
+            position: relative;
+        }
+        .batt-shell::after {
+            content: '';
+            position: absolute;
+            right: -3.5px; top: 3px;
+            width: 2px; height: 4px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 0 1px 1px 0;
+        }
+        .batt-fill { height: 100%; background: #fff; border-radius: 1px; width: 80%; }
+
+        .tabs {
+            position: absolute;
+            top: 54px;
+            left: 0; right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            z-index: 50;
+            font-size: 15px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.6);
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+        }
+        .tabs button { font-size: 15px; font-weight: 700; color: inherit; padding: 4px 2px; position: relative; }
+        .tabs button.active { color: #fff; }
+        .tabs button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 50%;
+            transform: translateX(-50%);
+            width: 26px; height: 3px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        .mute-btn {
+            position: absolute;
+            top: 96px;
+            right: 16px;
+            z-index: 50;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.35);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mute-btn svg { width: 17px; height: 17px; }
+
+        /* Dark chrome when a native (white) card is active */
+        .phone-screen.on-native .statusbar { color: var(--ink); text-shadow: none; }
+        .phone-screen.on-native .batt-shell { border-color: rgba(10,10,10,0.75); }
+        .phone-screen.on-native .batt-shell::after { background: rgba(10,10,10,0.75); }
+        .phone-screen.on-native .batt-fill { background: var(--ink); }
+        .phone-screen.on-native .tabs { color: rgba(10,10,10,0.45); text-shadow: none; }
+        .phone-screen.on-native .tabs button.active { color: var(--ink); }
+        .phone-screen.on-native .tabs button.active::after { background: var(--ink); }
+        .phone-screen.on-native .mute-btn { background: rgba(10,10,10,0.07); }
+        .phone-screen.on-native .mute-btn svg { filter: invert(1); }
+
+        /* ======= FEED ======= */
+        .feed {
+            height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            overscroll-behavior: contain;
+            scrollbar-width: none;
+            background: #000;
+        }
+        .feed::-webkit-scrollbar { display: none; }
+
+        .card {
+            position: relative;
+            height: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            overflow: hidden;
+            background: #000;
+        }
+        .card video, .card .card-poster {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card .card-poster { z-index: 1; }
+        .card video { z-index: 2; }
+
+        .scrim-top, .scrim-bot {
+            position: absolute;
+            left: 0; right: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .scrim-top { top: 0; height: 26%; background: linear-gradient(rgba(0,0,0,0.42), transparent); }
+        .scrim-bot { bottom: 0; height: 38%; background: linear-gradient(transparent, rgba(0,0,0,0.55)); }
+
+        /* Right action rail */
+        .rail {
+            position: absolute;
+            right: 10px;
+            bottom: 84px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+        }
+        .rail .avatar {
+            position: relative;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--ink);
+            font-weight: 900;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid #fff;
+            margin-bottom: 4px;
+        }
+        .rail .avatar .plus {
+            position: absolute;
+            bottom: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 19px; height: 19px;
+            border-radius: 50%;
+            background: var(--blue);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 900;
+            line-height: 19px;
+            text-align: center;
+        }
+        .rail-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .rail-item svg { width: 32px; height: 32px; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35)); }
+        .rail-item .cnt { font-size: 11.5px; font-weight: 700; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+        .rail-item.liked svg path { fill: var(--blue); stroke: var(--blue); }
+
+        .disc {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: conic-gradient(#1a1a1a, #3d3d3d, #1a1a1a, #3d3d3d, #1a1a1a);
+            border: 5px solid #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 7s linear infinite;
+            font-size: 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Bottom-left meta */
+        .meta {
+            position: absolute;
+            left: 14px;
+            right: 74px;
+            bottom: 26px;
+            z-index: 5;
+            color: #fff;
+        }
+        .meta .handle {
+            font-size: 15px;
+            font-weight: 900;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            cursor: pointer;
+        }
+        .meta .views-line {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            color: #fff;
+        }
+        .meta .caption {
+            margin-top: 5px;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+        .meta .sound {
+            margin-top: 9px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .sound .note { flex-shrink: 0; }
+        .sound-track {
+            white-space: nowrap;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+        }
+        .sound-track span {
+            display: inline-block;
+            animation: marquee 9s linear infinite;
+            padding-right: 42px;
+        }
+        @keyframes marquee { to { transform: translateX(-50%); } }
+
+        /* Progress bar */
+        .progress {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2.5px;
+            z-index: 6;
+            background: rgba(255,255,255,0.18);
+        }
+        .progress i {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: #fff;
+        }
+
+        /* Pause glyph */
+        .pause-glyph {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            z-index: 6;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));
+        }
+        .card.paused .pause-glyph { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+
+        /* Heart burst */
+        .burst {
+            position: absolute;
+            z-index: 7;
+            pointer-events: none;
+            animation: burst 0.8s ease forwards;
+        }
+        .burst svg { width: 84px; height: 84px; }
+        @keyframes burst {
+            0% { transform: scale(0) rotate(var(--tilt)); opacity: 0; }
+            25% { transform: scale(1.15) rotate(var(--tilt)); opacity: 1; }
+            60% { transform: scale(1) rotate(var(--tilt)); opacity: 1; }
+            100% { transform: scale(1) translateY(-70px) rotate(var(--tilt)); opacity: 0; }
+        }
+
+        /* ======= NATIVE CARDS (CTA + contact) ======= */
+        .card.native {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .native-inner { width: 100%; padding: 34px 30px; }
+        .native-inner .nh {
+            font-size: clamp(42px, 6.5vh, 62px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            color: var(--ink);
+        }
+        .native-inner .nh .accent { color: var(--blue); }
+        .native-inner .nsub {
+            margin-top: 16px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 2.2px;
             text-transform: uppercase;
-            color: #0a0a0a;
-            background: #fff;
+            color: var(--ink);
+            opacity: 0.5;
+            line-height: 2;
         }
-        footer a { color: #0a0a0a; transition: color 0.3s; }
-        footer a:hover { color: #1d4ed8; }
-        footer .footer-links { display: flex; gap: 28px; align-items: center; }
-        footer .footer-email { color: #1d4ed8; }
+        .native-inner .nbtn {
+            margin-top: 28px;
+            background: var(--ink);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            padding: 17px 26px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.25s;
+        }
+        .native-inner .nbtn:hover { background: var(--blue); }
+
+        /* Contact form card */
+        .cform { display: flex; flex-direction: column; gap: 16px; margin-top: 26px; }
+        .cform input, .cform textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--ink);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 9px 0;
+            outline: none;
+            border-radius: 0;
+            -webkit-appearance: none;
+            color: var(--ink);
+            width: 100%;
+        }
+        .cform input:focus, .cform textarea:focus { border-bottom: 2px solid var(--blue); padding-bottom: 8px; }
+        .cform textarea { resize: none; height: 58px; }
+        .cform button {
+            background: var(--ink);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            padding: 16px 24px;
+            align-self: flex-start;
+            margin-top: 6px;
+            transition: background 0.25s;
+        }
+        .cform button:hover { background: var(--blue); }
+
+        /* ======= SHEET (Following = clients) ======= */
+        .sheet {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 76%;
+            background: #fff;
+            border-radius: 18px 18px 0 0;
+            z-index: 80;
+            transform: translateY(105%);
+            transition: transform 0.38s cubic-bezier(.2,.7,.2,1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .sheet.open { transform: translateY(0); }
+        .sheet-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 22px 14px;
+        }
+        .sheet-head .st { font-size: 13px; font-weight: 900; letter-spacing: 1.8px; text-transform: uppercase; }
+        .sheet-close { font-size: 20px; font-weight: 700; opacity: 0.5; padding: 2px 6px; }
+        .sheet-body { padding: 4px 22px 30px; overflow-y: auto; }
+        .sheet-clients { list-style: none; }
+        .sheet-clients li {
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            padding: 13px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .sheet-clients li .sub {
+            display: block;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            opacity: 0.45;
+            margin-top: 3px;
+        }
+        .sheet-services {
+            margin-top: 22px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            line-height: 2;
+        }
+        .sheet-services .dot { color: var(--blue); padding: 0 6px; }
+        .sheet-mail {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 13px;
+            font-weight: 900;
+            color: var(--blue);
+        }
+        .sheet-backdrop {
+            position: absolute;
+            inset: 0;
+            z-index: 75;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .sheet-backdrop.show { opacity: 1; pointer-events: auto; }
+
+        /* Toast */
+        .toast {
+            position: absolute;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 90;
+            background: rgba(0,0,0,0.75);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show { opacity: 1; }
 
         /* ======= RESPONSIVE ======= */
-        @media (max-width: 768px) {
-            nav { padding: 20px 20px; }
-            .nav-links { display: none; }
-            .contact h2 { letter-spacing: -3px; }
-            .form { max-width: 100%; }
-            footer { padding: 20px; flex-direction: column; gap: 10px; }
+        @media (max-width: 929px) {
+            .stage { grid-template-columns: 1fr; }
+            .stage-side { display: none; }
+        }
+        @media (min-width: 930px) and (max-width: 1180px) {
+            .wordmark { font-size: 30px; }
+            .clients-list li { font-size: 14px; max-width: 230px; }
+            .stage { gap: clamp(24px, 3vw, 48px); }
+        }
+        @media (max-width: 699px) {
+            .stage { padding: 0; display: block; }
+            .phone {
+                height: 100vh;
+                height: 100dvh;
+                width: 100vw;
+                aspect-ratio: auto;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+            .phone-island { display: none; }
+            .phone-screen { border-radius: 0; }
+            .statusbar { padding-top: max(14px, env(safe-area-inset-top)); }
+            .meta { bottom: max(26px, calc(14px + env(safe-area-inset-bottom))); }
+            .rail { bottom: max(84px, calc(72px + env(safe-area-inset-bottom))); }
+            .noise { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .boot { display: none !important; }
+            .disc, .sound-track span, .burst { animation: none !important; }
+        }
+
+        /* SEO / no-JS fallback text */
+        .seo-fallback {
+            position: absolute;
+            width: 1px; height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
         }
     </style>
 </head>
 <body>
 
 <div class="noise"><canvas id="noise"></canvas></div>
-<div class="scanline"></div>
 
-
-<nav>
-    <a href="#services" class="logo"><img src="img/df-logo-512.png" alt="" class="logo-mark">deFaria <span class="logo-accent">digital</span></a>
-    <ul class="nav-links">
-        <li><a href="#services">Digital Work</a></li>
-        <li><a href="#contact">Let's Work</a></li>
-    </ul>
-</nav>
-
-<!-- Hero — film reel plays inside the "deFaria" text -->
-<section class="hero" id="hero">
-    <canvas id="heroCanvas" class="hero-canvas"></canvas>
+<!-- Boot: film reel inside the deFaria wordmark -->
+<div class="boot" id="boot">
+    <canvas id="bootCanvas" class="boot-canvas"></canvas>
     <h1>deFaria</h1>
-    <a href="#services" class="scroll-cue" id="scrollCue">
-        <span class="arrow">↓</span>
-        <span>Digital Work</span>
-    </a>
-</section>
+    <span class="boot-skip">Tap to skip</span>
+</div>
 
-<!-- Services -->
-<section class="services" id="services">
-    <div class="services-inner">
-        <p class="services-eyebrow">Digital Work</p>
-        <div class="services-grid">
-            <ul class="services-list">
-                <li data-desc="Coordinated creator campaigns that move your show, song, podcast, or brand through culture."><h3>SEEDING</h3></li>
-                <li data-desc="Owned fanpages that introduce your artist, show, or brand to audiences already built."><h3 class="serif-moment">Fanpage</h3></li>
-                <li data-desc="Press, podcasts, and brand partnerships that turn numbers into legitimacy."><h3 class="serif-roman">BRANDS &amp; MEDIA</h3></li>
-            </ul>
-            <aside class="campaigns-label" aria-hidden="true">
-                <span class="campaigns-rule"></span>
-                <span class="campaigns-word">CAMPAIGNS</span>
-            </aside>
+<div class="seo-fallback">
+    <h1>deFaria</h1>
+    <p>Seeding. Fanpages. Brands and media campaigns.</p>
+    <p>Selected clients: Interscope Records, The Lyrical Lemonade Summer Smash Festival presented by SPKRBX, Lyrical Lemonade TV, Universal Music Group, Welcome JPEG, Whop.</p>
+    <p>Contact: sean@defaria.nyc</p>
+</div>
+
+<main class="stage">
+    <aside class="stage-side stage-left" aria-hidden="false">
+        <div class="wordmark">deFaria</div>
+        <p class="stage-services">Seeding<span class="dot">&middot;</span>Fanpages<span class="dot">&middot;</span>Brands &amp; Media Campaigns</p>
+        <button class="stage-cta" id="ctaLeft">Let's work <span>&rarr;</span></button>
+        <p class="stage-foot">&copy; 2026 deFaria&trade;</p>
+    </aside>
+
+    <div class="phone">
+        <div class="phone-island"></div>
+        <div class="phone-screen" id="screen">
+            <div class="statusbar">
+                <span id="clock">9:41</span>
+                <span class="batt"><span id="battPct"></span><span class="batt-shell"><span class="batt-fill" id="battFill"></span></span></span>
+            </div>
+            <div class="tabs">
+                <button id="tabFollowing">Following</button>
+                <button class="active">For You</button>
+            </div>
+            <button class="mute-btn" id="muteBtn" aria-label="Toggle sound"></button>
+            <div class="feed" id="feed" role="feed" aria-label="deFaria work feed"></div>
+
+            <div class="sheet-backdrop" id="sheetBackdrop"></div>
+            <div class="sheet" id="clientSheet" aria-label="Selected clients">
+                <div class="sheet-head">
+                    <span class="st">Selected Clients</span>
+                    <button class="sheet-close" data-close>&times;</button>
+                </div>
+                <div class="sheet-body">
+                    <ul class="sheet-clients" id="sheetClients"></ul>
+                    <p class="sheet-services">Seeding<span class="dot">&middot;</span>Fanpages<span class="dot">&middot;</span>Brands &amp; Media Campaigns</p>
+                    <a class="sheet-mail" href="mailto:sean@defaria.nyc">sean@defaria.nyc</a>
+                </div>
+            </div>
+            <div class="toast" id="toast"></div>
         </div>
-        <p class="services-subtitle" aria-live="polite">
-            <span class="services-subtitle__text">&nbsp;</span>
-        </p>
     </div>
-</section>
 
-<!-- Contact -->
-<section class="contact" id="contact">
-    <div class="contact-inner">
-        <h2>let's work.</h2>
-        <form class="form" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
-            <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
-            <div class="form-field">
-                <label for="f-name">Name</label>
-                <input id="f-name" type="text" name="name" required>
-            </div>
-            <div class="form-field">
-                <label for="f-email">Email</label>
-                <input id="f-email" type="email" name="email" required>
-            </div>
-            <div class="form-field">
-                <label for="f-project">Project</label>
-                <input id="f-project" type="text" name="project">
-            </div>
-            <div class="form-field">
-                <label for="f-message">Tell us about it</label>
-                <textarea id="f-message" name="message"></textarea>
-            </div>
-            <button type="submit">Send <span class="arrow">→</span></button>
-        </form>
-    </div>
-</section>
-
-<!-- Selected Clients -->
-<section class="clients" aria-label="Selected clients">
-    <p class="clients-eyebrow">Selected Clients</p>
-    <p class="clients-list">
-        Lyrical Lemonade TV<span class="dot">·</span>Summer Smash Festival<span class="dot">·</span>Universal Music Group<span class="dot">·</span>Interscope Records<span class="dot">·</span>Whop<span class="dot">·</span>Future FWD Gallery<span class="dot">·</span>Hamptons New York
-    </p>
-</section>
-
-<footer>
-    <span>&copy; 2026 deFaria&trade; &nbsp;·&nbsp; All Rights Reserved</span>
-    <span class="footer-links">
-        <a href="mailto:sean@defaria.nyc" class="footer-email">sean@defaria.nyc</a>
-        <a href="https://instagram.com/defaria" target="_blank">Instagram ↗</a>
-    </span>
-</footer>
+    <aside class="stage-side stage-right">
+        <p class="clients-eyebrow">Selected Clients</p>
+        <ul class="clients-list" id="stageClients"></ul>
+    </aside>
+</main>
 
 <script>
+// ======= DATA =======
+const FEED = [
+    {
+        src: 'vid/feed/feed-01.mp4', poster: 'vid/feed/feed-01-poster.jpg',
+        handle: 'lyricalemonade',
+        url: 'https://www.instagram.com/reel/DZGeQTYScUD/',
+        caption: '@newyorknights w/ the rizzler\u{1F5FD} live on the LLTV youtube channel \u{1F4FA} hosted by @fathersteve',
+        likes: 431335, comments: 2743, views: null,
+        sound: 'original sound · lyricalemonade'
+    },
+    {
+        src: 'vid/feed/feed-02.mp4', poster: 'vid/feed/feed-02-poster.jpg',
+        handle: '730.archive',
+        url: 'https://www.tiktok.com/@730.archive/video/7561929626600099103',
+        caption: 'Those Ricks been through so much\u{1F62D}\u{1F62D} #asspizza #fashion #lukasabbat',
+        likes: 89600, comments: 211, views: 874700,
+        sound: 'original sound · 730.archive'
+    },
+    {
+        src: 'vid/feed/feed-03.mp4', poster: 'vid/feed/feed-03-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7649888552540474638',
+        caption: 'Bros always dropping his bread\u{1F923} full ep w/ Jim Jones out now on LLTV',
+        likes: 23500, comments: 190, views: 223200,
+        sound: 'original sound · lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-04.mp4', poster: 'vid/feed/feed-04-poster.jpg',
+        handle: 'asspizza2026',
+        url: 'https://www.tiktok.com/@asspizza2026/video/7563900348859960590',
+        caption: 'Fat Nick talks about Lil Peep asking him to do him a favor…',
+        likes: 62000, comments: 278, views: 728700,
+        sound: 'original sound · asspizza2026'
+    },
+    { cta: true },
+    {
+        src: 'vid/feed/feed-05.mp4', poster: 'vid/feed/feed-05-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7642923816464682254',
+        caption: 'That Mr. Miyagi line at the end was crazy\u{1F62D}\u{1F525}\u{1F525} #lyricallemonade',
+        likes: 41000, comments: 549, views: 204700,
+        sound: 'original sound · lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-06.mp4', poster: 'vid/feed/feed-06-poster.jpg',
+        handle: 'chrisheynjr',
+        url: 'https://www.instagram.com/reel/DRiIjyQkkz8/',
+        caption: 'Welcome to Episode 1: Feng. Full episode is now live on YouTube.',
+        likes: 35155, comments: 216, views: null,
+        sound: 'original sound · chrisheynjr'
+    },
+    {
+        src: 'vid/feed/feed-07.mp4', poster: 'vid/feed/feed-07-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7642221048229793038',
+        caption: 'FEID vs FERXXO, who do yall prefer? \u{1F34B} #feid #ferxxo',
+        likes: 4410, comments: 16, views: 31900,
+        sound: 'original sound · lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-08.mp4', poster: 'vid/feed/feed-08-poster.jpg',
+        handle: 'chrisheynshow',
+        url: 'https://www.instagram.com/reel/DSVolJdj_DM/',
+        caption: 'The Hellp explains who the leaders of the next wave of music are.',
+        likes: 13805, comments: 549, views: null,
+        sound: 'original sound · chrisheynshow'
+    },
+    { contact: true }
+];
+
+const CLIENTS = [
+    { name: 'Interscope Records' },
+    { name: 'The Lyrical Lemonade Summer Smash Festival', sub: 'Presented by SPKRBX' },
+    { name: 'Lyrical Lemonade TV' },
+    { name: 'Universal Music Group' },
+    { name: 'Welcome JPEG' },
+    { name: 'Whop' }
+];
+
+// ======= HELPERS =======
+const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
+              : n >= 1e3 ? (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
+              : String(n);
+
+const HEART = '<svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 21s-7.5-4.9-10-9.2C.4 8.6 1.8 5 5.2 4.3c2-.4 4 .5 5 2.1h1.6c1-1.6 3-2.5 5-2.1 3.4.7 4.8 4.3 3.2 7.5C19.5 16.1 12 21 12 21z"/></svg>';
+const COMMENT = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6 2 11c0 2.6 1.2 4.9 3.2 6.6-.2 1.2-.8 2.7-2 3.7 1.9.3 3.9-.3 5.3-1.2 1.1.3 2.3.5 3.5.5 5.5 0 10-4 10-9.1S17.5 2 12 2z"/></svg>';
+const SHARE = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M13.5 4v4.1C7.4 8.7 3.6 12.7 3 18c2.2-3.2 5.6-4.9 10.5-4.9V17L21 10.4 13.5 4z"/></svg>';
+const PAUSE_TRIANGLE = '<svg width="64" height="64" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)"><path d="M8 5v14l11-7z"/></svg>';
+const SOUND_ON = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 8a5 5 0 0 1 0 8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+const SOUND_OFF = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 6M21 9l-5 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+
+// ======= BUILD FEED =======
+const feedEl = document.getElementById('feed');
+let muted = true;
+
+FEED.forEach((d, i) => {
+    const card = document.createElement('section');
+    card.className = 'card';
+    card.setAttribute('role', 'article');
+    card.dataset.i = i;
+
+    if (d.cta) {
+        card.classList.add('native');
+        card.setAttribute('aria-label', 'deFaria');
+        card.innerHTML = `<div class="native-inner">
+            <div class="nh">your clip<br>could be<br>next<span class="accent">.</span></div>
+            <p class="nsub">Seeding · Fanpages · Brands &amp; Media Campaigns</p>
+            <button class="nbtn" data-goto-contact>Let's work <span>&rarr;</span></button>
+        </div>`;
+        feedEl.appendChild(card);
+        return;
+    }
+    if (d.contact) {
+        card.classList.add('native');
+        card.setAttribute('aria-label', 'Contact deFaria');
+        card.innerHTML = `<div class="native-inner">
+            <div class="nh">let's<br>work<span class="accent">.</span></div>
+            <form class="cform" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
+                <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Tell us about it"></textarea>
+                <button type="submit">Send &rarr;</button>
+            </form>
+        </div>`;
+        feedEl.appendChild(card);
+        return;
+    }
+
+    card.setAttribute('aria-label', `Video ${i + 1}: @${d.handle}`);
+    const viewsLine = d.views ? `<span class="views-line">${fmt(d.views)} views</span>` : '';
+    card.innerHTML = `
+        <img class="card-poster" src="${d.poster}" alt="">
+        <video data-src="${d.src}" poster="${d.poster}" loop muted playsinline preload="none"></video>
+        <div class="scrim-top"></div><div class="scrim-bot"></div>
+        <div class="pause-glyph">${PAUSE_TRIANGLE}</div>
+        <div class="rail">
+            <div class="avatar" data-open-url="${d.url}">${d.handle[0].toUpperCase()}<span class="plus">+</span></div>
+            <button class="rail-item like" aria-label="Like">${HEART}<span class="cnt">${fmt(d.likes)}</span></button>
+            <button class="rail-item cmt" aria-label="View post" data-open-url="${d.url}">${COMMENT}<span class="cnt">${fmt(d.comments)}</span></button>
+            <button class="rail-item shr" aria-label="Share" data-share="${d.url}">${SHARE}<span class="cnt">Share</span></button>
+            <div class="disc">\u{1F3B5}</div>
+        </div>
+        <div class="meta">
+            <span class="handle" data-open-url="${d.url}">@${d.handle}</span>${viewsLine}
+            <p class="caption">${d.caption}</p>
+            <div class="sound"><span class="note">\u{1F3B6}</span><div class="sound-track"><span>${d.sound} · ${d.sound}</span></div></div>
+        </div>
+        <div class="progress"><i></i></div>`;
+    feedEl.appendChild(card);
+});
+
+const cards = [...feedEl.children];
+
+// ======= CLIENT LISTS =======
+function clientLi(c) {
+    const sub = c.sub ? `<span class="sub">${c.sub}</span>` : '';
+    const inner = `${c.name}${sub}`;
+    return c.href ? `<li><a href="${c.href}" target="_blank" rel="noopener">${inner}</a></li>` : `<li>${inner}</li>`;
+}
+document.getElementById('stageClients').innerHTML = CLIENTS.map(clientLi).join('');
+document.getElementById('sheetClients').innerHTML = CLIENTS.map(clientLi).join('');
+
 // ======= NOISE =======
 const nc = document.getElementById('noise');
 const nx = nc.getContext('2d');
-function szN() { nc.width = window.innerWidth; nc.height = window.innerHeight; }
+function szN() { nc.width = window.innerWidth / 2; nc.height = window.innerHeight / 2; }
 szN(); window.addEventListener('resize', szN);
 let nf = 0;
-function grain() {
-    if (++nf % 3 !== 0) { requestAnimationFrame(grain); return; }
-    const w = nc.width, h = nc.height;
-    const img = nx.createImageData(w, h);
-    const d = img.data;
-    for (let i = 0; i < d.length; i += 4) {
-        const v = Math.random() * 255;
-        d[i] = d[i+1] = d[i+2] = v;
-        d[i+3] = 255;
+(function grain() {
+    if (++nf % 4 === 0) {
+        const img = nx.createImageData(nc.width, nc.height);
+        const dd = img.data;
+        for (let i = 0; i < dd.length; i += 4) {
+            const v = Math.random() * 255;
+            dd[i] = dd[i + 1] = dd[i + 2] = v; dd[i + 3] = 255;
+        }
+        nx.putImageData(img, 0, 0);
     }
-    nx.putImageData(img, 0, 0);
     requestAnimationFrame(grain);
-}
-grain();
+})();
 
-// ======= FILM REEL INSIDE TEXT (Canvas) =======
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
-
-// VIDEO LOOPS — each plays as a looping clip inside the text
-const videoSrcs = [
-    // Spaced out — LLTV shows interleaved with originals, no two of the same source back to back
-    'vid/loop-nyn-1.mp4',      // LLTV: New York Nights — Adamn Killa (LEAD)
-    'vid/loop-sd-3.mp4',       // A$AP Rocky PUMA
-    'vid/loop-sd-1.mp4',       // Urban Wyatt at 6:57
-    'vid/loop-ciad-1.mp4',     // LLTV: Call It a Day — BabyChiefDoit
-    'vid/loop-heyn-1.mp4',     // Heyn: IAN ep
-    'vid/loop-ap-1.mp4',       // Asspizza: Lukas Sabbat
-    'vid/loop-chloe-1.mp4',    // LLTV: Chloe Explains
-    'vid/loop-heyn-3.mp4',     // Heyn: THE HELLP ep
-    'vid/loop-sd-2.mp4',       // Robin's Jean
-    'vid/loop-heyn-5.mp4',     // Heyn: WISDOM KAYE ep
-    'vid/loop-lbf-1.mp4',      // LLTV: Lunch Break Freestyle — Topoppgen
-    'vid/loop-new-1.mp4',      // Ian - I Ain't Coming Back
-    'vid/loop-heyn-7.mp4',     // Heyn: FENG ep
-    'vid/loop-ap-2.mp4',       // Asspizza: SLAWN
-    'vid/loop-nyn-2.mp4',      // LLTV: New York Nights — Adamn Killa pt2
-    'vid/loop-heyn-2.mp4',     // Heyn: IAN ep pt2
-    'vid/loop-new-2.mp4',      // Joy Talks
-    'vid/loop-heyn-4.mp4',     // Heyn: THE HELLP pt2
-    'vid/loop-ap-3.mp4',       // Asspizza: Ian highlight
-    'vid/loop-ciad-2.mp4',     // LLTV: Call It a Day — BabyChiefDoit pt2
-    'vid/loop-heyn-6.mp4',     // Heyn: WISDOM KAYE pt2
-    'vid/loop-new-3.mp4',      // SWEETCIAN
-    'vid/loop-heyn-8.mp4',     // Heyn: FENG pt2
-    'vid/loop-ap-4.mp4',       // Asspizza highlight
-    'vid/loop-add-1.mp4',     // Tomorrows Gone Asspizza
-    'vid/loop-mural.mp4',      // Mural stream
-    'vid/loop-add-2.mp4',     // Gm2D-RYME5k
-    'vid/loop-desktop.mp4',    // Desktop clip
-    'vid/loop-add-3.mp4',     // W-h36CGqJ_w at 6:51 (5 sec)
+// ======= BOOT (wordmark reel) =======
+const boot = document.getElementById('boot');
+const bCanvas = document.getElementById('bootCanvas');
+const bCtx = bCanvas.getContext('2d');
+const BOOT_SRCS = [
+    'vid/loop-nyn-1.mp4','vid/loop-sd-3.mp4','vid/loop-sd-1.mp4','vid/loop-ciad-1.mp4',
+    'vid/loop-heyn-1.mp4','vid/loop-ap-1.mp4','vid/loop-chloe-1.mp4','vid/loop-heyn-3.mp4',
+    'vid/loop-sd-2.mp4','vid/loop-heyn-5.mp4','vid/loop-lbf-1.mp4','vid/loop-new-1.mp4',
+    'vid/loop-heyn-7.mp4','vid/loop-ap-2.mp4','vid/loop-nyn-2.mp4','vid/loop-heyn-2.mp4',
+    'vid/loop-new-2.mp4','vid/loop-heyn-4.mp4','vid/loop-ap-3.mp4','vid/loop-ciad-2.mp4',
+    'vid/loop-heyn-6.mp4','vid/loop-new-3.mp4','vid/loop-heyn-8.mp4','vid/loop-ap-4.mp4',
+    'vid/loop-add-1.mp4','vid/loop-mural.mp4','vid/loop-add-2.mp4','vid/loop-desktop.mp4','vid/loop-add-3.mp4'
 ];
+const bootMedia = [];
+let bootReady = 0, bootStart = 0, bootDone = false, bootScroll = 0;
+const FADE_DELAY = 1000, FADE_DURATION = 800, HOLD_AFTER = 700;
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const media = []; // array of {el, w, h} — works for both video and image elements
-let mediaReady = 0;
-
-videoSrcs.forEach(src => {
-    const vid = document.createElement('video');
-    vid.src = src;
-    vid.loop = true;
-    vid.muted = true;
-    vid.playsInline = true;
-    vid.autoplay = true;
-    vid.style.display = 'none';
-    document.body.appendChild(vid);
-    vid.addEventListener('loadeddata', () => {
-        mediaReady++;
-        vid.play().catch(() => {});
-        if (videoStartTime === 0) videoStartTime = performance.now();
+if (!reducedMotion) {
+    BOOT_SRCS.forEach(src => {
+        const v = document.createElement('video');
+        v.src = src; v.loop = true; v.muted = true; v.playsInline = true; v.autoplay = true;
+        v.style.display = 'none';
+        document.body.appendChild(v);
+        v.addEventListener('loadeddata', () => {
+            bootReady++;
+            v.play().catch(() => {});
+            if (bootStart === 0) bootStart = performance.now();
+        });
+        bootMedia.push(v);
     });
-    media.push({ el: vid, get w() { return vid.videoWidth || 320; }, get h() { return vid.videoHeight || 180; } });
-});
-
-const TEXT = 'deFaria';
-let scrollX = 0;
-let SPEED = 1.2;
-let isHovering = false;
-let hoverOpacity = 0; // 0 = full video, 1 = full black text
-let videoStartTime = 0;
-const FADE_DELAY = 1000;       // ms before center text fades to black
-const FADE_DURATION = 800;     // ms for center fade duration
-const LOGO_FADE_DELAY = 1000;  // ms before top-left nav logo fades out
-let scrollCueShown = false;
-let navLogoFaded = false;
-
-document.getElementById('hero').addEventListener('mouseenter', () => { isHovering = true; });
-document.getElementById('hero').addEventListener('mouseleave', () => { isHovering = false; });
-
-function sizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    const hero = document.getElementById('hero');
-    const w = hero.clientWidth;
-    const h = hero.clientHeight;
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
-sizeCanvas();
-window.addEventListener('resize', sizeCanvas);
 
-// Intro animation state
-const INTRO_DURATION = 2000; // 2 seconds
-const introStart = performance.now();
-let introDone = false;
+function sizeBoot() {
+    const dpr = window.devicePixelRatio || 1;
+    bCanvas.width = window.innerWidth * dpr;
+    bCanvas.height = window.innerHeight * dpr;
+    bCanvas.style.width = window.innerWidth + 'px';
+    bCanvas.style.height = window.innerHeight + 'px';
+    bCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+sizeBoot(); window.addEventListener('resize', sizeBoot);
 
-// Click hero to scroll to contact
-document.getElementById('hero').addEventListener('click', () => {
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-});
+const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 
-function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+function drawBoot(now) {
+    if (bootDone) return;
+    const w = window.innerWidth, h = window.innerHeight;
+    bCtx.clearRect(0, 0, w, h);
+    const fontSize = Math.min(280, Math.max(80, w * 0.18));
 
-function drawHero(now) {
-    const w = canvas.width / (window.devicePixelRatio || 1);
-    const h = canvas.height / (window.devicePixelRatio || 1);
-    ctx.clearRect(0, 0, w, h);
-
-    let fontSize = Math.min(280, Math.max(100, w * 0.18));
-
-    ctx.save();
-
-    // Small grid of videos tiled inside the text
+    bCtx.save();
     const cellH = fontSize * 0.52;
     const rows = Math.ceil((fontSize * 1.1) / cellH);
-    const totalGridH = rows * cellH;
-    const gridStartY = (h - totalGridH) / 2;
-
-    if (mediaReady > 0) {
+    const gridStartY = (h - rows * cellH) / 2;
+    if (bootReady > 0) {
         for (let row = 0; row < rows; row++) {
             const rowY = gridStartY + row * cellH;
             let totalRowW = 0;
-            for (const m of media) {
-                if (m.w > 0) totalRowW += cellH * (m.w / m.h);
-            }
+            for (const m of bootMedia) if (m.videoWidth > 0) totalRowW += cellH * (m.videoWidth / m.videoHeight);
             if (totalRowW <= 0) continue;
-
-            const rowScroll = (scrollX + row * 120) % totalRowW;
-            let drawX = -rowScroll;
-
-            let safety = 0;
+            const rowScroll = (bootScroll + row * 120) % totalRowW;
+            let drawX = -rowScroll, safety = 0;
             while (drawX < w + 400 && safety < 100) {
-                for (let i = 0; i < media.length; i++) {
-                    if (media[i].w <= 0) continue;
-                    const aspect = media[i].w / media[i].h;
-                    const cellW = cellH * aspect;
-                    try { ctx.drawImage(media[i].el, drawX, rowY, cellW, cellH); } catch(e) {}
-                    drawX += cellW;
+                for (const m of bootMedia) {
+                    if (m.videoWidth <= 0) continue;
+                    const cw = cellH * (m.videoWidth / m.videoHeight);
+                    try { bCtx.drawImage(m, drawX, rowY, cw, cellH); } catch (e) {}
+                    drawX += cw;
                     if (drawX > w + 400) break;
                 }
                 safety++;
             }
         }
     }
+    bCtx.fillStyle = 'rgba(0,0,0,0.06)';
+    for (let y = 0; y < h; y += 4) bCtx.fillRect(0, y, w, 1);
+    bCtx.globalCompositeOperation = 'destination-in';
+    bCtx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
+    bCtx.textAlign = 'center'; bCtx.textBaseline = 'middle';
+    if (bCtx.letterSpacing !== undefined) bCtx.letterSpacing = '-5px';
+    bCtx.fillStyle = '#fff';
+    bCtx.fillText('deFaria', w / 2, h / 2);
+    bCtx.globalCompositeOperation = 'source-over';
+    bCtx.restore();
 
-    // Scan lines overlay — inside the letters only
-    ctx.fillStyle = 'rgba(0,0,0,0.06)';
-    for (let y = 0; y < h; y += 4) {
-        ctx.fillRect(0, y, w, 1);
-    }
-
-    // Mask to text shape
-    ctx.globalCompositeOperation = 'destination-in';
-    ctx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    if (ctx.letterSpacing !== undefined) ctx.letterSpacing = '-5px';
-    ctx.fillStyle = '#fff';
-    ctx.fillText(TEXT, w / 2, h / 2);
-    ctx.globalCompositeOperation = 'source-over';
-
-    ctx.restore();
-
-    // Fade to solid black letters after 5s + sync UI transitions
     let blackOpacity = 0;
-    if (videoStartTime > 0) {
-        const elapsed = now - videoStartTime;
-
-        // Show scroll cue shortly after videos start playing
-        if (!scrollCueShown && elapsed > 900) {
-            scrollCueShown = true;
-            const cue = document.getElementById('scrollCue');
-            if (cue) cue.classList.add('visible');
-        }
-
-        // Fade out the top-left nav logo after LOGO_FADE_DELAY
-        if (!navLogoFaded && elapsed > LOGO_FADE_DELAY) {
-            navLogoFaded = true;
-            document.querySelector('.logo')?.classList.add('faded');
-        }
-
-        if (elapsed > FADE_DELAY) {
-            blackOpacity = Math.min(1, (elapsed - FADE_DELAY) / FADE_DURATION);
-            blackOpacity = easeOutCubic(blackOpacity);
-        }
+    if (bootStart > 0) {
+        const elapsed = now - bootStart;
+        if (elapsed > FADE_DELAY) blackOpacity = easeOutCubic(Math.min(1, (elapsed - FADE_DELAY) / FADE_DURATION));
+        if (elapsed > FADE_DELAY + FADE_DURATION + HOLD_AFTER) endBoot();
     }
     if (blackOpacity > 0) {
-        ctx.save();
-        ctx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        if (ctx.letterSpacing !== undefined) ctx.letterSpacing = '-5px';
-        ctx.fillStyle = `rgba(10, 10, 10, ${blackOpacity})`;
-        ctx.fillText(TEXT, w / 2, h / 2);
-        ctx.restore();
+        bCtx.save();
+        bCtx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
+        bCtx.textAlign = 'center'; bCtx.textBaseline = 'middle';
+        if (bCtx.letterSpacing !== undefined) bCtx.letterSpacing = '-5px';
+        bCtx.fillStyle = `rgba(10,10,10,${blackOpacity})`;
+        bCtx.fillText('deFaria', w / 2, h / 2);
+        bCtx.restore();
     }
-
-    // Advance — constant speed
-    scrollX += 0.6;
-
-
-    requestAnimationFrame(drawHero);
-}
-requestAnimationFrame(drawHero);
-
-// ======= SERVICES SCROLL REVEAL =======
-const servicesSection = document.querySelector('.services');
-if (servicesSection && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                servicesSection.classList.add('is-in');
-                obs.unobserve(servicesSection);
-            }
-        });
-    }, { threshold: 0.35 });
-    io.observe(servicesSection);
+    bootScroll += 0.6;
+    requestAnimationFrame(drawBoot);
 }
 
-// ======= SERVICE HOVER (morphing subtitle + inquire badge) + CLICK TO CONTACT =======
-(function() {
-    const list = document.querySelector('.services-list');
-    const items = document.querySelectorAll('.services-list li');
-    const slot = document.querySelector('.services-subtitle__text');
-    if (!list || !items.length || !slot) return;
+function endBoot() {
+    if (bootDone) return;
+    bootDone = true;
+    boot.classList.add('done');
+    setTimeout(() => {
+        boot.remove();
+        bootMedia.forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); });
+    }, 750);
+    active = -1;
+    activate(0);
+}
+boot.addEventListener('click', endBoot);
+if (reducedMotion) boot.remove();
+else requestAnimationFrame(drawBoot);
+// Safety: never trap someone on boot longer than 6s (slow network)
+setTimeout(endBoot, 6000);
 
-    const DEFAULT = slot.textContent;
-    let current = DEFAULT;
-    let token = 0;
-
-    function swap(next) {
-        if (next === current) return;
-        current = next;
-        const id = ++token;
-        slot.classList.add('is-out');
-        const handler = () => {
-            slot.removeEventListener('transitionend', handler);
-            if (id !== token) return;
-            slot.textContent = next;
-            slot.classList.remove('is-out');
-            slot.classList.add('is-in');
-            requestAnimationFrame(() => requestAnimationFrame(() => slot.classList.remove('is-in')));
+// ======= STATUS BAR =======
+function tickClock() {
+    const d = new Date();
+    let hh = d.getHours() % 12 || 12;
+    document.getElementById('clock').textContent = hh + ':' + String(d.getMinutes()).padStart(2, '0');
+}
+tickClock(); setInterval(tickClock, 15000);
+if (navigator.getBattery) {
+    navigator.getBattery().then(b => {
+        const upd = () => {
+            document.getElementById('battFill').style.width = Math.round(b.level * 100) + '%';
         };
-        slot.addEventListener('transitionend', handler, { once: true });
-    }
+        upd(); b.addEventListener('levelchange', upd);
+    }).catch(() => {});
+}
 
-    items.forEach(li => {
-        li.addEventListener('mouseenter', () => swap(li.dataset.desc || DEFAULT));
-        li.addEventListener('click', () => {
-            const c = document.getElementById('contact');
-            if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+// ======= FEED ENGINE =======
+let active = -1;
+
+function manageWindow(idx) {
+    cards.forEach((card, i) => {
+        const v = card.querySelector('video');
+        if (!v) return;
+        const d = i - idx;
+        if (d >= -1 && d <= 2) {
+            if (!v.getAttribute('src')) {
+                v.src = v.dataset.src;
+                v.preload = (d === 0 || d === 1) ? 'auto' : 'metadata';
+                v.load();
+            }
+        } else if (v.getAttribute('src')) {
+            v.pause(); v.removeAttribute('src'); v.load();
+        }
     });
-    list.addEventListener('mouseleave', () => swap(DEFAULT));
-})();
+}
 
+function activate(idx) {
+    if (idx === active) return;
+    active = idx;
+    manageWindow(idx);
+    document.getElementById('screen').classList.toggle('on-native', !!(FEED[idx].cta || FEED[idx].contact));
+    cards.forEach((card, i) => {
+        const v = card.querySelector('video');
+        if (!v) return;
+        if (i === idx && !bootDoneBlocked()) {
+            card.classList.remove('paused');
+            v.muted = muted;
+            v.currentTime = 0;
+            v.play().catch(() => { card.classList.add('paused'); });
+        } else {
+            v.pause();
+        }
+    });
+}
+function bootDoneBlocked() { return document.getElementById('boot') && !bootDone && !reducedMotion; }
+
+const io = new IntersectionObserver(entries => {
+    for (const e of entries) {
+        if (e.intersectionRatio >= 0.6) activate(Number(e.target.dataset.i));
+    }
+}, { root: feedEl, threshold: [0.6] });
+cards.forEach(c => io.observe(c));
+
+// Progress bar
+setInterval(() => {
+    const card = cards[active];
+    if (!card) return;
+    const v = card.querySelector('video');
+    const bar = card.querySelector('.progress i');
+    if (v && bar && v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%';
+}, 120);
+
+// ======= INPUT: wheel discretizer + keys =======
+let wheelLock = false;
+function go(dir) {
+    const next = Math.min(Math.max((active < 0 ? 0 : active) + dir, 0), cards.length - 1);
+    cards[next].scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+}
+window.addEventListener('wheel', e => {
+    if (document.getElementById('clientSheet').classList.contains('open')) return;
+    e.preventDefault();
+    if (wheelLock || Math.abs(e.deltaY) < 12) return;
+    wheelLock = true;
+    go(Math.sign(e.deltaY));
+    setTimeout(() => wheelLock = false, 550);
+}, { passive: false });
+
+window.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+    if (e.key === 'm') toggleMute();
+});
+
+// ======= TAP: pause / double-tap like =======
+let tapTimer = null, lastTap = 0;
+cards.forEach(card => {
+    const v = card.querySelector('video');
+    if (!v) return;
+    v.addEventListener('click', ev => {
+        const now = Date.now();
+        if (now - lastTap < 300) {
+            clearTimeout(tapTimer);
+            lastTap = 0;
+            heartBurst(card, ev);
+            likeCard(card, true);
+        } else {
+            lastTap = now;
+            tapTimer = setTimeout(() => {
+                if (v.paused) { v.play().catch(() => {}); card.classList.remove('paused'); }
+                else { v.pause(); card.classList.add('paused'); }
+            }, 280);
+        }
+    });
+});
+
+function heartBurst(card, ev) {
+    const b = document.createElement('div');
+    b.className = 'burst';
+    b.style.setProperty('--tilt', (Math.random() * 24 - 12) + 'deg');
+    const r = card.getBoundingClientRect();
+    b.style.left = (ev.clientX - r.left - 42) + 'px';
+    b.style.top = (ev.clientY - r.top - 42) + 'px';
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="#1d4ed8"><path d="M12 21s-7.5-4.9-10-9.2C.4 8.6 1.8 5 5.2 4.3c2-.4 4 .5 5 2.1h1.6c1-1.6 3-2.5 5-2.1 3.4.7 4.8 4.3 3.2 7.5C19.5 16.1 12 21 12 21z"/></svg>';
+    card.appendChild(b);
+    setTimeout(() => b.remove(), 850);
+}
+
+function likeCard(card, forceOn) {
+    const btn = card.querySelector('.like');
+    if (!btn) return;
+    const on = forceOn || !card.classList.contains('is-liked');
+    const cnt = btn.querySelector('.cnt');
+    const i = Number(card.dataset.i);
+    const base = FEED[i].likes;
+    if (on && !card.classList.contains('is-liked')) {
+        card.classList.add('is-liked');
+        btn.classList.add('liked');
+        cnt.textContent = fmt(base + 1);
+    } else if (!on || (!forceOn && card.classList.contains('is-liked'))) {
+        card.classList.remove('is-liked');
+        btn.classList.remove('liked');
+        cnt.textContent = fmt(base);
+    }
+}
+document.querySelectorAll('.like').forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const card = btn.closest('.card');
+        if (card.classList.contains('is-liked')) likeCard(card, false);
+        else { likeCard(card, true); }
+    });
+});
+
+// ======= OPEN POST / SHARE =======
+document.querySelectorAll('[data-open-url]').forEach(el => {
+    el.addEventListener('click', e => {
+        e.stopPropagation();
+        window.open(el.dataset.openUrl, '_blank', 'noopener');
+    });
+    el.style.cursor = 'pointer';
+});
+document.querySelectorAll('[data-share]').forEach(el => {
+    el.addEventListener('click', async e => {
+        e.stopPropagation();
+        const url = el.dataset.share;
+        if (navigator.share) { navigator.share({ url }).catch(() => {}); }
+        else {
+            try { await navigator.clipboard.writeText(url); showToast('Link copied'); }
+            catch { window.open(url, '_blank', 'noopener'); }
+        }
+    });
+});
+
+// ======= MUTE =======
+const muteBtn = document.getElementById('muteBtn');
+function renderMute() { muteBtn.innerHTML = muted ? SOUND_OFF : SOUND_ON; }
+function toggleMute() {
+    muted = !muted;
+    cards.forEach(c => { const v = c.querySelector('video'); if (v) v.muted = muted; });
+    renderMute();
+    showToast(muted ? 'Sound off' : 'Sound on');
+}
+renderMute();
+muteBtn.addEventListener('click', toggleMute);
+
+// ======= SHEET (Following = clients) =======
+const sheet = document.getElementById('clientSheet');
+const backdrop = document.getElementById('sheetBackdrop');
+function openSheet() { sheet.classList.add('open'); backdrop.classList.add('show'); }
+function closeSheet() { sheet.classList.remove('open'); backdrop.classList.remove('show'); }
+document.getElementById('tabFollowing').addEventListener('click', openSheet);
+sheet.querySelector('[data-close]').addEventListener('click', closeSheet);
+backdrop.addEventListener('click', closeSheet);
+
+// ======= CTA wiring =======
+function gotoContact() {
+    closeSheet();
+    cards[cards.length - 1].scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+}
+document.querySelectorAll('[data-goto-contact]').forEach(b => b.addEventListener('click', gotoContact));
+const ctaLeft = document.getElementById('ctaLeft');
+if (ctaLeft) ctaLeft.addEventListener('click', gotoContact);
+document.querySelectorAll('.avatar .plus').forEach(p => {
+    p.addEventListener('click', e => { e.stopPropagation(); gotoContact(); });
+});
+
+// ======= TOAST =======
+let toastTimer;
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+// ======= LIFECYCLE =======
+document.addEventListener('visibilitychange', () => {
+    const card = cards[active];
+    if (!card) return;
+    const v = card.querySelector('video');
+    if (!v) return;
+    if (document.hidden) v.pause();
+    else if (!card.classList.contains('paused')) v.play().catch(() => {});
+});
+
+// Warm the first card immediately so it is ready when boot ends
+manageWindow(0);
+if (reducedMotion) activate(0);
 </script>
 </body>
 </html>
