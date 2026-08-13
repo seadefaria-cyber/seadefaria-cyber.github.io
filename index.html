@@ -23,7 +23,7 @@
         body {
             background: #fff;
             color: var(--ink);
-            font-family: 'Inter', Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: Helvetica, Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow: hidden;
         }
@@ -42,43 +42,9 @@
         }
         .noise canvas { width: 100%; height: 100%; display: block; }
 
-        /* ======= BOOT (clips playing inside the wordmark) ======= */
-        .boot {
-            position: fixed;
-            inset: 0;
-            z-index: 9000;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: opacity 0.7s ease;
-        }
-        .boot.done { opacity: 0; pointer-events: none; }
-        .boot-canvas {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            animation: bootFade 1.6s ease forwards;
-        }
-        @keyframes bootFade { to { opacity: 1; } }
-        .boot-skip {
-            position: absolute;
-            bottom: 34px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 2.6px;
-            text-transform: uppercase;
-            color: var(--ink);
-            opacity: 0;
-            animation: skipIn 0.6s ease 1.2s forwards;
-        }
-        @keyframes skipIn { to { opacity: 0.35; } }
-        .boot h1 { position: absolute; color: transparent; font-size: 0; }
+        /* ======= ENTRANCE (simple cross-dissolve on load) ======= */
+        .stage { opacity: 0; animation: stageIn 0.9s ease forwards; }
+        @keyframes stageIn { to { opacity: 1; } }
 
         /* ======= STAGE (desktop pedestal) ======= */
         .stage {
@@ -96,6 +62,7 @@
         .stage-right { align-items: flex-start; justify-self: start; }
 
         .wordmark {
+            font-family: 'Inter', Helvetica, sans-serif;
             font-size: clamp(34px, 3.4vw, 54px);
             font-weight: 900;
             letter-spacing: -0.045em;
@@ -638,6 +605,33 @@
         }
         .sheet-backdrop.show { opacity: 1; pointer-events: auto; }
 
+        /* Let's Work sheet — dark, compact */
+        .sheet.dark {
+            height: auto;
+            max-height: 62%;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .sheet.dark .sheet-close { color: #fff; opacity: 0.5; }
+        .sheet.dark .work-h {
+            font-size: clamp(38px, 8vh, 54px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            color: #fff;
+        }
+        .sheet.dark .work-h .accent { color: var(--blue); }
+        .sheet.dark .cform { margin-top: 20px; gap: 14px; }
+        .sheet.dark .cform input, .sheet.dark .cform textarea {
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+        }
+        .sheet.dark .cform input::placeholder, .sheet.dark .cform textarea::placeholder { color: rgba(255,255,255,0.4); }
+        .sheet.dark .cform input:focus, .sheet.dark .cform textarea:focus { border-bottom: 2px solid var(--blue); padding-bottom: 8px; }
+        .sheet.dark .cform textarea { height: 46px; }
+        .sheet.dark .cform button { background: var(--blue); }
+        .sheet.dark .cform button:hover { background: #fff; color: var(--ink); }
+
         /* Toast */
         .toast {
             position: absolute;
@@ -684,11 +678,10 @@
             .statusbar { padding-top: max(14px, env(safe-area-inset-top)); }
             .meta { bottom: max(26px, calc(14px + env(safe-area-inset-bottom))); }
             .rail { bottom: max(84px, calc(72px + env(safe-area-inset-bottom))); }
-            .noise { display: none; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .boot { display: none !important; }
+            .stage { animation: none; opacity: 1; }
             .disc, .sound-track span, .burst { animation: none !important; }
         }
 
@@ -703,14 +696,6 @@
 </head>
 <body>
 
-<div class="noise"><canvas id="noise"></canvas></div>
-
-<!-- Boot: film reel inside the deFaria wordmark -->
-<div class="boot" id="boot">
-    <canvas id="bootCanvas" class="boot-canvas"></canvas>
-    <h1>deFaria</h1>
-    <span class="boot-skip">Tap to skip</span>
-</div>
 
 <div class="seo-fallback">
     <h1>deFaria</h1>
@@ -735,8 +720,9 @@
                 <span class="batt"><span id="battPct"></span><span class="batt-shell"><span class="batt-fill" id="battFill"></span></span></span>
             </div>
             <div class="tabs">
-                <button id="tabFollowing">Following</button>
-                <button class="active">For You</button>
+                <button id="tabFollowing">Clients</button>
+                <button class="active">Clips</button>
+                <button id="tabWork">Contact</button>
             </div>
             <button class="mute-btn" id="muteBtn" aria-label="Toggle sound"></button>
             <div class="feed" id="feed" role="feed" aria-label="deFaria work feed"></div>
@@ -753,14 +739,28 @@
                     <a class="sheet-mail" href="mailto:sean@defaria.nyc">sean@defaria.nyc</a>
                 </div>
             </div>
+            <div class="sheet dark" id="workSheet" aria-label="Let's work">
+                <div class="sheet-head">
+                    <span class="st">Let's Work</span>
+                    <button class="sheet-close" data-close-work>&times;</button>
+                </div>
+                <div class="sheet-body">
+                    <div class="work-h">let's<br>work<span class="accent">.</span></div>
+                    <form class="cform" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
+                        <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <textarea name="message" placeholder="Tell us about it"></textarea>
+                        <button type="submit">Send &rarr;</button>
+                    </form>
+                </div>
+            </div>
             <div class="toast" id="toast"></div>
         </div>
     </div>
 
-    <aside class="stage-side stage-right">
-        <p class="clients-eyebrow">Selected Clients</p>
-        <ul class="clients-list" id="stageClients"></ul>
-    </aside>
 </main>
 
 <script>
@@ -798,7 +798,6 @@ const FEED = [
         likes: 62000, comments: 278, views: 728700,
         sound: 'original sound · asspizza2026'
     },
-    { cta: true },
     {
         src: 'vid/feed/feed-05.mp4', poster: 'vid/feed/feed-05-poster.jpg',
         handle: 'lltvcentral',
@@ -902,16 +901,12 @@ const FEED = [
         caption: 'Did Chris Heyn Jr. make GATs popular again?\u{1F440} #chrisheynjr #maisonmargiela',
         likes: 26200, comments: 126, views: 256700,
         sound: 'original sound \u{00B7} 730.archive'
-    },
-    { contact: true }
+    }
 ];
 
 const CLIENTS = [
-    { name: 'Call It a Day', sub: 'Lyrical Lemonade TV' },
-    { name: 'Chloe Explains', sub: 'Lyrical Lemonade TV' },
     { name: 'Interscope Records' },
-    { name: 'Lunch Break Freestyle', sub: 'Lyrical Lemonade TV' },
-    { name: 'New York Nights', sub: 'Lyrical Lemonade TV' },
+    { name: 'Lyrical Lemonade TV' },
     { name: 'The Lyrical Lemonade Summer Smash Festival', sub: 'Presented by SPKRBX' },
     { name: 'Universal Music Group' },
     { name: 'Welcome JPEG' },
@@ -940,38 +935,9 @@ FEED.forEach((d, i) => {
     card.setAttribute('role', 'article');
     card.dataset.i = i;
 
-    if (d.cta) {
-        card.classList.add('native');
-        card.setAttribute('aria-label', 'deFaria');
-        card.innerHTML = `<div class="native-inner">
-            <div class="nh">your clip<br>could be<br>next<span class="accent">.</span></div>
-            <p class="nsub">Seeding · Fanpages · Brands &amp; Media Campaigns</p>
-            <button class="nbtn" data-goto-contact>Let's work <span>&rarr;</span></button>
-        </div>`;
-        feedEl.appendChild(card);
-        return;
-    }
-    if (d.contact) {
-        card.classList.add('native');
-        card.setAttribute('aria-label', 'Contact deFaria');
-        card.innerHTML = `<div class="native-inner">
-            <div class="nh">let's<br>work<span class="accent">.</span></div>
-            <form class="cform" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
-                <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Tell us about it"></textarea>
-                <button type="submit">Send &rarr;</button>
-            </form>
-        </div>`;
-        feedEl.appendChild(card);
-        return;
-    }
-
     card.setAttribute('aria-label', `Video ${i + 1}: @${d.handle}`);
     const viewsLine = d.views ? `<span class="views-line">${fmt(d.views)} views</span>` : '';
+    const commentsCnt = (d.comments || d.comments === 0) ? fmt(d.comments) : '';
     card.innerHTML = `
         <img class="card-poster" src="${d.poster}" alt="">
         <video data-src="${d.src}" poster="${d.poster}" loop muted playsinline preload="none"></video>
@@ -980,7 +946,7 @@ FEED.forEach((d, i) => {
         <div class="rail">
             <div class="avatar" data-open-url="${d.url}">${d.handle[0].toUpperCase()}<span class="plus">+</span></div>
             <button class="rail-item like" aria-label="Like">${HEART}<span class="cnt">${fmt(d.likes)}</span></button>
-            <button class="rail-item cmt" aria-label="View post" data-open-url="${d.url}">${COMMENT}<span class="cnt">${fmt(d.comments)}</span></button>
+            <button class="rail-item cmt" aria-label="View post" data-open-url="${d.url}">${COMMENT}<span class="cnt">${commentsCnt}</span></button>
             <button class="rail-item shr" aria-label="Share" data-share="${d.url}">${SHARE}<span class="cnt">Share</span></button>
             <div class="disc">\u{1F3B5}</div>
         </div>
@@ -1001,149 +967,9 @@ function clientLi(c) {
     const inner = `${c.name}${sub}`;
     return c.href ? `<li><a href="${c.href}" target="_blank" rel="noopener">${inner}</a></li>` : `<li>${inner}</li>`;
 }
-document.getElementById('stageClients').innerHTML = CLIENTS.map(clientLi).join('');
 document.getElementById('sheetClients').innerHTML = CLIENTS.map(clientLi).join('');
 
-// ======= NOISE =======
-const nc = document.getElementById('noise');
-const nx = nc.getContext('2d');
-function szN() { nc.width = window.innerWidth / 2; nc.height = window.innerHeight / 2; }
-szN(); window.addEventListener('resize', szN);
-let nf = 0;
-(function grain() {
-    if (++nf % 4 === 0) {
-        const img = nx.createImageData(nc.width, nc.height);
-        const dd = img.data;
-        for (let i = 0; i < dd.length; i += 4) {
-            const v = Math.random() * 255;
-            dd[i] = dd[i + 1] = dd[i + 2] = v; dd[i + 3] = 255;
-        }
-        nx.putImageData(img, 0, 0);
-    }
-    requestAnimationFrame(grain);
-})();
-
-// ======= BOOT (wordmark reel) =======
-const boot = document.getElementById('boot');
-const bCanvas = document.getElementById('bootCanvas');
-const bCtx = bCanvas.getContext('2d');
-const BOOT_SRCS = [
-    'vid/loop-nyn-1.mp4','vid/loop-sd-3.mp4','vid/loop-sd-1.mp4','vid/loop-ciad-1.mp4',
-    'vid/loop-heyn-1.mp4','vid/loop-ap-1.mp4','vid/loop-chloe-1.mp4','vid/loop-heyn-3.mp4',
-    'vid/loop-sd-2.mp4','vid/loop-heyn-5.mp4','vid/loop-lbf-1.mp4','vid/loop-new-1.mp4',
-    'vid/loop-heyn-7.mp4','vid/loop-ap-2.mp4','vid/loop-nyn-2.mp4','vid/loop-heyn-2.mp4',
-    'vid/loop-new-2.mp4','vid/loop-heyn-4.mp4','vid/loop-ap-3.mp4','vid/loop-ciad-2.mp4',
-    'vid/loop-heyn-6.mp4','vid/loop-new-3.mp4','vid/loop-heyn-8.mp4','vid/loop-ap-4.mp4',
-    'vid/loop-add-1.mp4','vid/loop-mural.mp4','vid/loop-add-2.mp4','vid/loop-desktop.mp4','vid/loop-add-3.mp4'
-];
-const bootMedia = [];
-let bootReady = 0, bootStart = 0, bootDone = false, bootScroll = 0;
-const FADE_DELAY = 1000, FADE_DURATION = 800, HOLD_AFTER = 700;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if (!reducedMotion) {
-    BOOT_SRCS.forEach(src => {
-        const v = document.createElement('video');
-        v.src = src; v.loop = true; v.muted = true; v.playsInline = true; v.autoplay = true;
-        v.style.display = 'none';
-        document.body.appendChild(v);
-        v.addEventListener('loadeddata', () => {
-            bootReady++;
-            v.play().catch(() => {});
-            if (bootStart === 0) bootStart = performance.now();
-        });
-        bootMedia.push(v);
-    });
-}
-
-function sizeBoot() {
-    const dpr = window.devicePixelRatio || 1;
-    bCanvas.width = window.innerWidth * dpr;
-    bCanvas.height = window.innerHeight * dpr;
-    bCanvas.style.width = window.innerWidth + 'px';
-    bCanvas.style.height = window.innerHeight + 'px';
-    bCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-sizeBoot(); window.addEventListener('resize', sizeBoot);
-
-const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-
-function drawBoot(now) {
-    if (bootDone) return;
-    const w = window.innerWidth, h = window.innerHeight;
-    bCtx.clearRect(0, 0, w, h);
-    const fontSize = Math.min(280, Math.max(80, w * 0.18));
-
-    bCtx.save();
-    const cellH = fontSize * 0.52;
-    const rows = Math.ceil((fontSize * 1.1) / cellH);
-    const gridStartY = (h - rows * cellH) / 2;
-    if (bootReady > 0) {
-        for (let row = 0; row < rows; row++) {
-            const rowY = gridStartY + row * cellH;
-            let totalRowW = 0;
-            for (const m of bootMedia) if (m.videoWidth > 0) totalRowW += cellH * (m.videoWidth / m.videoHeight);
-            if (totalRowW <= 0) continue;
-            const rowScroll = (bootScroll + row * 120) % totalRowW;
-            let drawX = -rowScroll, safety = 0;
-            while (drawX < w + 400 && safety < 100) {
-                for (const m of bootMedia) {
-                    if (m.videoWidth <= 0) continue;
-                    const cw = cellH * (m.videoWidth / m.videoHeight);
-                    try { bCtx.drawImage(m, drawX, rowY, cw, cellH); } catch (e) {}
-                    drawX += cw;
-                    if (drawX > w + 400) break;
-                }
-                safety++;
-            }
-        }
-    }
-    bCtx.fillStyle = 'rgba(0,0,0,0.06)';
-    for (let y = 0; y < h; y += 4) bCtx.fillRect(0, y, w, 1);
-    bCtx.globalCompositeOperation = 'destination-in';
-    bCtx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
-    bCtx.textAlign = 'center'; bCtx.textBaseline = 'middle';
-    if (bCtx.letterSpacing !== undefined) bCtx.letterSpacing = '-5px';
-    bCtx.fillStyle = '#fff';
-    bCtx.fillText('deFaria', w / 2, h / 2);
-    bCtx.globalCompositeOperation = 'source-over';
-    bCtx.restore();
-
-    let blackOpacity = 0;
-    if (bootStart > 0) {
-        const elapsed = now - bootStart;
-        if (elapsed > FADE_DELAY) blackOpacity = easeOutCubic(Math.min(1, (elapsed - FADE_DELAY) / FADE_DURATION));
-        if (elapsed > FADE_DELAY + FADE_DURATION + HOLD_AFTER) endBoot();
-    }
-    if (blackOpacity > 0) {
-        bCtx.save();
-        bCtx.font = `900 ${fontSize}px 'Inter', Helvetica, Arial, sans-serif`;
-        bCtx.textAlign = 'center'; bCtx.textBaseline = 'middle';
-        if (bCtx.letterSpacing !== undefined) bCtx.letterSpacing = '-5px';
-        bCtx.fillStyle = `rgba(10,10,10,${blackOpacity})`;
-        bCtx.fillText('deFaria', w / 2, h / 2);
-        bCtx.restore();
-    }
-    bootScroll += 0.6;
-    requestAnimationFrame(drawBoot);
-}
-
-function endBoot() {
-    if (bootDone) return;
-    bootDone = true;
-    boot.classList.add('done');
-    setTimeout(() => {
-        boot.remove();
-        bootMedia.forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); });
-    }, 750);
-    active = -1;
-    activate(0);
-}
-boot.addEventListener('click', endBoot);
-if (reducedMotion) boot.remove();
-else requestAnimationFrame(drawBoot);
-// Safety: never trap someone on boot longer than 6s (slow network)
-setTimeout(endBoot, 6000);
 
 // ======= STATUS BAR =======
 function tickClock() {
@@ -1189,7 +1015,7 @@ function activate(idx) {
     cards.forEach((card, i) => {
         const v = card.querySelector('video');
         if (!v) return;
-        if (i === idx && !bootDoneBlocked()) {
+        if (i === idx) {
             card.classList.remove('paused');
             v.muted = muted;
             v.currentTime = 0;
@@ -1199,7 +1025,6 @@ function activate(idx) {
         }
     });
 }
-function bootDoneBlocked() { return document.getElementById('boot') && !bootDone && !reducedMotion; }
 
 const io = new IntersectionObserver(entries => {
     for (const e of entries) {
@@ -1333,17 +1158,21 @@ muteBtn.addEventListener('click', toggleMute);
 // ======= SHEET (Following = clients) =======
 const sheet = document.getElementById('clientSheet');
 const backdrop = document.getElementById('sheetBackdrop');
-function openSheet() { sheet.classList.add('open'); backdrop.classList.add('show'); }
+function openSheet() { closeWorkSheet(); sheet.classList.add('open'); backdrop.classList.add('show'); }
 function closeSheet() { sheet.classList.remove('open'); backdrop.classList.remove('show'); }
 document.getElementById('tabFollowing').addEventListener('click', openSheet);
 sheet.querySelector('[data-close]').addEventListener('click', closeSheet);
-backdrop.addEventListener('click', closeSheet);
+
+// ======= SHEET (Let's Work) =======
+const workSheet = document.getElementById('workSheet');
+function openWorkSheet() { closeSheet(); workSheet.classList.add('open'); backdrop.classList.add('show'); }
+function closeWorkSheet() { workSheet.classList.remove('open'); backdrop.classList.remove('show'); }
+document.getElementById('tabWork').addEventListener('click', openWorkSheet);
+workSheet.querySelector('[data-close-work]').addEventListener('click', closeWorkSheet);
+backdrop.addEventListener('click', () => { closeSheet(); closeWorkSheet(); });
 
 // ======= CTA wiring =======
-function gotoContact() {
-    closeSheet();
-    cards[cards.length - 1].scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
-}
+function gotoContact() { openWorkSheet(); }
 document.querySelectorAll('[data-goto-contact]').forEach(b => b.addEventListener('click', gotoContact));
 const ctaLeft = document.getElementById('ctaLeft');
 if (ctaLeft) ctaLeft.addEventListener('click', gotoContact);
@@ -1371,9 +1200,8 @@ document.addEventListener('visibilitychange', () => {
     else if (!card.classList.contains('paused')) v.play().catch(() => {});
 });
 
-// Warm the first card immediately so it is ready when boot ends
 manageWindow(0);
-if (reducedMotion) activate(0);
+activate(0);
 </script>
 </body>
 </html>
