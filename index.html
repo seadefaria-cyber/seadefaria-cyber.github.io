@@ -136,6 +136,15 @@
             text-transform: uppercase;
             color: var(--ink);
             opacity: 0.35;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .stage-foot-mark {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            display: block;
         }
 
         .clients-eyebrow {
@@ -715,7 +724,7 @@
         <div class="wordmark">deFaria</div>
         <p class="stage-services">Seeding<span class="dot">&middot;</span>Fanpages<span class="dot">&middot;</span>Brands &amp; Media Campaigns</p>
         <button class="stage-cta" id="ctaLeft">Let's work <span>&rarr;</span></button>
-        <p class="stage-foot">&copy; 2026 deFaria&trade;</p>
+        <p class="stage-foot"><img src="img/df-favicon-64.png" alt="" class="stage-foot-mark">&copy; 2026 deFaria&trade;</p>
     </aside>
 
     <div class="phone">
@@ -822,13 +831,88 @@ const FEED = [
         likes: 13805, comments: 549, views: null,
         sound: 'original sound · chrisheynshow'
     },
+    {
+        src: 'vid/feed/feed-09.mp4', poster: 'vid/feed/feed-09-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7641427584294669582',
+        caption: '\u{201C}Ball like MJ I need 6 rings\u{201D} the Maroon 5 sample is fire\u{1F525} #lyricallemonade #lunchbreakfreestyle',
+        likes: 32200, comments: 485, views: 228800,
+        sound: 'original sound \u{00B7} lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-10.mp4', poster: 'vid/feed/feed-10-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7654323977267219725',
+        caption: 'tezzus + diamond* Lunch Break Freestyle out now on LLTV \u{1F34B}\u{1F4FA} #lyricallemonade',
+        likes: 20500, comments: 252, views: 120500,
+        sound: 'original sound \u{00B7} lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-12.mp4', poster: 'vid/feed/feed-12-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7660305350796610847',
+        caption: 'father steve can freestyle\u{1F633}\u{1F525} New York Nights ep w/ Riff Raff out now on LLTV \u{1F34B}\u{1F4FA}',
+        likes: 9487, comments: 163, views: 100000,
+        sound: 'original sound \u{00B7} lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-13.mp4', poster: 'vid/feed/feed-13-poster.jpg',
+        handle: 'lltvcentral',
+        url: 'https://www.tiktok.com/@lltvcentral/video/7652813094850252045',
+        caption: 'Call It A Day episode w/ Concrete Boys out now on LLTV \u{1F34B}\u{1F4FA} #lilyachty',
+        likes: 4511, comments: 6, views: 45700,
+        sound: 'original sound \u{00B7} lltvcentral'
+    },
+    {
+        src: 'vid/feed/feed-14.mp4', poster: 'vid/feed/feed-14-poster.jpg',
+        handle: '730.archive',
+        url: 'https://www.tiktok.com/@730.archive/video/7582398830256213303',
+        caption: 'Asspizza showing us how to make the triple box logo\u{1F525}\u{1F92F} #asspizza #boxlogo #streetwear',
+        likes: 29000, comments: 250, views: 648000,
+        sound: 'original sound \u{00B7} 730.archive'
+    },
+    {
+        src: 'vid/feed/feed-15.mp4', poster: 'vid/feed/feed-15-poster.jpg',
+        handle: '730.archive',
+        url: 'https://www.tiktok.com/@730.archive/video/7552349382797036830',
+        caption: 'What do yall think, are they right?\u{1F602}\u{1F456} #asspizza #tezzus #fashion',
+        likes: 50700, comments: 562, views: 523500,
+        sound: 'original sound \u{00B7} 730.archive'
+    },
+    {
+        src: 'vid/feed/feed-16.mp4', poster: 'vid/feed/feed-16-poster.jpg',
+        handle: '730.archive',
+        url: 'https://www.tiktok.com/@730.archive/video/7569455841749847327',
+        caption: 'Shoutout to Granny for sewing the Triple Bogo\u{1F602}\u{1F525}\u{1F525} #asspizza #streetwear',
+        likes: 28300, comments: 48, views: 272100,
+        sound: 'original sound \u{00B7} 730.archive'
+    },
+    {
+        src: 'vid/feed/feed-17.mp4', poster: 'vid/feed/feed-17-poster.jpg',
+        handle: '730.archive',
+        url: 'https://www.tiktok.com/@730.archive/video/7564546728888782111',
+        caption: 'You\u{2019}re a real one if you remember this era\u{1F525}\u{1F4AF} #asspizza #424 #streetwear',
+        likes: 27900, comments: 120, views: 282100,
+        sound: 'original sound \u{00B7} 730.archive'
+    },
+    {
+        src: 'vid/feed/feed-18.mp4', poster: 'vid/feed/feed-18-poster.jpg',
+        handle: '730.archive',
+        url: 'https://www.tiktok.com/@730.archive/video/7548297370010701086',
+        caption: 'Did Chris Heyn Jr. make GATs popular again?\u{1F440} #chrisheynjr #maisonmargiela',
+        likes: 26200, comments: 126, views: 256700,
+        sound: 'original sound \u{00B7} 730.archive'
+    },
     { contact: true }
 ];
 
 const CLIENTS = [
+    { name: 'Call It a Day', sub: 'Lyrical Lemonade TV' },
+    { name: 'Chloe Explains', sub: 'Lyrical Lemonade TV' },
     { name: 'Interscope Records' },
+    { name: 'Lunch Break Freestyle', sub: 'Lyrical Lemonade TV' },
+    { name: 'New York Nights', sub: 'Lyrical Lemonade TV' },
     { name: 'The Lyrical Lemonade Summer Smash Festival', sub: 'Presented by SPKRBX' },
-    { name: 'Lyrical Lemonade TV' },
     { name: 'Universal Music Group' },
     { name: 'Welcome JPEG' },
     { name: 'Whop' }
