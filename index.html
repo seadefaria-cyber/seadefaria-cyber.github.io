@@ -253,17 +253,6 @@
         }
         .mute-btn svg { width: 17px; height: 17px; }
 
-        /* Dark chrome when a native (white) card is active */
-        .phone-screen.on-native .statusbar { color: var(--ink); text-shadow: none; }
-        .phone-screen.on-native .batt-shell { border-color: rgba(10,10,10,0.75); }
-        .phone-screen.on-native .batt-shell::after { background: rgba(10,10,10,0.75); }
-        .phone-screen.on-native .batt-fill { background: var(--ink); }
-        .phone-screen.on-native .tabs { color: rgba(10,10,10,0.45); text-shadow: none; }
-        .phone-screen.on-native .tabs button.active { color: var(--ink); }
-        .phone-screen.on-native .tabs button.active::after { background: var(--ink); }
-        .phone-screen.on-native .mute-btn { background: rgba(10,10,10,0.07); }
-        .phone-screen.on-native .mute-btn svg { filter: invert(1); }
-
         /* ======= FEED ======= */
         .feed {
             height: 100%;
@@ -464,9 +453,9 @@
             100% { transform: scale(1) translateY(-70px) rotate(var(--tilt)); opacity: 0; }
         }
 
-        /* ======= NATIVE CARDS (CTA + contact) ======= */
+        /* ======= NATIVE CARDS (contact, in-feed) ======= */
         .card.native {
-            background: #fff;
+            background: #0a0a0a;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -477,34 +466,18 @@
             font-weight: 900;
             letter-spacing: -0.04em;
             line-height: 0.95;
-            color: var(--ink);
+            color: #fff;
         }
         .native-inner .nh .accent { color: var(--blue); }
-        .native-inner .nsub {
-            margin-top: 16px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2.2px;
-            text-transform: uppercase;
-            color: var(--ink);
-            opacity: 0.5;
-            line-height: 2;
-        }
-        .native-inner .nbtn {
-            margin-top: 28px;
-            background: var(--ink);
+        .native-inner .cform { margin-top: 22px; }
+        .native-inner .cform input, .native-inner .cform textarea {
+            border-bottom: 1px solid rgba(255,255,255,0.3);
             color: #fff;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 2.4px;
-            text-transform: uppercase;
-            padding: 17px 26px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.25s;
         }
-        .native-inner .nbtn:hover { background: var(--blue); }
+        .native-inner .cform input::placeholder, .native-inner .cform textarea::placeholder { color: rgba(255,255,255,0.4); }
+        .native-inner .cform input:focus, .native-inner .cform textarea:focus { border-bottom: 2px solid var(--blue); padding-bottom: 8px; }
+        .native-inner .cform button { background: var(--blue); }
+        .native-inner .cform button:hover { background: #fff; color: var(--ink); }
 
         /* Contact form card */
         .cform { display: flex; flex-direction: column; gap: 16px; margin-top: 26px; }
@@ -776,6 +749,7 @@ const FEED = [
         likes: 431335, comments: 2743, views: null,
         sound: 'original sound · lyricalemonade'
     },
+    { contact: true },
     {
         src: 'vid/feed/feed-02.mp4', poster: 'vid/feed/feed-02-poster.jpg',
         handle: '730.archive',
@@ -937,6 +911,25 @@ FEED.forEach((d, i) => {
     card.setAttribute('role', 'article');
     card.dataset.i = i;
 
+    if (d.contact) {
+        card.classList.add('native');
+        card.setAttribute('aria-label', 'Contact deFaria');
+        card.innerHTML = `<div class="native-inner">
+            <div class="nh">let's<br>work<span class="accent">.</span></div>
+            <form class="cform" action="https://formsubmit.co/sean@defaria.nyc" method="POST">
+                <input type="hidden" name="_subject" value="New inquiry from defaria.digital">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://defaria.digital/thanks.html">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Tell us about it"></textarea>
+                <button type="submit">Send &rarr;</button>
+            </form>
+        </div>`;
+        feedEl.appendChild(card);
+        return;
+    }
+
     card.setAttribute('aria-label', `Video ${i + 1}: @${d.handle}`);
     const viewsLine = d.views ? `<span class="views-line">${fmt(d.views)} views</span>` : '';
     const commentsCnt = (d.comments || d.comments === 0) ? fmt(d.comments) : '';
@@ -1013,7 +1006,6 @@ function activate(idx) {
     if (idx === active) return;
     active = idx;
     manageWindow(idx);
-    document.getElementById('screen').classList.toggle('on-native', !!(FEED[idx].cta || FEED[idx].contact));
     cards.forEach((card, i) => {
         const v = card.querySelector('video');
         if (!v) return;
