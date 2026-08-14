@@ -327,7 +327,9 @@
             justify-content: center;
             border: 1.5px solid #fff;
             margin-bottom: 4px;
+            overflow: hidden;
         }
+        .rail .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
         .rail .avatar .plus {
             position: absolute;
             bottom: -9px;
@@ -944,7 +946,7 @@ FEED.forEach((d, i) => {
         <div class="scrim-top"></div><div class="scrim-bot"></div>
         <div class="pause-glyph">${PAUSE_TRIANGLE}</div>
         <div class="rail">
-            <div class="avatar" data-open-url="${d.url}">${d.handle[0].toUpperCase()}<span class="plus">+</span></div>
+            <div class="avatar" data-open-url="${d.url}"><img src="img/avatars/${d.handle}.jpg" alt="" loading="lazy"><span class="plus">+</span></div>
             <button class="rail-item like" aria-label="Like">${HEART}<span class="cnt">${fmt(d.likes)}</span></button>
             <button class="rail-item cmt" aria-label="View post" data-open-url="${d.url}">${COMMENT}<span class="cnt">${commentsCnt}</span></button>
             <button class="rail-item shr" aria-label="Share" data-share="${d.url}">${SHARE}<span class="cnt">Share</span></button>
