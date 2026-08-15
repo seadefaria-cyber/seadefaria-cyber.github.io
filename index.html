@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <title>deFaria</title>
-    <meta name="description" content="deFaria. Seeding, fanpages, brands and media campaigns. Clients: Interscope Records, Lyrical Lemonade TV, Summer Smash, Universal Music Group, Welcome JPEG, Whop.">
+    <meta name="description" content="deFaria. Short-form post agency, all in one. Clients: Interscope Records, Lyrical Lemonade TV, Summer Smash, Universal Music Group, Welcome JPEG, Whop.">
     <link rel="icon" type="image/png" sizes="64x64" href="img/df-favicon-64.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/df-apple-touch.png">
     <style>
@@ -319,20 +319,6 @@
             overflow: hidden;
         }
         .rail .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-        .rail .avatar .plus {
-            position: absolute;
-            bottom: -9px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 19px; height: 19px;
-            border-radius: 50%;
-            background: var(--blue);
-            color: #fff;
-            font-size: 13px;
-            font-weight: 900;
-            line-height: 19px;
-            text-align: center;
-        }
         .rail-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
         .rail-item svg { width: 32px; height: 32px; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35)); }
         .rail-item .cnt { font-size: 11.5px; font-weight: 700; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
@@ -517,8 +503,9 @@
             left: 0; right: 0; bottom: 0;
             height: 76%;
             background: #fff;
-            border-radius: 18px 18px 0 0;
+            border-radius: 22px 22px 0 0;
             z-index: 80;
+            box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
             transform: translateY(105%);
             transition: transform 0.38s cubic-bezier(.2,.7,.2,1);
             display: flex;
@@ -526,6 +513,22 @@
             overflow: hidden;
         }
         .sheet.open { transform: translateY(0); }
+        .sheet.dragging { transition: none; }
+        .sheet-grabber {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 2px;
+            touch-action: none;
+            cursor: grab;
+        }
+        .sheet-grabber::after {
+            content: '';
+            width: 36px; height: 5px;
+            border-radius: 3px;
+            background: rgba(0,0,0,0.18);
+        }
+        .sheet.dark .sheet-grabber::after { background: rgba(255,255,255,0.28); }
         .sheet-head {
             display: flex;
             align-items: center;
@@ -543,6 +546,8 @@
             padding: 13px 0;
             border-bottom: 1px solid #f0f0f0;
         }
+        .sheet-clients li a { color: inherit; display: block; transition: color 0.15s; }
+        .sheet-clients li a:hover, .sheet-clients li a:focus-visible { color: var(--blue); }
         .sheet-clients li .sub {
             display: block;
             font-size: 9.5px;
@@ -674,7 +679,7 @@
 
 <div class="seo-fallback">
     <h1>deFaria</h1>
-    <p>Seeding. Fanpages. Brands and media campaigns.</p>
+    <p>Short-form post agency, all in one.</p>
     <p>Selected clients: Interscope Records, The Lyrical Lemonade Summer Smash Festival presented by SPKRBX, Lyrical Lemonade TV, Universal Music Group, Welcome JPEG, Whop.</p>
     <p>Contact: sean@defaria.nyc</p>
 </div>
@@ -682,9 +687,9 @@
 <main class="stage">
     <aside class="stage-side stage-left" aria-hidden="false">
         <div class="wordmark">deFaria</div>
-        <p class="stage-services">Seeding<span class="dot">&middot;</span>Fanpages<span class="dot">&middot;</span>Brands &amp; Media Campaigns</p>
+        <p class="stage-services">Short-form post agency, all in one.</p>
         <button class="stage-cta" id="ctaLeft">Let's work <span>&rarr;</span></button>
-        <p class="stage-foot"><img src="img/df-favicon-64.png" alt="" class="stage-foot-mark">&copy; 2026 deFaria&trade;</p>
+        <p class="stage-foot">&copy; 2026 deFaria&trade;</p>
     </aside>
 
     <div class="phone">
@@ -704,17 +709,19 @@
 
             <div class="sheet-backdrop" id="sheetBackdrop"></div>
             <div class="sheet" id="clientSheet" aria-label="Selected clients">
+                <div class="sheet-grabber"></div>
                 <div class="sheet-head">
                     <span class="st">Selected Clients</span>
                     <button class="sheet-close" data-close>&times;</button>
                 </div>
                 <div class="sheet-body">
                     <ul class="sheet-clients" id="sheetClients"></ul>
-                    <p class="sheet-services">Seeding<span class="dot">&middot;</span>Fanpages<span class="dot">&middot;</span>Brands &amp; Media Campaigns</p>
+                    <p class="sheet-services">Short-form post agency, all in one.</p>
                     <a class="sheet-mail" href="mailto:sean@defaria.nyc">sean@defaria.nyc</a>
                 </div>
             </div>
             <div class="sheet dark" id="workSheet" aria-label="Let's work">
+                <div class="sheet-grabber"></div>
                 <div class="sheet-head">
                     <span class="st">Let's Work</span>
                     <button class="sheet-close" data-close-work>&times;</button>
@@ -881,12 +888,12 @@ const FEED = [
 ];
 
 const CLIENTS = [
-    { name: 'Interscope Records' },
-    { name: 'Lyrical Lemonade TV' },
-    { name: 'The Lyrical Lemonade Summer Smash Festival', sub: 'Presented by SPKRBX' },
-    { name: 'Universal Music Group' },
+    { name: 'Interscope Records', href: 'https://www.interscope.com' },
+    { name: 'Lyrical Lemonade TV', href: 'https://www.lyricallemonade.com' },
+    { name: 'The Lyrical Lemonade Summer Smash Festival', sub: 'Presented by SPKRBX', href: 'https://www.summersmashfest.com' },
+    { name: 'Universal Music Group', href: 'https://www.universalmusic.com' },
     { name: 'Welcome JPEG' },
-    { name: 'Whop' }
+    { name: 'Whop', href: 'https://whop.com' }
 ];
 
 // ======= HELPERS =======
@@ -939,7 +946,7 @@ FEED.forEach((d, i) => {
         <div class="scrim-top"></div><div class="scrim-bot"></div>
         <div class="pause-glyph">${PAUSE_TRIANGLE}</div>
         <div class="rail">
-            <div class="avatar" data-open-url="${d.url}"><img src="img/avatars/${d.handle}.jpg" alt="" loading="lazy"><span class="plus">+</span></div>
+            <div class="avatar" data-open-url="${d.url}"><img src="img/avatars/${d.handle}.jpg" alt="" loading="lazy"></div>
             <button class="rail-item like" aria-label="Like">${HEART}<span class="cnt">${fmt(d.likes)}</span></button>
             <button class="rail-item cmt" aria-label="View post" data-open-url="${d.url}">${COMMENT}<span class="cnt">${commentsCnt}</span></button>
             <button class="rail-item shr" aria-label="Share" data-share="${d.url}">${SHARE}<span class="cnt">Share</span></button>
@@ -1165,14 +1172,50 @@ document.getElementById('tabWork').addEventListener('click', openWorkSheet);
 workSheet.querySelector('[data-close-work]').addEventListener('click', closeWorkSheet);
 backdrop.addEventListener('click', () => { closeSheet(); closeWorkSheet(); });
 
+// ======= SHEET DRAG-TO-DISMISS (iOS-style) =======
+function makeSheetDraggable(sheetEl, closeFn) {
+    const grabber = sheetEl.querySelector('.sheet-grabber');
+    let startY = 0, dragY = 0, dragging = false, sheetH = 0;
+    function onDown(e) {
+        dragging = true;
+        sheetEl.classList.add('dragging');
+        startY = (e.touches ? e.touches[0].clientY : e.clientY);
+        sheetH = sheetEl.getBoundingClientRect().height;
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onUp);
+        window.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('touchend', onUp);
+    }
+    function onMove(e) {
+        if (!dragging) return;
+        const y = (e.touches ? e.touches[0].clientY : e.clientY);
+        dragY = Math.max(0, y - startY);
+        if (e.cancelable) e.preventDefault();
+        sheetEl.style.transform = `translateY(${dragY}px)`;
+    }
+    function onUp() {
+        if (!dragging) return;
+        dragging = false;
+        sheetEl.classList.remove('dragging');
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('mouseup', onUp);
+        window.removeEventListener('touchmove', onMove);
+        window.removeEventListener('touchend', onUp);
+        sheetEl.style.transform = '';
+        if (dragY > sheetH * 0.28) closeFn();
+        dragY = 0;
+    }
+    grabber.addEventListener('mousedown', onDown);
+    grabber.addEventListener('touchstart', onDown, { passive: true });
+}
+makeSheetDraggable(sheet, closeSheet);
+makeSheetDraggable(workSheet, closeWorkSheet);
+
 // ======= CTA wiring =======
 function gotoContact() { openWorkSheet(); }
 document.querySelectorAll('[data-goto-contact]').forEach(b => b.addEventListener('click', gotoContact));
 const ctaLeft = document.getElementById('ctaLeft');
 if (ctaLeft) ctaLeft.addEventListener('click', gotoContact);
-document.querySelectorAll('.avatar .plus').forEach(p => {
-    p.addEventListener('click', e => { e.stopPropagation(); gotoContact(); });
-});
 
 // ======= TOAST =======
 let toastTimer;
