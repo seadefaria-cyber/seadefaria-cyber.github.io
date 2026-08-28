@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeFaria Clips</title>
+<meta name="description" content="DeFaria Clips is the internal publishing tool DeFaria NYC LLC uses to cut long-form video into short clips and post them to the social accounts it manages.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>&#9673;</text></svg>">
+<style>
+  :root{--ink:#111;--dim:#555;--blue:#1d4ed8;--line:#e5e7eb;--soft:#f6f7f9}
+  *{box-sizing:border-box;margin:0}
+  body{background:#fff;color:var(--ink);font:16px/1.65 -apple-system,Inter,Segoe UI,sans-serif;max-width:860px;margin:0 auto;padding:56px 22px 90px}
+  header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:34px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .logo{font-weight:800;letter-spacing:.12em;font-size:15px}
+  .logo span{color:var(--blue)}
+  nav a{color:var(--dim);text-decoration:none;margin-left:18px;font-size:14px}
+  nav a:hover{color:var(--blue)}
+  h1{font-size:34px;line-height:1.15;margin:10px 0 10px}
+  .lede{font-size:18px;color:#333;max-width:640px}
+  h2{font-size:20px;margin:40px 0 10px}
+  p,li{color:#222}
+  ul{padding-left:22px;margin:6px 0}
+  a{color:var(--blue)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+  .card{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .card b{display:block;margin-bottom:6px}
+  .steps li{margin-bottom:8px}
+  .meta{font-size:14px;color:var(--dim)}
+  footer{margin-top:54px;border-top:1px solid var(--line);padding-top:18px;color:var(--dim);font-size:14px}
+  footer a{margin-right:16px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">DE<span>FARIA</span> CLIPS</div>
+  <nav>
+    <a href="#what">What it does</a>
+    <a href="#how">How it works</a>
+    <a href="#accounts">Connected accounts</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </nav>
+</header>
+
+<h1>Long videos in. Short clips out. Posted to the accounts we run.</h1>
+<p class="lede">DeFaria Clips is the publishing tool DeFaria NYC LLC uses to turn full-length episodes, interviews and performances into short-form clips and post them to the TikTok, Instagram and YouTube accounts that we own or are authorized to manage for our clients.</p>
+<p class="meta" style="margin-top:12px">Operated by DeFaria NYC LLC, Brooklyn, New York. Not offered to the general public. Companion site: <a href="https://defaria.digital">defaria.digital</a>.</p>
+
+<h2 id="what">What it does</h2>
+<div class="grid">
+  <div class="card"><b>Finds the moments</b>Transcribes an episode and picks the segments most likely to work as standalone short clips.</div>
+  <div class="card"><b>Cuts and formats</b>Trims each moment, reframes it vertical, adds a short on-screen title and captions.</div>
+  <div class="card"><b>Queues for review</b>Every clip lands in a review queue. A person on our team approves, edits, or rejects it before anything is posted.</div>
+  <div class="card"><b>Publishes</b>Approved clips are uploaded to the connected account through the platform's official API, with the caption and settings chosen by the reviewer.</div>
+  <div class="card"><b>Reports</b>After posting, the tool reads back the public performance of each post (views, likes, comments) so we can report to the client weekly.</div>
+  <div class="card"><b>Stays in its lane</b>It never reads private messages, follower lists, or other people's content, and it never posts without a reviewer's approval.</div>
+</div>
+
+<h2 id="how">How it works</h2>
+<ol class="steps">
+  <li><b>Ingest.</b> A full episode file is dropped into the tool by our team.</li>
+  <li><b>Select.</b> The tool transcribes it and proposes candidate clips with a suggested title and caption.</li>
+  <li><b>Review.</b> A team member watches each candidate, edits the caption if needed, and approves it for a specific connected account.</li>
+  <li><b>Post.</b> The tool publishes the approved clip to that account using the platform's official Content Posting API. Posts appear exactly as the reviewer set them.</li>
+  <li><b>Measure.</b> The tool records the post URL and reads its public metrics for our weekly client report.</li>
+</ol>
+
+<h2 id="accounts">Connected accounts</h2>
+<p>Accounts are connected only by their owners, through the platform's own login and permission screens. DeFaria Clips requests the minimum permissions needed to publish a video and read back public stats on the posts it published. Owners can disconnect at any time from their platform's app settings, which immediately stops the tool from posting to that account. Details are in the <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>.</p>
+
+<h2>Who uses it</h2>
+<p>The DeFaria NYC LLC team and the clients whose accounts we run: a nightly interview show, a record label, a touring artist, a music festival and an athlete's production company. There is no public sign-up.</p>
+
+<h2>Contact</h2>
+<p>Questions about the tool or a connected account: <a href="mailto:seadefaria@gmail.com">seadefaria@gmail.com</a>, or the contact form at <a href="https://defaria.digital">defaria.digital</a>.</p>
+
+<footer>
+  <a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="https://defaria.digital">defaria.digital</a>
+  <div style="margin-top:10px">&copy; 2026 DeFaria NYC LLC</div>
+</footer>
+</body>
+</html>
