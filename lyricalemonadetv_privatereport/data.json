@@ -1,4 +1,73 @@
 {
+ "campaigns": [
+  {
+   "name": "Chloe Explains",
+   "show": "Chloe Explains",
+   "status": null,
+   "start": "2026-07-03",
+   "end": null,
+   "clips_out": 63,
+   "views": 590984,
+   "peak": 407600,
+   "likes": 15909,
+   "comments": 114,
+   "shares": 96
+  },
+  {
+   "name": "New York Nights",
+   "show": "New York Nights",
+   "status": null,
+   "start": null,
+   "end": null,
+   "clips_out": null,
+   "views": null,
+   "peak": null,
+   "likes": null,
+   "comments": null,
+   "shares": null
+  },
+  {
+   "name": "No Comfort",
+   "show": "No Comfort",
+   "status": null,
+   "start": null,
+   "end": null,
+   "clips_out": null,
+   "views": null,
+   "peak": null,
+   "likes": null,
+   "comments": null,
+   "shares": null
+  },
+  {
+   "name": "Call It A Day",
+   "show": "Call It A Day",
+   "status": null,
+   "start": null,
+   "end": null,
+   "clips_out": null,
+   "views": null,
+   "peak": null,
+   "likes": null,
+   "comments": null,
+   "shares": null
+  },
+  {
+   "name": "Lunch Break Freestyle",
+   "show": "Lunch Break Freestyle",
+   "status": null,
+   "start": null,
+   "end": null,
+   "clips_out": null,
+   "views": null,
+   "peak": null,
+   "likes": null,
+   "comments": null,
+   "shares": null
+  }
+ ],
+ "updated": "Nov 3, 2026 7:12 AM ET",
+ "fan_pages": [],
  "sheet": {
   "updated": "Nov 3, 2026 7:12 AM ET",
   "total_views": "48.04M",
@@ -224,7 +293,8 @@
    "likes": 12,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/TegjW8Vir14/hqdefault.jpg"
+   "thumb": "thumbs/52b05bd3cc6f.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/ArFjWBHjsxY",
@@ -235,7 +305,8 @@
    "likes": 23,
    "comments": 3,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/ArFjWBHjsxY/hqdefault.jpg"
+   "thumb": "thumbs/6a09a6edeba0.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/kS-KgIcsS30",
@@ -246,7 +317,8 @@
    "likes": 12,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/kS-KgIcsS30/hqdefault.jpg"
+   "thumb": "thumbs/53e1e4c98357.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/5dtKUvMtL70",
@@ -257,7 +329,8 @@
    "likes": 27,
    "comments": 4,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/5dtKUvMtL70/hqdefault.jpg"
+   "thumb": "thumbs/9372c5dcd383.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/6R2s6Wf5OXY",
@@ -268,7 +341,8 @@
    "likes": 9,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/6R2s6Wf5OXY/hqdefault.jpg"
+   "thumb": "thumbs/69449fcd7d77.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/mVdPLPgWKDE",
@@ -279,7 +353,8 @@
    "likes": 20,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/mVdPLPgWKDE/hqdefault.jpg"
+   "thumb": "thumbs/01111a95c6cf.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/caepTxr0u7E",
@@ -290,7 +365,8 @@
    "likes": 12,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/caepTxr0u7E/hqdefault.jpg"
+   "thumb": "thumbs/33e0397f957d.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/4cBZ3M4RG1I",
@@ -301,7 +377,8 @@
    "likes": 14,
    "comments": 1,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/4cBZ3M4RG1I/hqdefault.jpg"
+   "thumb": "thumbs/cb1d0727fa39.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://instagram.com/reel/DbERlEpNoqc",
@@ -312,7 +389,8 @@
    "likes": 57,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": "thumbs/a9c0f654d451.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/fetTzxF6v7Y",
@@ -323,7 +401,8 @@
    "likes": 21,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/fetTzxF6v7Y/hqdefault.jpg"
+   "thumb": "thumbs/4a4e08255180.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/_fRmjGJkYKc",
@@ -334,7 +413,8 @@
    "likes": 15,
    "comments": 1,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/_fRmjGJkYKc/hqdefault.jpg"
+   "thumb": "thumbs/842f2ce4221f.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/5bu-aX7Ls1I",
@@ -345,7 +425,8 @@
    "likes": 17,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/5bu-aX7Ls1I/hqdefault.jpg"
+   "thumb": "thumbs/65a69dc84725.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://instagram.com/reel/Da4wapRzuQ2",
@@ -356,7 +437,8 @@
    "likes": 38,
    "comments": 5,
    "shares": 27,
-   "thumb": null
+   "thumb": "thumbs/bad4de55a87b.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/K2U1ukrwS5Q",
@@ -367,7 +449,8 @@
    "likes": 35,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/K2U1ukrwS5Q/hqdefault.jpg"
+   "thumb": "thumbs/2a8f396e5588.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/6aR1rK9oJG8",
@@ -378,7 +461,8 @@
    "likes": 19,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/6aR1rK9oJG8/hqdefault.jpg"
+   "thumb": "thumbs/32a3bb43143f.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/9zZzrLW-xcU",
@@ -389,7 +473,8 @@
    "likes": 20,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/9zZzrLW-xcU/hqdefault.jpg"
+   "thumb": "thumbs/88bf88198745.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/PVFaTYuPzhg",
@@ -400,7 +485,8 @@
    "likes": 18,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/PVFaTYuPzhg/hqdefault.jpg"
+   "thumb": "thumbs/1ed857a6c7d3.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/BfQlorpJrkU",
@@ -411,7 +497,8 @@
    "likes": 19,
    "comments": 2,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/BfQlorpJrkU/hqdefault.jpg"
+   "thumb": "thumbs/d63954f7be7f.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://instagram.com/reel/DavNtN5zG-v",
@@ -422,7 +509,8 @@
    "likes": 225,
    "comments": 4,
    "shares": 0,
-   "thumb": null
+   "thumb": "thumbs/aaa981a05326.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/BCS1ljW7uZU",
@@ -433,7 +521,8 @@
    "likes": 16,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/BCS1ljW7uZU/hqdefault.jpg"
+   "thumb": "thumbs/f542f6b83b06.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/q4eMCmahQpE",
@@ -444,7 +533,9 @@
    "likes": 10,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/ZN804hoVnHA",
@@ -455,7 +546,8 @@
    "likes": 14,
    "comments": 5,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/ZN804hoVnHA/hqdefault.jpg"
+   "thumb": "thumbs/f0a91d0f3660.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/8L9IEmJS4wY",
@@ -466,7 +558,9 @@
    "likes": 94,
    "comments": 6,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/nUwDDVaQ1kQ",
@@ -477,7 +571,9 @@
    "likes": 28,
    "comments": 1,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/jfO0ODYnwDA",
@@ -488,7 +584,8 @@
    "likes": 34,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/jfO0ODYnwDA/hqdefault.jpg"
+   "thumb": "thumbs/42ebd4d29fb9.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/1zWHPce1PZk",
@@ -499,7 +596,8 @@
    "likes": 13,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/1zWHPce1PZk/hqdefault.jpg"
+   "thumb": "thumbs/c0976c8cc830.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://tiktok.com/@clippedbymaxx/video/7660530956150852886",
@@ -510,7 +608,8 @@
    "likes": 334,
    "comments": 0,
    "shares": 5,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/Ki_aP3Tdmq0",
@@ -521,7 +620,8 @@
    "likes": 37,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/Ki_aP3Tdmq0/hqdefault.jpg"
+   "thumb": "thumbs/62c90c83c7b5.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/N_dpH7bTBcs",
@@ -532,7 +632,9 @@
    "likes": 281,
    "comments": 17,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/2E37PCmm_gQ",
@@ -543,7 +645,8 @@
    "likes": 23,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/2E37PCmm_gQ/hqdefault.jpg"
+   "thumb": "thumbs/36a7204d2c32.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/4STgWkDf2MQ",
@@ -554,7 +657,8 @@
    "likes": 14,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/4STgWkDf2MQ/hqdefault.jpg"
+   "thumb": "thumbs/b6617f128853.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/qs0mipp36r0",
@@ -565,7 +669,8 @@
    "likes": 12,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/qs0mipp36r0/hqdefault.jpg"
+   "thumb": "thumbs/67dda39e1295.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/1QWgZkZ3SZ8",
@@ -576,7 +681,8 @@
    "likes": 15,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/Kpgv-mBfvtY",
@@ -587,7 +693,8 @@
    "likes": 15,
    "comments": 2,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/Kpgv-mBfvtY/hqdefault.jpg"
+   "thumb": "thumbs/dfb1b5b5082d.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/m6n7P2_VL94",
@@ -598,7 +705,8 @@
    "likes": 17,
    "comments": 2,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/m6n7P2_VL94/hqdefault.jpg"
+   "thumb": "thumbs/7e4d923bc3a3.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/DaXbSjGTyF8",
@@ -609,7 +717,8 @@
    "likes": 17,
    "comments": 4,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty"
   },
   {
    "url": "https://tiktok.com/@cliptheory.640/video/7659835587448425748",
@@ -620,7 +729,8 @@
    "likes": 456,
    "comments": 2,
    "shares": 5,
-   "thumb": null
+   "thumb": "thumbs/c01c40d6a04f.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/WgiNN6xA8Q4",
@@ -631,7 +741,8 @@
    "likes": 16,
    "comments": 4,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/WgiNN6xA8Q4/hqdefault.jpg"
+   "thumb": "thumbs/e37259c3ea8f.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/c0Ih-KZ_5_4",
@@ -642,7 +753,8 @@
    "likes": 15,
    "comments": 2,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/c0Ih-KZ_5_4/hqdefault.jpg"
+   "thumb": "thumbs/891cd07f34b3.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/5wTd386v6Bg",
@@ -653,7 +765,9 @@
    "likes": 27,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/wbmrrJKUmDA",
@@ -664,7 +778,8 @@
    "likes": 16,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/wbmrrJKUmDA/hqdefault.jpg"
+   "thumb": "thumbs/0bb9f9577898.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/itU8GPS3ZQw",
@@ -675,7 +790,9 @@
    "likes": 20,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://tiktok.com/@cliptheory.640/video/7659474816163990804",
@@ -686,7 +803,8 @@
    "likes": 13400,
    "comments": 38,
    "shares": 54,
-   "thumb": null
+   "thumb": "thumbs/ca18ac21ce40.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/K_qiObEHeu8",
@@ -697,7 +815,9 @@
    "likes": 18,
    "comments": 2,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/Tak7JXrGC90",
@@ -708,7 +828,8 @@
    "likes": 13,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/Tak7JXrGC90/hqdefault.jpg"
+   "thumb": "thumbs/f714fc4ad0ea.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://tiktok.com/@dailyclipz0.1/video/7659192714403056927",
@@ -719,7 +840,8 @@
    "likes": 127,
    "comments": 0,
    "shares": 2,
-   "thumb": null
+   "thumb": "thumbs/284ca788ca14.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/vSOUYCybZQs",
@@ -730,7 +852,9 @@
    "likes": 0,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/EAVIQYaTA0Q",
@@ -741,7 +865,9 @@
    "likes": 0,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/Wca58n-lsqM",
@@ -752,7 +878,9 @@
    "likes": 0,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/c7dmG2q3xIU",
@@ -763,7 +891,8 @@
    "likes": 10,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/c7dmG2q3xIU/hqdefault.jpg"
+   "thumb": "thumbs/d262229ed3dd.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/U3_sDkkA34c",
@@ -774,7 +903,9 @@
    "likes": 7,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/y4qrD9oHOL4",
@@ -785,7 +916,8 @@
    "likes": 12,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/y4qrD9oHOL4/hqdefault.jpg"
+   "thumb": "thumbs/e3c1fd52d344.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/-8KEMmlV9aA",
@@ -796,7 +928,8 @@
    "likes": 7,
    "comments": 1,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/-8KEMmlV9aA/hqdefault.jpg"
+   "thumb": "thumbs/b17b13026be7.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/XMoCBcn2pP0",
@@ -807,7 +940,8 @@
    "likes": 8,
    "comments": 4,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/XMoCBcn2pP0/hqdefault.jpg"
+   "thumb": "thumbs/9490d80d105a.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/vPDYpOxNdT4",
@@ -818,7 +952,8 @@
    "likes": 27,
    "comments": 1,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/vPDYpOxNdT4/hqdefault.jpg"
+   "thumb": "thumbs/071aa91f1404.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/R-4kbJu-uRA",
@@ -829,7 +964,9 @@
    "likes": 0,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/lLn7OgXiO2c",
@@ -840,7 +977,8 @@
    "likes": 13,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/lLn7OgXiO2c/hqdefault.jpg"
+   "thumb": "thumbs/0588d0774424.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/watch?v=ymYRNprsOJk",
@@ -851,7 +989,9 @@
    "likes": 19,
    "comments": 0,
    "shares": 0,
-   "thumb": null
+   "thumb": null,
+   "source": "bounty",
+   "hidden": true
   },
   {
    "url": "https://youtube.com/shorts/SQRuPOdJg-0",
@@ -862,7 +1002,8 @@
    "likes": 28,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/SQRuPOdJg-0/hqdefault.jpg"
+   "thumb": "thumbs/dac8031e6680.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/7lm04nliRNY",
@@ -873,7 +1014,8 @@
    "likes": 12,
    "comments": 1,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/7lm04nliRNY/hqdefault.jpg"
+   "thumb": "thumbs/e3cf19d45e95.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/-KF-vQCuYxk",
@@ -884,7 +1026,8 @@
    "likes": 13,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/-KF-vQCuYxk/hqdefault.jpg"
+   "thumb": "thumbs/6e4bee23423e.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://instagram.com/reel/DaVoDPKvgA6",
@@ -895,7 +1038,8 @@
    "likes": 40,
    "comments": 2,
    "shares": 3,
-   "thumb": null
+   "thumb": "thumbs/723c702566d1.jpg",
+   "source": "bounty"
   },
   {
    "url": "https://youtube.com/shorts/ozcSt8LsqY0",
@@ -906,7 +1050,8 @@
    "likes": 18,
    "comments": 0,
    "shares": 0,
-   "thumb": "https://i.ytimg.com/vi/ozcSt8LsqY0/hqdefault.jpg"
+   "thumb": "thumbs/0d8c81d264eb.jpg",
+   "source": "bounty"
   }
  ]
 }
