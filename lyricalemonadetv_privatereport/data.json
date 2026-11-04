@@ -1,0 +1,912 @@
+{
+ "sheet": {
+  "updated": "Nov 3, 2026 7:12 AM ET",
+  "total_views": "48.04M",
+  "clips_out": "16,498",
+  "week": {
+   "label": "10/19 to 10/25",
+   "views": "999.2K",
+   "views_prior": "1.48M",
+   "views_chg": "-32.4%",
+   "clips": "784",
+   "clips_prior": "1,427",
+   "clips_chg": "-45.1%"
+  },
+  "d30": {
+   "label": "10/4 to 11/2",
+   "views": "7.37M",
+   "views_prior": "6.52M",
+   "views_chg": "+13.1%",
+   "clips": "7,343",
+   "clips_prior": "4,275",
+   "clips_chg": "+71.8%"
+  },
+  "platform": [
+   [
+    "TikTok",
+    776600.0,
+    "-7.9%",
+    78
+   ],
+   [
+    "YouTube",
+    208500.0,
+    "-65.7%",
+    21
+   ],
+   [
+    "Instagram",
+    14100.0,
+    "-49.3%",
+    1
+   ],
+   [
+    "X",
+    0,
+    "",
+    0
+   ]
+  ],
+  "weeks": [
+   "9/28 to 10/4",
+   "10/5 to 10/11",
+   "10/12 to 10/18",
+   "10/19 to 10/25"
+  ],
+  "shows": {
+   "New York Nights": [
+    3200.0,
+    24300.0,
+    277800.0,
+    27100.0
+   ],
+   "No Comfort": [
+    null,
+    1800000.0,
+    70800.0,
+    14100.0
+   ],
+   "Call It A Day": [
+    638000.0,
+    163900.0,
+    27700.0,
+    47900.0
+   ],
+   "Lunch Break Freestyle": [
+    4100.0,
+    102700.0,
+    80500.0,
+    24500.0
+   ],
+   "Chloe Explains": [
+    36500.0,
+    50600.0,
+    53200.0,
+    21100.0
+   ]
+  },
+  "clipshare": {
+   "New York Nights": [
+    20,
+    8
+   ],
+   "No Comfort": [
+    11,
+    42
+   ],
+   "Call It A Day": [
+    28,
+    32
+   ],
+   "Lunch Break Freestyle": [
+    26,
+    10
+   ],
+   "Chloe Explains": [
+    15,
+    9
+   ]
+  }
+ },
+ "bounty": {
+  "clips": 63,
+  "removed": 5,
+  "views": 590984,
+  "likes": 15909,
+  "comments": 114,
+  "shares": 96,
+  "peak": 407600,
+  "first": "2026-07-03",
+  "last": "2026-07-28",
+  "byplat": {
+   "youtube": 55,
+   "instagram": 4,
+   "tiktok": 4
+  },
+  "perday": [
+   [
+    "2026-07-03",
+    2
+   ],
+   [
+    "2026-07-04",
+    8
+   ],
+   [
+    "2026-07-05",
+    8
+   ],
+   [
+    "2026-07-06",
+    5
+   ],
+   [
+    "2026-07-07",
+    4
+   ],
+   [
+    "2026-07-08",
+    8
+   ],
+   [
+    "2026-07-09",
+    5
+   ],
+   [
+    "2026-07-10",
+    1
+   ],
+   [
+    "2026-07-11",
+    2
+   ],
+   [
+    "2026-07-12",
+    1
+   ],
+   [
+    "2026-07-13",
+    1
+   ],
+   [
+    "2026-07-14",
+    2
+   ],
+   [
+    "2026-07-15",
+    1
+   ],
+   [
+    "2026-07-16",
+    2
+   ],
+   [
+    "2026-07-17",
+    2
+   ],
+   [
+    "2026-07-18",
+    1
+   ],
+   [
+    "2026-07-21",
+    2
+   ],
+   [
+    "2026-07-22",
+    3
+   ],
+   [
+    "2026-07-23",
+    1
+   ],
+   [
+    "2026-07-24",
+    1
+   ],
+   [
+    "2026-07-26",
+    2
+   ],
+   [
+    "2026-07-28",
+    1
+   ]
+  ]
+ },
+ "clips": [
+  {
+   "url": "https://youtube.com/shorts/TegjW8Vir14",
+   "platform": "youtube",
+   "date": "2026-07-28",
+   "show": "Chloe Explains",
+   "views": 1468,
+   "likes": 12,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/TegjW8Vir14/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/ArFjWBHjsxY",
+   "platform": "youtube",
+   "date": "2026-07-26",
+   "show": "Chloe Explains",
+   "views": 2500,
+   "likes": 23,
+   "comments": 3,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/ArFjWBHjsxY/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/kS-KgIcsS30",
+   "platform": "youtube",
+   "date": "2026-07-26",
+   "show": "Chloe Explains",
+   "views": 1796,
+   "likes": 12,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/kS-KgIcsS30/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/5dtKUvMtL70",
+   "platform": "youtube",
+   "date": "2026-07-24",
+   "show": "Chloe Explains",
+   "views": 1449,
+   "likes": 27,
+   "comments": 4,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/5dtKUvMtL70/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/6R2s6Wf5OXY",
+   "platform": "youtube",
+   "date": "2026-07-23",
+   "show": "Chloe Explains",
+   "views": 1336,
+   "likes": 9,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/6R2s6Wf5OXY/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/mVdPLPgWKDE",
+   "platform": "youtube",
+   "date": "2026-07-22",
+   "show": "Chloe Explains",
+   "views": 1129,
+   "likes": 20,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/mVdPLPgWKDE/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/caepTxr0u7E",
+   "platform": "youtube",
+   "date": "2026-07-22",
+   "show": "Chloe Explains",
+   "views": 1240,
+   "likes": 12,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/caepTxr0u7E/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/4cBZ3M4RG1I",
+   "platform": "youtube",
+   "date": "2026-07-22",
+   "show": "Chloe Explains",
+   "views": 1406,
+   "likes": 14,
+   "comments": 1,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/4cBZ3M4RG1I/hqdefault.jpg"
+  },
+  {
+   "url": "https://instagram.com/reel/DbERlEpNoqc",
+   "platform": "instagram",
+   "date": "2026-07-21",
+   "show": "Chloe Explains",
+   "views": 1353,
+   "likes": 57,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/fetTzxF6v7Y",
+   "platform": "youtube",
+   "date": "2026-07-21",
+   "show": "Chloe Explains",
+   "views": 1361,
+   "likes": 21,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/fetTzxF6v7Y/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/_fRmjGJkYKc",
+   "platform": "youtube",
+   "date": "2026-07-18",
+   "show": "Chloe Explains",
+   "views": 1122,
+   "likes": 15,
+   "comments": 1,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/_fRmjGJkYKc/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/5bu-aX7Ls1I",
+   "platform": "youtube",
+   "date": "2026-07-17",
+   "show": "Chloe Explains",
+   "views": 1526,
+   "likes": 17,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/5bu-aX7Ls1I/hqdefault.jpg"
+  },
+  {
+   "url": "https://instagram.com/reel/Da4wapRzuQ2",
+   "platform": "instagram",
+   "date": "2026-07-17",
+   "show": "Chloe Explains",
+   "views": 3821,
+   "likes": 38,
+   "comments": 5,
+   "shares": 27,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/K2U1ukrwS5Q",
+   "platform": "youtube",
+   "date": "2026-07-16",
+   "show": "Chloe Explains",
+   "views": 1427,
+   "likes": 35,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/K2U1ukrwS5Q/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/6aR1rK9oJG8",
+   "platform": "youtube",
+   "date": "2026-07-16",
+   "show": "Chloe Explains",
+   "views": 1250,
+   "likes": 19,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/6aR1rK9oJG8/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/9zZzrLW-xcU",
+   "platform": "youtube",
+   "date": "2026-07-15",
+   "show": "Chloe Explains",
+   "views": 1303,
+   "likes": 20,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/9zZzrLW-xcU/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/PVFaTYuPzhg",
+   "platform": "youtube",
+   "date": "2026-07-14",
+   "show": "Chloe Explains",
+   "views": 1675,
+   "likes": 18,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/PVFaTYuPzhg/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/BfQlorpJrkU",
+   "platform": "youtube",
+   "date": "2026-07-14",
+   "show": "Chloe Explains",
+   "views": 2167,
+   "likes": 19,
+   "comments": 2,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/BfQlorpJrkU/hqdefault.jpg"
+  },
+  {
+   "url": "https://instagram.com/reel/DavNtN5zG-v",
+   "platform": "instagram",
+   "date": "2026-07-13",
+   "show": "Chloe Explains",
+   "views": 20901,
+   "likes": 225,
+   "comments": 4,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/BCS1ljW7uZU",
+   "platform": "youtube",
+   "date": "2026-07-12",
+   "show": "Chloe Explains",
+   "views": 1154,
+   "likes": 16,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/BCS1ljW7uZU/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/q4eMCmahQpE",
+   "platform": "youtube",
+   "date": "2026-07-11",
+   "show": "Chloe Explains",
+   "views": 1536,
+   "likes": 10,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/ZN804hoVnHA",
+   "platform": "youtube",
+   "date": "2026-07-11",
+   "show": "Chloe Explains",
+   "views": 1505,
+   "likes": 14,
+   "comments": 5,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/ZN804hoVnHA/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/8L9IEmJS4wY",
+   "platform": "youtube",
+   "date": "2026-07-10",
+   "show": "Chloe Explains",
+   "views": 9119,
+   "likes": 94,
+   "comments": 6,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/nUwDDVaQ1kQ",
+   "platform": "youtube",
+   "date": "2026-07-09",
+   "show": "Chloe Explains",
+   "views": 2570,
+   "likes": 28,
+   "comments": 1,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/jfO0ODYnwDA",
+   "platform": "youtube",
+   "date": "2026-07-09",
+   "show": "Chloe Explains",
+   "views": 1235,
+   "likes": 34,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/jfO0ODYnwDA/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/1zWHPce1PZk",
+   "platform": "youtube",
+   "date": "2026-07-09",
+   "show": "Chloe Explains",
+   "views": 1482,
+   "likes": 13,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/1zWHPce1PZk/hqdefault.jpg"
+  },
+  {
+   "url": "https://tiktok.com/@clippedbymaxx/video/7660530956150852886",
+   "platform": "tiktok",
+   "date": "2026-07-09",
+   "show": "Chloe Explains",
+   "views": 6136,
+   "likes": 334,
+   "comments": 0,
+   "shares": 5,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/Ki_aP3Tdmq0",
+   "platform": "youtube",
+   "date": "2026-07-09",
+   "show": "Chloe Explains",
+   "views": 2508,
+   "likes": 37,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/Ki_aP3Tdmq0/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/N_dpH7bTBcs",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 28783,
+   "likes": 281,
+   "comments": 17,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/2E37PCmm_gQ",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 1199,
+   "likes": 23,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/2E37PCmm_gQ/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/4STgWkDf2MQ",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 2838,
+   "likes": 14,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/4STgWkDf2MQ/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/qs0mipp36r0",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 1053,
+   "likes": 12,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/qs0mipp36r0/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/1QWgZkZ3SZ8",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 1924,
+   "likes": 15,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/Kpgv-mBfvtY",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 1142,
+   "likes": 15,
+   "comments": 2,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/Kpgv-mBfvtY/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/m6n7P2_VL94",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 1561,
+   "likes": 17,
+   "comments": 2,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/m6n7P2_VL94/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/DaXbSjGTyF8",
+   "platform": "youtube",
+   "date": "2026-07-08",
+   "show": "Chloe Explains",
+   "views": 1770,
+   "likes": 17,
+   "comments": 4,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://tiktok.com/@cliptheory.640/video/7659835587448425748",
+   "platform": "tiktok",
+   "date": "2026-07-07",
+   "show": "Chloe Explains",
+   "views": 14700,
+   "likes": 456,
+   "comments": 2,
+   "shares": 5,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/WgiNN6xA8Q4",
+   "platform": "youtube",
+   "date": "2026-07-07",
+   "show": "Chloe Explains",
+   "views": 1172,
+   "likes": 16,
+   "comments": 4,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/WgiNN6xA8Q4/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/c0Ih-KZ_5_4",
+   "platform": "youtube",
+   "date": "2026-07-07",
+   "show": "Chloe Explains",
+   "views": 1580,
+   "likes": 15,
+   "comments": 2,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/c0Ih-KZ_5_4/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/5wTd386v6Bg",
+   "platform": "youtube",
+   "date": "2026-07-07",
+   "show": "Chloe Explains",
+   "views": 5164,
+   "likes": 27,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/wbmrrJKUmDA",
+   "platform": "youtube",
+   "date": "2026-07-06",
+   "show": "Chloe Explains",
+   "views": 1077,
+   "likes": 16,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/wbmrrJKUmDA/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/itU8GPS3ZQw",
+   "platform": "youtube",
+   "date": "2026-07-06",
+   "show": "Chloe Explains",
+   "views": 1408,
+   "likes": 20,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://tiktok.com/@cliptheory.640/video/7659474816163990804",
+   "platform": "tiktok",
+   "date": "2026-07-06",
+   "show": "Chloe Explains",
+   "views": 407600,
+   "likes": 13400,
+   "comments": 38,
+   "shares": 54,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/K_qiObEHeu8",
+   "platform": "youtube",
+   "date": "2026-07-06",
+   "show": "Chloe Explains",
+   "views": 5877,
+   "likes": 18,
+   "comments": 2,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/Tak7JXrGC90",
+   "platform": "youtube",
+   "date": "2026-07-06",
+   "show": "Chloe Explains",
+   "views": 3025,
+   "likes": 13,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/Tak7JXrGC90/hqdefault.jpg"
+  },
+  {
+   "url": "https://tiktok.com/@dailyclipz0.1/video/7659192714403056927",
+   "platform": "tiktok",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 6729,
+   "likes": 127,
+   "comments": 0,
+   "shares": 2,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/vSOUYCybZQs",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1138,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/EAVIQYaTA0Q",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1096,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/Wca58n-lsqM",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1586,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/c7dmG2q3xIU",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1062,
+   "likes": 10,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/c7dmG2q3xIU/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/U3_sDkkA34c",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1018,
+   "likes": 7,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/y4qrD9oHOL4",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1083,
+   "likes": 12,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/y4qrD9oHOL4/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/-8KEMmlV9aA",
+   "platform": "youtube",
+   "date": "2026-07-05",
+   "show": "Chloe Explains",
+   "views": 1151,
+   "likes": 7,
+   "comments": 1,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/-8KEMmlV9aA/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/XMoCBcn2pP0",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1058,
+   "likes": 8,
+   "comments": 4,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/XMoCBcn2pP0/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/vPDYpOxNdT4",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1491,
+   "likes": 27,
+   "comments": 1,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/vPDYpOxNdT4/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/R-4kbJu-uRA",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1910,
+   "likes": 0,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/lLn7OgXiO2c",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1085,
+   "likes": 13,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/lLn7OgXiO2c/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/watch?v=ymYRNprsOJk",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1406,
+   "likes": 19,
+   "comments": 0,
+   "shares": 0,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/SQRuPOdJg-0",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1346,
+   "likes": 28,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/SQRuPOdJg-0/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/7lm04nliRNY",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 1249,
+   "likes": 12,
+   "comments": 1,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/7lm04nliRNY/hqdefault.jpg"
+  },
+  {
+   "url": "https://youtube.com/shorts/-KF-vQCuYxk",
+   "platform": "youtube",
+   "date": "2026-07-04",
+   "show": "Chloe Explains",
+   "views": 2833,
+   "likes": 13,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/-KF-vQCuYxk/hqdefault.jpg"
+  },
+  {
+   "url": "https://instagram.com/reel/DaVoDPKvgA6",
+   "platform": "instagram",
+   "date": "2026-07-03",
+   "show": "Chloe Explains",
+   "views": 3184,
+   "likes": 40,
+   "comments": 2,
+   "shares": 3,
+   "thumb": null
+  },
+  {
+   "url": "https://youtube.com/shorts/ozcSt8LsqY0",
+   "platform": "youtube",
+   "date": "2026-07-03",
+   "show": "Chloe Explains",
+   "views": 1211,
+   "likes": 18,
+   "comments": 0,
+   "shares": 0,
+   "thumb": "https://i.ytimg.com/vi/ozcSt8LsqY0/hqdefault.jpg"
+  }
+ ]
+}
