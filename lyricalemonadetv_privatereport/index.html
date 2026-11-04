@@ -156,7 +156,7 @@ function chips(){const v=el('fs').value;const CH=SHOWS.concat(shown.filter(n=>!S
 ['q','fp','fsrc','so'].forEach(i=>el(i).oninput=gal);el('fs').oninput=()=>{chips();gal()};chips();gal();
 const dayStamp=s=>{if(s==null||s==='')return null;const str=String(s);if(str.includes('T')){const n=Date.parse(str);return Number.isNaN(n)?null:n;}const n=Date.parse(str.slice(0,10)+'T12:00:00Z');return Number.isNaN(n)?null:n;};
 const ASOF=D.fan_pages_as_of||null,now=ASOF?(dayStamp(ASOF)??Date.now()):Date.now(),FP=D.fan_pages||[];
-const md=d=>{const n=dayStamp(d);return n==null?'n/a*':new Date(n).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});},asofTxt=ASOF&&dayStamp(ASOF)!=null?new Date(dayStamp(ASOF)).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}):'';
+const md=d=>{const n=dayStamp(d);return n==null?'n/a*':new Date(n).toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'America/New_York'});},asofTxt=ASOF&&dayStamp(ASOF)!=null?new Date(dayStamp(ASOF)).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'America/New_York'}):'';
 const ago=t=>{if(!t)return 'n/a*';const h=Math.floor((now-Date.parse(t))/36e5);return h<1?'just now':h<48?h+'h ago':Math.floor(h/24)+'d ago'};
 const light=p=>{if(p.broken||!p.last_post_at)return 'red';const h=(now-Date.parse(p.last_post_at))/36e5;return h<=24?'green':h<=72?'yellow':'red'};
 const LC={green:'#22c55e',yellow:'#FBE74E',red:'#ef4444'},RK={red:0,yellow:1,green:2};
