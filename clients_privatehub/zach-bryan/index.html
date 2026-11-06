@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/png" sizes="64x64" href="../../img/df-favicon-64.png"><link rel="apple-touch-icon" sizes="180x180" href="../../img/df-apple-touch.png">
+<link rel="icon" type="image/png" href="logo.png"><link rel="apple-touch-icon" href="logo.png">
 <title>Zach Bryan Clip Report</title>
 <style>
 
@@ -73,40 +73,47 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--bd);font-size
  .board{grid-template-columns:1fr}.fpsum{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pillc{padding:10px 12px}.pillc b{font-size:18px}
  .mx{right:4px;top:4px;z-index:2}.mfr{height:min(70vh,calc((100vw - 24px)*16/9))}}
 
-/* client hub additions */
-.logo{flex:none;width:56px;height:56px;border-radius:12px;background:var(--card2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font:700 18px var(--mono);color:var(--y)}
-.empty{color:var(--mut);font-size:14px;padding:12px 0}
-.back{display:inline-block;margin-top:14px;font:600 13px var(--sans);color:var(--mut);text-decoration:none}.back:hover{color:var(--y)}
-.tile .cap{font-size:12px;color:var(--tx);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.th .ph{font-size:13px;text-transform:uppercase;letter-spacing:.06em}
-.qrow{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #191919;font-size:14px}
+/* additions for the client hub, built on the LLTV report's own classes */
+.brand .lg{height:56px;width:56px;object-fit:contain}
+.sub{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-top:4px}
+.sub b{color:var(--tx);font-weight:600}
+.th .ph{font-size:13px}
+.tbl{overflow-x:auto}.tbl table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.tbl th{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);text-align:left;padding:10px 10px;border-bottom:1px solid var(--bd);white-space:nowrap}
+.tbl td{padding:9px 10px;border-bottom:1px solid #191919;white-space:nowrap}.tbl td.n,.tbl th.n{text-align:right;font-family:var(--mono)}
+.tbl tr.pg td{border-top:1px solid var(--bd)}.tbl td a{color:var(--y);text-decoration:none}.tbl tr.tot td{font-weight:700;border-top:1px solid var(--bd)}
+.qrow{display:grid;grid-template-columns:140px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #191919;font-size:14px}
 .qrow:last-child{border-bottom:0}.qrow .w{font-family:var(--mono);font-size:12px;color:var(--mut)}.qrow .c{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .qrow .pf{font:700 10px var(--mono);color:var(--y);border:1px solid var(--bd);border-radius:5px;padding:2px 5px}
-@media(max-width:700px){.hero{grid-template-columns:1fr}.qrow{grid-template-columns:1fr auto}.qrow .w{grid-column:1/-1}}
+.back{display:inline-block;margin-top:28px;font:600 13px var(--sans);color:var(--mut);text-decoration:none}.back:hover{color:var(--y)}
+@media(max-width:700px){.qrow{grid-template-columns:1fr auto}.qrow .w{grid-column:1/-1}}
 </style></head><body>
 <div class="wrap">
-<header><div class="brand"><div class="logo">ZB</div><div><h1>Zach Bryan Clip Report</h1><div class="upd" id="upd"></div></div></div><span class="live">&#9679; Live</span></header>
+<header><div class="brand"><img class="lg" src="logo.png" alt=""><div><h1>Zach Bryan Clip Report</h1><div class="upd" id="upd"></div><div class="sub" id="sub"></div></div></div><span class="live">&#9679; Live</span></header>
 
 <div class="hero">
- <div class="card main"><div class="lbl">Views, last 30 days</div><div class="num" id="h_views">&nbsp;</div><div class="chg" id="h_vchg"></div></div>
- <div class="card"><div class="lbl">Clips out, last 30 days</div><div class="num w" id="h_clips">&nbsp;</div><div class="chg" id="h_cchg"></div></div>
- <div class="card since"><div><div class="lbl" id="t_lbl1">Total views</div><div class="v" id="t_views"></div></div><div><div class="lbl" id="t_lbl2">Total clips out</div><div class="v" id="t_clips"></div></div></div>
+ <div class="card main"><div class="lbl" id="h_lbl1">Views, campaign to date</div><div class="num" id="h_views"></div><div class="chg" id="h_vchg"></div></div>
+ <div class="card"><div class="lbl" id="h_lbl2">Clips out, campaign to date</div><div class="num w" id="h_clips"></div><div class="chg" id="h_cchg"></div></div>
+ <div class="card since"><div><div class="lbl">Engagement rate</div><div class="v" id="t_eng"></div></div><div><div class="lbl">Likes &middot; comments &middot; shares</div><div class="v" id="t_lcs"></div></div></div>
 </div>
 <div class="card wk" id="wkcard"></div>
 
-<section id="topsec"><div class="sh"><div><h2>Top clips</h2><div class="st" id="tops">Your most viewed clips. Tap any clip to open it.</div></div><div class="tabs" id="toptabs"></div></div><div class="gal" id="top"></div></section>
+<section id="topsec"><div class="sh"><div><h2>Top clips</h2><div class="st" id="tops">Your most viewed clips. Tap any clip to watch it here.</div></div><div class="tabs" id="toptabs"></div></div><div class="gal" id="top"></div></section>
 
-<section><div class="sh"><div><h2>By page</h2><div class="st">How each page is doing over the last 30 days, every network added together. Bars are clips per day for the last 14 days.</div></div></div>
-<div class="shows" id="brands"></div></section>
+<section><div class="sh"><div><h2>By page</h2><div class="st" id="shsub">How each page is doing week to week.</div></div></div>
+<div class="card" id="splitcard" style="margin-bottom:14px"></div><div class="shows" id="shows"></div></section>
 
-<section id="fpboard"><div class="sh"><div><h2>Fan pages</h2><div class="st">Every connected account and when it last posted. Pages that need a post are listed first. Tap a page to open it.</div></div></div>
+<section id="accounts"><div class="sh"><div><h2>Accounts</h2><div class="st">Every account for the campaign so far, the same table as the weekly report.</div></div></div>
+<div class="card tbl" id="acct"></div></section>
+
+<section id="fpboard"><div class="sh"><div><h2>Fan pages</h2><div class="st" id="fpsub">Which pages posted recently. Pages that need a post are listed first. Tap a page to open it.</div></div></div>
 <div class="fpsum" id="fpsum"></div><div class="board" id="board"></div></section>
 
-<section><div class="sh"><div><h2>Up next</h2><div class="st">Posts booked in Metricool for the next 48 hours.</div></div></div>
+<section id="next"><div class="sh"><div><h2>Up next</h2><div class="st">Posts booked in Metricool for the next 48 hours.</div></div></div>
 <div class="card" id="queue"></div></section>
 
 <section><div class="sh"><div><h2>All clips</h2><div class="st">Every published clip. Pick a page or platform to narrow it down.</div></div></div>
-<div class="filters" id="brandchips"></div>
+<div class="filters" id="showchips"></div>
 <div class="filters"><select class="ctl" id="fp" aria-label="Platform"><option value="">All platforms</option><option value="tiktok">TikTok</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="facebook">Facebook</option></select>
 <select class="ctl" id="so" aria-label="Sort"><option value="views">Most views</option><option value="date">Newest</option></select><span class="dt" id="gcount"></span></div>
 <div class="gal" id="gal"></div><button class="more" id="more" type="button" hidden>Show more</button></section>
@@ -114,64 +121,113 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--bd);font-size
 <a class="back" href="../">&larr; All clients</a>
 <footer id="foot"></footer>
 </div>
+<div class="mbg" id="mbg"><div class="mbox" role="dialog" aria-modal="true"><button class="mx" id="mx" aria-label="Close">&#10005;</button><div class="mfr" id="mfr"></div><div class="minfo" id="minfo"></div></div></div>
 <script>
 const CLIENT='zach-bryan';
-const el=id=>document.getElementById(id);
-const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt=n=>{n=+n||0;return n>=1e6?(n/1e6).toFixed(n>=1e7?1:2).replace(/\.?0+$/,'')+'M':n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':n.toLocaleString()};
-const PA={tiktok:'TT',instagram:'IG',youtube:'YT',facebook:'FB'};
-const PN={tiktok:'TikTok',instagram:'Instagram',youtube:'YouTube',facebook:'Facebook'};
-const PC={tiktok:'#25F4EE',instagram:'#E1306C',youtube:'#FF0000',facebook:'#1877F2'};
-const PAL=['#FBE74E','#22c55e','#60a5fa','#f472b6','#fb923c','#a78bfa','#2dd4bf','#f87171'];
-const ET=s=>new Date(s).toLocaleDateString('en-CA',{timeZone:'America/New_York'});
-const etDate=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
-const ago=s=>{if(!s)return 'never';const h=(Date.now()-new Date(s))/36e5;return h<1?Math.max(1,Math.round(h*60))+'m ago':h<48?Math.round(h)+'h ago':Math.round(h/24)+'d ago'};
-const pct=(a,b)=>b?((a-b)/b*100):null;
-const chg=(a,b,unit)=>{const p=pct(a,b);return p==null?'':'<span class="'+(p>=0?'up':'down')+'">'+(p>=0?'+':'')+p.toFixed(1)+'%</span> vs prior 30 days ('+fmt(b)+' '+unit+')'};
-let D,C,BCOL={},SEL='',shownN=60;
-function tile(x,rk){return '<a class="tile" style="--sc:'+(BCOL[x.brand]||'#FBE74E')+'" href="'+esc(x.url)+'" target="_blank" rel="noopener"><div class="th">'+(rk?'<span class="rk">#'+rk+'</span>':'')+'<span class="ph">'+PN[x.platform]+'</span><span class="pl">'+PA[x.platform]+'</span></div><div class="meta"><span class="chip"><i></i>'+esc(C.brands[x.brand]||x.brand)+'</span><div class="vw">'+fmt(x.views)+' views</div><div class="dt">'+etDate(ET(x.published))+'</div><div class="cap">'+esc(x.caption)+'</div></div></a>'}
-function render(){
- const now=Date.now(),d30=now-30*864e5,d60=now-60*864e5,d7=now-7*864e5,d14=now-14*864e5;
- const T=x=>new Date(x.published).getTime();
- const cl=C.clips, c30=cl.filter(x=>T(x)>=d30), p30=cl.filter(x=>T(x)>=d60&&T(x)<d30), c7=cl.filter(x=>T(x)>=d7), p7=cl.filter(x=>T(x)>=d14&&T(x)<d7);
- const sv=a=>a.reduce((s,x)=>s+x.views,0);
+const PAL=['#4EA8FB','#FB6B4E','#4EFB8A','#C77DFF','#FBE74E','#2dd4bf','#f472b6','#fb923c'];
+const PN={youtube:'YouTube Shorts',tiktok:'TikTok',instagram:'Instagram',facebook:'Facebook'},PA={youtube:'YT',tiktok:'TT',instagram:'IG',facebook:'FB'};
+const PC={tiktok:'#25F4EE',instagram:'#E1306C',youtube:'#FF4E45',facebook:'#4E8BFB'};
+let SC={},BL={};
+const el=i=>document.getElementById(i),scol=b=>SC[b]||'#9CA3AF',esc=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+const chip=b=>'<span class="chip" style="--sc:'+scol(b)+'"><i></i>'+esc(BL[b]||b)+'</span>';
+const fmt=n=>n==null?'':n>=1e6?(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'M':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':String(Math.round(n));
+const stamp=s=>{if(s==null||s==='')return null;const t=String(s);const n=t.includes('T')?Date.parse(t):Date.parse(t.slice(0,10)+'T12:00:00Z');return Number.isNaN(n)?null:n;};
+const etDate=(s,o)=>{const n=stamp(s);return n==null?'':new Date(n).toLocaleDateString('en-US',Object.assign({month:'short',day:'numeric',timeZone:'America/New_York'},o||{}));};
+const etDay=s=>new Date(stamp(s)).toLocaleDateString('en-CA',{timeZone:'America/New_York'});
+const addDays=(d,n)=>new Date(Date.parse(d+'T12:00:00Z')+n*864e5).toISOString().slice(0,10);
+const eng=a=>{const v=a.reduce((s,x)=>s+x.views,0),i=a.reduce((s,x)=>s+x.likes+x.comments+x.shares,0);return v?(i/v*100):null};
+const pct=v=>v==null?'':v.toFixed(1)+'%';
+const arrow=(c,p,unit)=>{if(!p)return '';const r=(c-p)/p*100;return '<span class="'+(r<0?'down':'up')+'">'+(r<0?'&#9660; ':'&#9650; ')+Math.abs(r).toFixed(1)+'%</span>'};
+let CUR=null,shownN=60;
+function render(D){const C=D.clients[CLIENT];if(!C){el('upd').textContent='No data yet.';return;}
+ CUR=C;BL=C.brands;Object.keys(BL).forEach((b,i)=>SC[b]=PAL[i%PAL.length]);
+ const cl=C.clips.filter(x=>x.published).map(x=>Object.assign(x,{day:etDay(x.published)}));
  el('upd').textContent='Updated '+D.updated;
- el('h_views').textContent=fmt(sv(c30));el('h_vchg').innerHTML=chg(sv(c30),sv(p30),'views');
- el('h_clips').textContent=c30.length.toLocaleString();el('h_cchg').innerHTML=chg(c30.length,p30.length,'clips');
- const first=cl.length?ET(cl[cl.length-1].published):null;
- el('t_lbl1').textContent='Total views since '+(first?etDate(first):'start');el('t_lbl2').textContent='Total clips out since '+(first?etDate(first):'start');
- el('t_views').textContent=fmt(sv(cl));el('t_clips').textContent=cl.length.toLocaleString();
- const plats=Object.keys(PN).map(p=>[p,sv(c7.filter(x=>x.platform==p)),c7.filter(x=>x.platform==p).length]).filter(r=>r[2]);const tot7=sv(c7)||1;
- el('wkcard').innerHTML='<div><div class="lbl">Views, last 7 days</div><div class="v">'+fmt(sv(c7))+'</div><div class="chg">'+(sv(p7)?chg(sv(c7),sv(p7),'views').replace('prior 30 days','prior 7 days'):'')+'</div></div><div><div class="lbl">Clips out, last 7 days</div><div class="v">'+c7.length.toLocaleString()+'</div></div>'+plats.map(r=>'<div><div class="lbl">'+PN[r[0]]+'</div><div class="v">'+fmt(r[1])+'</div><div class="chg">'+r[2]+' clips</div></div>').join('')+'<div class="dt"><div class="stack">'+plats.map(r=>'<i style="--sc:'+PC[r[0]]+';width:'+(100*r[1]/tot7)+'%"></i>').join('')+'</div></div>';
- const TT=[['week','7 days',c7],['month','30 days',c30],['all','All time',cl]];
- const showTop=k=>{const t=TT.find(x=>x[0]==k);el('toptabs').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t==k));
-  el('top').innerHTML=t[2].length?t[2].slice().sort((a,b)=>b.views-a.views).slice(0,10).map((x,i)=>tile(x,i+1)).join(''):'<div class="empty">No clips posted in this period yet.</div>'};
- el('toptabs').innerHTML=TT.map(t=>'<button type="button" data-t="'+t[0]+'">'+t[1]+'</button>').join('');
- el('toptabs').querySelectorAll('button').forEach(b=>b.onclick=()=>showTop(b.dataset.t));showTop(c7.length?'week':'month');
- const days=[];for(let i=13;i>=0;i--)days.push(ET(now-i*864e5));
- el('brands').innerHTML=Object.entries(C.brands).map(([b,label])=>{const m=c30.filter(x=>x.brand==b),per=days.map(d=>cl.filter(x=>x.brand==b&&ET(x.published)==d).length),mx=Math.max(1,...per);
-  const nets=Object.keys(PN).map(p=>[p,m.filter(x=>x.platform==p).length]).filter(r=>r[1]);
-  return '<div class="card sc" style="--sc:'+BCOL[b]+'"><span class="chip"><i></i>'+esc(label)+'</span><div class="big">'+fmt(sv(m))+'</div><div class="kv"><span>Clips, 30 days</span><b>'+m.length+'</b></div><div class="kv"><span>Best clip</span><b>'+fmt(Math.max(0,...m.map(x=>x.views)))+'</b></div><div class="kv"><span>Networks</span><b>'+(nets.map(r=>PA[r[0]]+' '+r[1]).join(' · ')||'none yet')+'</b></div><div class="spark">'+per.map(n=>'<i'+(n?'':' class="na"')+' style="height:'+Math.max(6,100*n/mx)+'%"></i>').join('')+'</div></div>'}).join('');
- const order={red:0,yellow:1,green:2},P=C.pages.slice().sort((a,b)=>order[a.status]-order[b.status]||(a.last_post_at||'').localeCompare(b.last_post_at||''));
- const cnt=s=>P.filter(p=>p.status==s).length;
- el('fpsum').innerHTML=[['green','Posted in the last 24h'],['yellow','Last post 24 to 48h ago'],['red','No post in 48h']].map(([s,t])=>'<div class="pillc"><span class="dot '+s+'"></span><b>'+cnt(s)+'</b><span class="dt">'+t+'</span></div>').join('');
- el('board').innerHTML=P.map(p=>'<a class="fp" href="'+esc(p.profile_url)+'" target="_blank" rel="noopener"><span class="dot '+p.status+'"></span><div><div class="h">'+esc(p.handle)+'</div><div class="s">'+(p.last_post_at?'Last post '+ago(p.last_post_at):'No posts yet')+' · '+p.clips_7d+' clips, '+fmt(p.views_7d)+' views in 7 days'+(p.target?' · target '+p.target+'/day':'')+'</div></div><span class="pf">'+PA[p.platform]+'</span></a>').join('');
- const q=C.queue.filter(x=>x.when&&new Date(x.when)-now<48*36e5&&new Date(x.when)>now-36e5);
- el('queue').innerHTML=q.length?q.map(x=>'<div class="qrow"><span class="w">'+new Date(x.when).toLocaleString('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',timeZone:'America/New_York'})+' ET</span><span class="c">'+esc(C.brands[x.brand]||x.brand)+' · '+esc(x.caption)+'</span><span class="pf">'+(PA[x.network]||esc(x.network))+'</span></div>').join(''):'<div class="empty">Nothing booked for the next 48 hours.</div>';
- chips();gal();
- el('foot').textContent='deFaria · '+C.name+' · numbers from Metricool, refreshed every hour. Views are what each clip has today.';
-}
-function chips(){el('brandchips').innerHTML='<button type="button" class="fbtn'+(SEL==''?' on':'')+'" data-s="">All pages</button>'+Object.entries(C.brands).map(([b,l])=>'<button type="button" class="fbtn'+(SEL==b?' on':'')+'" data-s="'+esc(b)+'" style="--sc:'+BCOL[b]+'"><i></i>'+esc(l)+'</button>').join('');
- el('brandchips').querySelectorAll('button').forEach(b=>b.onclick=()=>{SEL=b.dataset.s;chips();gal();});}
-function gal(reset){if(reset!==false)shownN=60;const p=el('fp').value,o=el('so').value;
- const c=C.clips.filter(x=>(!p||x.platform==p)&&(!SEL||x.brand==SEL));
- c.sort((a,b)=>o=='views'?b.views-a.views:b.published.localeCompare(a.published));
- el('gal').innerHTML=c.slice(0,shownN).map(x=>tile(x)).join('')||'<div class="empty">No clips match.</div>';
- el('gcount').textContent='Showing '+Math.min(shownN,c.length).toLocaleString()+' of '+c.length.toLocaleString();el('more').hidden=c.length<=shownN;}
-el('fp').onchange=()=>gal();el('so').onchange=()=>gal();el('more').onclick=()=>{shownN+=60;gal(false)};
-fetch('../data.json?t='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.json()).then(d=>{D=d;C=d.clients[CLIENT];
- if(!C){el('upd').textContent='No data for this client yet.';return;}
- Object.keys(C.brands).forEach((b,i)=>BCOL[b]=PAL[i%PAL.length]);render();})
- .catch(()=>{el('upd').textContent='Could not load the numbers. Refresh the page in a minute.';});
-</script>
-</body></html>
+ el('sub').innerHTML=esc(C.campaign||'')+' &middot; '+esc(C.agency||'')+(C.prepared_for?' &middot; prepared for <b>'+esc(C.prepared_for)+'</b>':'');
+ /* campaign weeks: 7-day blocks from launch, the same weeks as the weekly reports */
+ const start=C.live_from,today=etDay(new Date().toISOString());
+ const weeks=[];for(let s=start;s<=today;s=addDays(s,7))weeks.push([s,addDays(s,6)]);
+ const inW=(x,w)=>x.day>=w[0]&&x.day<=w[1];
+ const full=weeks.filter(w=>w[1]<today),lastW=full[full.length-1],prevW=full[full.length-2];
+ const lbl=w=>etDate(w[0])+' to '+etDate(w[1]);
+ const sv=a=>a.reduce((s,x)=>s+x.views,0);
+ /* hero */
+ const per=' ('+etDate(start)+' to '+etDate(today)+')';
+ el('h_lbl1').textContent='Views, campaign to date'+per;el('h_lbl2').textContent='Clips out, campaign to date'+per;
+ el('h_views').textContent=fmt(sv(cl));el('h_clips').textContent=cl.length.toLocaleString();
+ el('h_vchg').textContent='Week '+weeks.length+' of the campaign';const nb=Object.keys(BL).length;el('h_cchg').textContent=nb+(nb==1?' page, ':' pages, ')+C.pages.length+' accounts';
+ el('t_eng').textContent=pct(eng(cl));
+ el('t_lcs').textContent=cl.reduce((s,x)=>s+x.likes,0).toLocaleString()+' · '+cl.reduce((s,x)=>s+x.comments,0).toLocaleString()+' · '+cl.reduce((s,x)=>s+x.shares,0).toLocaleString();
+ /* last full week */
+ if(lastW){const a=cl.filter(x=>inW(x,lastW)),b=prevW?cl.filter(x=>inW(x,prevW)):[];
+  const wch=(c,p,u)=>prevW&&p?' '+arrow(c,p)+' <span class="dt" style="flex-basis:auto">vs '+fmt(p)+' the week before</span>':'';
+  el('wkcard').innerHTML='<div class="lbl">Clips posted last full week (Week '+full.length+', '+lbl(lastW)+')</div><div><span class="v">'+fmt(sv(a))+'</span> views'+wch(sv(a),sv(b))+'</div><div><span class="v">'+a.length+'</span> clips out'+wch(a.length,b.length)+'</div><div><span class="v">'+pct(eng(a))+'</span> engagement rate</div><div class="dt">Counts the clips posted in that week and the views those clips have today, so a week keeps growing after it ends. Weeks run seven days from launch on '+etDate(start)+', like the weekly report, but the weekly report adds up every campaign clip to its date, so its totals are bigger.</div>';}
+ else el('wkcard').innerHTML='<div class="lbl">Week 1 ('+lbl(weeks[0])+')</div><div class="dt">The first full week ends '+etDate(weeks[0][1])+'. Week-over-week numbers start after that.</div>';
+ /* top clips */
+ const TT=[['week','Last 7 days',cl.filter(x=>x.day>=addDays(today,-6)),addDays(today,-6)],['all','Whole campaign',cl,start]];
+ function showTop(k){const t=TT.find(x=>x[0]==k);el('toptabs').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t==k));
+  el('tops').textContent='Most viewed clips posted '+etDate(t[3])+' to '+etDate(today)+'. Tap any clip to watch it here.';
+  el('top').innerHTML=t[2].length?t[2].slice().sort((a,b)=>b.views-a.views).slice(0,10).map((x,i)=>tile(x,i+1)).join(''):'<div class="empty">No clips posted in this period yet.</div>';}
+ el('toptabs').innerHTML=TT.map(t=>'<button data-t="'+t[0]+'">'+t[1]+'</button>').join('');
+ el('toptabs').querySelectorAll('button').forEach(b=>b.onclick=()=>showTop(b.dataset.t));showTop(TT[0][2].length?'week':'all');
+ /* platform split + by page */
+ const tot=sv(cl)||1,plats=Object.keys(PN).map(p=>[p,cl.filter(x=>x.platform==p)]).filter(r=>r[1].length);
+ el('splitcard').innerHTML='<div class="lbl">All views, campaign to date, by platform</div><div style="margin-top:6px"><span class="v" style="font-family:var(--mono);font-size:20px;font-weight:700">'+fmt(sv(cl))+'</span> total views</div>'
+  +'<div class="stack">'+plats.map(r=>'<i style="--sc:'+PC[r[0]]+';width:'+(sv(r[1])/tot*100)+'%" title="'+PN[r[0]]+'"></i>').join('')+'</div>'
+  +'<div class="dt">'+plats.map(r=>'<span class="chip" style="--sc:'+PC[r[0]]+'"><i></i>'+PN[r[0]]+'</span> '+fmt(sv(r[1]))+' views, '+pct(eng(r[1]))+' eng.').join(' &nbsp; ')+'</div>'
+  +'<div class="dt" style="margin-top:8px">Engagement rate = (likes + comments + shares) &divide; views &times; 100, as in the weekly report.</div>';
+ const W4=weeks.slice(-4);
+ el('shsub').textContent='Views by page, campaign to date. Bars show each campaign week, oldest to newest'+(weeks.length>W4.length?' (last 4 weeks)':'')+'.';
+ el('shows').innerHTML=Object.keys(BL).map(b=>{const m=cl.filter(x=>x.brand==b),w=W4.map(wk=>sv(m.filter(x=>inW(x,wk)))),mx=Math.max(1,...w),sh=Math.round(sv(m)/tot*100);
+  return '<div class="card sc" style="--sc:'+scol(b)+'">'+chip(b)+'<div class="lbl" style="margin-top:12px">Views, campaign to date</div><div class="big" style="margin-top:2px">'+fmt(sv(m))+'</div>'
+  +'<div class="spark">'+w.map((v,i)=>'<i class="'+(v?'':'na')+'" style="height:'+(v?Math.max(4,v/mx*100):4)+'%" title="Week '+(weeks.length-W4.length+i+1)+', '+lbl(W4[i])+': '+fmt(v)+'"></i>').join('')+'</div>'
+  +'<div class="kv"><span>Share of campaign views</span><b>'+sh+'%</b></div><div class="bar"><i style="width:'+sh+'%"></i></div>'
+  +'<div class="kv"><span>Clips out</span><b>'+m.length+'</b></div><div class="kv"><span>Engagement rate</span><b>'+pct(eng(m))+'</b></div></div>'}).join('');
+ /* accounts table */
+ let rows='';
+ Object.keys(BL).forEach(b=>{const acc=C.pages.filter(p=>p.brand==b);acc.forEach((p,i)=>{const m=cl.filter(x=>x.brand==b&&x.platform==p.platform);
+  rows+='<tr class="'+(i==0?'pg':'')+'"><td>'+(i==0?'<b>'+esc(BL[b])+'</b>':'')+'</td><td><a href="'+esc(p.profile_url)+'" target="_blank" rel="noopener">'+PN[p.platform]+'</a></td><td class="n">'+sv(m).toLocaleString()+'</td><td class="n">'+m.reduce((s,x)=>s+x.likes,0).toLocaleString()+'</td><td class="n">'+m.reduce((s,x)=>s+x.comments,0).toLocaleString()+'</td><td class="n">'+m.reduce((s,x)=>s+x.shares,0).toLocaleString()+'</td><td class="n">'+pct(eng(m))+'</td></tr>'})});
+ el('acct').innerHTML='<table><thead><tr><th>Page</th><th>Account</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Comments</th><th class="n">Shares</th><th class="n">Eng. rate</th></tr></thead><tbody>'+rows
+  +'<tr class="tot"><td>Total</td><td></td><td class="n">'+sv(cl).toLocaleString()+'</td><td class="n">'+cl.reduce((s,x)=>s+x.likes,0).toLocaleString()+'</td><td class="n">'+cl.reduce((s,x)=>s+x.comments,0).toLocaleString()+'</td><td class="n">'+cl.reduce((s,x)=>s+x.shares,0).toLocaleString()+'</td><td class="n">'+pct(eng(cl))+'</td></tr></tbody></table>'
+  +(C.note?'<div class="dt" style="margin-top:10px">'+esc(C.note)+'</div>':'');
+ /* fan pages: same lights as the LLTV report */
+ const now=stamp(D.updated_at)||Date.now();
+ const light=p=>{if(!p.last_post_at)return 'red';const h=(now-stamp(p.last_post_at))/36e5;return h<=24?'green':h<=72?'yellow':'red'};
+ const ago=t=>{const n=stamp(t);if(n==null)return 'No posts yet';const h=Math.floor((now-n)/36e5);return 'Last post '+(h<1?'under an hour ago':h<48?h+'h ago':Math.floor(h/24)+' days ago')};
+ const RK={red:0,yellow:1,green:2},fps=C.pages.map(p=>Object.assign({light:light(p)},p)).sort((a,b)=>RK[a.light]-RK[b.light]||(stamp(a.last_post_at)||0)-(stamp(b.last_post_at)||0));
+ const c={green:0,yellow:0,red:0};fps.forEach(p=>c[p.light]++);
+ el('fpsub').textContent='Which pages posted recently, as of '+D.updated+'. Pages that need a post are listed first. Tap a page to open it.';
+ el('fpsum').innerHTML='<div class="pillc"><span class="dot green"></span><div><b>'+c.green+'</b> <span class="dt">active today</span></div></div><div class="pillc"><div><b>'+fps.reduce((a,p)=>a+(p.posts_today||0),0)+'</b> <span class="dt">posts today</span></div></div><div class="pillc"><span class="dot yellow"></span><div><b>'+c.yellow+'</b> <span class="dt">1 to 3 days</span></div></div><div class="pillc"><span class="dot red"></span><div><b>'+c.red+'</b> <span class="dt">over 3 days</span></div></div>';
+ el('board').innerHTML=fps.map(p=>'<a class="fp" href="'+esc(p.profile_url)+'" target="_blank" rel="noopener"><span class="dot '+p.light+'"></span><div style="min-width:0"><div class="h">'+esc(p.platform=='tiktok'||p.platform=='instagram'?p.handle:BL[p.brand])+'</div><div class="s">'+ago(p.last_post_at)+(p.posts_today?' &middot; '+p.posts_today+' today':'')+' &middot; '+p.clips_7d+' this week</div></div><span class="pf">'+(PA[p.platform]||'')+'</span></a>').join('');
+ /* queue */
+ const q=(C.queue||[]).filter(x=>x.when&&stamp(x.when)>Date.now()-36e5&&stamp(x.when)<Date.now()+48*36e5);
+ el('queue').innerHTML=q.length?q.map(x=>'<div class="qrow"><span class="w">'+new Date(stamp(x.when)).toLocaleString('en-US',{weekday:'short',hour:'numeric',minute:'2-digit',timeZone:'America/New_York'})+' ET</span><span class="c">'+chip(x.brand)+' '+esc(x.caption)+'</span><span class="pf">'+(PA[x.network]||esc(x.network))+'</span></div>').join(''):'<div class="empty">Nothing booked for the next 48 hours.</div>';
+ /* gallery */
+ let SEL='';
+ function chips(){el('showchips').innerHTML='<button class="fbtn'+(SEL==''?' on':'')+'" data-s="">All pages</button>'+Object.keys(BL).map(b=>'<button class="fbtn'+(SEL==b?' on':'')+'" data-s="'+esc(b)+'" style="--sc:'+scol(b)+'"><i></i>'+esc(BL[b])+'</button>').join('');
+  el('showchips').querySelectorAll('button').forEach(b=>b.onclick=()=>{SEL=b.dataset.s;chips();gal();});}
+ window.gal=function(reset){if(reset!==false)shownN=60;const p=el('fp').value,o=el('so').value;
+  const c=cl.filter(x=>(!p||x.platform==p)&&(!SEL||x.brand==SEL));
+  c.sort((a,b)=>o=='views'?b.views-a.views:b.published.localeCompare(a.published));
+  el('gal').innerHTML=c.slice(0,shownN).map(x=>tile(x)).join('')||'<div class="empty">No clips match.</div>';
+  el('gcount').textContent='Showing '+Math.min(shownN,c.length).toLocaleString()+' of '+c.length.toLocaleString();el('more').hidden=c.length<=shownN;}
+ el('more').onclick=()=>{shownN+=60;gal(false)};['fp','so'].forEach(i=>el(i).onchange=()=>gal());chips();gal();
+ el('foot').innerHTML='Numbers come from Metricool and refresh every hour. YouTube views are read from YouTube itself, because Metricool undercounts them. Views are counted to date, so recent clips keep growing. Posts from before launch on '+etDate(start)+' are left out.<br>Fan page lights: green posted in the last 24 hours, yellow 1 to 3 days ago, red over 3 days ago.';}
+function tile(x,rk){return '<a class="tile" style="--sc:'+scol(x.brand)+'" data-k="'+CUR.clips.indexOf(x)+'" href="'+esc(x.url)+'" target="_blank" rel="noopener"><div class="th">'+(rk?'<span class="rk">#'+rk+'</span>':'')+'<span class="ph">'+(PA[x.platform]||'')+'</span>'+(x.thumb?'<img src="'+esc(x.thumb)+'" alt="" loading="lazy" onerror="this.remove()">':'')+'<span class="pl">'+(PA[x.platform]||'')+'</span></div><div class="meta">'+chip(x.brand)+'<div class="vw">'+fmt(x.views)+' views</div><div class="dt">'+etDate(x.published)+'</div></div></a>'}
+function embedUrl(c){const u=c.url||'';let m;
+ if(m=u.match(/(?:youtube\.com\/(?:shorts\/|embed\/)|youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/)([\w-]{11})/))return 'https://www.youtube.com/embed/'+m[1]+'?autoplay=1&playsinline=1';
+ if(m=u.match(/tiktok\.com\/.*\/video\/(\d+)/))return 'https://www.tiktok.com/player/v1/'+m[1]+'?autoplay=1';
+ if(m=u.match(/instagram\.com\/(reels?|p)\/([\w-]+)/))return 'https://www.instagram.com/'+(m[1]=='p'?'p':'reel')+'/'+m[2]+'/embed';
+ if(/facebook\.com\//.test(u))return 'https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(u)+'&show_text=false&autoplay=true';
+ return null;}
+function openClip(c){const e=embedUrl(c),f=el('mfr');
+ f.innerHTML=e?'<iframe src="'+e+'" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>':(c.thumb?'<img src="'+esc(c.thumb)+'" alt="">':'');
+ el('minfo').innerHTML=chip(c.brand)+'<span>'+etDate(c.published,{year:'numeric'})+'</span><span>'+c.views.toLocaleString()+' views</span><span>'+c.likes.toLocaleString()+' likes</span><a class="mopen" href="'+esc(c.url)+'" target="_blank" rel="noopener">Open on '+(PN[c.platform]||'site')+'</a>';
+ el('mbg').classList.add('on');}
+function closeClip(){el('mbg').classList.remove('on');el('mfr').innerHTML='';}
+document.addEventListener('click',ev=>{const a=ev.target.closest&&ev.target.closest('a.tile[data-k]');
+ if(a&&CUR&&ev.button===0&&!ev.metaKey&&!ev.ctrlKey&&!ev.shiftKey&&!ev.altKey){const c=CUR.clips[+a.dataset.k];if(c){ev.preventDefault();openClip(c);}return;}
+ if(ev.target.id=='mbg'||(ev.target.closest&&ev.target.closest('#mx')))closeClip();});
+document.addEventListener('keydown',ev=>{if(ev.key=='Escape')closeClip();});
+fetch('../data.json?t='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(render).catch(()=>{el('upd').textContent='Could not load the numbers. Refresh the page in a minute.';});
+</script></body></html>

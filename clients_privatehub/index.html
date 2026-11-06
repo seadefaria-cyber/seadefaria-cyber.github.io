@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" sizes="64x64" href="../img/df-favicon-64.png"><link rel="apple-touch-icon" sizes="180x180" href="../img/df-apple-touch.png">
-<title>deFaria Client Reports</title>
+<title>Client Reports</title>
 <style>
 :root{--bg:#000;--card:#0e0e0e;--card2:#151515;--bd:#232323;--y:#FBE74E;--tx:#f2f2f2;--mut:#8f8f8f;--g:#22c55e;--r:#ef4444;
 --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
@@ -35,7 +35,7 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
 @media(max-width:520px){.wrap{padding:20px 16px 48px}.v{font-size:20px}}
 </style></head><body>
 <div class="wrap">
-<header><div class="brand"><img src="../img/df-logo-512.png" alt="deFaria"><div><h1>deFaria Client Reports</h1><div class="upd">Every client in one place. Tap a client to open its report.</div></div></div><span class="live">&#9679; Live</span></header>
+<header><div class="brand"><div><h1>Client Reports</h1><div class="upd">Every client in one place. Tap a client to open its report.</div></div></div><span class="live">&#9679; Live</span></header>
 
 <section><div class="sh"><h2>Clients</h2><div class="st">Live numbers come from each client's own report. Every number on this page is pulled from Metricool and refreshes every hour.</div></div>
 <div class="clients">
@@ -52,29 +52,29 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
  </a>
 
  <a class="cl" href="zach-bryan/" data-client="zach-bryan">
-  <div class="top"><div class="logo"><b>ZB</b></div><div><div class="nm">Zach Bryan</div><div class="by" data-f="upd">via Wildfire &middot; AEG</div></div><span class="pill live2"><i></i>Live</span></div>
+  <div class="top"><div class="logo"><img src="zach-bryan/logo.png" alt=""></div><div><div class="nm">Zach Bryan</div><div class="by" data-f="upd">WLDFR for AEG Presents</div></div><span class="pill live2"><i></i>Live</span></div>
   <div class="stats">
-   <div><div class="lbl">Views, last 30 days</div><div class="v y" data-f="v30">&nbsp;</div><div class="chg" data-f="v30c"></div></div>
-   <div><div class="lbl">Clips out, last 30 days</div><div class="v" data-f="c30">&nbsp;</div><div class="chg" data-f="c30c"></div></div>
-   <div><div class="lbl">Total views</div><div class="v" data-f="tv">&nbsp;</div></div>
+   <div><div class="lbl">Views, campaign to date</div><div class="v y" data-f="v30">&nbsp;</div><div class="chg" data-f="v30c"></div></div>
+   <div><div class="lbl">Clips out, campaign to date</div><div class="v" data-f="c30">&nbsp;</div><div class="chg" data-f="c30c"></div></div>
+   <div><div class="lbl">Engagement rate</div><div class="v" data-f="tv">&nbsp;</div></div>
    <div><div class="lbl">Fan pages posted recently</div><div class="v" data-f="fp">&nbsp;</div></div>
   </div>
-  <div class="go"><span>via Wildfire &middot; AEG</span><span>Open report &rarr;</span></div>
+  <div class="go"><span>WLDFR &middot; for AEG Presents</span><span>Open report &rarr;</span></div>
  </a>
 
  <a class="cl" href="innings-festival/" data-client="innings-festival">
-  <div class="top"><div class="logo"><b>IN</b></div><div><div class="nm">Innings Festival</div><div class="by" data-f="upd">via Wildfire &middot; C3 Presents</div></div><span class="pill live2"><i></i>Live</span></div>
+  <div class="top"><div class="logo"><img src="innings-festival/logo.png" alt=""></div><div><div class="nm">Innings Festival</div><div class="by" data-f="upd">WLDFR for Innings Festival</div></div><span class="pill live2"><i></i>Live</span></div>
   <div class="stats">
-   <div><div class="lbl">Views, last 30 days</div><div class="v y" data-f="v30">&nbsp;</div><div class="chg" data-f="v30c"></div></div>
-   <div><div class="lbl">Clips out, last 30 days</div><div class="v" data-f="c30">&nbsp;</div><div class="chg" data-f="c30c"></div></div>
-   <div><div class="lbl">Total views</div><div class="v" data-f="tv">&nbsp;</div></div>
+   <div><div class="lbl">Views, campaign to date</div><div class="v y" data-f="v30">&nbsp;</div><div class="chg" data-f="v30c"></div></div>
+   <div><div class="lbl">Clips out, campaign to date</div><div class="v" data-f="c30">&nbsp;</div><div class="chg" data-f="c30c"></div></div>
+   <div><div class="lbl">Engagement rate</div><div class="v" data-f="tv">&nbsp;</div></div>
    <div><div class="lbl">Fan pages posted recently</div><div class="v" data-f="fp">&nbsp;</div></div>
   </div>
-  <div class="go"><span>via Wildfire &middot; C3 Presents</span><span>Open report &rarr;</span></div>
+  <div class="go"><span>WLDFR &middot; for Innings Festival</span><span>Open report &rarr;</span></div>
  </a>
 
 </div></section>
-<footer>deFaria &middot; private, not indexed</footer>
+<footer>Private, not indexed</footer>
 </div>
 <script>
 (function(){
@@ -102,10 +102,9 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
    const T=x=>new Date(x.published).getTime(),sv=a=>a.reduce((s,x)=>s+x.views,0);
    const c30=c.clips.filter(x=>T(x)>=d30),p30=c.clips.filter(x=>T(x)>=d60&&T(x)<d30);
    const f=k=>card.querySelector('[data-f="'+k+'"]');
-   f('v30').textContent=fmt(sv(c30));f('c30').textContent=c30.length.toLocaleString();f('tv').textContent=fmt(sv(c.clips));
-   const [vt,vc]=ch(sv(c30),sv(p30));f('v30c').textContent=vt;if(vc)f('v30c').classList.add(vc);
-   const [ct,cc]=ch(c30.length,p30.length);f('c30c').textContent=ct;if(cc)f('c30c').classList.add(cc);
-   f('fp').textContent=c.pages.filter(p=>p.status==='green').length+' of '+c.pages.length;
+   f('v30').textContent=fmt(sv(c.clips));f('c30').textContent=c.clips.length.toLocaleString();const e=sv(c.clips)?c.clips.reduce((s,x)=>s+x.likes+x.comments+x.shares,0)/sv(c.clips)*100:0;f('tv').textContent=e.toFixed(1)+'%';
+   f('v30c').textContent=c.live_from?'since '+new Date(c.live_from+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'})+' launch':'';f('c30c').textContent=(c.campaign||'');
+   const lit=p=>p.last_post_at&&(Date.now()-new Date(p.last_post_at))/36e5<=24;f('fp').textContent=c.pages.filter(lit).length+' of '+c.pages.length;
    f('upd').textContent='Updated '+d.updated;});
  }).catch(()=>{});
 })();
