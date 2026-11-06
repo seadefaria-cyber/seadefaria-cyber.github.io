@@ -37,7 +37,7 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
 <div class="wrap">
 <header><div class="brand"><img src="../img/df-logo-512.png" alt="deFaria"><div><h1>deFaria Client Reports</h1><div class="upd">Every client in one place. Tap a client to open its report.</div></div></div><span class="live">&#9679; Live</span></header>
 
-<section><div class="sh"><h2>Clients</h2><div class="st">Live numbers come from each client's own report and update when it does. Zach Bryan and Innings open their live dashboards in Claude.</div></div>
+<section><div class="sh"><h2>Clients</h2><div class="st">Live numbers come from each client's own report. Every number on this page is pulled from Metricool and refreshes every hour.</div></div>
 <div class="clients">
 
  <a class="cl on" href="../lyricalemonadetv_privatereport/">
@@ -51,16 +51,26 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
   <div class="go"><span>Lyrical Lemonade</span><span>Open report &rarr;</span></div>
  </a>
 
- <a class="cl" href="https://claude.ai/artifact/1WuFHZz9e1wvxeihXPqSUt" target="_blank" rel="noopener">
-  <div class="top"><div class="logo"><b>ZB</b></div><div><div class="nm">Zach Bryan</div><div class="by">via Wildfire &middot; AEG</div></div><span class="pill live2"><i></i>Live</span></div>
-  <div class="wait">Live dashboard for the 7 Zach Bryan pages: posts per day against target, views, top clips and the queue, from Metricool.</div>
-  <div class="go"><span>Opens in Claude</span><span>Open dashboard &rarr;</span></div>
+ <a class="cl" href="zach-bryan/" data-client="zach-bryan">
+  <div class="top"><div class="logo"><b>ZB</b></div><div><div class="nm">Zach Bryan</div><div class="by" data-f="upd">via Wildfire &middot; AEG</div></div><span class="pill live2"><i></i>Live</span></div>
+  <div class="stats">
+   <div><div class="lbl">Views, last 30 days</div><div class="v y" data-f="v30">&nbsp;</div><div class="chg" data-f="v30c"></div></div>
+   <div><div class="lbl">Clips out, last 30 days</div><div class="v" data-f="c30">&nbsp;</div><div class="chg" data-f="c30c"></div></div>
+   <div><div class="lbl">Total views</div><div class="v" data-f="tv">&nbsp;</div></div>
+   <div><div class="lbl">Fan pages posted recently</div><div class="v" data-f="fp">&nbsp;</div></div>
+  </div>
+  <div class="go"><span>via Wildfire &middot; AEG</span><span>Open report &rarr;</span></div>
  </a>
 
- <a class="cl" href="https://claude.ai/artifact/EUCUYHUfondbBsRAcV5ori" target="_blank" rel="noopener">
-  <div class="top"><div class="logo"><b>IN</b></div><div><div class="nm">Innings Festival</div><div class="by">via Wildfire &middot; C3 Presents</div></div><span class="pill live2"><i></i>Live</span></div>
-  <div class="wait">Live dashboard for batterswingbatter: posts per day against target, views, top clips and the queue, from Metricool.</div>
-  <div class="go"><span>Opens in Claude</span><span>Open dashboard &rarr;</span></div>
+ <a class="cl" href="innings-festival/" data-client="innings-festival">
+  <div class="top"><div class="logo"><b>IN</b></div><div><div class="nm">Innings Festival</div><div class="by" data-f="upd">via Wildfire &middot; C3 Presents</div></div><span class="pill live2"><i></i>Live</span></div>
+  <div class="stats">
+   <div><div class="lbl">Views, last 30 days</div><div class="v y" data-f="v30">&nbsp;</div><div class="chg" data-f="v30c"></div></div>
+   <div><div class="lbl">Clips out, last 30 days</div><div class="v" data-f="c30">&nbsp;</div><div class="chg" data-f="c30c"></div></div>
+   <div><div class="lbl">Total views</div><div class="v" data-f="tv">&nbsp;</div></div>
+   <div><div class="lbl">Fan pages posted recently</div><div class="v" data-f="fp">&nbsp;</div></div>
+  </div>
+  <div class="go"><span>via Wildfire &middot; C3 Presents</span><span>Open report &rarr;</span></div>
  </a>
 
 </div></section>
@@ -83,6 +93,21 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
    if(d.updated)set('ll_upd','Updated '+d.updated);
   })
   .catch(()=>{set('ll_upd','Live clip report');});
+
+ fetch('data.json?t='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+  const now=Date.now(),d30=now-30*864e5,d60=now-60*864e5;
+  const fmt=n=>{n=+n||0;return n>=1e6?(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'M':n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':n.toLocaleString()};
+  const ch=(a,b)=>{if(!b)return ['',''];const p=(a-b)/b*100;return [(p>=0?'+':'')+p.toFixed(1)+'% vs prior 30 days',p>=0?'up':'down']};
+  document.querySelectorAll('[data-client]').forEach(card=>{const c=d.clients[card.dataset.client];if(!c)return;
+   const T=x=>new Date(x.published).getTime(),sv=a=>a.reduce((s,x)=>s+x.views,0);
+   const c30=c.clips.filter(x=>T(x)>=d30),p30=c.clips.filter(x=>T(x)>=d60&&T(x)<d30);
+   const f=k=>card.querySelector('[data-f="'+k+'"]');
+   f('v30').textContent=fmt(sv(c30));f('c30').textContent=c30.length.toLocaleString();f('tv').textContent=fmt(sv(c.clips));
+   const [vt,vc]=ch(sv(c30),sv(p30));f('v30c').textContent=vt;if(vc)f('v30c').classList.add(vc);
+   const [ct,cc]=ch(c30.length,p30.length);f('c30c').textContent=ct;if(cc)f('c30c').classList.add(cc);
+   f('fp').textContent=c.pages.filter(p=>p.status==='green').length+' of '+c.pages.length;
+   f('upd').textContent='Updated '+d.updated;});
+ }).catch(()=>{});
 })();
 </script>
 </body></html>
