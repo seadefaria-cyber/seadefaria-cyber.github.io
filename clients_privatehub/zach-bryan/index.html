@@ -107,6 +107,9 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--bd);font-size
 <section id="accounts"><div class="sh"><div><h2>Accounts</h2><div class="st">Every account for the campaign so far, the same table as the weekly report.</div></div></div>
 <div class="card tbl" id="acct"></div></section>
 
+<section id="reddit" hidden><div class="sh"><div><h2>Reddit</h2><div class="st" id="rdsub"></div></div></div>
+<div class="fpsum" id="rdsum"></div><div class="board" id="rdacc" style="margin-bottom:14px"></div><div class="card" id="rdlist"></div></section>
+
 <section id="fpboard"><div class="sh"><div><h2>Fan pages</h2><div class="st" id="fpsub">Which pages posted recently. Pages that need a post are listed first. Tap a page to open it.</div></div></div>
 <div class="fpsum" id="fpsum"></div><div class="board" id="board"></div></section>
 
@@ -193,6 +196,14 @@ function render(D){const C=D.clients[CLIENT];if(!C){el('upd').textContent='No da
  el('acct').innerHTML='<table><thead><tr><th>Account</th><th>Platform</th><th class="n">Views</th><th class="n">Likes</th><th class="n">Comments</th><th class="n">Shares</th><th class="n">Eng. rate</th></tr></thead><tbody>'+rows
   +'<tr class="tot"><td>Total</td><td></td><td class="n">'+sv(cl).toLocaleString()+'</td><td class="n">'+cl.reduce((s,x)=>s+x.likes,0).toLocaleString()+'</td><td class="n">'+cl.reduce((s,x)=>s+x.comments,0).toLocaleString()+'</td><td class="n">'+cl.reduce((s,x)=>s+x.shares,0).toLocaleString()+'</td><td class="n">'+pct(eng(cl))+'</td></tr></tbody></table>'
   ;
+ /* reddit: views come from each account's own post insights, entered in the weekly review */
+ const RD=C.reddit;
+ if(RD){el('reddit').hidden=false;const it=(RD.items||[]).slice().sort((a,b)=>(b.views||0)-(a.views||0)),posts=it.filter(x=>x.kind=='post'),reps=it.filter(x=>x.kind!='post');
+  el('rdsub').textContent=RD.as_of?'Posts and replies by our '+RD.accounts.length+' Reddit accounts, as of the weekly review on '+RD.as_of+'. Reddit only shows views to the account that posted, so these update with each weekly review, not every hour.':'Our Reddit accounts. Numbers appear after the next weekly review.';
+  el('rdsum').innerHTML=RD.total!=null?'<div class="pillc"><div><b>'+fmt(RD.total)+'</b> <span class="dt">total views</span></div></div><div class="pillc"><div><b>'+(posts[0]?fmt(posts[0].views):'0')+'</b> <span class="dt">views, top post</span></div></div><div class="pillc"><div><b>'+posts.length+'</b> <span class="dt">posts</span></div></div><div class="pillc"><div><b>'+reps.length+'</b> <span class="dt">replies and comments</span></div></div>':'';
+  el('rdacc').innerHTML=RD.accounts.map(a=>'<a class="fp" href="https://www.reddit.com/user/'+esc(a)+'/" target="_blank" rel="noopener"><span class="dot green"></span><div style="min-width:0"><div class="h">u/'+esc(a)+'</div><div class="s">Reddit account</div></div><span class="pf">RD</span></a>').join('');
+  const srch=x=>x.url||('https://www.reddit.com/r/'+encodeURIComponent((x.where||'r/'+RD.subreddit).replace(/^r\//,''))+'/search/?q='+encodeURIComponent(x.title||'')+'&restrict_sr=1');
+  el('rdlist').innerHTML=it.length?it.map(x=>'<div class="qrow"><span class="w">'+(x.views!=null?Number(x.views).toLocaleString()+' views':'')+'</span><span class="c"><span class="dt" style="text-transform:uppercase;letter-spacing:.06em;margin-right:6px">'+esc(x.where||'')+' &middot; '+(x.kind=='post'?'our post':x.kind=='reply'?'our reply':'our comment')+'</span><a href="'+esc(srch(x))+'" target="_blank" rel="noopener" style="color:var(--tx)">'+esc(x.title||'')+'</a>'+(x.quote?' <span class="dt">&ldquo;'+esc(x.quote)+'&rdquo;</span>':'')+'</span><span class="pf">RD</span></div>').join(''):'<div class="empty">No Reddit numbers yet.</div>';}
  /* fan pages: same lights as the LLTV report */
  const now=stamp(D.updated_at)||Date.now();
  const light=p=>{if(!p.last_post_at)return 'red';const h=(now-stamp(p.last_post_at))/36e5;return h<=24?'green':h<=72?'yellow':'red'};
