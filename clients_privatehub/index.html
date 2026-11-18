@@ -40,14 +40,9 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
 <section><div class="sh"><h2>Clients</h2><div class="st">Live numbers come from each client's own report. Every number on this page is pulled from Metricool and refreshes every hour.</div></div>
 <div class="clients">
 
- <a class="cl on" href="../lyricalemonadetv_privatereport/">
-  <div class="top"><div class="logo"><img src="../lyricalemonadetv_privatereport/assets/lyrical-tv.png" alt=""></div><div><div class="nm">Lyrical Lemonade TV</div><div class="by" id="ll_upd">Live clip report</div></div><span class="pill live2"><i></i>Live</span></div>
-  <div class="stats">
-   <div><div class="lbl">Views, last 30 days</div><div class="v y" id="ll_v30">&nbsp;</div><div class="chg" id="ll_v30c"></div></div>
-   <div><div class="lbl">Clips out, last 30 days</div><div class="v" id="ll_c30">&nbsp;</div><div class="chg" id="ll_c30c"></div></div>
-   <div><div class="lbl">Total views since Jun 1</div><div class="v" id="ll_tv">&nbsp;</div></div>
-   <div><div class="lbl">Fan pages posted recently</div><div class="v" id="ll_fp">&nbsp;</div></div>
-  </div>
+ <a class="cl on" href="https://portal.defariastein.com/lyricallemonadetv/">
+  <div class="top"><div class="logo"><img src="lltv-logo.png" alt=""></div><div><div class="nm">Lyrical Lemonade TV</div><div class="by">Live clip report</div></div><span class="pill live2"><i></i>Live</span></div>
+  <div class="wait">Views, cost and clips are in the report, behind the client login.</div>
   <div class="go"><span>Lyrical Lemonade</span><span>Open report &rarr;</span></div>
  </a>
 
@@ -78,22 +73,6 @@ footer{margin-top:48px;font-size:12px;color:var(--mut);font-family:var(--mono)}
 </div>
 <script>
 (function(){
- const set=(id,t,cls)=>{const e=document.getElementById(id);if(!e)return;e.textContent=t||'';if(cls)e.className+=' '+cls;};
- const dir=(s)=>!s?'':String(s).trim().startsWith('-')?'down':'up';
- fetch('../lyricalemonadetv_privatereport/data.json?t='+Math.floor(Date.now()/300000),{cache:'no-store'})
-  .then(r=>r.ok?r.json():Promise.reject(r.status))
-  .then(d=>{
-   const s=d.sheet||{},d30=s.d30||{};
-   set('ll_v30',d30.views);set('ll_c30',d30.clips);
-   if(d30.views_chg)set('ll_v30c',d30.views_chg+' vs prior 30 days',dir(d30.views_chg));
-   if(d30.clips_chg)set('ll_c30c',d30.clips_chg+' vs prior 30 days',dir(d30.clips_chg));
-   set('ll_tv',s.total_views);
-   const fp=(d.fan_pages||[]).filter(f=>!f.broken);
-   if(fp.length)set('ll_fp',fp.filter(f=>f.status==='green').length+' of '+fp.length);
-   if(d.updated)set('ll_upd','Updated '+d.updated);
-  })
-  .catch(()=>{set('ll_upd','Live clip report');});
-
  fetch('data.json?t='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
   const now=Date.now(),d30=now-30*864e5,d60=now-60*864e5;
   const fmt=n=>{n=+n||0;return n>=1e6?(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'M':n>=1e4?(n/1e3).toFixed(1).replace(/\.0$/,'')+'K':n.toLocaleString()};
